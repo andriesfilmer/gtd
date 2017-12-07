@@ -1,0 +1,6 @@
+*.swp
+package-lock.json
+tags
+tmp
+bower_components/
+node_modules/

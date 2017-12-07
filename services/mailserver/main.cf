@@ -1,0 +1,107 @@
+smtpd_banner = $myhostname ESMTP $mail_name
+biff = no
+append_dot_mydomain = no
+readme_directory = no
+
+# TLS parameters
+#smtpd_tls_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+#smtpd_tls_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+smtpd_tls_cert_file=/etc/ssl/certificate.crt
+smtpd_tls_key_file=/etc/ssl/private/certificate.key
+smtpd_tls_CAfile=/etc/ssl/cabundle.crt
+
+smtpd_use_tls=yes
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+
+smtpd_relay_restrictions = permit_mynetworks, permit_sasl_authenticated, defer_unauth_destination
+myhostname = server03.filmer.net
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+myorigin = /etc/mailname
+mydestination = server03.filmer.net, localhost, server02.igroupware.org
+relayhost = 
+mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 198.211.123.93 [fe80::601:36ff:fe4a:3401]/64
+
+
+recipient_delimiter = +
+inet_interfaces = all
+
+######## NON DEFAULT - ADDED EXTRA OPTIONS ###############
+
+# 20MB
+message_size_limit = 20480000
+
+# temporarely for new mailserver
+soft_bounce = yes
+
+# Compatibility level, See http://www.postfix.org/COMPATIBILITY_README.html
+compatibility_level = 2
+
+# Postscreen enabled
+postscreen_access_list = permit_mynetworks 
+postscreen_blacklist_action = drop
+postscreen_greet_action = drop
+postscreen_dnsbl_action = drop
+postscreen_dnsbl_threshold = 3
+postscreen_dnsbl_sites = dbl.spamhaus.org 
+                         zen.spamhaus.org
+                         bl.spamcop.net*2
+                         b.barracudacentral.org*2
+                         dnsbl.sorbs.net*2
+                         bl.spameatingmonkey.net
+                         psbl.surriel.com
+                         swl.spamhaus.org*-4
+                         #l2.apews.org
+                         #list.dnswl.org*-4
+
+postscreen_cache_map = proxy:btree:/var/lib/postfix/postscreen_cache
+
+home_mailbox = Maildir/
+
+smtp_use_tls = yes
+smtpd_use_tls = yes
+smtpd_tls_received_header = yes
+smtpd_tls_mandatory_protocols = SSLv3, TLSv1
+smtpd_tls_mandatory_ciphers = medium
+smtpd_tls_auth_only = yes
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/dovecot-auth
+smtpd_sasl_auth_enable = yes
+smtpd_recipient_restrictions = permit_mynetworks,
+                               permit_sasl_authenticated,
+                               reject_unknown_sender_domain, 
+                               reject_unauth_pipelining,
+                               reject_unauth_destination
+                               reject_non_fqdn_hostname,
+                               reject_non_fqdn_sender,
+                               reject_non_fqdn_recipient,
+                               reject_invalid_hostname,
+                               check_policy_service unix:private/policy-spf
+                               reject_rbl_client zen.spamhaus.org,
+                               reject_rhsbl_helo dbl.spamhaus.org,
+                               reject_rhsbl_sender dbl.spamhaus.org,
+                               check_client_access hash:/etc/postfix/client_checks,
+                               check_sender_access hash:/etc/postfix/sender_checks,
+
+# Virtual mailserver
+dovecot_destination_recipient_limit = 1
+virtual_transport = dovecot
+virtual_mailbox_base = /home/vmail/
+virtual_mailbox_domains = hash:/etc/postfix/vdomains
+virtual_mailbox_maps = hash:/etc/postfix/vmailboxes
+virtual_alias_maps = hash:/etc/postfix/valiases-inzetrooster
+
+# DKIM
+milter_default_action = accept
+milter_protocol = 2
+non_smtpd_milters = inet:localhost:8891
+
+# Milters: Clamav, Spamassassin, DKIM
+smtpd_milters = unix:/clamav/clamav-milter.ctl, unix:/spamass/spamass.sock, inet:localhost:8891
+
+# mailbox_command = /usr/bin/procmail -f- -a "$USER"
+#mailbox_command = /usr/bin/procmail -a "$EXTENSION" DEFAULT=$HOME/Maildir/ MAILDIR=$HOME/Maildir
+
+policy-spf_time_limit = 3600s
+

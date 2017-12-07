@@ -1,0 +1,27 @@
+{
+  "name": "PIM",
+  "description": "PIM api",
+  "version": "0.8.8",
+  "private": true,
+  "dependencies": {
+    "bcrypt": "latest",
+    "body-parser": "latest",
+    "connect-busboy": "latest",
+    "cors": "latest",
+    "express": "latest",
+    "express-jwt": "latest",
+    "json": "latest",
+    "jsonwebtoken": "latest",
+    "nodemailer": "latest",
+    "markdown-pdf": "latest",
+    "moment": "latest",
+    "mongoose": "latest",
+    "mongoose-unique-validator": "latest",
+    "mysql": "latest",
+    "quoted-printable": "latest",
+    "underscore": "latest",
+    "underscore.string": "latest",
+    "utf8": "latest",
+    "moment-timezone": "latest"
+  }
+}

@@ -1,0 +1,54 @@
+# 2.2.9: /etc/dovecot/dovecot.conf
+# OS: Linux 3.13.0-24-generic x86_64 Ubuntu 14.04 LTS 
+
+auth_debug=no
+protocols = " imap"
+mail_location = maildir:/home/vmail/%d/%n/Maildir
+mail_home = /var/vmail/%d/%n
+mail_privileged_group = vmail
+
+namespace default {
+  separator = .
+  prefix = INBOX.
+  inbox = yes
+}
+
+ssl_cert = </etc/dovecot/dovecot.pem
+ssl_key = </etc/dovecot/private/dovecot.pem
+
+# SASL - http://wiki2.dovecot.org/HowTo/PostfixAndDovecotSASL
+#
+service auth {
+  unix_listener /var/spool/postfix/private/dovecot-auth {
+    mode = 0660
+    user = postfix
+    group = postfix
+  }
+}
+
+passdb {
+  driver = passwd-file
+  args = /etc/dovecot/passwd
+}
+
+userdb {
+  driver = passwd-file
+  args = username_format=%u /etc/dovecot/passwd
+  default_fields = uid=vmail gid=vmail 
+}
+
+
+
+protocol lda {
+  postmaster_address = andries@filmer.nl
+  rejection_reason = Uw bericht aan <%t> werd geweigerd:%nYour message to <%t> was rejected:%n%n%r
+  mail_plugins = sieve
+ }
+
+
+plugin {
+  # Used by both the Sieve plugin and the ManageSieve protocol
+  sieve=/home/vmail/%d/%n/.dovecot.sieve
+  sieve_global_path=/etc/dovecot/default.sieve
+}
+

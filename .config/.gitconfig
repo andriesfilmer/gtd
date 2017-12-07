@@ -1,0 +1,7 @@
+[user]
+	email = andries@filmer.nl
+	name = Andries Filmer
+[push]
+	default = matching
+[credential]
+	helper = cache --timeout=28800
