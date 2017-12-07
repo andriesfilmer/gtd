@@ -20,6 +20,6 @@
 
 ## References
 
-- [The semantic versioner for npm](https://github.com/npm/node-semver)
+- [Semantic versioning](https://semver.orghttps://cloud.google.com/apis/design/versioning/)
 - [Markdown reference](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 

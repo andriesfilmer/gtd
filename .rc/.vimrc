@@ -5,7 +5,7 @@ execute pathogen#infect()
 filetype plugin indent on
 syntax on
 
-set cursorline                                     " highlight current line
+"set cursorline                                     " highlight current line. Is slower :-)
 set encoding=utf-8
 set expandtab                                      " On pressing tab, insert 4 spaces
 set hlsearch                                       " highlight all search matches
@@ -27,17 +27,15 @@ set ts=2                                           " set indent to 2 spaces
 set wildmenu                                       " enable bash style tab completion
 set wrap                                           " Wrapping on, default commented out
 
-let g:snips_author="Andries Filmer"                " Global variables for snippets
+let g:snips_author="Andries Filmer"                " Assign a global variable for snippets
 
 
 " Mappings
 "------------------------------------------------------------------------------
-"imap <c-o> <esc>viw<esc>a><esc>bi<<esc>lela        " to make a word as opening tag
-"imap <c-c> <esc>viw<esc>a><esc>bi</<esc>lela       " to make a word as closing tag
-
+imap ii <esc><CR>                                  " Map ii to Esc to exit insert-mode
 nmap <F3> :set hlsearch!<CR>                       " Toggle highlicht search.
 map! <F3> <nop>
-map <F5> :setlocal spell! spelllang=nl_nl<CR>      " Set dutch spelling on.
+map <F5> :setlocal spell! spelllang=nl_nl<CR>      " Toggle dutch spelling syntax
 
 " Alt+leftarrow will go one window left, etc.
 nmap <silent> <A-Up> :wincmd k<CR>
@@ -50,13 +48,6 @@ map <C-Right> :tabn<CR><CR>                        " Go to next tab.
 map <C-Left> :tabp<CR><CR>                         " Go to previous tab.
 
 cmap w!! w !sudo tee > /dev/null %  " Allow saving of files as sudo when I forgot to start vim using sudo.
-
-" Highlight trailing spaces in annoying red
-"------------------------------------------------------------------------------
-highlight ExtraWhitespace ctermbg=1 guibg=red
-match ExtraWhitespace /\s\+$/
-syn match markdownError "\w\@<=\w\@="               " Prevent Markdown highlighting for underscores, dirty-hack!
-
 
 " NERDTree options
 "------------------------------------------------------------------------------
@@ -101,4 +92,9 @@ set statusline+=\ Buf:%n                          " Buffer number
 "set statusline+=\ [%b][0x%B]\                     " ASCII and byte code under cursor
 "------------------------------------------------------------------------------
 
+" Mixed
+"------------------------------------------------------------------------------
+highlight ExtraWhitespace ctermbg=1 guibg=red      " Highlight trailing spaces in annoying red
+match ExtraWhitespace /\s\+$/
 
+autocmd Filetype markdown setlocal syntax=OFF       " Bugfix: Prevent Markdown highlighting for underscores

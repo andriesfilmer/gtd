@@ -95,7 +95,7 @@ If you forgot to start Vim as root and write the file without the permissions.
 
 ## Spell
 
-Download 
+Download
 [nl.utf-8.spl](ftp://ftp.vim.org/pub/vim/runtime/spell/nl.utf-8.spl),
 [nl.utf-8.spl](ftp://ftp.vim.org/pub/vim/runtime/spell/nl.utf-8.sug),
 [nl.utf-8.spl](ftp://ftp.vim.org/pub/vim/runtime/spell/nl.latin1.spl),
@@ -130,6 +130,8 @@ A neat filtering trick using the 'nl' linux/unix program.
 * TagBar  - I use F9 mapping in my .vimrc
 * [Emmet tutorial](https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL)
 * [gnupg.vim](http://www.vim.org/scripts/script.php?script_id=661) - Add in  .bashrc `export GPG_TTY=tty`
+* [Closetag](https://github.com/alvan/vim-closetag)
+* [Markdown](https://github.com/JamshedVesuna/vim-markdown-preview)
 
 ## Links
 
