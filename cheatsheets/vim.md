@@ -14,9 +14,11 @@
     m{a-z}                             " Mark position as {a-z} E.g. ma
     '{a-z}                             " Move to mark position {a-z} E.g. 'a
     ''                                 " Move to mark previous position
+    cit                                " Change In-to tag
     ci"                                " Change In-to "
     ci)                                " Change In-to )
     ci]                                " Change In-to ]
+    :364,379t.                         " Copy lines right under your current line
 
 ## Visual mode
 
@@ -92,6 +94,12 @@ If you forgot to start Vim as root and write the file without the permissions.
 
     ctags -R *
     ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
+
+Now you can jump from file to file:
+
+    ctrl-]                               " Jump to class (in other file)
+    ctrl-o                               " Jump Out (back)
+    ctrl-i                               " Jump In (again)
 
 ## Spell
 

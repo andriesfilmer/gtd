@@ -32,7 +32,7 @@ let g:snips_author="Andries Filmer"                " Assign a global variable fo
 
 " Mappings
 "------------------------------------------------------------------------------
-imap ii <esc><CR>                                  " Map ii to Esc to exit insert-mode
+imap jj <esc><CR>                                  " Map ii to Esc to exit insert-mode
 nmap <F3> :set hlsearch!<CR>                       " Toggle highlicht search.
 map! <F3> <nop>
 map <F5> :setlocal spell! spelllang=nl_nl<CR>      " Toggle dutch spelling syntax
@@ -55,6 +55,7 @@ nmap <F8> :NERDTreeToggle<CR>
 nmap <F2> :tabnew<CR>:NERDTree<CR>
 map! <F2> <nop>
 let NERDTreeShowHidden=1
+let NERDTreeWinSize=50
 "autocmd VimEnter * NERDTree "Open NerdTree
 "autocmd VimEnter * wincmd p "Focus on window right
 
@@ -92,9 +93,19 @@ set statusline+=\ Buf:%n                          " Buffer number
 "set statusline+=\ [%b][0x%B]\                     " ASCII and byte code under cursor
 "------------------------------------------------------------------------------
 
+" Exuberant-ctags`
+"------------------------------------------------------------------------------
+" First install: `sudo apt-get install exuberant-ctags`
+au BufWritePost *.erb,*.rb silent! !eval 'ctags -R --languages=ruby --exclude=.git --exclude=node_modules --exclude=vendor -o newtags; mv newtags tags;' &
+au BufWritePost *.js silent! !eval 'ctags -R --languages=javascript --exclude=.git --exclude=node_modules --exclude=vendor -o newtags; mv newtags tags;' &
+" First fetch: `wget https://github.com/andriesfilmer/gtd/tree/master/.vim/.ctags`
+au BufWritePost *.ts silent! !eval 'ctags -R --languages=typescript --exclude=.git --exclude=node_modules --exclude=vendor -o newtags; mv newtags tags;' &
+
+
 " Mixed
 "------------------------------------------------------------------------------
 highlight ExtraWhitespace ctermbg=1 guibg=red      " Highlight trailing spaces in annoying red
 match ExtraWhitespace /\s\+$/
 
 autocmd Filetype markdown setlocal syntax=OFF       " Bugfix: Prevent Markdown highlighting for underscores
+

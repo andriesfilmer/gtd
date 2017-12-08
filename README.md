@@ -2,8 +2,14 @@
 
 ## My .rc scripts
 
-    cp ~/.bashrc ~/.bashrc.bak && wget https://raw.githubusercontent.com/andriesfilmer/gtd/master/.rc/.bashrc
-    cp ~/.vimrc ~/.vimrc.bak && wget https://raw.githubusercontent.com/andriesfilmer/gtd/master/.rc/.vimrc
+    git clone https://github.com/andriesfilmer/gtd.git
+    ln -s ~/gtd/dotfiles/.bashrc ~/.bashrc
+    ln -s ~/gtd/dotfiles/.vimrc ~/.vimrc
+
+or
+
+    cp ~/.bashrc ~/.bashrc.bak && wget https://raw.githubusercontent.com/andriesfilmer/gtd/master/dotfiles/.bashrc
+    cp ~/.vimrc ~/.vimrc.bak && wget https://raw.githubusercontent.com/andriesfilmer/gtd/master/dotfiles/.vimrc
 
 ## CheatSheets
 
