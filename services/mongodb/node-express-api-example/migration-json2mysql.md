@@ -79,7 +79,6 @@ Use '--local-infile' with startup mysql-client for LOAD DATA.
     DELETE FROM events WHERE user_id='54c7bdfa507c42a604ce707e';
     DELETE FROM events WHERE user_id='5555b01a9f6fca7a04bb75a3';
     DELETE FROM events WHERE user_id='56659a6c4b5ebfb804823327';
-    UPDATE events set created='2007-11-09' where created like '%{%';
 
 
     ALTER TABLE events CHANGE created created DATETIME DEFAULT CURRENT_TIMESTAMP;
