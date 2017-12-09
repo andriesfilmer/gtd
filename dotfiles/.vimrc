@@ -95,11 +95,11 @@ set statusline+=\ Buf:%n                          " Buffer number
 
 " Exuberant-ctags`
 "------------------------------------------------------------------------------
-" First install: `sudo apt-get install exuberant-ctags`
-au BufWritePost *.erb,*.rb silent! !eval 'ctags -R --languages=ruby --exclude=.git --exclude=node_modules --exclude=vendor -o newtags; mv newtags tags;' &
-au BufWritePost *.js silent! !eval 'ctags -R --languages=javascript --exclude=.git --exclude=node_modules --exclude=vendor -o newtags; mv newtags tags;' &
-" First fetch: `wget https://github.com/andriesfilmer/gtd/tree/master/.vim/.ctags`
-au BufWritePost *.ts silent! !eval 'ctags -R --languages=typescript --exclude=.git --exclude=node_modules --exclude=vendor -o newtags; mv newtags tags;' &
+" First install `sudo apt-get install exuberant-ctags`
+au BufWritePost *.erb,*.rb silent! !eval 'ctags -R --languages=ruby --exclude=.git -o newtags; mv newtags tags;' &
+au BufWritePost *.js silent! !eval 'ctags -R --languages=javascript --exclude=.git -o newtags; mv newtags tags;' &
+" First fetch `wget https://github.com/andriesfilmer/gtd/tree/master/.vim/.ctags` for typescript!
+au BufWritePost *.ts silent! !eval 'ctags -R --languages=typescript --exclude=.git -o newtags; mv newtags tags;' &
 
 
 " Mixed

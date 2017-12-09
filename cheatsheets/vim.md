@@ -30,7 +30,7 @@
     ~                                  " Switch case on selected, lower to upper or upper to lower case
     Shift+>                            " Indent section
 
-## Search
+## Search in file
 
 Press `/` to start a search.
 
@@ -38,7 +38,12 @@ Press `/` to start a search.
     n                                  " Repeat search, N reverses direction
     *                                  " Searches forward for word under cursor, # reverses direction
 
-## Replace
+## Find in files
+
+    :vim foo **/*.js | cw              " Search for foo in every JavaScript file in the parent directories recursively.
+    :vim foo app/**/*.rb | cw          " Search for foo in every Ruby file in the app directory recursively.
+
+## Replace in file
 
 Press `:`
 
@@ -48,21 +53,10 @@ Press `:`
     :g/^\(#\|$\)/d                     " Remove comment lines
     :%s/<Ctrl-V><Ctrl-M>/\r/g          "Change file format Windows to Unix, where <Ctrl-V><Ctrl-M> means type Ctrl+V then Ctrl+M.
 
-## Find text in files
-
-    :vim foo **/*.js | cw              " Search for foo in every JavaScript file in the parent directories recursively.
-    :vim foo app/**/*.rb | cw          " Search for foo in every Ruby file in the app directory recursively.
-
-### Replace recursieve
+### Replace in files
 
     :arg **/*.js                           " Set all *.js files and below current directory in :arg
     :argdo %s/pattern/replace/gce | update " Confirm updates in recursieve files
-
-## Windows
-
-    :sp                                " split window horizontal
-    :vsp                               " split window vertical
-    :vertical resize 50                " To resize the current window to exactly 30 characters wide.
 
 ## Completions
 
@@ -77,6 +71,12 @@ Press `:`
     Ctrl-i                             " Jump back to previous (dril in)
     Ctrl-o                             " Jump back to previous (dril out)
     Ctrl-t                             " Jump back to previous (?)
+
+## Windows
+
+    :sp                                " split window horizontal
+    :vsp                               " split window vertical
+    :vertical resize 50                " To resize the current window to exactly 30 characters wide.
 
 ### Macros
 
