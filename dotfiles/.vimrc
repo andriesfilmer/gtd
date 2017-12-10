@@ -1,4 +1,4 @@
-"To disable a plugin, add it's bundle name to the following list
+" To disable a plugin, add it's bundle name to the following list
 "let g:pathogen_disabled = ['YouCompleteMe']
 execute pathogen#infect()
 
@@ -17,13 +17,13 @@ set list listchars=tab:»·,trail:·                  " Make tabs visual: »....
 set number                                         " Set line numbers, default commented out
 set nocompatible                                    " don't need to be compatible with old vim
 set omnifunc=syntaxcomplete#Complete               " Omni completion provides smart autocompletion for programs
-"set paste                                         " Set paste mode, prevent accumulation of tabs and #'s
+set pastetoggle=<F10>                              " Toggle paste mode (no autoindenting) with F11
 set scrolloff=2                                    " minimum lines above/below cursor
 set showmatch                                      " show bracket matches
 set smartcase                                      " pay attention to case when caps are used
 set shiftwidth=2                                   " when indenting with '>', use 2 spaces width
 set tabstop=4                                      " show existing tab with 4 spaces width
-set ts=2                                           " set indent to 2 spaces
+set ts=2                                           " set tab indent to 2 spaces
 set wildmenu                                       " enable bash style tab completion
 set wrap                                           " Wrapping on, default commented out
 
@@ -32,22 +32,26 @@ let g:snips_author="Andries Filmer"                " Assign a global variable fo
 
 " Mappings
 "------------------------------------------------------------------------------
-imap jj <esc><CR>                                  " Map ii to Esc to exit insert-mode
+" On Ubuntu remaps Caps Lock -> Esc `setxkbmap -option caps:escape`
+
+" Function keys
 nmap <F3> :set hlsearch!<CR>                       " Toggle highlicht search.
 map! <F3> <nop>
 map <F5> :setlocal spell! spelllang=nl_nl<CR>      " Toggle dutch spelling syntax
+nmap <F9> :TagbarOpenAutoClose<CR>                 " Needs TagBar plugin.
 
-" Alt+leftarrow will go one window left, etc.
+" Arrow keys, Alt+leftarrow will go one window left, etc.
 nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
 
-nmap <F9> :TagbarOpenAutoClose<CR>                 " Needs TagBar plugin.
-map <C-Right> :tabn<CR><CR>                        " Go to next tab.
-map <C-Left> :tabp<CR><CR>                         " Go to previous tab.
+" Ctrl keys
+nmap <C-Right> :tabn<CR><CR>                        " Go to next tab.
+nmap <C-Left> :tabp<CR><CR>                         " Go to previous tab.
 
-cmap w!! w !sudo tee > /dev/null %  " Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee % >/dev/null                  " Allow saving of files as sudo when I forgot to start vim using sudo.
+
 
 " NERDTree options
 "------------------------------------------------------------------------------
@@ -101,6 +105,11 @@ au BufWritePost *.js silent! !eval 'ctags -R --languages=javascript --exclude=.g
 " First fetch `wget https://github.com/andriesfilmer/gtd/tree/master/.vim/.ctags` for typescript!
 au BufWritePost *.ts silent! !eval 'ctags -R --languages=typescript --exclude=.git -o newtags; mv newtags tags;' &
 
+" Prefent delay after pressing ESC (switching to normal mode)
+"------------------------------------------------------------------------------
+" set timeoutlen=1000 ttimeoutlen=200
+autocmd InsertEnter * set timeoutlen=200
+autocmd InsertLeave * set timeoutlen=1000
 
 " Mixed
 "------------------------------------------------------------------------------

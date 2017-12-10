@@ -84,12 +84,6 @@ Press `:`
     q                                  " Stops recording the macro
     <num>@q                            " Repeat the macro <num> number of times
 
-## sudo
-
-If you forgot to start Vim as root and write the file without the permissions.
-
-    :w !sudo tee %
-
 ## ctags
 
     ctags -R *
@@ -114,7 +108,9 @@ Download
     :set spell
     :set nospell
 
-## Advanced
+## Other
+
+    set paste                             " To copy text without strange behavior ;)
 
 ### Numbering lines in a file
 A neat filtering trick using the 'nl' linux/unix program.
