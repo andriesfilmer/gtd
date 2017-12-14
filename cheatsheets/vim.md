@@ -1,9 +1,9 @@
 # vim (my) Cheatsheet
 
+* [Moving around](http://vim.wikia.com/wiki/Moving_around)
+
 ## Command mode
 
-    G                                  " goto end of file
-    54G                                " goto line 54
     dd                                 " cut and copy current line
     yy                                 " copy current line
     u                                  " undo

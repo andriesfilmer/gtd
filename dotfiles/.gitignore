@@ -1,3 +1,5 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
 **.bak
 **.orig
 *.Master
@@ -9,6 +11,7 @@
 *.sln
 *.swp
 *.tar.*
+.DS_Store
 .bundle
 .git
 .rspec
@@ -16,6 +19,7 @@
 .svn
 .tmp
 Gemfile.lock
+Thumbs.db
 assets/*
 bower_components
 bundle
@@ -24,14 +28,18 @@ db/*.sqlite3
 db/.password
 db/.username
 dist
+e2e/*.js
+e2e/*.map
 libs
 log/*
 node_modules
+npm-debug.log
 public
 publish
 tags
 test
 tests
-tmp/*
-uploads/*
+tmp
+uploads
+upload
 vendor

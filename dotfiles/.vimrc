@@ -17,7 +17,7 @@ set list listchars=tab:»·,trail:·                  " Make tabs visual: »....
 set number                                         " Set line numbers, default commented out
 set nocompatible                                    " don't need to be compatible with old vim
 set omnifunc=syntaxcomplete#Complete               " Omni completion provides smart autocompletion for programs
-set pastetoggle=<F10>                              " Toggle paste mode (no autoindenting) with F11
+set pastetoggle=<F4>                               " Toggle paste mode (no autoindenting) with F4
 set scrolloff=2                                    " minimum lines above/below cursor
 set showmatch                                      " show bracket matches
 set smartcase                                      " pay attention to case when caps are used
@@ -28,7 +28,13 @@ set wildmenu                                       " enable bash style tab compl
 set wrap                                           " Wrapping on, default commented out
 
 let g:snips_author="Andries Filmer"                " Assign a global variable for snippets
+let g:closetag_filenames = '*.html,*.html.erb'     " Plugin closetag enabled for html.erb'
 
+" https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim
+if !empty(glob("~/.vim/colors/PaperColor.vim"))
+  colorscheme PaperColor
+  set background=dark
+endif
 
 " Mappings
 "------------------------------------------------------------------------------
@@ -100,10 +106,13 @@ set statusline+=\ Buf:%n                          " Buffer number
 " Exuberant-ctags`
 "------------------------------------------------------------------------------
 " First install `sudo apt-get install exuberant-ctags`
-au BufWritePost *.erb,*.rb silent! !eval 'ctags -R --languages=ruby --exclude=.git -o newtags; mv newtags tags;' &
-au BufWritePost *.js silent! !eval 'ctags -R --languages=javascript --exclude=.git -o newtags; mv newtags tags;' &
-" First fetch `wget https://github.com/andriesfilmer/gtd/tree/master/.vim/.ctags` for typescript!
-au BufWritePost *.ts silent! !eval 'ctags -R --languages=typescript --exclude=.git -o newtags; mv newtags tags;' &
+" Run ctags only if project (.git) exists
+if !empty(glob(".git"))
+  au BufWritePost *.erb,*.rb silent! !eval 'ctags -R --languages=ruby --exclude=.git -o newtags; mv newtags tags;' &
+  au BufWritePost *.js silent! !eval 'ctags -R --languages=javascript --exclude=.git -o newtags; mv newtags tags;' &
+  " First fetch `wget https://github.com/andriesfilmer/gtd/tree/master/.vim/.ctags` for typescript!
+  au BufWritePost *.ts silent! !eval 'ctags -R --languages=typescript --exclude=.git -o newtags; mv newtags tags;' &
+endif
 
 " Prefent delay after pressing ESC (switching to normal mode)
 "------------------------------------------------------------------------------
