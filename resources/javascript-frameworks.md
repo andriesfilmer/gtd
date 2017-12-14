@@ -41,6 +41,29 @@ Official
 * [Ionic Push notifications](https://github.com/aggarwalankush/ionic-push-base)
 * [My Firebase console](https://console.firebase.google.com/)
 
-## Cordova
 
-* [Cordova docs](https://cordova.apache.org/docs/)
+## Vue
+
+**Onsen UI**
+
+A full-featured Webpack with cordova, hot-reload, lint-on-save, unit testing & css extraction
+
+<https://github.com/OnsenUI/vue-cordova-webpack>
+
+**Vuetify**
+
+Material Component Framework
+
+<https://vuetifyjs.com/>
+<https://github.com/vuetifyjs/vuetify>
+
+
+**Vue.js plugin for Cordova**
+
+<https://github.com/kartsims/vue-cordova>
+
+**Framework7 Vue**
+
+Bring components-syntax, structured data and data bindings to Framework7 with power and simplicity of Vue.js
+
+<http://framework7.io/vue/>

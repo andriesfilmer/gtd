@@ -1,7 +1,5 @@
 ## API Resourses
 
-
-
 ## Info about creating a API
 
 * [Google - API Design Guide](https://cloud.google.com/apis/design/)
