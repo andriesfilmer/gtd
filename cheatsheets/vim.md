@@ -74,7 +74,7 @@ Press `:`
     :g/^\(#\|$\)/d                     " Remove comment lines
     :%s/<Ctrl-V><Ctrl-M>//g          "Change file format Windows to Unix, where <Ctrl-V><Ctrl-M> means type Ctrl+V then Ctrl+M.
 
-### Replace in files
+## Replace in files
 
     :arg **/*.js                           " Set all *.js files and below current directory in :arg
     :argdo %s/pattern/replace/gce | update " Confirm updates in recursieve files
@@ -99,7 +99,7 @@ Press `:`
     :vsp                               " split window vertical
     :vertical resize 50                " To resize the current window to exactly 30 characters wide.
 
-### Macros
+## Macros
 
     qq                                 " Starts recording the macro 'q'
     q                                  " Stops recording the macro
