@@ -1,3 +1,10 @@
+## Storage backend
+
+* Amazon S3
+* Windows Azure Blob Storage
+
+## Storage integrated with UI
+
 * Dropbox
 * [Box](http://www.box.com/)
 * [Sugarsync](https://www.sugarsync.com/sync_comparison.html)
@@ -5,8 +12,6 @@
 * [Jungle disk](http://www.jungledisk.com)
 * [SMEStorage](http://smestorage.com)
 * [Gladinet](https://www.gladinet.com/)
-* Amazon S3
-* Windows Azure Blob Storage
 * Google Docs
 * Google Storage Cloud
 * Google Sites
