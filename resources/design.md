@@ -1,4 +1,4 @@
-# Design resourdes
+# Design resources
 
 ## Design principles
 

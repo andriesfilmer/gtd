@@ -1,3 +1,24 @@
+- [vim (my) Cheatsheet](#vim-my-cheatsheet)
+  * [Command mode](#command-mode)
+  * [Visual mode](#visual-mode)
+  * [Search in file](#search-in-file)
+  * [Find in files](#find-in-files)
+  * [Replace in file](#replace-in-file)
+    + [Replace in files](#replace-in-files)
+  * [Completions](#completions)
+  * [Jumps in file](#jumps-in-file)
+  * [Windows](#windows)
+    + [Macros](#macros)
+  * [ctags](#ctags)
+  * [Spell](#spell)
+  * [Other](#other)
+    + [Numbering lines in a file](#numbering-lines-in-a-file)
+    + [Tabs and Spaces](#tabs-and-spaces)
+  * [Plugins](#plugins)
+  * [Links](#links)
+
+<!-- END TOC -->
+
 # vim (my) Cheatsheet
 
 * [Moving around](http://vim.wikia.com/wiki/Moving_around)
@@ -51,7 +72,7 @@ Press `:`
     :%s/\s\+$//                        " Delete all trailing whitespace (at the end of each line) with
     :%s/^\s\+//                        " More rarely, you might want to delete whitespace at the beginning of each line
     :g/^\(#\|$\)/d                     " Remove comment lines
-    :%s/<Ctrl-V><Ctrl-M>/\r/g          "Change file format Windows to Unix, where <Ctrl-V><Ctrl-M> means type Ctrl+V then Ctrl+M.
+    :%s/<Ctrl-V><Ctrl-M>//g          "Change file format Windows to Unix, where <Ctrl-V><Ctrl-M> means type Ctrl+V then Ctrl+M.
 
 ### Replace in files
 
@@ -142,4 +163,3 @@ A neat filtering trick using the 'nl' linux/unix program.
 * [Search & replace examples](http://rayninfo.co.uk/vimtips.html) (Rayninfo.co.uk)
 * [Vimcasts](http://vimcasts.org/)
 * [Let Vim Do the Typing - Video](https://www.youtube.com/watch?v=3TX3kV3TICU)
-
