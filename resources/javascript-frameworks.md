@@ -1,4 +1,3 @@
-
 - [Frontend frameworks](#frontend-frameworks)
   * [Angular](#angular)
   * [Vue.js](#vuejs)
@@ -31,6 +30,8 @@
 - [UI Frameworks](#ui-frameworks)
 - [Testing](#testing)
 - [Other reading](#other-reading)
+
+<!-- END TOC -->
 
 ## Frontend frameworks
 
@@ -187,5 +188,3 @@ RequireJS is a JavaScript file and module loader. It is optimized for in-browser
 
 * [You Don't Know JS (book series)](https://github.com/getify/You-Dont-Know-JS)
 * [Speaking JavaScript](http://speakingjs.com/es5/index.html)
-
-
