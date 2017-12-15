@@ -17,6 +17,26 @@ List active connections to/from system
 
     netstat -tup
 
+## DNS
+
+Which DNS am I using
+
+    nmcli dev show | grep DNS
+
+Use custom nameservers add a line to `/etc/dhcp/dhclient.conf`:
+
+    # Open DNS
+    supersede domain-name-servers 208.67.222.222, 208.67.220.220;
+    # Google
+    supersede domain-name-servers 8.8.8.8, 8.8.4.4;
+
+
+## Devices
+
+If you want to see the names of all the network devices on the system
+
+    ls /sys/class/net
+
 ## lsof
 
 So to see which process is listening upon port 3000 we can run:

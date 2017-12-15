@@ -38,7 +38,7 @@ endif
 
 " Mappings
 "------------------------------------------------------------------------------
-" On Ubuntu remaps Caps Lock -> Esc `setxkbmap -option caps:escape`
+" In `.profile` remaps Caps Lock -> Esc `setxkbmap -option caps:escape`
 
 " Function keys
 nmap <F3> :set hlsearch!<CR>                       " Toggle highlicht search.

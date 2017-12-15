@@ -22,8 +22,8 @@ If you do not need sound in your emulator you can disable it by editing  ~/.andr
 
 Start Emulator
 
-    ./Android/Sdk/emulator/emulator  -list-avds
-    ./Android/Sdk/emulator/emulator  @Nexus_5X_API_26_x86
+    ~/Android/Sdk/emulator/emulator  -list-avds
+    ~/Android/Sdk/emulator/emulator  @Nexus_5X_API_26_x86
 
 Inspect via Chrome
 
