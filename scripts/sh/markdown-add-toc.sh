@@ -1,12 +1,5 @@
 #!/bin/sh
 
-
-path="~/gtd/"
-
-#myexe="find $path -type f -print0 | xargs -0 grep -r -i $files $1"
-#node ~/gtd/scripts/node/md-add-toc.js ~/gtd/resources/javascript-frameworks.md
-
-
 if [ $1 ]; then
 
     echo "Making toc for $1"
@@ -28,6 +21,8 @@ if [ $1 ]; then
 
     # Move new toc file to current markdown (with TOC)
     mv "$1.toc" "$1"
+
+    echo "Done making toc for $1"
 
 else
 
