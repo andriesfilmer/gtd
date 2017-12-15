@@ -28,4 +28,6 @@ or
 
 - [Semantic versioning](https://semver.orghttps://cloud.google.com/apis/design/versioning/)
 - [Markdown reference](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+- [Can I Use](http://caniuse.com/#feat=css-filters) - Compare browser support
+
 
