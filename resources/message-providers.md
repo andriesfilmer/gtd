@@ -9,7 +9,7 @@
 * [AWS Pinpoint](https://aws.amazon.com/pinpoint/) |  Email, SMS, and mobile push
 * [OneSignal](https://onesignal.com/) | Notification delivery via FCM
 * [OneSignal for Ionic](https://onesignal.com/ionic) | Ionic customers that have integrated OneSignal
-* [Firebase](http://firebase.com/)
+* [Firebase Cloud Messaging](http://firebase.google.com/docs/cloud-messaging/)
 
 ## Mail providers voor developers
 
