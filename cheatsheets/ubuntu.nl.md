@@ -88,27 +88,35 @@ Via systeeminstellingen (icoon rechtsboven).
 
 ## Hoge Resolutie schermen
 
+Met hoge resolutie schermen kan het gebeuren dat de karakters in sommige programmas niet goed mee schalen. Dan kan je deze aanpassen.
+
 ### Display scalling
+
+Via de algemene instellingen kan je het voor het hele systeem aanpassen via:
+
 Settings -> Display: Scale for menu and title bars: 1.25
 
 ### Firefox
-about:config
+Voor firefox kan dat via de adresbalk met `about:config`.
 
 set `layout.css.devPixelsPerPx: 1.25`
 
 ### Thunderbird
-Prefrences -> Advanced -> Config Editor:
+
+Voor Thunderbird kan dat via `Prefrences -> Advanced -> Config Editor`:
 
 set `layout.css.devPixelsPerPx: 1.25`
 
 ### Spotify
-Create a alias in .bashrc
+
+Voor spotify kan dat door een alias aan te maken in `.bashrc`
 
     alias spotify="/usr/bin/spotify --force-device-scale-factor=1.5"
 
 ## Tools niet standaard geïnstalleerd
 
 ### Spotify
+
 Installeer Spotify
 
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D2C19886

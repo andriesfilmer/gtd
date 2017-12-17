@@ -4,4 +4,5 @@
 [push]
 	default = matching
 [credential]
-	helper = cache --timeout=28800
+  #helper = cache --timeout=86400
+	helper = cache --timeout=259200
