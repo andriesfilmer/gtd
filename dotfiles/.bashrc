@@ -98,7 +98,7 @@ alias passAndries="gpg -r andries -d .gnupg/andries.gpg | grep -i "
 alias passwordAndries="gnome-gpg -r andries -d .gnupg/andries.gpg | grep -i "
 alias keepass="~/gtd/scripts/sh/keepass.sh"
 alias myserver="~/dtd/perl/my-servers.pl"
-alias spotify="/usr/bin/spotify --force-device-scale-factor=1.5"
+#alias spotify="/usr/bin/spotify --force-device-scale-factor=1.5"
 alias gitlog="git log --branches --not --remotes"
 alias gitdiff="git diff --branches --not --remotes"
 

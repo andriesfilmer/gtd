@@ -2,7 +2,7 @@
 
 * [Cordova docs](https://cordova.apache.org/docs/)
 
-### Add Firebase to your Android app
+## Add Firebase to your Android app
 
 * <https://pusher.com/docs/push_notifications/android/fcm>
 * <https://ionicframework.com/docs/native/push/>
@@ -12,6 +12,10 @@
     ionic cordova run android --prod --release
 
 ## Android Studio
+
+Start Studio
+
+    /opt/android-studio/bin/studio.sh
 
 Configure Emulator
 
@@ -29,7 +33,13 @@ Inspect via Chrome
 
 In the locationbar `chrome://inspect/#devices`
 
-### ADB
+
+## Builds
+
+**Gradle error: Could not resolve org.jacoco:org.jacoco.agent**  
+After disabling offline mode (Settings->Build, Execution, Deployment-> Gradle-> Offline work) dependency was successfully retrieved.
+
+## ADB
 
 Get list of contacts
 

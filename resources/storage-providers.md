@@ -1,9 +1,13 @@
+## Managing your images and videos
+
+* [Cloudinary](https://cloudinary.com/) | Image and Video Management in the Cloud
+
 ## Storage backend
 
 * Amazon S3
 * Windows Azure Blob Storage
 
-## Storage integrated with UI
+## Personal storage integrated with UI
 
 * Dropbox
 * [Box](http://www.box.com/)
