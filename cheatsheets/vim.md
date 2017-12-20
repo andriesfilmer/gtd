@@ -71,6 +71,7 @@ Press `:`
     :%s/foo/bar/gc                     " Search for 1 and replace with 2, options are: g = global (entire file), c = confirm change
     :%s/\s\+$//                        " Delete all trailing whitespace (at the end of each line) with
     :%s/^\s\+//                        " More rarely, you might want to delete whitespace at the beginning of each line
+    :g/sometext/d                      " Delete all lines containing `sometext`
     :g/^\(#\|$\)/d                     " Remove comment lines
     :%s/<Ctrl-V><Ctrl-M>//g          "Change file format Windows to Unix, where <Ctrl-V><Ctrl-M> means type Ctrl+V then Ctrl+M.
 

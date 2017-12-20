@@ -7,3 +7,6 @@
 * [Promisses explained](https://www.promisejs.org/)
 * [JavaScript Promises](http://www.html5rocks.com/en/tutorials/es6/promises/)
 
+### Development tools
+
+* [Postman](https://www.getpostman.com/) | Developing APIs easy

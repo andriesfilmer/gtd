@@ -2,15 +2,6 @@
 
 * [Cordova docs](https://cordova.apache.org/docs/)
 
-## Add Firebase to your Android app
-
-* <https://pusher.com/docs/push_notifications/android/fcm>
-* <https://ionicframework.com/docs/native/push/>
-
-    cordova plugin add cordova-plugin-fcm
-    ionic cordova plugin add phonegap-plugin-push
-    ionic cordova run android --prod --release
-
 ## Android Studio
 
 Start Studio
@@ -29,23 +20,57 @@ Start Emulator
     ~/Android/Sdk/emulator/emulator  -list-avds
     ~/Android/Sdk/emulator/emulator  @Nexus_5X_API_26_x86
 
+
 Inspect via Chrome
 
 In the locationbar `chrome://inspect/#devices`
 
 
-## Builds
-
-**Gradle error: Could not resolve org.jacoco:org.jacoco.agent**  
-After disabling offline mode (Settings->Build, Execution, Deployment-> Gradle-> Offline work) dependency was successfully retrieved.
-
 ## ADB
 
-Get list of contacts
+Start latest version `adb`
 
-    content query --uri content://contacts/people/ --where 'number is null' --projection _id
+    ~/Android/Sdk/platform-tools/adb
+* Prepare you Android devices
+ * Enable developer mode in android settings
+ * Enable debug by usb
+ * Plug your device to the computer by usb
+
+Some usefull commands
+
+    adb shell content query --uri content://settings/system
+    adb shell content query --uri content://settings/secure --where "name=\'android_id\'"
+
+Debug with adb
+
+    adb logcat | grep -i "name.ofyour.app"
+
+## Notifications
+
+    cordova create simplepush com.singlepush.app
+    cd simplepush
+    cordova platform add android@6.3.0
+    cordova plugin add cordova-plugin-firebase@0.1.25 --save
 
 
-## Cordova plugins
+* Goto [Firebase console](https://console.firebase.google.com/) -> select/create your project
+* Give the package name the same as `widget id` in `config.xml` in your cordova project.
+* Download `google-services.json` to the root of you project.
 
-[CordavaCall](https://github.com/WebsiteBeaver/CordovaCall) | Good example
+Resources:
+
+* [Simple Push Notification Firebase Cordova Plugin](https://www.youtube.com/watch?v=DvRGNrGpI_A)
+* [FCM + postman](https://medium.com/android-school/test-fcm-notification-with-postman-f91ba08aacc3)
+* [json examples for postman](https://developers.google.com/cloud-messaging/topic-messaging)
+
+### Local notifications
+
+* [Cordova-plugin-local-notifications](https://github.com/katzer/cordova-plugin-local-notifications)
+
+
+## Auto start
+
+<https://github.com/ToniKorin/cordova-plugin-autostart>
+
+    cordova plugin add cordova-plugin-autostart@2.0.1
+

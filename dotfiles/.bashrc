@@ -101,6 +101,7 @@ alias myserver="~/dtd/perl/my-servers.pl"
 #alias spotify="/usr/bin/spotify --force-device-scale-factor=1.5"
 alias gitlog="git log --branches --not --remotes"
 alias gitdiff="git diff --branches --not --remotes"
+alias adb="~/Android/Sdk/platform-tools/adb"
 
 genpasswd() {
 	local l=$1
@@ -122,7 +123,7 @@ PERL_MM_OPT="INSTALL_BASE=/home/andries/perl5"; export PERL_MM_OPT;
 
 export ANDROID_HOME=/home/andries/Android/Sdk/
 PATH=$PATH:/home/andries/Android/Sdk/
-PATH=$PATH:/usr/local/android-studio/gradle/gradle-4.1/bin/
+PATH=$PATH:/opt/android-studio/gradle/gradle-4.1/bin/
 export PATH
 
 
