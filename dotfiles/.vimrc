@@ -116,8 +116,8 @@ endif
 
 " Prefent delay after pressing ESC (switching to normal mode)
 "------------------------------------------------------------------------------
-" set timeoutlen=1000 ttimeoutlen=200
-autocmd InsertEnter * set timeoutlen=200
+" set timeoutlen=1000 ttimeoutlen=300
+autocmd InsertEnter * set timeoutlen=300
 autocmd InsertLeave * set timeoutlen=1000
 
 " Mixed

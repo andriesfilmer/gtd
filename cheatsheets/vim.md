@@ -49,6 +49,7 @@
     Shift+v                            " Select lines
     Ctrl+v                             " Select column
     ~                                  " Switch case on selected, lower to upper or upper to lower case
+    =                                  " Auto ident
     Shift+>                            " Indent section
 
 ## Search in file

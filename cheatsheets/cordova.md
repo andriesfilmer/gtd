@@ -25,6 +25,11 @@ Inspect via Chrome
 
 In the locationbar `chrome://inspect/#devices`
 
+## Build
+
+If errors:
+
+    cordova build --verbose android
 
 ## ADB
 
@@ -67,6 +72,11 @@ Resources:
 
 * [Cordova-plugin-local-notifications](https://github.com/katzer/cordova-plugin-local-notifications)
 
+
+## Firebase remote config
+
+* [cordova-plugin-firebase-config](https://github.com/chemerisuk/cordova-plugin-firebase-config)
+* [Complete Firebase Native SDK for Cordova](https://github.com/neilor/cordova-plugin-firebase-native)
 
 ## Auto start
 
