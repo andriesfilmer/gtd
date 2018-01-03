@@ -9,6 +9,7 @@
 * [Bootstrap](http://getbootstrap.com/css/)
 * [Foundation](http://foundation.zurb.com/docs/)
 * [JuicedCss](http://juicedcss.com/) - a Flexbox CSS Framework
+* [BlazeUI](https://www.blazeui.com/)
 
 ## CSS
 

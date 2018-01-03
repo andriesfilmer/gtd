@@ -131,9 +131,15 @@ Download
     :set spell
     :set nospell
 
-## Other
+## Mount Capslock to Esc
 
-    set paste                             " To copy text without strange behavior ;)
+I like to mount the CapsLock to the Esc key. Install `dconf-tools` and open `dconf-editor`.
+
+Navigate to `org >> gnome >> desktop >> input-sources`
+
+Put your options under xkb-options as a list. Ex: ['caps:escape','..other..']
+
+Or just run `setxkbmap -option caps:escape` but this vanishes after reboot.
 
 ### Numbering lines in a file
 A neat filtering trick using the 'nl' linux/unix program.

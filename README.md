@@ -23,6 +23,7 @@ or
 - [Split mysqldump file into per-database dump files](https://github.com/andriesfilmer/gtd/blob/master/scripts/perl/splitmysqldump.pl) (perl)
 - [Get password from **Keepass** on the commandline](https://github.com/andriesfilmer/gtd/blob/master/scripts/sh/keepass.sh) (bash/expect)
 - [Speedtest](https://github.com/andriesfilmer/gtd/blob/master/scripts/python/speedtest-cli) (python)
+- [JSON Placeholder](https://jsonplaceholder.typicode.com/) for testing and prototyping
 
 ## References
 

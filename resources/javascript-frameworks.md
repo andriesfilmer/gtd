@@ -2,6 +2,7 @@
   * [Angular](#angular)
   * [Vue.js](#vuejs)
   * [Meteor (and backend)](#meteor-and-backend)
+  * [Electron](#electron)
   * [AmberJs](#amberjs)
   * [BackboneJs](#backbonejs)
   * [Mithril](#mithril)
@@ -43,6 +44,7 @@
 ### Vue.js
 
 * [Vue](https://vuejs.org/) | The Progressive JavaScript Framework
+* [Quasar](http://quasar-framework.org/) | PWAs with UI for Material design and iOs, powered with Vue and wrapped with Cordova.
 * [Vuetify](https://vuetifyjs.com/) | Material Component Framework for Vue
 * [Onsen UI](https://github.com/OnsenUI/vue-cordova-webpack)
  | A full-featured Webpack with cordova, hot-reload, lint-on-save, unit testing & css extraction
@@ -55,6 +57,12 @@ More info/examples:
 Meteor is a complete framework in pure JavaScript for client en server side.
 * <https://www.meteor.com/>
 * [Meteor vs Angular by Greg Neiheisel by Greg Neiheisel - May 2014](http://differential.com/blog/meteor-vs-angular)
+
+### Electron
+
+Build cross platform desktop apps with JavaScript, HTML, and CSS
+
+* <https://electronjs.org/>
 
 ### AmberJs
 A other framework for creating ambitious web applications.

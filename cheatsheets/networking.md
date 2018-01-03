@@ -30,6 +30,10 @@ Use custom nameservers add a line to `/etc/dhcp/dhclient.conf`:
     # Google
     supersede domain-name-servers 8.8.8.8, 8.8.4.4;
 
+Benchmark DNS
+
+    apt install namebench
+
 
 ## Devices
 

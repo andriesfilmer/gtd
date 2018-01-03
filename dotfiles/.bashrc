@@ -121,9 +121,12 @@ PERL_LOCAL_LIB_ROOT="/home/andries/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB
 PERL_MB_OPT="--install_base \"/home/andries/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/andries/perl5"; export PERL_MM_OPT;
 
-export ANDROID_HOME=/home/andries/Android/Sdk/
-PATH=$PATH:/home/andries/Android/Sdk/
-PATH=$PATH:/opt/android-studio/gradle/gradle-4.1/bin/
+#export ANDROID_HOME=/home/andries/Android/Sdk/
+#PATH=$PATH:/home/andries/Android/Sdk/
+#PATH=$PATH:/opt/android-studio/gradle/gradle-4.1/bin/
+export ANDROID_HOME="$HOME/Android/Sdk"
+PATH=$PATH:$ANDROID_HOME/tools; PATH=$PATH:$ANDROID_HOME/platform-tools
+
 export PATH
 
 
