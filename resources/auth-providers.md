@@ -1,5 +1,6 @@
 # Auth providers
 
+* [Gluu Server - Open source](https://www.gluu.org/gluu-server/) | OpenID Connect - SAML - OAuth 2.0
 * [AWS Cognito](https://aws.amazon.com/cognito/) | Sign-in with E-mail and password, Google, Facebook accounts
 * [AWS Cognito with Ionic](https://aws.amazon.com/blogs/mobile/user-sign-in-and-sign-up-for-ionic-mobile-apps-with-amazon-cognito/)
 * [Auth0](https://auth0.com/) | Billions of logins every month

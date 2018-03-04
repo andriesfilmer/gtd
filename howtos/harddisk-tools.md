@@ -62,20 +62,34 @@ I use this in crontab en mount the disk just voor the night during backup for my
 
  `sudo apt-get install cryptsetup`
 
-In this example we use `sda1` which is created with the GUI disk utility -> 'luks + ext4')
-Only after creating a new disk use one:
+First create a partition with `fdisk`. In this example we use `sda1`.
+You can use the GUI disk utility to create a -> 'luks + ext4') partition or:
 
-    /sbin/cryptsetup luksAddKey /dev/sda1 /tmp/backup-key-file
-    /sbin/cryptsetup luksAddKey /dev/disk/by-uuid/247ad289-dbe5-4419-9965-e3cd30f0b080 /tmp/backup-key-file
+    cryptsetup -y -v luksFormat /dev/sda1
+
+Enter passphrase twice. Then make a file system:
+
+    mkfs.ext4 /dev/mapper/backup
+
+Add a key:
+
+    cryptsetup luksAddKey /dev/sda1 /tmp/backup-key-file
+    cryptsetup luksAddKey /dev/disk/by-uuid/247ad289-dbe5-4419-9965-e3cd30f0b080 /tmp/backup-key-file
 
 To unlock and lock a LUKS partition
 
-    /sbin/cryptsetup luksOpen /dev/sda1 backup --key-file=/tmp/backup-key-file
-    /sbin/cryptsetup luksOpen /dev/disk/by-uuid/247ad289-dbe5-4419-9965-e3cd30f0b080 backup --key-file=/tmp/backup-key-file
-    /bin/mount /dev/mapper/backup /mnt/backup # Not needed anymore?
+    cryptsetup luksOpen /dev/sda1 backup --key-file=/tmp/backup-key-file
+    cryptsetup luksOpen /dev/disk/by-uuid/247ad289-dbe5-4419-9965-e3cd30f0b080 backup --key-file=/tmp/backup-key-file
+    mount /dev/mapper/backup /mnt/backup
     -
-    /bin/umount /mnt/backup # Not needed anymore?
-    /sbin/cryptsetup luksClose backup
+    umount /mnt/backup
+    cryptsetup luksClose backup
+
+See how many slots are taken:
+
+    cryptsetup luksDump /dev/sda1
+    cryptsetup luksRemoveKey /dev/sda1
+
 
 ## Shred - Erase harddisk
 
