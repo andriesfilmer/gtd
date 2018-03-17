@@ -109,6 +109,15 @@ To combine the certificates in case of PositiveSSL, run the following command in
 
     cat certificate.crt cabundle.crt > yourdomain-certificate.crt
 
+Check that begin certificat start on new line. Not:
+
+    -----END CERTIFICATE----------BEGIN CERTIFICATE-----
+
+But:
+
+    -----END CERTIFICATE-----
+    -----BEGIN CERTIFICATE-----
+
 In your nginx config:
 
     ssl_certificate /etc/ssl/yourdomain-certificate.crt;

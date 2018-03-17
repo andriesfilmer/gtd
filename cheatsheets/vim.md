@@ -74,7 +74,8 @@ Press `:`
     :%s/^\s\+//                        " More rarely, you might want to delete whitespace at the beginning of each line
     :g/sometext/d                      " Delete all lines containing `sometext`
     :g/^\(#\|$\)/d                     " Remove comment lines
-    :%s/<Ctrl-V><Ctrl-M>//g          "Change file format Windows to Unix, where <Ctrl-V><Ctrl-M> means type Ctrl+V then Ctrl+M.
+    :'<,'>s/foo/bar/g                  " Replace words in  visual mode.
+    :%s/<Ctrl-V><Ctrl-M>/Ctrl-M/g      "Change file format Windows to Unix, where <Ctrl-V><Ctrl-M> means type Ctrl+V then Ctrl+M.
 
 ## Replace in files
 

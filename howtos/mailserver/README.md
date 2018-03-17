@@ -233,6 +233,10 @@ Testing
     openssl s_client -connect mail.filmer.net:imaps
 
 
+    {Secure Email test](https://www.checktls.com/)
+
+
+
 ## Crontab 
 
 We want to refresh ClamAV database, set the correct time on a daily basis and refresh dnswl on a monthly basis.
