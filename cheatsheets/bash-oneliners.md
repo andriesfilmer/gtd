@@ -56,13 +56,13 @@ Gives write permissons for files and directories for group
 
     i=1;for f in Picture*.png ;do mv "$f" "Picture_$i.png" ;((i++));done
 
-Heres how to add a t_ to all the .jpg files in the current directory:   
+Heres how to add a t_ to all the .jpg files in the current directory:
 (Remember to remove the "echo" if you like the results.)
 
     for i in *jpg ;do echo mv -i -- "./$i" "./t_${i}" ;done
 
 If that looks good.. then remove the "echo" to make the changes permanent. <br>
-(Remember to remove the "echo" if you like the results.)
+(Remember to remove the first "echo" if you like the results.)
 
 Heres how to change those t_ files to tn_ files:
 
