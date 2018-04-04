@@ -58,6 +58,7 @@
 ## Favicons
 
 * [Favicon Generator](http://realfavicongenerator.net) | Generate the favicon pictures and HTML code
+* [Favicon & App Icon Generator](https://www.favicon-generator.org/)
 * [Node Favicons generator](https://github.com/haydenbleasel/favicons)
 
 ### Articles about favicons an apple-touch-icons
