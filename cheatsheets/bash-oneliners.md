@@ -12,7 +12,13 @@ When there are many thousand of files in a directory you can't remove them with 
 
     cd directorie; for f in * ; do rm -rf $f ; done
 
-## Zip a file and emails them to someone
+## mail commandline
+
+### How to delete root user’s mail
+
+    > /var/spool/mail/root
+
+### Zip a file and emails them to someone
 
     gzip -c FILENAME |uuencode FILENAME.gz | mail -s "SUBJECT" someone@domain.nl
 
@@ -124,13 +130,6 @@ Example: pretty girl.jpg to pretty_girl.jpg<br>
 
     find /path/to/media -name '*iPhoto Library*' -prune -o -iregex ".*(jpg|dv|avi|mp3)$" | less
 
-### Check to see how many mail is in queue for a (group by) domain.
-
-    /var/qmail/bin/qmail-qread | grep remote | awk -F '@' '{ print $2 }' | sort | uniq -c | sort -n
-
-### Number of incoming mails per domain
-
-    cat /var/log/qmail-send/current | grep 'starting delivery' | awk '{print $9}' | sed -r 's/^[^@]*@//' | sort | uniq -c | sort -n
 
 ## Mix
 

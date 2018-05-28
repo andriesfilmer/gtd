@@ -1,8 +1,11 @@
-<!-- toc -->
-- old toc 1
-- old toc 2
-- old toc 3
-<!-- tocstop -->
+## Create table expample
+
+CREATE TABLE MyGuests (
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(30) NOT NULL,
+  email VARCHAR(50),
+  reg_date TIMESTAMP
+)
 
 ## Grant privileges
 
@@ -26,6 +29,20 @@ If user can't make databases
 ## Change password user
 
     update user set password=PASSWORD("NEW-PASSWORD-HERE") where User='tom'
+
+## Start skip-grant-tables
+Edit my.cnf file using.
+
+    sudo vi /etc/my.cnf
+
+Add line to mysqld block.*
+
+    skip-grant-tables
+
+Restart MySQL service.
+
+    service mysqld restart
+
 
 ## To create a FULLTEXT index
 

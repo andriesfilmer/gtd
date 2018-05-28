@@ -101,14 +101,11 @@ And then try restarting nginx again:
 ## Letsencrypt
 Create a certificate
 
-    root@server04:~/letsencrypt# ./certbot-auto certonly --standalone --email ict@domain.nl  -d subdomain.domain.nl
     root@server04:~/letsencrypt# ./certbot-auto --nginx -m itc@domain.nl -d subdomain.domain.nl
 
 To renew the certificates
 
-    service nginx stop
-    ./letsencrypt/certbot-auto
-    service nginx start
+    ./certbot-auto renew --dry-run
 
 Revoke the certificates
 

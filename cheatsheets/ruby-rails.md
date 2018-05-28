@@ -1,5 +1,11 @@
+
 ## Ruby Install
-    bundle install
+    sudo apt-get install ruby2.5 ruby2.5-dev
+
+
+## Rails install
+
+    sudo gem install rails
 
 Run rails without env.
 
@@ -7,7 +13,6 @@ Run rails without env.
 
 ### Extra installs
 
-    sudo apt-get install ruby-dev # json
     sudo apt-get install libsqlite3-dev # sqlite
     sudo apt-get install libmysqlclient-dev # mysql2
 
@@ -59,12 +64,6 @@ The y method is a handy way to get some pretty YAML output.
 Run last job on the console:
 
     Delayed::Worker.new.run(Delayed::Job.last)
-
-## Database mysql
-
-If we use 'gem mysql2' we need:
-
-    sudo apt-get install libmysqlclient-dev
 
 ## Sqlite
 
