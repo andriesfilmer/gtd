@@ -58,6 +58,10 @@ Gives write permissons for files and directories for group
 
 ## Rename files
 
+Rename files recursive
+
+    find path/to/many/dirs/ -iname "*css.scss*" | sed -e "p;s/.css.scss/.scss/" | xargs -n2 mv
+
 ### If you have many files in your directory and you want to rename them with numbering.
 
     i=1;for f in Picture*.png ;do mv "$f" "Picture_$i.png" ;((i++));done
