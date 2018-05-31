@@ -2,7 +2,6 @@
 ## Ruby Install
     sudo apt-get install ruby2.5 ruby2.5-dev
 
-
 ## Rails install
 
     sudo gem install rails
@@ -10,6 +9,16 @@
 Run rails without env.
 
     bundle exec rails
+
+## Gems & Bundle
+
+gems are the way Ruby libraries are packaged.
+
+  sudo gem update
+
+Bundler is for managing gems in the app
+
+  bundle update
 
 ### Extra installs
 

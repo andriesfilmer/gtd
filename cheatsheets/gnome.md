@@ -10,6 +10,7 @@ Very fast & easy, without any installations/extensions:
 
     dconf-editor -> org/gnome/shell/app-switcher/
 
-or 
+or
     gsettings set org.gnome.shell.app-switcher current-workspace-only true
+
 
