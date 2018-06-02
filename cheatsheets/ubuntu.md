@@ -1,3 +1,5 @@
+# Ubuntu
+
 ## How to reset lost root password (single usermode)
 
 On Ubuntu 18.04 Bionic Beaver Linux

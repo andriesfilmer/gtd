@@ -1,3 +1,5 @@
+# Bash oneliners
+
 ## Kill many processes
 
 One's I started hylafax with deamontools and it started many procceses. `killall hfaxd` did't work.
