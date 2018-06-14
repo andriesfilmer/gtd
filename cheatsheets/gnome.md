@@ -16,3 +16,7 @@ or
     gsettings set org.gnome.shell.app-switcher current-workspace-only true
 
 
+## Scaling 4k monitors with wayland
+
+    gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+    gsettings reset org.gnome.mutter experimental-features

@@ -1,5 +1,20 @@
 # Ubuntu
 
+## Nvidia drivers
+
+Detect the model of your nvidia graphic card and the recommended driver.
+
+    ubuntu-drivers devices
+
+Install the drivers
+
+    sudo ubuntu-drivers autoinstall
+
+Alternatively, install desired driver selectively using the apt command. For example:
+
+    sudo apt install nvidia-340
+
+
 ## How to reset lost root password (single usermode)
 
 On Ubuntu 18.04 Bionic Beaver Linux

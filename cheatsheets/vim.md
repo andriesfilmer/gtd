@@ -51,6 +51,7 @@
     ~                                  " Switch case on selected, lower to upper or upper to lower case
     =                                  " Auto ident
     Shift+>                            " Indent section
+    zf                                 " Folding, nice in combination with `vat`
 
 ## Search in file
 
