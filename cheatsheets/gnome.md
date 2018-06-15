@@ -18,5 +18,10 @@ or
 
 ## Scaling 4k monitors with wayland
 
+### X11
+
+    gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+
+### Wayland
     gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
     gsettings reset org.gnome.mutter experimental-features

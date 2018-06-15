@@ -1,4 +1,4 @@
-## Introductie
+## Ubuntu OEM install
 
 Als je Ubuntu wilt installeren voor iemand anders en hij is niet bij de installatie aanwezig. Dan weet je meestal ook zijn gewenste '''gebruikersnaam, login, wachtwoord, taal en toetsenbord voorkeur''' niet. Je kan dan een OEM installatie doen.
 
