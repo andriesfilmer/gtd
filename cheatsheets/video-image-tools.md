@@ -6,8 +6,8 @@
 
 Capture right side of screen
 
-    recordmydesktop --width 1670 --height 1290 -x 1760 -y 145 --full-shots --fps 15 --channels 1 --device pulse --v_quality 50 --s_quality 10 --v_bitrate 2000000 --delay 2 -o Desktop/screencast.ovg
-
+    recordmydesktop --width 1280 --height 720 -x 1840 -y 215 --fps 25 --channels 1 --device pulse --delay 3 -o Desktop/screencast
+    ffmpeg -f alsa -ac 2 -i pulse -f x11grab -show_region 1 -r 30 -s 1280x720 -i :1.0+1840,220 -acodec pcm_s16le -vcodec libx264 Desktop/capture.mkv
 
 ##  SimpleScreenRecorder
 A GUI Linux program to record programs and games. [Maarten Baert](http://www.maartenbaert.be/simplescreenrecorder/)
@@ -23,14 +23,18 @@ You can record  your entire screen, a single window, or an arbitrary  region.byz
     sudo apt-get install imagemagick
     find . -maxdepth 1 -iname "*.jpg" -print0 | xargs -0 -l -i convert -resize 1024x768 -quality 50 -strip {} /tmp/output/{}
 
-### Auto orientation 
+### Auto orientation
+
+Remove orientation
+
+    mogrify -auto-orient -strip image.jpg
 
 If you use ImmageMagick to make a fotoalbum or make a overview with thumbs you need to set the orientation first.
 
     cd /to/dir/with/fotos
     for i in *.JPG;do convert -auto-orient $i $i;done
 
-### Crop images 
+### Crop images
     convert image.jpg -gravity Center -crop 50% re_image.jpg
 
 Once I had made many screenshots from Google en I wanted to crop the images without the searchbar.

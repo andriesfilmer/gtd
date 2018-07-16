@@ -5,7 +5,7 @@
 * [Git in 5 minutes](http://classic.scottr.org/presentations/git-in-5-minutes)
 
 
-## Create a new repository on the command line 
+## Create a new repository on the command line
 Create a new repository online: [https://github.com/andriesfilmer](https://github.com/andriesfilmer) -> Repositories -> New
 
     touch README.md # And make some notes about the app.
@@ -15,17 +15,17 @@ Create a new repository online: [https://github.com/andriesfilmer](https://githu
     git remote add origin https://github.com/andriesfilmer/someApp.git
     git push --force origin master # This wil overwrite the server files!
 
-## Clone 
+## Clone
 Clone or copy a repository (which already exists).
 
-    git clone https://github.com/andriesfilmer/someApp 
+    git clone https://github.com/andriesfilmer/someApp
 
-## Push 
+## Push
     git pull orgin master
 
-## Tips 
+## Tips
 
-### Which files need to push 
+### Which files need to push
     git status
 
 Check with find
@@ -36,6 +36,10 @@ Check with find
     git config --global user.name "Your Name"
     git config --global user.email you@example.com
     git config --global credential.helper 'cache --timeout=3600'
+
+## Show last commits
+
+    git diff HEAD^..HEAD
 
 ## Git undo
 To reset a specific file to the last-committed state (to discard uncommitted changes in a specific file):
@@ -56,22 +60,22 @@ Remove untracked files, including directories (-d) and files ignored by git (-x)
 
 More tips: <https://stackoverflow.com/questions/927358/how-do-i-undo-the-last-commits-in-git>
 
-## Ignoring files 
+## Ignoring files
 
     git rm --cached filename
 
     * [help.github.com/articles/ignoring-files](https://help.github.com/articles/ignoring-files)
 
-## git delete - Mark as deleted files 
-Added the --no-run-if-empty option to xargs so that it doesn't throw an error when there are no deleted files: 
+## git delete - Mark as deleted files
+Added the --no-run-if-empty option to xargs so that it doesn't throw an error when there are no deleted files:
 
     git ls-files -z -d | xargs -0 --no-run-if-empty git rm
     git commit -m 'delete files marked as deleted'
 
-## git checkout delete files 
+## git checkout delete files
 If you have lots of files to restore you can use this which will re-checkout all the deleted files.
 
     git diff --name-status | sed -n '/^D/ s/^D\s*//gp' | xargs git checkout origin/master
 
-## Live preview from github 
+## Live preview from github
 * [htmlpreview.github.io](http://htmlpreview.github.io/)
