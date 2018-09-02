@@ -34,5 +34,26 @@ On Ubuntu 18.04 Bionic Beaver Linux
 * Reboot your system: `exec /sbin/init`
 
 
+## Scanner not found
 
+LAN-based scanners - The scanner is connected directly to the network without any intermediary computer.
 
+HP All-in-One devices
+
+    sudo apt-get install hplip
+
+Run the hp-setup wizard which installs printer, scanner, and any other features.
+
+    sudo hp-setup
+
+For Connection Type choose "Network/Ethernet..."
+
+If the device is not detected, click "Show advanced options", tick "Manual discovery" and supply the scanner's IP address.
+
+Check the scanner is now recognized:
+
+    scanimage -L
+
+## Keyboard layout
+
+    sudo dpkg-reconfigure keyboard-configuration
