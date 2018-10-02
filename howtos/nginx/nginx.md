@@ -2,7 +2,8 @@
     sudo apt-get install nginx
 
 ## fastcgi php
-    sudo apt-get install php5-cli php5-fpm
+
+    apt install php-fpm
 
 ## Deny access
 

@@ -11,7 +11,11 @@
 * [OneSignal for Ionic](https://onesignal.com/ionic) | Ionic customers that have integrated OneSignal
 * [Firebase Cloud Messaging](http://firebase.google.com/docs/cloud-messaging/)
 
-## Mail providers voor developers
+## Mail providers for end users
+
+* [Zoho mail](https://www.zoho.eu/mail/)
+
+## Mail providers for developers
 
 * Sendgrid
 * Mandrill
@@ -27,10 +31,10 @@ Leanstack helps developers find and decide on the best cloud services. Search an
 
 [Intercom](https://www.intercom.com/) - Communicating with customers shouldn’t be this hard - used by Snyk (npm security)
 
-## Mail providers voor end users
+## Maillist providers voor end users
 
-* [Mailchimp](http://mailchimp.com/)
-* [CleverReach](http://www.cleverreach.nl/)
+* [Mailchimp](http://mailchimp.com/) | Marketing platform for small businesses
+* [CleverReach](http://www.cleverreach.nl/) | Email marketing solution
 
 ## Mail test providers
 

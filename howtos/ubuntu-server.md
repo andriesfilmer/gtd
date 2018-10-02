@@ -39,23 +39,9 @@ The file needs to be executable so change the permissions:
 
     chmod +x /etc/network/if-pre-up.d/iptables
 
-## SSH
-
-Disable root logins via ssh. Edit /etc/ssh/sshd_config
-
-    PermitRootLogin no
-
-Only ssh with IPv4
-
-    AddressFamily inet
-
-Restart ssh daemon
-
-    /etc/init.d/ssh restart
-
 ### hosts.allow
 
-[Allow ssh from dutch providers](http://nirsoft.net/countryip/nl.html)
+[Allow ssh from dutch providers](http://nirsoft.net/countryip/nl.html) or [ip by country](https://www.ip2location.com/blockvisitorsbycountry.aspx)
 
 These are **my** provider blocks
 
@@ -83,6 +69,25 @@ Add these lines to /root/.bashrc
 
     bind '"e[A"':history-search-backward
     bind '"e[B"':history-search-forward
+
+## Root mail
+
+Redirect root mails
+
+    vi /etc/aliases
+
+Add
+
+    root: name@domain.nl
+
+Update postfix
+
+    newaliases
+    service postfix restart
+
+Test with the following command:-
+
+    echo test | mail -s "test message" root
 
 ## Timezone
 
@@ -132,6 +137,7 @@ Tunning
     echo 10 | tee /proc/sys/vm/swappiness
     echo vm.swappiness = 10 | tee -a /etc/sysctl.conf
 
+
 ## Alternative DNS servers
 
 ### Google DNS
@@ -141,6 +147,14 @@ Tunning
 ### OpenDNS
 - Preferred: 208.67.222.222
 - Alternate: 208.67.220.220
+
+## Sysctl Tweaks
+
+Edit `/etc/sysctl.conf` and run following command to load changes to sysctl.
+
+    sysctl -p
+
+<https://easyengine.io/tutorials/linux/sysctl-conf/>
 
 ## Logwatch
 

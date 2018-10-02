@@ -235,9 +235,37 @@ Testing
 
     {Secure Email test](https://www.checktls.com/)
 
+## Configure Bind as Caching or Forwarding DNS server
 
+    sudo apt-get install bind9 bind9utils bind9-doc
 
-## Crontab 
+Set `/etc/bind/named.conf.options` file:
+
+    acl goodclients {
+        95.85.60.187;
+        localhost;
+        localnets;
+    };
+    options {
+        directory "/var/cache/bind";
+        recursion yes;
+        allow-query { goodclients; };
+        forwarders {
+            8.8.8.8;
+            8.8.4.4;
+        };
+        forward only;
+        dnssec-enable yes;
+        dnssec-validation yes;
+        auth-nxdomain no;    # conform to RFC1035
+        listen-on-v6 { any; };
+    };
+
+service bind9 restart
+
+<https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-caching-or-forwarding-dns-server-on-ubuntu-16-04>
+
+## Crontab
 
 We want to refresh ClamAV database, set the correct time on a daily basis and refresh dnswl on a monthly basis.
 

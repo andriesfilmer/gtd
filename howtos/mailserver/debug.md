@@ -156,7 +156,20 @@ Without auth login
 
 * [IMAP protocol version 4 - rfc](https://tools.ietf.org/html/rfc1730)
 
+## Read mail from queue
+
+    postcat -vq XXXXXXXXXX
+
 ## Remove mail from queue
+Delete all queued mail
+
+    postsuper -d ALL
+
+Delete only the differed mail queue messages (i.e. only the ones the system intends to retry later)
+
+    postsuper -d ALL deferred
+
+Remove only het address
 
      find . -name "[d,q,Q,D]f*" -exec grep -nil "address@example.com" {} \; | xargs rm
 
