@@ -9,13 +9,18 @@ Some notes for networking on GNU / linux
 
 ## netstat
 
-List internet services on a system
+    netstat -tupl  # Active Internet connections (only servers)
+    netstat -tupn  # Active Internet connections (w/o servers)
+    netstat -nat   # Active Internet connections (servers and established)
 
-    netstat -tupl
+## ss – Network Statistics
 
-List active connections to/from system
+ss command use to dump socket statistics. It allows showing information similar to netstat.
+Please note that the netstat is mostly obsolete. Hence you need to use ss command.
 
-    netstat -tup
+    ss -t -a # All TCP and UDP sockets on Linux:
+    ss -u -a
+    ss -t -a -Z # Show all TCP sockets with process SELinux security contexts:
 
 ## DNS
 

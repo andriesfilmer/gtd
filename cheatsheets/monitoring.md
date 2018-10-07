@@ -6,55 +6,48 @@ There are many commandline monitoring tools. On this page you can find a list of
 
 ## Part 1 (default system tools)
 
-### ps
-
-Print process on the server
+### ps - Print process on the server
 
     ps aux
-    ps auxww                                      # Wrapping commands
-    ps -ejH                                          # Print A Process Tree
-    ps axjf
+    ps auxww                            # Wrapping commands
+    ps axjf                             # Print A Process Tree
     pstree
-    pgrep apache                               # Display Only The Process IDs of apache
+    pgrep apache                        # Display Only The Process IDs of apache
     ps -auxf | sort -nr -k 4 | head -10 # Find Out The Top 10 Memory Consuming Process
 
-### free
+### free - Displays Memory Usage
 
-    free -o  # Displays Memory Usage
+    free
 
-### top
-
-By default, it displays the most CPU-intensive tasks running on the server and updates the list every five seconds.
+### top - Displays the most CPU-intensive tasks
 
     top
 
-### vmstat
-
-System Activity, Hardware and System Information
+### vmstat - System Activity, Hardware and System Information
 
     vmstat 3            # About processes, memory, paging, block IO, traps, and cpu activity
     vmstat -a           # About Active / Inactive Memory Pages
     sudo vmstat -m # Display Memory Utilization Slabinfo
 
-### uptime
-
-Tell How Long The System Has Been Running
+### uptime - Tell How Long The System Has Been Running
 
     uptime
 
-### watch
-
-Watch changeable data continuously
+### watch - Watch changeable data continuously
 
     watch free                                    # reruns the 'free' a command every 2 seconds by default.
     watch -n.1 'cat /proc/interrupts'# To see the interrupts occurring on your sys  tem.
 
+### pmap – Montor process memory usage on Linux
+
+Use this command to find out causes of memory bottlenecks.
+
+    pmap -d PID
+
 
 ## Part II (installed system tools)
 
-### dstat
-
-Versatile tool for generating system resource statistics
+### dstat - Versatile tool for generating system resource statistics
 
     apt-get install dstat
 
@@ -76,9 +69,7 @@ Watch all tcp and udp port 53 (nameserver) traffic on interface le0. Be quiet.
 Look only at tcp packets with either source or dest port 21, look for anything resembling an FTP login.
     ngrep -wiA 2 'user|pass' tcp port 21
 
-### atop
-
-AT Computing's System & Process Monitor
+### atop - AT Computing's System & Process Monitor
 
     apt-get install atop
 
@@ -98,27 +89,21 @@ p # Show the process activity accumulated per program (i.e. process name).
 
 Useful website: [no link tekst](http://www.atoptool.nl) for patch and more info. The man page is very useful too ;)
 
-### nethogs
-
-Net top tool grouping bandwidth per process
+### nethogs - Tool grouping bandwidth per process
 
 Instead of breaking the traffic down per protocol or per subnet, like most tools do, it groups bandwidth by process. If there's suddenly a lot of network traffic, you can fire up NetHogs and immediately see which PID is causing this.
 
     apt-get install nethogs
 
-More info: [no link tekst](http://nethogs.sourceforge.net)
+More info: [Nethogs on github](https://github.com/raboof/nethogs#readme)
 
-###  iostat
-
-Average CPU Load, Disk Activity
+###  iostat - Average CPU Load, Disk Activity
 
     apt-get install iostat
 
     iostat
 
-### bmon
-
-Graphs/tracks network activity/bandwidth real time.
+### bmon - Graphs/tracks network activity/bandwidth real time.
 
     apt-get install bmon
 

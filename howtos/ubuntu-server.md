@@ -85,7 +85,7 @@ Update postfix
     newaliases
     service postfix restart
 
-Test with the following command:-
+Test with the following command:
 
     echo test | mail -s "test message" root
 
@@ -98,6 +98,12 @@ Crontab
     0 1 * * * /usr/bin/timedatectl
 
 ## Automatic Updates
+
+ONLY if you really know what you are doing
+
+    dpkg-reconfigure -plow unattended-upgrades
+
+Or:
 
 To configure unattended-upgrades, edit `/etc/apt/apt.conf.d/50unattended-upgrades` and fit your needs:
 
@@ -118,7 +124,7 @@ On digitalocean the don't have swap files enabled on default
 
 To creat as swap file of 1G
 
-    dd if=/dev/zero of=/swapfile bs=1024 count=1024k
+    fallocate -l 1G /swapfile
     chmod 600 /swapfile
     mkswap /swapfile
     swapon /swapfile
@@ -150,11 +156,11 @@ Tunning
 
 ## Sysctl Tweaks
 
+You can change the setting, see examples: cheatsheets/sysctl-example.md
+
 Edit `/etc/sysctl.conf` and run following command to load changes to sysctl.
 
     sysctl -p
-
-<https://easyengine.io/tutorials/linux/sysctl-conf/>
 
 ## Logwatch
 
@@ -163,7 +169,7 @@ Edit `/etc/sysctl.conf` and run following command to load changes to sysctl.
 Add a few options to logwatch.conf (I also like my output formatted in html)
 
     echo "Range = between -7 days and -1 days" >> /etc/logwatch/conf/logwatch.conf
-    echo "Output = html" >> /etc/logwatch/conf/logwatch.conf
+    echo "Format = html" >> /etc/logwatch/conf/logwatch.conf
 
 By default logwatch installs itself in /etc/cron.daily, you should move it to /etc/cron.weekly
 
