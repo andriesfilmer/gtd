@@ -116,6 +116,10 @@ Revoke the certificates
 
 Testing: <https://www.ssllabs.com/ssltest/analyze.html?d=subdomain.domain.nl>
 
+### Renew Letsencrypt
+
+    /root/letsencrypt/letsencrypt-auto
+
 ## Install certificates
 Combine all the certificates into a single file. For Nginx it is required to have all the certificates (one for your domain name and CA ones) combined in a single file. The certificate for your domain should be listed first in the file, followed by the chain of CA certificates.
 

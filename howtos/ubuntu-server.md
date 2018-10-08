@@ -65,7 +65,7 @@ And disable access from all others in `/etc/hosts.deny`
 
 ## .bashrc
 
-Add these lines to /root/.bashrc
+I like to add these lines to `/root/.bashrc` first :-)
 
     bind '"e[A"':history-search-backward
     bind '"e[B"':history-search-forward
@@ -99,11 +99,9 @@ Crontab
 
 ## Automatic Updates
 
-ONLY if you really know what you are doing
-
     dpkg-reconfigure -plow unattended-upgrades
 
-Or:
+Or
 
 To configure unattended-upgrades, edit `/etc/apt/apt.conf.d/50unattended-upgrades` and fit your needs:
 
@@ -146,13 +144,19 @@ Tunning
 
 ## Alternative DNS servers
 
-### Google DNS
-- Preferred: 8.8.8.8
-- Alternate: 8.8.4.4
+Edit `/etc/resolvconf/resolv.conf.d/base`
 
-### OpenDNS
-- Preferred: 208.67.222.222
-- Alternate: 208.67.220.220
+    # Google DNS servers Preferred/Alternate:
+    nameserver 8.8.8.8
+    nameserver 8.8.4.4
+
+   # OpenDNS (preferred/alternate)
+   nameserver 208.67.222.222
+   nameserver 208.67.220.220
+
+Then tell resolvconf to regenerate resolv.conf.
+
+    resolvconf -u
 
 ## Sysctl Tweaks
 
