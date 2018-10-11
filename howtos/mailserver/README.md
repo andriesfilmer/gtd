@@ -181,7 +181,21 @@ Test dkim key:
 
 Or check/test you DKIM on several sites, for example: [dkimcore.org](http://dkimcore.org/tools/keycheck.html)
 
-## DNS Whitelist 
+## RBL countrys
+
+All you need to do to query the DNS zone of countries.nerd.dk is to prepend the IANA country letters to the name and put it in your DNSBL servers you query (xx.countries.nerd.dk). 
+
+    reject_rbl_client kr.countries.nerd.dk,
+    reject_rbl_client kp.rcountries.nerd.dk,
+    reject_rbl_client cn.rcountries.nerd.dk,
+    reject_rbl_client ru.rcountries.nerd.dk,
+    .....
+
+* [Toplevel domains](https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains#Country_code_top-level_domains)
+* [IPdeny country block downloads](http://www.ipdeny.com/ipblocks/)
+* [IP lookup](https://www.ip2location.com/demo)
+
+## DNS Whitelist
 
 [DNSWL.org](http://www.dnswl.org) provides a Whitelist of known legitimate email servers to reduce the chances of false positives while spam filtering. We have the entry ''postscreen_dnsbl_= siteslist.dnswl.org*-5'' [main.cf](/pub/scripts/mailserver/main.cf) to do the job.
 

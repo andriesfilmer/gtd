@@ -6,6 +6,7 @@
 
 * Amazon S3
 * Windows Azure Blob Storage
+* [BackBlaze](https://help.backblaze.com/hc/en-us/articles/115001518354-How-to-configure-Backblaze-B2-with-Duplicity-on-Linux) | Backblaze B2 with Duplicity on Linux
 
 ## Personal storage integrated with UI
 
