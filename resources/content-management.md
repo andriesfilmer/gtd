@@ -20,3 +20,6 @@
 * [ThemeForest](http://themeforest.net) - Premium WordPress Themes, Web Templates, Mobile Themes
 * [Template Monster](http://www.monstertemplates.com) - Web Templates, Flash Templates, Website Templates Design
 
+## Helpdesk & Support Software
+
+* [Zamad](https://www.zammad.com/) Customer support (Open Source)

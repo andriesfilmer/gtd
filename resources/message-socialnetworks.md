@@ -24,7 +24,10 @@ Van Open Whisper Systems is gratis, opensource en gebruikt end-to-end encryptie
 [Trusted by world leaders, executives, journalists, human rights activists and your friends](https://www.wickr.com/)
 
 ### Signal
-Client is open source. Erg veilig. 
+Client is open source. Most save chatapp available.
+
+[Why I told my friends to stop using WhatsApp and Telegram](https://medium.freecodecamp.org/why-i-asked-my-friends-to-stop-using-whatsapp-and-telegram-e93346b3c1f0
+
 
 ### Bleep
 BitTorrent ontwikkelaars zitten achter Bleep

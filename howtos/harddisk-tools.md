@@ -105,4 +105,42 @@ Open a Terminal and type:
 *v: (verbose) show progress<br>
 *n: (iterations) Overwrite N times instead of the default (25)
 
-;NOTE: Be aware that the data is definitely lost after running this command!
+NOTE: Be aware that the data is definitely lost after running this command!
+
+## Check harddisk for bad sectors
+
+### badblocks
+
+    sudo fdisk -l
+    sudo badblocks -v /dev/sda > ~/badsectors.txt  # read only mode
+    sudo badblocks -vn /dev/sda > ~/badsectors.txt # read/write mode
+
+Use fsck command to tell Ubuntu not to use the bad sectors mentioned in the badsectors.txt file. That way life of the hard disk is increased a bit until you get a new one for replacement.
+
+    sudo fsck -l ~/badsectors.txt /dev/sda
+
+### smartctl
+
+You need smartmontools.
+
+    sudo apt install smartmontools
+
+The commands for the various tests are (replace sdX with the drive that you want to test)
+
+* Short: `sudo smartctl -t short /dev/sdX`
+* Long: `sudo smartctl -t long /dev/sdX`
+* Conveyance: `sudo smartctl -t conveyance /dev/sdX`
+
+Note: You will not get any scrolling output for your test beyond being told how long the test will take.
+If you're running the long test, you may have to wait an hour or two or longer.
+
+Once the test is finished, it's time to get out result!
+
+    sudo smartctl -H /dev/sdX
+
+The result above indicates that your hard disk is healthy, and may not experience hardware failures any soon.
+
+    == START OF READ SMART DATA SECTION ===
+    SMART overall-health self-assessment test result: PASSED
+
+

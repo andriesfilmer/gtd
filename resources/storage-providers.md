@@ -1,6 +1,7 @@
 ## Managing your images and videos
 
 * [Cloudinary](https://cloudinary.com/) | Image and Video Management in the Cloud
+* [Syncthing](https://docs.syncthing.net/) | Relaces proprietary sync and cloud services with something open
 
 ## Storage backend
 

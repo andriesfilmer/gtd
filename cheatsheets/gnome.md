@@ -4,6 +4,10 @@
 
     sudo apt-get install gnome-tweak-tool
 
+## Workspace Grid (zakkak)
+
+<https://extensions.gnome.org/extension/484/workspace-grid/>
+
 ## dconf-editor
 
 Very fast & easy, without any installations/extensions:

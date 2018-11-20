@@ -107,6 +107,10 @@ Voor Thunderbird kan dat via `Prefrences -> Advanced -> Config Editor`:
 
 set `layout.css.devPixelsPerPx: 1.25`
 
+If you want to use Lightning calendar.
+
+    sudo apt install xul-ext-lightning
+
 ### Spotify
 
 Voor spotify kan dat door een alias aan te maken in `.bashrc`

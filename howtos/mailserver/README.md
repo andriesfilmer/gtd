@@ -147,7 +147,8 @@ Change the line in `/etc/postfix-policyd-spf-python/policyd-spf.conf` to:
 
 [integrate Sender Policy Framework (SPF) checking with Postfix](https://help.ubuntu.com/community/Postfix/SPF)
 
-## DomainKey Identification Mail (DKIM) 
+## DomainKey Identification Mail (DKIM)
+
 We also want to use [DKIM](http://www.dkim.org/), so we need to install dkim-filter and create keys.
 
     sudo apt-get install opendkim opendkim-tools
@@ -156,7 +157,12 @@ Opendkim configuration [/etc/opendkim.conf](./mailserver/opendkim.conf) file.
 
 Open `/etc/default/opendkim` and add the next line:
 
-    SOCKET="inet:8891@localhost" # Ubuntu default - listen on loopback on port 8891
+    #SOCKET="inet:8891@localhost" # Ubuntu default - listen on loopback on port 8891
+    SOCKET="local:/var/spool/postfix/var/run/opendkim/opendkim.sock"
+
+    mkdir -p /var/spool/postfix/var/run/opendkim
+    chown opendkim:postfix /var/spool/postfix/var/run/opendkim
+
 
 * Notice/bug: SOCKET must be the only line, even with comments '#'!
 

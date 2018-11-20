@@ -87,6 +87,10 @@ Redirect ip-address port to other server port
 
     /usr/local/bin/redir --laddr 82.201.122.21 --lport 80 --caddr 194.242.19.13 --cport 80
 
+## iftop
+
+    sudo apt install iftop
+
 ## nmap
 
 Scan for Active Hosts on a network (no port scan)

@@ -158,6 +158,12 @@ Then tell resolvconf to regenerate resolv.conf.
 
     resolvconf -u
 
+## Running services
+
+To find out all services that have been run at startup:
+
+    systemctl list-units --type service
+
 ## Sysctl Tweaks
 
 You can change the setting, see examples: cheatsheets/sysctl-example.md
