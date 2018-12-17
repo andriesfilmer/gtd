@@ -127,9 +127,9 @@ Run `freshclam` (make a cron for it, see below)
 
 ## Sender Policy Framework (SPF) 
 
-### DNS/SPF
+### SPF records
 
-We want to enabled [SPF](http://www.openspf.org/), so we create a TXT DNS record with the mailservers ipnrs. Examples:
+Create a [SPF](http://www.openspf.org/) record for each domain who we are sending mail, some examples:
 
     @         TXT           "v=spf1 ip4:82.201.119.0/24 -all"
     @         TXT           "v=spf1 mx mx:filmer.nl ~all"
@@ -186,6 +186,14 @@ Test dkim key:
     opendkim-testkey -d filmer.net -s mail -vvv
 
 Or check/test you DKIM on several sites, for example: [dkimcore.org](http://dkimcore.org/tools/keycheck.html)
+
+## DMARC
+
+Greate a [dmarc](https://dmarc.org/) record for each domain for who we are sending mail.
+
+    _dmarc    TXT   "v=DMARC1; p=none; rua=mailto:postmaster@domain.nl;"
+
+* [Control you DMARC process with dmarcian](https://dmarcian.com/)
 
 ## RBL countrys
 
