@@ -1,12 +1,11 @@
 # Video and Image tools
 
-## RecordMyDesktop
+## ffmpeg
 
-    sudo apt install recordmydesktop gtk-recordmydesktop
+    ffmpeg -i video.webm -preset veryfast video.mp4
 
 Capture right side of screen
 
-    recordmydesktop --width 1280 --height 720 -x 1840 -y 215 --fps 25 --channels 1 --device pulse --delay 3 -o Desktop/screencast
     ffmpeg -f alsa -ac 2 -i pulse -f x11grab -show_region 1 -r 30 -s 1280x720 -i :1.0+1840,220 -acodec pcm_s16le -vcodec libx264 Desktop/capture.mkv
     ffmpeg -f alsa -ac 2 -i pulse -f x11grab -show_region 1 -r 25 -s 1280x720 -i :1.0+1840,228 -acodec pcm_s16le -vcodec libx264 -threads 0 -pix_fmt yuv420p -movflags faststart /path/to/screencast.mkv
 
