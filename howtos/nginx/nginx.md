@@ -32,6 +32,10 @@ Create a '[APP_ROOT/config/unicorn.conf.rb](../inzetrooster-app/blob/master/conf
 
 Create a '[APP_ROOT/config/nginx.conf](../inzetrooster-app/blob/master/config/nginx.conf)' config file.
 
+Whenever you make changes to Nginx configuration files, you should check the configuration for syntax errors, like this:
+
+    nginx -t
+
     service nginx restart
 
 Start Unicorn or create a '[/etc/init.d/some_app](../inzetrooster-app/blob/master/config/unicorn.init.sh)' init script.

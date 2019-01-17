@@ -64,20 +64,12 @@ And disable access from all others in `/etc/hosts.deny`
 
     sshd: ALL
 
-## Disable root login
+## sudo
 
 Add a new user (your self)
 
     adduser yourname
     usermod -aG sudo yourname
-
-Edit /etc/ssh/sshd_config
-
-    PermitRootLogin no
-
-Restart ssh daemon
-
-    /etc/init.d/ssh restart
 
 ## .bashrc
 

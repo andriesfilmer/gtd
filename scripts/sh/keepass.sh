@@ -3,7 +3,8 @@
 entry="$1"
 keepass_pwd=`ssh server03.filmer.net "cat .ssh/keepass-file"`
 #keepass_db="/home/andries/stack/Private/andries-backup.kdbx"
-keepass_db="/home/andries/Dropbox/Private/andries.kdbx"
+#keepass_db="/home/andries/Dropbox/Private/andries.kdbx"
+keepass_db="/home/andries/nextcloud.filmer.nl/Private/andries.kdbx"
 keepass_dir="Andries"
 
 if [ -z $2 ]; then keepass_dir='Andries'; else keepass_dir=$2; fi
