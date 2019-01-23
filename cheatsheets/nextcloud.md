@@ -47,7 +47,11 @@ Rescan files
     cd /to/nextcloud_root_dir/
     sudo -u www-data php occ files:scan --all
 
-Reset password
+Password
 
     sudo -u www-data php /var/www/nextcloud/occ user:resetpassword andries
+
+### Passwords
+
+    sudo -u www-data php occ passwords:backup:restore 2019-01-18_15-56-11
 

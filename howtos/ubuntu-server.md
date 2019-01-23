@@ -184,27 +184,8 @@ Edit `/etc/sysctl.conf` and run following command to load changes to sysctl.
 
 ## Add file system full cronjob
 
-If you don't look at or use `logwatch` you can make a crontab, when the file system is >80% full we'd like to receive a mail.
+You can make a crontab, when the file system is >80% full we'd like to receive a mail.
 
-    0 9 * * * if [ "`df -l |grep '[8|9][0-9]%'`" ]; then `df -h|/usr/bin/mail -s 'File system > 80% full' root` ; fi
+    0 9 * * * if [ "`df -l |grep '[8|9][0-9]\%'`" ]; then `df -h|/usr/bin/mail -s 'File system > 80\% full' root` ; fi
 
-## Logwatch
-
-    apt-get install logwatch
-
-Add a few options to logwatch.conf (I also like my output formatted in html)
-
-    echo "Range = between -7 days and -1 days" >> /etc/logwatch/conf/logwatch.conf
-    echo "Format = html" >> /etc/logwatch/conf/logwatch.conf
-
-By default logwatch installs itself in /etc/cron.daily, you should move it to /etc/cron.weekly
-
-    mv /etc/cron.daily/00logwatch /etc/cron.weekly
-
-Because sshd has `PermitRootLogin No` I ignore root login attempts. It has too many entries :(
-Open `/usr/share/logwatch/default.conf/services/sshd.conf` and add:
-
-    *Remove = root
-
-[Digitalocean - Logwatch Log Analyzer and Reporter](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-logwatch-log-analyzer-and-reporter-on-a-vps)
 

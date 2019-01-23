@@ -2,7 +2,11 @@
 
 ## ffmpeg
 
+Convert webm to mp4
+
     ffmpeg -i video.webm -preset veryfast video.mp4
+    ffmpeg -fflags +genpts -i video.webm -r 24 video.mp4
+
 
 Capture right side of screen
 
