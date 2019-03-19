@@ -222,7 +222,7 @@ Feedback must be something like:
 
     "Client host blocked using Barracuda Reputation, see http://www.barracudanetworks.com/reputation/?r=1&ip=139.162.157.247"
 
-## Autoreply and Spambox 
+## Autoreply and Spambox
 Install [Sieve plugin](http://wiki2.dovecot.org/Pigeonhole/Sieve)
 
     apt-get install dovecot-managesieved dovecot-sieve
@@ -238,30 +238,37 @@ Create a default Sieve file for all users
 
     /etc/dovecot/default.sieve
 
-## Certificates 
+## Letsencrypt certificates
+
+    apt install letsencrypt
+
+Create certificates
+
+    certbot certonly --standalone -d server03.filmer.net -d mail.filmer.net -d imap.filmer.net -d smtp.filmer.net
+
 ### Postfix
 
-    smtpd_tls_cert_file=/etc/ssl/certificate.crt
-    smtpd_tls_key_file=/etc/ssl/private/certificate.key
-    smtpd_tls_CAfile=/etc/ssl/cabundle.crt
-
+    smtpd_tls_CAfile = /etc/letsencrypt/live/server03.filmer.net/chain.pem
+    smtpd_tls_key_file = /etc/letsencrypt/live/server03.filmer.net/privkey.pem
+    smtpd_tls_cert_file = /etc/letsencrypt/live/server03.filmer.net/cert.pem
 
 ### Dovecot
-Create chained certificate.
-
-    cat /etc/ssl/certificate.crt /etc/ssl/cabundle.crt > /etc/ssl/certificate-chain.crt
 
 Edit `/etc/dovecot/dovecot.conf`
-    
-    ssl_cert = </etc/ssl/certificate-chain.crt
-    ssl_key = </etc/ssl/private/certificate.key
+
+    ssl_cert = </etc/letsencrypt/live/server03.filmer.net/fullchain.pem
+    ssl_key = </etc/letsencrypt/live/server03.filmer.net/privkey.pem
+
 
 Testing
 
     openssl s_client -connect mail.filmer.net:imaps
 
+    [Secure Email test](https://www.checktls.com/)
 
-    {Secure Email test](https://www.checktls.com/)
+Add this to the crontab (run every first day of month at 4:30pm)
+
+   30 4 1 * * /usr/bin/certbot -q renew --post-hook "service postfix reload"
 
 ## Configure Bind as Caching or Forwarding DNS server
 

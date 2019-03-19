@@ -14,6 +14,8 @@
 ## Mail providers for end users
 
 * [Zoho mail](https://www.zoho.eu/mail/)
+* [Rackspace](https://www.rackspace.com/en-nl/email-hosting/webmail)
+* [Greatmail](https://www.greatmail.com/)
 
 ## Mail providers for developers
 

@@ -103,28 +103,33 @@ And then try restarting nginx again:
 
     service nginx start
 
-## Letsencrypt
+## Letsencrypt certificates
+
+    apt install letsencrypt
+
 Create a certificate
 
-    root@server04:~/letsencrypt# ./certbot-auto --nginx -m itc@domain.nl -d subdomain.domain.nl
+    certbot certonly --webroot -w /var/www/subdomain.domain.nl/letsencrypt/ -d subdomain.domain.nl
 
 To renew the certificates
 
-    ./certbot-auto renew --dry-run
+    certbot renew --dry-run
 
 Revoke the certificates
 
-    root@server04:~/letsencrypt# ./certbot-auto revoke --cert-path /etc/letsencrypt/live/subdomain.domain.nl-0001/fullchain.pem
+    certbot revoke --cert-path /etc/letsencrypt/live/subdomain.domain.nl-0001/fullchain.pem
 
 <https://certbot.eff.org/docs/using.html#nginx>
 
 Testing: <https://www.ssllabs.com/ssltest/analyze.html?d=subdomain.domain.nl>
 
-### Renew Letsencrypt
+Add this to the crontab (run every first day of month at 4:30pm)
 
-    /root/letsencrypt/letsencrypt-auto
+    30 4 1 * * /usr/bin/certbot -q renew --post-hook "service nginx reload"
 
-## Install certificates
+
+### Install other certificates
+
 Combine all the certificates into a single file. For Nginx it is required to have all the certificates (one for your domain name and CA ones) combined in a single file. The certificate for your domain should be listed first in the file, followed by the chain of CA certificates.
 
 To combine the certificates in case of PositiveSSL, run the following command in terminal:

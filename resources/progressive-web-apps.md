@@ -10,6 +10,8 @@
 * [CocoonJS](https://www.ludei.com/cocoonjs/) is a platform to test, accelerate, deploy and monetize your HTML5 apps and games.
 * [TabrisJs](https://tabrisjs.com/) - Native mobile apps in JavaScript. Simple.
 * [Ionic](http://ionicframework.com/) Advanced HTML5 Hybrid Mobile App Framework.
+* [Capacitor](https://capacitor.ionicframework.com/) Invoke Native SDKs on iOS, Android, Electron. Optimized for Ionic Framework apps
+8 [Monaca app development](https://monaca.io/) Cross-platform hybrid mobile app development platform
 * [Embarcadero Delphi](http://www.embarcadero.com/) Advanced application developers & database cross-platform
 
 ## Service workers

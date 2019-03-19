@@ -2,6 +2,10 @@
 
 ## Info about creating a API
 
+### Rails
+
+* [Apipie](https://github.com/Apipie/apipie-rails) API Documentation Tool
+
 ### Google API info
 
 * [Google - API Design Guide](https://cloud.google.com/apis/design/)
