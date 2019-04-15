@@ -4,6 +4,10 @@
 
 * [BLACKLIST CHECK](https://mxtoolbox.com/blacklists.aspx)
 
+### Mail tester
+
+Test the Spammyness of your emails <https://www.mail-tester.com/>
+
 ### Swaks - SMTP transaction tester
 
     sudo apt-get install swaks
@@ -11,6 +15,13 @@
 Simple test
 
     swaks -t andries.filmer@gmail.com -f andries@filmer.nl -a -tls -au andries@filmer.nl -ap "mypasswd" -s mail.filmer.nl
+
+## Bounces
+
+Find permanent errors from mail.log (Postfix format) and give the addresses and amount of bounces on every address.
+You can also use " dsn=4." to get addresses with temporary errors.
+
+    grep " dsn=5." /var/log/mail.log | grep -o -P " to=<(.+?)>" | sort | uniq -c
 
 ## Traditional mail debug
 \> client input

@@ -7,16 +7,16 @@ Below the mailserver configuration on:
 - Postfix version 3.1.0
 - Dovecot version 2.2.22
 
-## Postfix 
+## Postfix
 Install [Postfix](http://www.postfix.org)
 
-    apt-get install postfix 
+    apt-get install postfix
 
 Check my config files:
 * My [main.cf](./main.cf) file.
 * My [master.cf](./master.cf) file.
 
-## Create virtual domain/user files 
+## Create virtual domain/user files
 
 File: /etc/postfix/vdomains
 
@@ -34,26 +34,26 @@ File: /etc/postfix/valiases
 Hash these file after every change
 
     postmap /etc/postfix/vdomains
-    postmap /etc/postfix/vmailboxes 
-    postmap /etc/postfix/valiases 
+    postmap /etc/postfix/vmailboxes
+    postmap /etc/postfix/valiases
 
-## Create a virtual Mailbox owner 
+## Create a virtual Mailbox owner
 
-In our setup all virtual mailboxes are owned by a fixed uid and gid 5000. 
+In our setup all virtual mailboxes are owned by a fixed uid and gid 5000.
 
     sudo groupadd -g 5000 vmail
     sudo useradd -m -u 5000 -g 5000 -s /bin/false vmail
 
 
-## Dovecot 
+## Dovecot
 Install [Dovecot](http://www.dovecot.org)
 
     apt-get install dovecot-imapd
- 
+
     touch /var/log/dovecot.log
-    touch /var/log/dovecot-info.log 
+    touch /var/log/dovecot-info.log
     chown vmail:vmail /var/log/dovecot.log
-    chown vmail:vmail /var/log/dovecot-info.log 
+    chown vmail:vmail /var/log/dovecot-info.log
 
 Create password file `/etc/dovecot/passwd`. If you want to store [passwords encrypted](http://wiki.dovecot.org/AuthDatabase/PasswdFile)
 
@@ -67,7 +67,7 @@ Create password file `/etc/dovecot/passwd`. If you want to store [passwords encr
 
 My [dovecot.conf](./dovecot.conf) (single config) file.
 
-## Spamassassin 
+## Spamassassin
 Install [Spamassassin](http://packages.ubuntu.com/trusty/spamass-milter)
 
     apt-get install spamass-milter
@@ -105,19 +105,19 @@ On a other computer/server: download a text file with the GTUBE signature line a
 
 The email should be blocked.
 
-## Clamav 
+## Clamav
 Postfix now supports Sendmail 8 Milter protocol.
 
     apt-get install clamav-milter
 
-We need to tell it to let postfix have write access to it's socket. 
+We need to tell it to let postfix have write access to it's socket.
 Edit `/etc/default/clamav-milter` and uncomment the last line:
 
     SOCKET_RWGROUP=postfix
 
 Create a [/etc/clamav/clamav-milter.conf](./clamav-milter.conf) file or run:
 
-    dpkg-reconfigure clamav-milter 
+    dpkg-reconfigure clamav-milter
 
 Run `freshclam` (make a cron for it, see below)
 
@@ -125,7 +125,7 @@ Run `freshclam` (make a cron for it, see below)
     service clamav-daemon start
     postconf -e 'smtpd_milters = unix:/clamav/clamav-milter.ctl' # Already in postfix.main.cf file.
 
-## Sender Policy Framework (SPF) 
+## Sender Policy Framework (SPF)
 
 ### SPF records
 
@@ -197,7 +197,7 @@ Greate a [dmarc](https://dmarc.org/) record for each domain for who we are sendi
 
 ## RBL countrys
 
-All you need to do to query the DNS zone of countries.nerd.dk is to prepend the IANA country letters to the name and put it in your DNSBL servers you query (xx.countries.nerd.dk). 
+All you need to do to query the DNS zone of countries.nerd.dk is to prepend the IANA country letters to the name and put it in your DNSBL servers you query (xx.countries.nerd.dk).
 
     reject_rbl_client kr.countries.nerd.dk,
     reject_rbl_client kp.rcountries.nerd.dk,
@@ -214,6 +214,10 @@ All you need to do to query the DNS zone of countries.nerd.dk is to prepend the 
 [DNSWL.org](http://www.dnswl.org) provides a Whitelist of known legitimate email servers to reduce the chances of false positives while spam filtering. We have the entry ''postscreen_dnsbl_= siteslist.dnswl.org*-5'' [main.cf](/pub/scripts/mailserver/main.cf) to do the job.
 
 ## DNS Blocklist
+See how many mails are blocked
+
+    cat /var/log/mail.log | grep 'listed by domain' | awk '{print $11}' | sort | uniq -c
+
 If you want to check if a ipnr is listed use reverse order of subnet io. 139.162.157.247:
 
     dig 247.157.162.139.b.barracudacentral.org -t txt
@@ -313,7 +317,7 @@ We want to refresh ClamAV database, set the correct time on a daily basis and re
     set TimeZone=Centraal Europe Time
     export TZ=CET
 
-## Maintainance en tips 
+## Maintainance en tips
 Check if these services are running: `netstat -lnptu`
 
     Active Internet connections (only servers)

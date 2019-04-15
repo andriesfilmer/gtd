@@ -1,3 +1,7 @@
+## Perl Tutorial
+
+* <https://www.tutorialspoint.com/perl/>
+
 ## Install modules
 
 Default install on Ubuntu

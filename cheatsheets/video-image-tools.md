@@ -10,8 +10,8 @@ Convert webm to mp4
 
 Capture right side of screen
 
-    ffmpeg -f alsa -ac 2 -i pulse -f x11grab -show_region 1 -r 30 -s 1280x720 -i :1.0+1838,230 -acodec pcm_s16le -vcodec libx264 ~/Nextcloud/Projects/Inzetrooster/Videos/path.mkv
-    ffmpeg -f alsa -ac 2 -i pulse -f x11grab -show_region 1 -r 25 -s 1280x720 -i :1.0+1840,228 -acodec pcm_s16le -vcodec libx264 -threads 0 -pix_fmt yuv420p -movflags faststart /path/to/screencast.mkv
+    ffmpeg -f alsa -ac 2 -i pulse -f x11grab -show_region 1 -r 30 -s 1280x720 -i :1.0+1838,228 -acodec pcm_s16le -vcodec libx264  /path/to/screencast.mkv
+
 
 * Allow your cpu use optimal number of threads: -threads 0
 * QuickTime compatibility:  -pix_fmt yuv420p.
