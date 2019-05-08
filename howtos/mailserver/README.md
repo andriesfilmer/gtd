@@ -214,9 +214,6 @@ All you need to do to query the DNS zone of countries.nerd.dk is to prepend the 
 [DNSWL.org](http://www.dnswl.org) provides a Whitelist of known legitimate email servers to reduce the chances of false positives while spam filtering. We have the entry ''postscreen_dnsbl_= siteslist.dnswl.org*-5'' [main.cf](/pub/scripts/mailserver/main.cf) to do the job.
 
 ## DNS Blocklist
-See how many mails are blocked
-
-    cat /var/log/mail.log | grep 'listed by domain' | awk '{print $11}' | sort | uniq -c
 
 If you want to check if a ipnr is listed use reverse order of subnet io. 139.162.157.247:
 

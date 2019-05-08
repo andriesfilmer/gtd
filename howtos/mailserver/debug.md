@@ -186,6 +186,10 @@ Remove only het address
 
 ## Query the logfile
 
+See how many mails are blocked
+
+cat /var/log/mail.log | grep 'listed by domain' | awk '{print $11}' | sort | uniq -c
+
 Who is polluting the logfile: NOQUEUE: reject: RCPT from unknown
 
     cat /var/log/mail.log | grep 'NOQUEUE: reject:' | awk '{print $10 " " $17}' | sort | uniq -c
