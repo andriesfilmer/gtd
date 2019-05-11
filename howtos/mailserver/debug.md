@@ -1,14 +1,14 @@
 ## Testing SMTP servers
 
-### Links
+## Links
 
 * [BLACKLIST CHECK](https://mxtoolbox.com/blacklists.aspx)
 
-### Mail tester
+## Mail tester
 
 Test the Spammyness of your emails <https://www.mail-tester.com/>
 
-### Swaks - SMTP transaction tester
+## Swaks - SMTP transaction tester
 
     sudo apt-get install swaks
 
@@ -16,12 +16,6 @@ Simple test
 
     swaks -t andries.filmer@gmail.com -f andries@filmer.nl -a -tls -au andries@filmer.nl -ap "mypasswd" -s mail.filmer.nl
 
-## Bounces
-
-Find permanent errors from mail.log (Postfix format) and give the addresses and amount of bounces on every address.
-You can also use " dsn=4." to get addresses with temporary errors.
-
-    grep " dsn=5." /var/log/mail.log | grep -o -P " to=<(.+?)>" | sort | uniq -c
 
 ## Traditional mail debug
 \> client input
@@ -167,11 +161,31 @@ Without auth login
 
 * [IMAP protocol version 4 - rfc](https://tools.ietf.org/html/rfc1730)
 
-## Read mail from queue
+## Dovecot
+
+As a general tip for debug the config if dovecot is not starting
+
+    dovecot -F
+## Mail queue
+
+View postfix queue
+
+    mailq
+or
+    postqueue -p
+
+Retry sending of all messages in queue
+
+    postqueue -f
+
+Read mail from queue
 
     postcat -vq XXXXXXXXXX
 
-## Remove mail from queue
+Delete specfic mail
+
+    postsuper -d XXXXXXXXXX
+
 Delete all queued mail
 
     postsuper -d ALL
@@ -184,7 +198,17 @@ Remove only het address
 
      find . -name "[d,q,Q,D]f*" -exec grep -nil "address@example.com" {} \; | xargs rm
 
+Remove specific emails (i.o. andriesfilmer@hotmail.com)
+
+    mailq | tail -n +2 | grep -v '^ *(' | awk  'BEGIN { RS = "" } \
+    { if ($7 == "andriesfilmer@hotmail.com" && $9 == "") print $1 } ' \
+    | tr -d '*!' | postsuper -d -
+
 ## Query the logfile
+
+Find hard bounces
+
+    grep " dsn=5." /var/log/mail.log | grep -o -P " to=<(.+?)>" | sort | uniq -c
 
 See how many mails are blocked
 
@@ -201,6 +225,14 @@ Checking postscreen ranking
 Checking returning mailservers
 
     cat /var/log/mail.log | grep 'PASS OLD' | awk '{print $6 " " $7 " " $8}' | sort | uniq -c
+
+Get ipnrs sorted by connection
+
+    cat /var/log/mail.log | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' | sort | uniq -c | sort -n
+
+Get list of countries with auth failed
+
+   grep "auth failed" tmp/mail.log | egrep -o "[0-9\.]{7,15}" | awk '{print $NF}' | xargs -n1 geoiplookup | sort | uniq -c | sort -rn | head | tee top-countries-imap-auth-failed.txt
 
 ##  SMTP reply codes
 
