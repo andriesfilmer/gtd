@@ -166,6 +166,7 @@ Without auth login
 As a general tip for debug the config if dovecot is not starting
 
     dovecot -F
+
 ## Mail queue
 
 View postfix queue

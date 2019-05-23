@@ -138,4 +138,4 @@ All rake tasks will then be available to you. Usage
 * [API - Welcome to Rails](http://api.rubyonrails.org)
 * [Ruby Tutorial - tutorialspoint.com](http://www.tutorialspoint.com/ruby/index.htm)
 * [Ruby Rails tutorial.org](http://ruby.railstutorial.org/)
-
+* [Sqlite tutorial](http://souptonuts.sourceforge.net/readme_sqlite_tutorial.html)

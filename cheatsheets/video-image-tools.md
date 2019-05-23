@@ -17,12 +17,9 @@ Capture right side of screen
 * QuickTime compatibility:  -pix_fmt yuv420p.
 * Fast start: -movflags +faststart.
 
-##  SimpleScreenRecorder
-A GUI Linux program to record programs and games. [Maarten Baert](http://www.maartenbaert.be/simplescreenrecorder/)
+When creating screencasts disable Flipping.
 
-## Byzanz records your desktop session to an animated GIF on the command line.
-
-You can record  your entire screen, a single window, or an arbitrary  region.byzanz record  allows you to make recordings from the command line.  Graphical  users may want to use the panel applet instead.
+    nvidia-settings --assign="AllowFlipping=0"
 
 ## ImageMagic
 
@@ -30,6 +27,24 @@ You can record  your entire screen, a single window, or an arbitrary  region.byz
 
     sudo apt-get install imagemagick
     find . -maxdepth 1 -iname "*.jpg" -print0 | xargs -0 -l -i convert -resize 1024x768 -quality 50 -strip {} /tmp/output/{}
+
+### Compress image
+
+    mogrify -filter Triangle \
+            -define filter:support=2 \
+            -unsharp 0.25x0.25+8+0.065 \
+            -dither None \
+            -posterize 136 \
+            -quality 82 \
+            -define jpeg:fancy-upsampling=off \
+            -define png:compression-filter=5 \
+            -define png:compression-level=9 \
+            -define png:compression-strategy=1 \
+            -define png:exclude-chunk=all \
+            -interlace none \
+            -colorspace sRGB *.png
+
+* [Online compressor](https://compressor.io/)
 
 ### Auto orientation
 

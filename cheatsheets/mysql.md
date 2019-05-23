@@ -131,6 +131,19 @@ Check you configuration
 * [Mathias Bynes - mysql-utf8mb4](https://mathiasbynens.be/notes/mysql-utf8mb4)
 * [How to store emoji in rails app with mysql](http://blog.arkency.com/2015/05/how-to-store-emoji-in-a-rails-app-with-a-mysql-database/)
 
+## Convert Antelope to Barracuda
+
+    SHOW VARIABLES LIKE "innodb_file_format";
+
+    SET global innodb_file_format=Barracuda;
+    SET global innodb_large_prefix=on;
+    SET GLOBAL innodb_file_format = "Barracuda";
+    SET GLOBAL innodb_file_format_max = "Barracuda";
+    SET GLOBAL innodb_file_per_table = "ON";
+    SET GLOBAL innodb_strict_mode = "ON";
+    USE INFORMATION_SCHEMA;
+    SELECT CONCAT("ALTER TABLE `", TABLE_SCHEMA,"`.`", TABLE_NAME, "` ROW_FORMAT=DYNAMIC;") AS MySQLCMD FROM TABLES WHERE ENGINE='innodb' AND ROW_FORMAT != 'DYNAMIC' AND ROW_FORMAT !='COMPRESSED';
+
 ## Resources
 
 * [Mysql docs](http://dev.mysql.com/doc/).

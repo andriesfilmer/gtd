@@ -3,6 +3,7 @@
 ## Design principles
 
 * [Material Design](https://material.io/guidelines/)
+* [UsabilityHub](https://usabilityhub.com/) A remote user research platform that takes the guesswork out of design decisions by validating them with real users.
 
 ## UI frameworks
 
@@ -67,4 +68,24 @@
 * [Everything you always wanted to know about touch icons - Mathias Bynens](https://mathiasbynens.be/notes/touch-icons)
 * [Audreyr/favicon-cheat-sheet · GitHub](https://github.com/audreyr/favicon-cheat-sheet)
 * [Using Icon Fonts](http://gomakethings.com/icon-fonts/)
+
+## Photos
+
+* [Adobe Stock](https://stock.adobe.com/)
+* [123rf stock](https://nl.123rf.com/)
+* [500px](https://web.500px.com/)
+
+### Free stock photos
+
+* [Pexels](https://www.pexels.com/)
+* [Fotolia](http://www.fotolia.com)
+* [Pexels](https://www.pexels.com)
+* [Plixs](https://plixs.com)
+* [Unsplash](http://unsplash.com/)
+* [Death to the stock photo](http://join.deathtothestockphoto.com/)
+* [Little Visuals](http://littlevisuals.co/)
+* [PicJumbo](http://picjumbo.com/)
+* [Gratisography](http://www.gratisography.com/)
+* [SplitShare](http://splitshire.com/)
+* [IM Free](http://www.imcreator.com/free)
 

@@ -14,12 +14,6 @@ When there are many thousand of files in a directory you can't remove them with 
 
     cd directorie; for f in * ; do rm -rf $f ; done
 
-## mail commandline
-
-### How to delete root user’s mail
-
-    > /var/spool/mail/root
-
 ### Zip a file and emails them to someone
 
     gzip -c FILENAME |uuencode FILENAME.gz | mail -s "SUBJECT" someone@domain.nl
@@ -30,33 +24,16 @@ When there are many thousand of files in a directory you can't remove them with 
 
 ## File change commands
 
-Changing Permissions Recursively. Be sure to be in the right directorie, **be gareful !!!!**  .
-Gives write permissons for files and directories for group
+If you want to find all your writable directories, issue:
+
+    find / -perm -0777 -type d -ls
+
+Changing Permissions Recursively. Be sure to be in the right directorie!
 
     find ./www/ -type f -exec chmod 664 {} ;
     find ./www/ -type d -exec chmod 775 {} ;
     find ./www/ -exec chown nobody:users {} ;
 
-### Change all the phpfiles with the content 'huisNrToe' to 'huis_nr_toe'
-
-    find ./dirname -name "*.php" | xargs perl -pi -e 's/huisNrToe/huis_nr_toe/g'
-
-### The 'i' option does a case-insensitive pattern matching (there much are more options).
-
-    find ./dirname -name "*.php" | xargs perl -pi -e 's/houseNrTo/house_nr_to/gi'
-
-### Add something to the end of each line in a file:
-
-    cat filename.txt | sed 's/$/something/g' > newfile.txt
-
-### Reformat DOS text files to Unix ones (the ^M chars)
-
-    tr -d '
-' < dos-text-file > unix-file
-
-### Remove all text between the Quotes (").
-
-    perl -p -i.bak -e 's/""(.*)""//g' example.txt
 
 ## Rename files
 
@@ -95,7 +72,7 @@ Example: pretty girl.jpg to pretty_girl.jpg<br>
 
 ## Find
 
-Delete using xargs:
+Delete files using xargs:
 
     find . -name "*.old" -print0 | xargs -0 rm
 
@@ -107,7 +84,7 @@ Find files older than -x (-1) days created and show this with date and time
 
     find /directorie/ -type f -ctime -1 -ls | awk '{print $8 "" $9 "" $10 "" $11 " (" $7 ")" }'
 
-Seach files for a certain word or phrase within the files:
+Find files for a certain word or phrase within the files:
 
     find . -type f -name '*.txt' -print0 | xargs -0 grep -r -i 'some.*thing'
 
@@ -115,7 +92,7 @@ Find files with 'sometext' who a not in de Sent Items map.
 
     find . -type f ! -regex '.*/.Sent*.*' -print0 | xargs -0 grep -r -i 'sometext'
 
-Remove files older then 3 days
+Find files older then 3 days
 
     find /tmp/mydir/ -type f ! -atime -3d -print0 | xargs -0 rm
 
@@ -123,13 +100,13 @@ Find and remove small files
 
     find /backup/tarballs/ -type f -exec ls -s {} ; | sort -n  | head -10 | xargs -0 rm
 
-If you want to find all your writable directories, issue:
-
-    find / -perm -0777 -type d -ls
-
 Find all media outside 'Photo Library' directory
 
-    find /path/to/media -name '*iPhoto Library*' -prune -o -iregex ".*(jpg|dv|avi|mp3)$" | less
+    find /path/to/media -name '*Photo Library*' -prune -o -iregex ".*(jpg|dv|avi|mp3)$" | less
+
+Change all the php-files with the content 'someString' to 'some_string'
+
+    find ./dirname -name "*.php" | xargs perl -pi -e 's/someString/some_string/g'
 
 
 ## Mix

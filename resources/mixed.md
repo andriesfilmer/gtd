@@ -19,4 +19,10 @@
 
 ## Passwords
 
+* [Bitwarden password manager](https://bitwarden.com/) Really free and open source
 * [Passwords strategy](http://www.safepasswords.org/) Don’t trust a password manager
+
+
+## GPS
+
+* [GPS Coordinates](https://gps-coordinates.org/)
