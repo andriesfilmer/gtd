@@ -168,13 +168,14 @@ A neat filtering trick using the 'nl' linux/unix program.
 
 ## Plugins
 
-* [Vim-rails](https://github.com/tpope/vim-rails) - Easy navigation of the Rails directory structure. `gf`
-* [TagBar](https://github.com/majutsushi/tagbar) - I use F9 mapping in my .vimrc
+* [NerdTree](https://github.com/scrooloose/nerdtree) - NERDTreeToggle -> F8 mapping
+* [TagBar](https://github.com/majutsushi/tagbar) -  TagbarOpenAutoClose -> F9 mapping
+* [Vim-rails](https://github.com/tpope/vim-rails) - Easy navigation of the Rails directory structure -> `gf`
 * [Emmet tutorial](https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL)
 * [gnupg.vim](http://www.vim.org/scripts/script.php?script_id=661) - Add in  .bashrc `export GPG_TTY=tty`
-* [Closetag](https://github.com/alvan/vim-closetag)
 * [Ctrlp](https://github.com/kien/ctrlp.vim) - Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
-* [Markdown](https://github.com/JamshedVesuna/vim-markdown-preview)
+* [Markdown](https://github.com/JamshedVesuna/vim-markdown-preview) - :packadd vim-markdown-preview -> Ctrl-p
+* [Closetag](https://github.com/alvan/vim-closetag)
 
 ## Links
 
