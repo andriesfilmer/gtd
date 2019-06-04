@@ -1,7 +1,3 @@
-" To disable a plugin, add it's bundle name to the following list
-"let g:pathogen_disabled = ['YouCompleteMe']
-"execute pathogen#infect()
-
 filetype plugin indent on
 syntax on
 
