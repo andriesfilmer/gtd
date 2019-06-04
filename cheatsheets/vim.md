@@ -168,16 +168,15 @@ A neat filtering trick using the 'nl' linux/unix program.
 
 ## Plugins
 
-* [Ruby.vim -Must read this artile](http://biodegradablegeek.com/2007/12/using-vim-as-a-complete-ruby-on-rails-ide/)
-* [Vim-rails](https://github.com/tpope/vim-rails)
-* TagBar  - I use F9 mapping in my .vimrc
+* [Vim-rails](https://github.com/tpope/vim-rails) - Easy navigation of the Rails directory structure. `gf`
+* [TagBar](https://github.com/majutsushi/tagbar) - I use F9 mapping in my .vimrc
 * [Emmet tutorial](https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL)
 * [gnupg.vim](http://www.vim.org/scripts/script.php?script_id=661) - Add in  .bashrc `export GPG_TTY=tty`
 * [Closetag](https://github.com/alvan/vim-closetag)
+* [Ctrlp](https://github.com/kien/ctrlp.vim) - Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 * [Markdown](https://github.com/JamshedVesuna/vim-markdown-preview)
 
 ## Links
 
-* [Search & replace examples](http://rayninfo.co.uk/vimtips.html) (Rayninfo.co.uk)
 * [Vimcasts](http://vimcasts.org/)
 * [Let Vim Do the Typing - Video](https://www.youtube.com/watch?v=3TX3kV3TICU)

@@ -45,7 +45,7 @@ Als u veel gebruik maakt van speciale karakters zijn de volgende oplossingen wel
 Toetsenboord layout 'Engels (USA, international AltGR dode toetsen)'
 U kunt uw toestenbord indeling wijzigen in 'Engels (USA, international AltGr dode toetsen)'. Hierdoor kunt u snel en makkelijk meerdere bijzondere karakters gebruiken. Door de toets 'Alt Gr' in gedrukt te houden (rechts naast de spatiebalk) en eventueel in combinatie met de 'Shift' toets, kunt u bijzondere karakters in uw tekst zetten. Op de afbeelding van de toestenbord lay-out (hieronder) ziet u waar de letters zich bevinden.
 
-![Keyboard USA-International (AltGr-dead-keys)](http://content.filmer.net/github/cheatsheets/ubuntu.nl.md/Keyboard_USA-International_(AltGr-dead-keys).png)
+![Keyboard USA-International (AltGr-dead-keys)](https://nextcloud.filmer.nl/data/andries/files/Public/github/gtd/Keyboard_USA-International_(AltGr-dead-keys).png)
 
 **Keyboard USA International (AltGr-dead-keys)**
 

@@ -1,11 +1,12 @@
 " To disable a plugin, add it's bundle name to the following list
 "let g:pathogen_disabled = ['YouCompleteMe']
-execute pathogen#infect()
+"execute pathogen#infect()
 
 filetype plugin indent on
 syntax on
 
 "set cursorline                                     " highlight current line. Is slower :-)
+"set foldmethod=syntax                              " Folds are defined by syntax highlighting
 set encoding=utf-8
 set expandtab                                      " On pressing tab, insert 4 spaces
 set hlsearch                                       " highlight all search matches
@@ -58,6 +59,7 @@ nmap <C-Left> :tabp<CR><CR>                         " Go to previous tab.
 
 cmap w!! w !sudo tee % >/dev/null                  " Allow saving of files as sudo when I forgot to start vim using sudo.
 
+"nnoremap  za                                       " Map folding to Spacebar
 
 " NERDTree options
 "------------------------------------------------------------------------------
