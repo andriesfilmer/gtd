@@ -187,6 +187,22 @@ Test dkim key:
 
 Or check/test you DKIM on several sites, for example: [dkimcore.org](http://dkimcore.org/tools/keycheck.html)
 
+## Greylisting
+
+   apt install postgrey
+
+Enable this service in `/etc/postfix/main.cf`
+
+    smtpd_recipient_restrictions = permit_mynetworks,
+                                   permit_sasl_authenticated,
+                                   reject_unauth_destination,
+                                   check_policy_service inet:127.0.0.1:10023
+                                   ....
+
+Change delay to one minuut instead of 5 minutes in `/etc/default/postgrey`
+
+    POSTGREY_OPTS="--inet=127.0.0.1:10023 --delay=60"
+
 ## DMARC
 
 Greate a [dmarc](https://dmarc.org/) record for each domain for who we are sending mail.

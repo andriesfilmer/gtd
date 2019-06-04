@@ -31,10 +31,10 @@ let g:snips_author="Andries Filmer"                " Assign a global variable fo
 let g:closetag_filenames = '*.html,*.html.erb'     " Plugin closetag enabled for html.erb'
 
 " https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim
-"if !empty(glob("~/.vim/colors/PaperColor.vim"))
-"  colorscheme PaperColor
-"  set background=dark
-"endif
+if !empty(glob("~/.vim/colors/PaperColor.vim"))
+  colorscheme PaperColor
+  set background=dark
+endif
 
 " Mappings
 "------------------------------------------------------------------------------

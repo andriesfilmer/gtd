@@ -26,7 +26,8 @@
 ## Command mode
 
     dd                                 " cut and copy current line
-    yy                                 " copy current line
+    :19y                               " copy line 19
+    :19t33                             " copy line 19 to 33
     u                                  " undo
     Ctrl+r                             " redo
     .                                  " repeat
@@ -96,6 +97,13 @@ Press `:`
     Ctrl-i                             " Jump back to previous (dril in)
     Ctrl-o                             " Jump back to previous (dril out)
     Ctrl-t                             " Jump back to previous (?)
+
+## Folding
+
+    zi                                 " Switch folding on or off
+    za                                 " Toggle current fold open/closed
+    zR                                 " Open all folds
+    zM                                 " Close all folds
 
 ## Windows
 
