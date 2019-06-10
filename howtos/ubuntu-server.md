@@ -188,4 +188,47 @@ You can make a crontab, when the file system is >80% full we'd like to receive a
 
     0 9 * * * if [ "`df -l |grep '[8|9][0-9]\%'`" ]; then `df -h|/usr/bin/mail -s 'File system > 80\% full' root` ; fi
 
+## Lynis
+Auditing, system hardening, compliance testing
+
+    cd /usr/local
+    git clone https://github.com/CISOfy/lynis.git
+    cd lynis; ./lynis audit system
+
+## AIDE (Advanced Intrusion Detection Environment)
+
+    apt install aide
+
+Change the rules configuration `/etc/aide/aide.conf`.
+
+    # Exclude directories
+    !/lib/
+    !/var/
+    !/proc/
+    !/dev/
+
+After making configuration changes.
+
+    update-aide.conf
+
+Run for new (first) db
+
+    aideinit -y -f
+
+Copy db
+
+    cp /var/lib/aide/aide.db.new /var/lib/aide/aide.db
+    touch /bin/date # to check integritry
+    aide -c /etc/aide/aide.conf --check
+    aide -c /etc/aide/aide.conf --update
+
+Change the general configuration `/etc/default/aide`
+
+    MAILTO=andries@filmer.nl
+    QUIETREPORTS=yes
+    COMMAND=update
+    COPYNEWDB=yes
+
+AIDE sets up itself a daily execution script `/etc/cron.daily/aide`
+
 

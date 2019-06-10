@@ -1,5 +1,25 @@
 # Video and Image tools
 
+## Compress images
+
+### PNG files
+
+    apt install pngquant
+    pngquant --ext .compressed.png image.png
+    pngquant 8 image.png -o image-8-colors.png
+
+### JPG files
+
+    apt install jpegoptim
+
+Run option -n to see results.
+
+    jpegoptim -m 50 --strip-all image.jpg
+
+### Online
+
+You can use also the [online compressor](https://compressor.io/)
+
 ## ffmpeg
 
 Convert webm to mp4
@@ -28,24 +48,6 @@ When creating screencasts disable Flipping.
     sudo apt-get install imagemagick
     find . -maxdepth 1 -iname "*.jpg" -print0 | xargs -0 -l -i convert -resize 1024x768 -quality 50 -strip {} /tmp/output/{}
 
-### Compress image
-
-    mogrify -filter Triangle \
-            -define filter:support=2 \
-            -unsharp 0.25x0.25+8+0.065 \
-            -dither None \
-            -posterize 136 \
-            -quality 82 \
-            -define jpeg:fancy-upsampling=off \
-            -define png:compression-filter=5 \
-            -define png:compression-level=9 \
-            -define png:compression-strategy=1 \
-            -define png:exclude-chunk=all \
-            -interlace none \
-            -colorspace sRGB *.png
-
-* [Online compressor](https://compressor.io/)
-
 ### Auto orientation
 
 Remove orientation
@@ -58,6 +60,7 @@ If you use ImmageMagick to make a fotoalbum or make a overview with thumbs you n
     for i in *.JPG;do convert -auto-orient $i $i;done
 
 ### Crop images
+
     convert image.jpg -gravity Center -crop 50% re_image.jpg
 
 Once I had made many screenshots from Google en I wanted to crop the images without the searchbar.
@@ -65,12 +68,15 @@ Once I had made many screenshots from Google en I wanted to crop the images with
     for f in *.png ;do `convert $f -crop 1856x1175+0+190 "_$f"`;done
 
 Convert a thumbnail 80x80 with (mostly) landscape images.
+
     convert image.jpg -resize x160 -resize '160x<'   -resize 50% -gravity center  -crop 80x80+0+0 +repage image-new.jpg
 
 Convert a thumbnail 80x80 with (mostly) portrait images.
+
     convert image.jpg -resize 160x -resize 'x160<'   -resize 50% -gravity center  -crop 80x80+0+0 +repage image-new.jpg
 
 ### Make a album
+
 Overview of  images in directory
 
     montage *.jpg -geometry 200x200+10+10 index.png
@@ -85,5 +91,5 @@ We can also use Nautilus extention which uses ImageMagick.
 
     sudo apt-get install nautilus-image-converter
 
-Login out/in (or killall nautilus) to get the new options when right-click on a image in Nautilus 
+Login out/in (or killall nautilus) to get the new options when right-click on a image in Nautilus
 Now you can resize or scale images with a mouse ;)

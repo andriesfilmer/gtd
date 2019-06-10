@@ -77,5 +77,17 @@ If you have lots of files to restore you can use this which will re-checkout all
 
     git diff --name-status | sed -n '/^D/ s/^D\s*//gp' | xargs git checkout origin/master
 
+## Submodules
+With the error: 'projectfolder' already exists in the index". You need to remove your submodule git repository (projectfolder in this case) first for git path.
+
+    rm -rf projectfolder
+    git rm -r projectfolder
+
+and then add submodule
+
+git submodule add <git_submodule_repository> projectfolder
+
+* [Git Tools - Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
+
 ## Live preview from github
 * [htmlpreview.github.io](http://htmlpreview.github.io/)
