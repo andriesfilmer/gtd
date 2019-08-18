@@ -124,5 +124,5 @@ highlight ExtraWhitespace ctermbg=1 guibg=red      " Highlight trailing spaces i
 match ExtraWhitespace /\s\+$/
 
 autocmd Filetype markdown setlocal syntax=OFF       " Bugfix: Prevent Markdown highlighting for underscores
-let vim_markdown_preview_hotkey='<C-m>'             " Remap becaus plugin ctrlp has also <C-p>
+"let vim_markdown_preview_hotkey='<C-m>'             " Remap becaus plugin ctrlp has also <C-p>
 

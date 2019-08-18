@@ -105,7 +105,7 @@ And then try restarting nginx again:
 
 ## Letsencrypt certificates
 
-    apt install letsencrypt
+Install: <https://certbot.eff.org/lets-encrypt/ubuntubionic-nginx>
 
 Create a certificate
 

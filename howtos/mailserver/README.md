@@ -207,7 +207,7 @@ Change delay to one minuut instead of 5 minutes in `/etc/default/postgrey`
 
 Greate a [dmarc](https://dmarc.org/) record for each domain for who we are sending mail.
 
-    _dmarc    TXT   "v=DMARC1; p=none; rua=mailto:postmaster@domain.nl;"
+    _dmarc    TXT   "v=DMARC1; p=quarantine; rua=mailto:postmaster@domain.nl;"
 
 * [Control you DMARC process with dmarcian](https://dmarcian.com/)
 
