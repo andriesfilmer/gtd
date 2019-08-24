@@ -43,10 +43,10 @@ When creating screencasts disable Flipping.
 
 ## ImageMagic
 
-### Convert order and resize Images on the commandline
+### Resize Images on the commandline
 
     sudo apt-get install imagemagick
-    find . -maxdepth 1 -iname "*.jpg" -print0 | xargs -0 -l -i convert -resize 1024x768 -quality 50 -strip {} /tmp/output/{}
+    mogrify -resize 1280x853 *.jpg
 
 ### Auto orientation
 
