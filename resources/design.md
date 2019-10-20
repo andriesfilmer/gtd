@@ -1,3 +1,20 @@
+- [Design resources](#design-resources)
+  * [Design principles](#design-principles)
+  * [UI frameworks](#ui-frameworks)
+  * [CSS](#css)
+    + [Preprocessors](#preprocessors)
+    + [CSS Examples](#css-examples)
+    + [CSS Articles](#css-articles)
+  * [Icons, mockups, Wireframes, UI kits](#icons-mockups-wireframes-ui-kits)
+  * [Icons](#icons)
+    + [Articles about icons](#articles-about-icons)
+  * [Favicons](#favicons)
+    + [Articles about favicons an apple-touch-icons](#articles-about-favicons-an-apple-touch-icons)
+  * [Photos](#photos)
+    + [Free stock photos](#free-stock-photos)
+
+<!-- END TOC -->
+
 # Design resources
 
 ## Design principles
@@ -7,10 +24,22 @@
 
 ## UI frameworks
 
-* [Bootstrap](http://getbootstrap.com/css/)
-* [Foundation](http://foundation.zurb.com/docs/)
+* [Bootstrap](https://getbootstrap.com/) | Build responsive, mobile-first projects
+* [Foundation](http://foundation.zurb.com/docs/) - [material version](https://github.com/mikolajdobrucki/material-foundation]
+* [Materialize Css](https://materializecss.com/)
+* [Formstone](https://formstone.it)
+* [UIkit](https://getuikit.com/)
+* [Element](https://element.eleme.io/) | A Desktop UI Library for Vue, React, Angular
+* [Material design lite](https://getmdl.io/)
+* [VitalCss](https://vitalcss.com/)
+* [PureCss](https://purecss.io)
 * [JuicedCss](http://juicedcss.com/) - a Flexbox CSS Framework
 * [BlazeUI](https://www.blazeui.com/)
+* [Vuetify](https://vuetifyjs.com/) | Material Component Framework for Vue
+* [Quasar](http://quasar-framework.org/) | For Vue
+* [Weex](https://weex-project.io/index.html) | For Vue
+* [Semantic](https://semantic-ui.com/) | For React, Meteor, Ember
+
 
 ## CSS
 
@@ -88,4 +117,3 @@
 * [Gratisography](http://www.gratisography.com/)
 * [SplitShare](http://splitshire.com/)
 * [IM Free](http://www.imcreator.com/free)
-

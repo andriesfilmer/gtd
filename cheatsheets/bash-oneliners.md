@@ -109,6 +109,11 @@ Change all the php-files with the content 'someString' to 'some_string'
     find ./dirname -name "*.php" | xargs perl -pi -e 's/someString/some_string/g'
 
 
+## diff
+Difference between two file directories
+
+    diff -y <(tree app/assets/stylesheets/sites/dosc/) <(tree app/assets/stylesheets/sites/skell/)
+
 ## Mix
 
 Manupulate numbers

@@ -71,7 +71,7 @@ Enter passphrase twice. Then make a file system:
 
     mkfs.ext4 /dev/mapper/backup
 
-Add a key:
+Add a key (password in `backup-key-file`):
 
     cryptsetup luksAddKey /dev/sda1 /tmp/backup-key-file
     cryptsetup luksAddKey /dev/disk/by-uuid/247ad289-dbe5-4419-9965-e3cd30f0b080 /tmp/backup-key-file

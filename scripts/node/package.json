@@ -3,6 +3,6 @@
   "description": "Getting things done",
   "version": "0.0.1",
   "dependencies": {
-    "markdown-toc": "^1.2.0",
+    "markdown-toc": "^1.2.0"
   }
 }
