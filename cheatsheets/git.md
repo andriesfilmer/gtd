@@ -3,7 +3,7 @@
 * [Github bootcamp](https://help.github.com/categories/54/articles)
 * [Got 15 minutes and want to learn Git?](http://try.github.io/levels/1/challenges/1) Very good!
 * [Git in 5 minutes](http://classic.scottr.org/presentations/git-in-5-minutes)
-
+* [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
 
 ## Create a new repository on the command line
 Create a new repository online: [https://github.com/andriesfilmer](https://github.com/andriesfilmer) -> Repositories -> New
@@ -32,7 +32,7 @@ Check with find
 
     find . -not -iwholename '*node_modules*' -not -iwholename '*.git*' -not -iwholename '*.sass-cache*' -ls
 
-### Change name and email, remember password 
+### Change name and email, remember password
     git config --global user.name "Your Name"
     git config --global user.email you@example.com
     git config --global credential.helper 'cache --timeout=3600'

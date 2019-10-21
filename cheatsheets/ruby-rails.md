@@ -130,6 +130,7 @@ All rake tasks will then be available to you. Usage
 
 ## Resources
 
+* [Navigating Ruby Projects in VIM]( http://www.elonflegenheimer.com/2012/09/16/navigating-ruby-projects-in-vim.html)
 * [Help and documentation for the Ruby programming language](http://www.ruby-doc.org)
 * [Ruby on Rails](http://rubyonrails.org)
 * [Ruby on Rails Guides](http://guides.rubyonrails.org)

@@ -25,14 +25,14 @@
 ## UI frameworks
 
 * [Bootstrap](https://getbootstrap.com/) | Build responsive, mobile-first projects
-* [Foundation](http://foundation.zurb.com/docs/) - [material version](https://github.com/mikolajdobrucki/material-foundation]
-* [Materialize Css](https://materializecss.com/)
+* [Foundation](http://foundation.zurb.com/docs/) - [material version](https://github.com/mikolajdobrucki/material-foundation)
+* [Materialize Css](https://materializecss.com/) - A modern responsive front-end framework based on Material Design
 * [Formstone](https://formstone.it)
 * [UIkit](https://getuikit.com/)
 * [Element](https://element.eleme.io/) | A Desktop UI Library for Vue, React, Angular
 * [Material design lite](https://getmdl.io/)
-* [VitalCss](https://vitalcss.com/)
-* [PureCss](https://purecss.io)
+* [VitalCss](https://vitalcss.com/) - A minimally invasive CSS framework
+* [PureCss](https://purecss.io) - A set of small, responsive CSS modules
 * [JuicedCss](http://juicedcss.com/) - a Flexbox CSS Framework
 * [BlazeUI](https://www.blazeui.com/)
 * [Vuetify](https://vuetifyjs.com/) | Material Component Framework for Vue

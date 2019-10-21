@@ -2,7 +2,8 @@
 
 ## Presentations
 
-* [Reveal.Js](https://revealjs.com/)
+* [Reveal.Js](https://revealjs.com/) - The html presentation framework
+* [Draw.io](https://www.draw.io) - Provide free, high quality diagramming online
 
 ## Format
 
