@@ -171,11 +171,15 @@ A neat filtering trick using the 'nl' linux/unix program.
 * [NerdTree](https://github.com/scrooloose/nerdtree) - NERDTreeToggle -> F8 mapping
 * [TagBar](https://github.com/majutsushi/tagbar) -  TagbarOpenAutoClose -> F9 mapping
 * [Vim-rails](https://github.com/tpope/vim-rails) - Easy navigation of the Rails directory structure -> `gf`
-* [Emmet tutorial](https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL)
+* [Vim-signify](https://github.com/mhinz/vim-signify) - Indicate added, modified and removed lines
 * [gnupg.vim](http://www.vim.org/scripts/script.php?script_id=661) - Add in  .bashrc `export GPG_TTY=tty`
 * [Ctrlp](https://github.com/kien/ctrlp.vim) - Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
-* [Markdown](https://github.com/JamshedVesuna/vim-markdown-preview) - :packadd vim-markdown-preview -> Ctrl-p
-* [Closetag](https://github.com/alvan/vim-closetag)
+* [Markdown](https://github.com/JamshedVesuna/vim-markdown-preview) - markdown-preview -> Ctrl-p
+* [Emmet tutorial](https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL)
+
+Packages added in the `.vim/pack/bundle/opt` folder may be loaded using
+
+    :packadd packagename
 
 ## Links
 
