@@ -76,6 +76,7 @@ Press `:`
     :%s/^\s\+//                        " More rarely, you might want to delete whitespace at the beginning of each line
     :g/sometext/d                      " Delete all lines containing `sometext`
     :g/^\(#\|$\)/d                     " Remove comment lines
+    :g/^$/d                            " Delete all empty lines:
     :'<,'>s/foo/bar/g                  " Replace words in  visual mode.
     :%s/<Ctrl-V><Ctrl-M>/Ctrl-M/g      "Change file format Windows to Unix, where <Ctrl-V><Ctrl-M> means type Ctrl+V then Ctrl+M.
 
@@ -84,13 +85,22 @@ Press `:`
     :arg **/*.js                           " Set all *.js files and below current directory in :arg
     :argdo %s/pattern/replace/gce | update " Confirm updates in recursieve files
 
+## Registers
+
+    :reg                               " See registers
+    "ay                                " Yank selected text in register 'a'.
+    "ap                                " Past selected text form register 'a'.
+    ctrl-ra                            " Past register a (in insert mode)
+    ctrl-^                             " Go to last edit file #"
+
 ## Completions
 
-    Ctrl-p                             " Completion for al words from this file, other open files and registers.
-    Ctrl-x + Ctr-]                     " Completion for words from ctags (if installed)
+    Ctrl-p                             " Completion for al (back) words from this file, other open files and registers.
+    Ctrl-n                             " Completion for al (forward) words from this file, other open files and registers.
+    Ctrl-x + Ctr-]                     " Completion for tags
     Ctrl-x + Ctr-f                     " Completion for filenames
     Ctrl-x + Ctr-l                     " Completion for lines
-    Ctrl-x + Ctr-o                     " Completion for methods (ominfunction must be on)
+    Ctrl-x + Ctr-o                     " Completion for methods (omnifunction must be on)
 
 ## Jumps in file
 

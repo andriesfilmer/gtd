@@ -1,7 +1,7 @@
 filetype plugin indent on
 syntax on
 
-"set cursorline                                     " highlight current line. Is slower :-)
+"set cursorline                                     " highlight current line. Is slower :-(
 "set foldmethod=syntax                              " Folds are defined by syntax highlighting
 set encoding=utf-8
 set expandtab                                      " On pressing tab, insert 4 spaces
@@ -11,8 +11,8 @@ set incsearch                                      " Set increase search,	Search
 set laststatus=2                                   " first, enable status line always
 set list                                           " See end of line's
 set list listchars=tab:»·,trail:·                  " Make tabs visual: ».......
-set number                                         " Set line numbers, default commented out
-set nocompatible                                    " don't need to be compatible with old vim
+set relativenumber                                 " Set line numbers, default commented out
+set nocompatible                                   " don't need to be compatible with old vim
 set omnifunc=syntaxcomplete#Complete               " Omni completion provides smart autocompletion for programs
 set pastetoggle=<F4>                               " Toggle paste mode (no autoindenting) with F4
 set scrolloff=2                                    " minimum lines above/below cursor
