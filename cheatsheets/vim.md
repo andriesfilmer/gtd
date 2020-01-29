@@ -31,8 +31,9 @@
     u                                  " undo
     Ctrl+r                             " redo
     .                                  " repeat
-    :ls                                " Show buffers
-    :vertical sb 3                     " Open buffer 3 in split window
+    *                                  " Goto next word under cursor
+    #                                  " Goto previeus word under cursor
+    ctr]                               " Goto tag in buffers (ctr-o) togo back.
     m{a-z}                             " Mark position as {a-z} E.g. ma
     '{a-z}                             " Move to mark position {a-z} E.g. 'a
     ''                                 " Move to mark previous position
@@ -40,7 +41,8 @@
     ci"                                " Change In-to "
     ci)                                " Change In-to )
     ci]                                " Change In-to ]
-    :364,379t.                         " Copy lines right under your current line
+    :ls                                " Show buffers
+    :vertical sb 3                     " Open buffer 3 in split window
 
 ## Visual mode
 

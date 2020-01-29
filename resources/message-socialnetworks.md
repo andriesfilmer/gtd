@@ -1,24 +1,25 @@
 ## Messengers
 
-I'm don't like to promoot centralized communication service. Things like IRC, XMPP, GNU Social and Diaspora is the way to go in my opinion. You need a public protocol, at least one open source implementation. Otherwise, it's just not worth having. Anyway heer is a short list.
+I'm don't like to promoot centralized communication service. Things like IRC, XMPP, GNU Social and Diaspora is the way to go in my opinion. You need a public protocol, at least one open source implementation. Otherwise, it's just not worth having. Anyway here is a short list.
+
 ### Convos
 Convos is the simplest way to use IRC. It is always online, and accessible to your web browser, both on desktop and mobile. Run it on your home server, or cloud service easily. 
 
 * [Convos.by](https://convos.by/)
 
 ### Whatsapp
-Eigenaar is Facebook
+Owner is Facebook
 
 * [Send WhatsApp messages via PHP using WhatsAPI](http://blog.philippheckel.com/2013/07/07/send-whatsapp-messages-via-php-script-using-whatsapi/)
 
 ### Threema
-Populaire messenger met bewezen encryptie en groepchats, foto's en video's versturen.
+Populair messenger with encryptie en groupchats, send photo's and video's.
 
 ### Telegram
-Veel clients opensource messengers en is daarom ook platform-onafhankelijk.
+Opensource messengers available but still centralized.
 
 ### TextSecure
-Van Open Whisper Systems is gratis, opensource en gebruikt end-to-end encryptie
+From Open Whisper Systems and is free, opensource and end-to-end encryption
 
 ### Wickr
 [Trusted by world leaders, executives, journalists, human rights activists and your friends](https://www.wickr.com/)
@@ -30,10 +31,15 @@ Client is open source. Most save chatapp available.
 
 
 ### Bleep
-BitTorrent ontwikkelaars zitten achter Bleep
+
+BitTorrent developers
 
 ### Allo
-Van Google. Alleen op smartphones. Google kijkt mee.
+
+From Google. Only on smartphones.
+
+### Dino
+A modern open-source chat client for the desktop. It focuses on providing a clean and reliable Jabber/XMPP experience while having your privacy in mind.
 
 ## Socialnetworks
 

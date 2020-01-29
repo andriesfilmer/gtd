@@ -55,3 +55,7 @@ Password
 
     sudo -u www-data php occ passwords:backup:restore 2019-01-18_15-56-11
 
+
+### Upgrade
+
+    sudo -u www-data php occ upgrade -vv
