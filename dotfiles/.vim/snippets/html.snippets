@@ -188,3 +188,12 @@ snippet table
 	</table>${4}
 snippet textarea
 	<textarea name="${1:Name}" rows="${2:8}" cols="${3:40}">${4}</textarea>${5}
+
+
+# html.erb
+snippet lang
+	t('${1:activerecord.attributes.}')
+snippet lang=
+	<%= t('${1:activerecord.attributes.}') %>
+snippet contt=
+	<%= content_tag :${1:div}, t('${2:activerecord.attributes.}') %>

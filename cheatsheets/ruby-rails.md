@@ -66,6 +66,11 @@ Have todo some testing with Puma.
 * [railsapps.github.io - Rails-javascript-include-external](http://railsapps.github.io/rails-javascript-include-external.html)
 
 ## Rails console
+
+[View output as ascii tables and trees](https://github.com/cldwalker/hirb/tree/master#readme)
+
+    Hirb.enable
+
 The y method is a handy way to get some pretty YAML output.
 
     y Model.all

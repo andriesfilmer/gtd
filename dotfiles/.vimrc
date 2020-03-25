@@ -23,6 +23,7 @@ set tabstop=4                                      " show existing tab with 4 sp
 set ts=2                                           " set tab indent to 2 spaces
 set wildmenu                                       " enable bash style tab completion
 set wrap                                           " Wrapping on, default commented out
+set clipboard=unnamedplus                          " Copy to system clipboard (Only vim-gtk)
 
 let g:snips_author="Andries Filmer"                " Assign a global variable for snippets
 let g:closetag_filenames = '*.html,*.html.erb'     " Plugin closetag enabled for html.erb'

@@ -120,8 +120,9 @@ Press `:`
 ## Windows
 
     :sp                                " split window horizontal
-    :vsp                               " split window vertical
+    :vs                                " split window vertical
     :vertical resize 50                " To resize the current window to exactly 30 characters wide.
+    :set scrollbind                    " compare two files on same line with scroll in :vs
 
 ## Macros
 
@@ -164,9 +165,10 @@ Put your options under xkb-options as a list. Ex: ['caps:escape','..other..']
 Or just run `setxkbmap -option caps:escape` but this vanishes after reboot.
 
 ### Numbering lines in a file
-A neat filtering trick using the 'nl' linux/unix program.
+A neat filtering trick using the 'nl' for adding linenumbers.
 
-    :%! nl -ba
+    :%! nl -ba                           " Whole file
+    :'<,'>! nl -ba                       " Visual selection
 
 ### Tabs and Spaces
 

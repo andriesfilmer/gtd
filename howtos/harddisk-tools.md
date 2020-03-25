@@ -52,8 +52,7 @@ The UUID method is the most stable one as other ID methods can change if you ren
 
     udisks --mount /dev/disk/by-uuid/70439c63-de2c-4319-a832-0dee5ea05fc5
 
-I use this in crontab en mount the disk just voor the night during backup for my remote servers.
-
+I use this in crontab en mount the disk just voor the night during backup for my remote servers
 ## mdadm
 
     sudo mdadm --assemble --scan
@@ -63,7 +62,7 @@ I use this in crontab en mount the disk just voor the night during backup for my
  `sudo apt-get install cryptsetup`
 
 First create a partition with `fdisk`. In this example we use `sda1`.
-You can use the GUI disk utility to create a -> 'luks + ext4') partition or:
+You can also use the GUI disk utility to create a -> 'luks + ext4') partition or better:
 
     cryptsetup -y -v luksFormat /dev/sda1
 
@@ -71,15 +70,15 @@ Enter passphrase twice. Then make a file system:
 
     mkfs.ext4 /dev/mapper/backup
 
-Add a key (password in `backup-key-file`):
+Add a key (password in `luks-disk-key-file`):
 
-    cryptsetup luksAddKey /dev/sda1 /tmp/backup-key-file
-    cryptsetup luksAddKey /dev/disk/by-uuid/247ad289-dbe5-4419-9965-e3cd30f0b080 /tmp/backup-key-file
+    cryptsetup luksAddKey /dev/sda1 /tmp/luks-disk-key-file
+    cryptsetup luksAddKey /dev/disk/by-uuid/247ad289-dbe5-4419-9965-e3cd30f0b080 /tmp/luks-disk-key-file
 
 To unlock and lock a LUKS partition
 
-    cryptsetup luksOpen /dev/sda1 backup --key-file=/tmp/backup-key-file
-    cryptsetup luksOpen /dev/disk/by-uuid/247ad289-dbe5-4419-9965-e3cd30f0b080 backup --key-file=/tmp/backup-key-file
+    cryptsetup luksOpen /dev/sda1 backup --key-file=/tmp/luks-disk-key-file
+    cryptsetup luksOpen /dev/disk/by-uuid/247ad289-dbe5-4419-9965-e3cd30f0b080 backup --key-file=/tmp/luks-disk-key-file
     mount /dev/mapper/backup /mnt/backup
     -
     umount /mnt/backup
@@ -89,6 +88,11 @@ See how many slots are taken:
 
     cryptsetup luksDump /dev/sda1
     cryptsetup luksRemoveKey /dev/sda1
+
+Label the partion
+
+    cryptsetup config /dev/sdb1 --label Backup                        # Does not work :-] Maybe only on creation?
+    e2label /dev/mapper/247ad289-dbe5-4419-9965-e3cd30f0b080 Backup   # Only after it has been mounted
 
 
 ## Shred - Erase harddisk
