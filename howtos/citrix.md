@@ -1,26 +1,23 @@
 ## Citrix Client op Ubuntu
 
-Als je voor je werk met een Citrix-client een connectie wilt maken wordt er, via het adres waar je moet inloggen, een 'Citrix-Client ter download aangeboden (linuxx86-11.xxx.xxx.tar.gz. Dit bestand moet je eerst uitpakken en installeren.
+Download Tarball for [Citrix Workspace for Linux](https://www.citrix.com/nl-nl/downloads/workspace-app/linux/workspace-app-for-linux-latest.html)
 
-## De Citrix-client installeren.
+   cd ./Downloads
+   tar -xzf linuxx64-xx.xxx.tar.gz .
+   sudo ./setupwfc
 
-Open een terminal en ga naar de directorie waar je deze hebt uitgepakt. Bijvoorbeeld:
-    cd $USER/Downloads/
+Installation Directory `/opt/Citrix/ICAClient`
 
-Voor daarna het onderstaande commando uit en volg de instructies in het scherm om de client te installeren.
-    ./setupwfc
+## Certificates
 
-Als je dan met Firefox een connectie maakt kan het zijn dat je de volgende error krjigt:<br>''(let op dat deze niet op de achtergrond staat)''
+If you make a connection with your browser you might get the following error: ''(make sure it's not in the background)''
 
-## You have not chosen to trust "addTrust external CA Root", the issuer of the server's security certificate (SSL error 61)
+You have not chosen to trust "addTrust external CA Root", the issuer of the server's security certificate (SSL error 61)
+The Citrix client complains about some missing certificates.
 
+    cp /usr/share/ca-certificates/mozilla/* /opt/Citrix/ICAClient/keystore/cacerts/
 
-Open dan een terminal en voer het volgende commando uit.
-
-    sudo cp /usr/share/ca-certificates/mozilla/* /home/''path-to-application''/ICAClient/linuxx86/keystore/cacerts/ 
-
-## x86 client - requires OpenMotif v.2.3.1
+## x86 client - requires OpenMotif
 
     sudo apt-get install libmotif3
 
-Daarna kon ik wel een verbinden maken.
