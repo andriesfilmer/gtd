@@ -104,12 +104,6 @@ Press `:`
     Ctrl-x + Ctr-l                     " Completion for lines
     Ctrl-x + Ctr-o                     " Completion for methods (omnifunction must be on)
 
-## Jumps in file
-
-    Ctrl-i                             " Jump back to previous (dril in)
-    Ctrl-o                             " Jump back to previous (dril out)
-    Ctrl-t                             " Jump back to previous (?)
-
 ## Folding
 
     zi                                 " Switch folding on or off
@@ -121,8 +115,8 @@ Press `:`
 
     :sp                                " split window horizontal
     :vs                                " split window vertical
-    :vertical resize 50                " To resize the current window to exactly 30 characters wide.
-    :set scrollbind                    " compare two files on same line with scroll in :vs
+    :vertical resize 50                " To resize the current window to exactly 50 characters wide.
+    :set scrollbind cursorbind cursorline  " compare two files on same line with scroll in :vs
 
 ## Macros
 
@@ -137,9 +131,10 @@ Press `:`
 
 Now you can jump from file to file:
 
-    ctrl-]                               " Jump to class (in other file)
-    ctrl-o                               " Jump Out (back)
-    ctrl-i                               " Jump In (again)
+    ctrl-]                             " Jump to class (in other file)
+    ctrl-o                             " Jump Out (back)
+    ctrl-i                             " Jump In (again)
+    ctrl-t                             " Jump back to previous (?)
 
 ## Spell
 
@@ -179,6 +174,13 @@ A neat filtering trick using the 'nl' for adding linenumbers.
 2 - Convert spaces to tabs
     :set noexpandtab
     :%retab!
+
+## Printing
+
+    :set printfont=Courier\ 10           " Font size 10
+    :set printfont=courier:h10           " Height 10
+    :set printoptions=left:2pc           " Left marigin (default 10pc)
+    :ha(rdcopy)
 
 ## Plugins
 

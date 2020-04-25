@@ -6,7 +6,7 @@
 export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 # ... or force ignoredups and ignorespace
 export HISTCONTROL=ignoreboth
-export GPG_TTY=`tty` 
+export GPG_TTY=`tty`
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -102,6 +102,7 @@ alias myserver="~/gtd/perl/my-servers.pl"
 alias gitlog="git log --branches --not --remotes"
 alias gitdiff="git diff --branches --not --remotes"
 alias adb="~/Android/Sdk/platform-tools/adb"
+alias gbr="cd ~/dev/inzetrooster-app/ && br -gc :gs"
 
 genpasswd() {
 	local l=$1
@@ -128,5 +129,7 @@ export ANDROID_HOME="$HOME/Android/Sdk"
 PATH=$PATH:$ANDROID_HOME/tools; PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export PATH
+export EDITOR='vim'
 
 
+source /home/andries/.config/broot/launcher/bash/br

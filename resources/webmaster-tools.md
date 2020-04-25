@@ -1,5 +1,12 @@
-## Tools waarmee je een website kunt optimaliseren of analyseren
+## Google webmaster tools
+* [Page speed](https://developers.google.com/speed/pagespeed/insights/)
+* [Google Search Console](https://search.google.com/search-console)
+* [Google Analytics](https://analytics.google.com/analytics/web)
+* [Manage your Google Ads](https://marketingplatform.google.com/)
+* [Console Cloud](https://console.cloud.google.com/)
 
+
+## Tools waarmee je een website kunt optimaliseren of analyseren
 * [WooRank](http://www.woorank.com) is een service waarmee je een site kunt laten analyseren op meer dan 50 SEO-gerelateerde punten.
 * [Marcro testing](http://seleniumhq.org). Zie ook PHPUnit
 * [Browsershots](http://browsershots.org/) Check Browser Compatibility, Cross Platform Browser Test

@@ -11,7 +11,7 @@ set incsearch                                      " Set increase search,	Search
 set laststatus=2                                   " first, enable status line always
 set list                                           " See end of line's
 set list listchars=tab:»·,trail:·                  " Make tabs visual: ».......
-set number                                 " Set line numbers, default commented out
+set number                                         " Set line numbers, default commented out
 set nocompatible                                   " don't need to be compatible with old vim
 set omnifunc=syntaxcomplete#Complete               " Omni completion provides smart autocompletion for programs
 set pastetoggle=<F4>                               " Toggle paste mode (no autoindenting) with F4
