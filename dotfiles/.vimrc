@@ -3,6 +3,7 @@ syntax on
 
 "set cursorline                                     " highlight current line. Is slower :-(
 "set foldmethod=syntax                              " Folds are defined by syntax highlighting
+"
 set encoding=utf-8
 set expandtab                                      " On pressing tab, insert 4 spaces
 set hlsearch                                       " highlight all search matches

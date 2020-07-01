@@ -144,6 +144,10 @@ Check you configuration
     USE INFORMATION_SCHEMA;
     SELECT CONCAT("ALTER TABLE `", TABLE_SCHEMA,"`.`", TABLE_NAME, "` ROW_FORMAT=DYNAMIC;") AS MySQLCMD FROM TABLES WHERE ENGINE='innodb' AND ROW_FORMAT != 'DYNAMIC' AND ROW_FORMAT !='COMPRESSED';
 
+## MyTop
+
+[How To Use Mytop to Monitor MySQL Performance](https://www.digitalocean.com/community/tutorials/how-to-use-mytop-to-monitor-mysql-performance)
+
 ## Resources
 
 * [Mysql docs](http://dev.mysql.com/doc/).

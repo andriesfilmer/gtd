@@ -1,9 +1,10 @@
 ## Google webmaster tools
 * [Page speed](https://developers.google.com/speed/pagespeed/insights/)
 * [Google Search Console](https://search.google.com/search-console)
-* [Google Analytics](https://analytics.google.com/analytics/web)
-* [Manage your Google Ads](https://marketingplatform.google.com/)
 * [Console Cloud](https://console.cloud.google.com/)
+* [Google Analytics](https://analytics.google.com/analytics/web)
+* [Google AdSense](https://www.google.com/adsense/)
+* [Manage your Google Ads](https://marketingplatform.google.com/)
 
 
 ## Tools waarmee je een website kunt optimaliseren of analyseren

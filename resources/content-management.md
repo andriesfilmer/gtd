@@ -20,6 +20,11 @@
 * [ThemeForest](http://themeforest.net) - Premium WordPress Themes, Web Templates, Mobile Themes
 * [Template Monster](http://www.monstertemplates.com) - Web Templates, Flash Templates, Website Templates Design
 
+## Webshops
+* [Workarea](https://www.workarea.com/) - Like Magento a open source ecommerce platform.
+* [Magento](https://magento.com/) - Create shoppable experiences – every time
+* [Shopify](https://www.shopify.com/ - Not free)
+
 ## Helpdesk & Support Software
 
 * [Zamad](https://www.zammad.com/) Customer support (Open Source)

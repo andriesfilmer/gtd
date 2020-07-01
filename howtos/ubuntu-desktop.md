@@ -57,5 +57,8 @@ Check the scanner is now recognized:
 ## Keyboard layout
 
     sudo dpkg-reconfigure keyboard-configuration
+    gsettings reset org.gnome.desktop.input-sources xkb-options
+?
     sudo service keyboard-setup restart
     sudo setupcon
+

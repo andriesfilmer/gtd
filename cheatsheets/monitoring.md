@@ -15,19 +15,24 @@ There are many commandline monitoring tools. On this page you can find a list of
     pgrep apache                        # Display Only The Process IDs of apache
     ps -auxf | sort -nr -k 4 | head -10 # Find Out The Top 10 Memory Consuming Process
 
-### free - Displays Memory Usage
+### lscpu - Info about CPU's
 
-    free
+    lscpu
+    cat /proc/cpuinfo
 
 ### top - Displays the most CPU-intensive tasks
 
     top
 
+### free - Displays Memory Usage
+
+    free
+
 ### vmstat - System Activity, Hardware and System Information
 
     vmstat 3            # About processes, memory, paging, block IO, traps, and cpu activity
     vmstat -a           # About Active / Inactive Memory Pages
-    sudo vmstat -m # Display Memory Utilization Slabinfo
+    sudo vmstat -m      # Display Memory Utilization Slabinfo
 
 ### uptime - Tell How Long The System Has Been Running
 

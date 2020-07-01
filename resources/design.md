@@ -78,6 +78,7 @@
 * [Foundation Icon Fonts 3](http://zurb.com/playground/foundation-icon-fonts-3)
 * [icomoon](https://icomoon.io/) | All of our icons are designed on a precise pixel grid.
 * [Famfamfam](http://www.famfamfam.com/) | The best price there is (free!)?
+* [Unicode icons](https://graphemica.com/) | Graphemica For people who ♥ letters, numbers, punctuation, &c
 
 ### Articles about icons
 
@@ -117,3 +118,8 @@
 * [Gratisography](http://www.gratisography.com/)
 * [SplitShare](http://splitshire.com/)
 * [IM Free](http://www.imcreator.com/free)
+
+
+### Mockups
+* [Smart Mockups](https://smartmockups.com)
+

@@ -48,6 +48,16 @@ When creating screencasts disable Flipping.
     sudo apt-get install imagemagick
     mogrify -resize 1280x853 *.jpg
 
+Resize all photo as rectangle with the max width/height off the photo.
+
+    for i in *.jpg; do convert $i -gravity center -crop `identify -format "%[fx:min(w,h)]x%[fx:min(w,h)]+0+0" $i` +repage resized_$i; done
+
+Check the photos for remaming to orginal name (remove 'echo' if the output is oke).
+
+
+    for filename in resized_*.jpg; do echo mv "$filename" "${filename//resized_/}"; done
+
+
 ### Auto orientation
 
 Remove orientation
