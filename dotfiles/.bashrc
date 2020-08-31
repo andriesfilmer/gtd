@@ -110,11 +110,10 @@ genpasswd() {
       	tr -dc A-Za-z0-9 < /dev/urandom | head -c ${l} | xargs
 }
 
-#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-#
+#export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 #export PATH="$HOME/.rbenv/bin:$PATH"
 #eval "$(rbenv init -)"
-#export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+export PATH="$PATH:/usr/bin:/usr/local/bin/"
 
 PATH="/home/andries/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/andries/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;

@@ -1,30 +1,27 @@
 # Ruby & Rails
 
 ## Ruby Install
-    sudo apt-get install ruby2.5 ruby2.5-dev
+    sudo apt-get install ruby2.7 ruby2.7-dev
 
-## Rails install
+Or use rbenv <https://gorails.com/setup/ubuntu/20.04#ruby-rbenv>
 
-    sudo gem install rails
+## Gems & Bundle
+
+    sudo gem install bundler
+    bundle install rails
 
 Run rails without env.
 
     bundle exec rails
 
-## Gems & Bundle
-
-gems are the way Ruby libraries are packaged.
+Gems are the way Ruby libraries are packaged.
 
   sudo gem update
 
 Bundler is for managing gems in the app
 
+  bundle update --bundler
   bundle update
-
-### Extra installs
-
-    sudo apt-get install libsqlite3-dev # sqlite
-    sudo apt-get install libmysqlclient-dev # mysql2
 
 ## Test and production envoiroments
 

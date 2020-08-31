@@ -4,9 +4,11 @@
 
     sudo apt-get install gnome-tweak-tool
 
-## Workspace Grid (zakkak)
+## Extentions
 
-<https://extensions.gnome.org/extension/484/workspace-grid/>
+### WinTile
+
+<https://extensions.gnome.org/extension/1723/wintile-windows-10-window-tiling-for-gnome/>
 
 ## dconf-editor
 
