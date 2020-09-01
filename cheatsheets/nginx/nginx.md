@@ -151,7 +151,8 @@ In your nginx config:
     ssl_certificate_key /etc/ssl/private/yourdomain-certificate.key; # i.o. certificate.key
 
 ## PageSpeed Module
-[Build ngx_pagespeed local from source](https://modpagespeed.com/doc/build_ngx_pagespeed_from_source) and created a DEB package.
+
+[Build ngx_pagespeed local from source](https://modpagespeed.com/doc/build_ngx_pagespeed_from_source) and created a DEB package and `scp` to server.
 
     scp nginx_1.10.3-1~xenial_amd64.deb server02:/home/andries/
     cp -rp /etc/nginx /home/andries/
@@ -162,6 +163,10 @@ In your nginx config:
 To prevent your custom Nginx package from being replaced in the future I **Pinned** the version.
 
     sudo vi /etc/apt/preferences.d/nginx
+
+    Package: nginx
+    Pin: version 1.10.3-1~xenial
+    Pin-Priority: 1001
 
 * [How To Add ngx_pagespeed to Nginx on Ubuntu 14.04](https://www.digitalocean.com/community/tutorials/how-to-add-ngx_pagespeed-to-nginx-on-ubuntu-14-04)
 * [Configuring PageSpeed Filters](https://www.modpagespeed.com/doc/config_filters)

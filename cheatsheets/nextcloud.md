@@ -6,7 +6,7 @@
 
     apt install nextcloud
 
-    apt install php7.2-fpm php7.2-curl php7.2-cli php7.2-mysql php7.2-gd php7.2-iconv php7.2-xsl php7.2-json php7.2-intl php-pear php-imagick php7.2-dev php7.2-common php7.2-mbstring php7.2-zip php7.2-soap -y
+    apt install php7.4-fpm php7.4-curl php7.4-cli php7.4-mysql php7.4-gd php7.4-iconv php7.4-xsl php7.4-json php7.4-intl php-pear php-imagick php7.4-dev php7.4-common php7.4-mbstring php7.4-zip php7.4-soap -y
 
 Check if php-sock is listening
 

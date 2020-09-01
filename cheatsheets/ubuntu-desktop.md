@@ -62,3 +62,19 @@ Check the scanner is now recognized:
     sudo service keyboard-setup restart
     sudo setupcon
 
+## Display scalling
+Via de algemene instellingen kan je het voor het hele systeem aanpassen via:
+
+Settings -> Display: Scale for menu and title bars: 1.25
+
+### Firefox
+
+For firefox type in the address `about:config`.
+
+    set layout.css.devPixelsPerPx: 1.25
+
+### Thunderbird
+
+For Thunderbird go to: Prefrences -> Advanced -> Config Editor:
+
+    set layout.css.devPixelsPerPx: 1.25
