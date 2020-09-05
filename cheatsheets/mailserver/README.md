@@ -157,19 +157,35 @@ Opendkim configuration [/etc/opendkim.conf](./opendkim.conf) file.
 
 Open `/etc/default/opendkim` and add the next line (postfix runs chroot):
 
-    RUNDIR=/var/spool/postfix/var/run/opendkim
+    RUNDIR=/var/spool/postfix/run/opendkim
     SOCKET=local:$RUNDIR/opendkim.sock
     USER=opendkim
     GROUP=postfix
+    PIDFILE=$RUNDIR/$NAME.pid
+    EXTRAAFTER=
 
-    mkdir -p /var/spool/postfix/var/run/opendkim
-    chown opendkim:postfix /var/spool/postfix/var/run/opendkim
+    mkdir -p /var/spool/postfix/run/opendkim
+    chown R opendkim:postfix /var/spool/postfix/run
 
-* Notice/bug: SOCKET must be the only line, even with comments '#'!
+Openi `/etc/systemd/system/multi-user.target.wants/opendkim.service` and add next lines to [service]
+
+    User=opendkim
+    Group=postfix
+
+* Pitfall: Your changes won't be applied it you just reload your systemd-configuration files by:
+
+    cd
+    bash /lib/opendkim/opendkim.service.generate
+    systemctl daemon-reload
 
 Key generation for dkim-milter and its setup with DNS.
 
     opendkim-genkey -D /etc/postfix/dkim/ -d filmer.net -s mail
+
+Check if opendkim is running good.
+
+    journalctl --follow --unit postfix.service --unit opendkim.service
+
 
 Create a DNS record. Copy `/etc/postfix/dkim/mail.txt`.
 
