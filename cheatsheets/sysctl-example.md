@@ -9,12 +9,7 @@ net.core.rmem_max=12582912
 net.ipv4.tcp_rmem= 10240 87380 12582912
 net.ipv4.tcp_wmem= 10240 87380 12582912
 
-### IMPROVE SYSTEM MEMORY MANAGEMENT ###
-
-# Increase size of file handles and inode cache
-fs.file-max = 2097152
-
-# Do less swapping
+# If swap is enabled, do less swapping
 vm.swappiness = 10
 vm.dirty_ratio = 60
 vm.dirty_background_ratio = 2
@@ -32,12 +27,6 @@ net.ipv6.conf.default.accept_redirects = 0
 
 # Ignore Directed pings
 net.ipv4.icmp_echo_ignore_all = 1
-
-# Disable source packet routing
-net.ipv4.conf.all.accept_source_route = 0
-net.ipv6.conf.all.accept_source_route = 0
-net.ipv4.conf.default.accept_source_route = 0
-net.ipv6.conf.default.accept_source_route = 0
 
 # Ignore send redirects
 net.ipv4.conf.all.send_redirects = 0
@@ -73,9 +62,6 @@ net.core.wmem_default = 31457280
 # Maximum Socket Send Buffer
 net.core.wmem_max = 12582912
 
-# Increase number of incoming connections
-net.core.somaxconn = 4096
-
 # Increase number of incoming connections backlog
 net.core.netdev_max_backlog = 65536
 
@@ -92,5 +78,4 @@ net.ipv4.udp_rmem_min = 16384
 
 # Increase the tcp-time-wait buckets pool size to prevent simple DOS attacks
 net.ipv4.tcp_max_tw_buckets = 1440000
-net.ipv4.tcp_tw_recycle = 1
 net.ipv4.tcp_tw_reuse = 1

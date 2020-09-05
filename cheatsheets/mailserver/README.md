@@ -153,16 +153,17 @@ We also want to use [DKIM](http://www.dkim.org/), so we need to install dkim-fil
 
     sudo apt-get install opendkim opendkim-tools
 
-Opendkim configuration [/etc/opendkim.conf](./mailserver/opendkim.conf) file.
+Opendkim configuration [/etc/opendkim.conf](./opendkim.conf) file.
 
-Open `/etc/default/opendkim` and add the next line:
+Open `/etc/default/opendkim` and add the next line (postfix runs chroot):
 
-    #SOCKET="inet:8891@localhost" # Ubuntu default - listen on loopback on port 8891
-    SOCKET="local:/var/spool/postfix/var/run/opendkim/opendkim.sock"
+    RUNDIR=/var/spool/postfix/var/run/opendkim
+    SOCKET=local:$RUNDIR/opendkim.sock
+    USER=opendkim
+    GROUP=postfix
 
     mkdir -p /var/spool/postfix/var/run/opendkim
     chown opendkim:postfix /var/spool/postfix/var/run/opendkim
-
 
 * Notice/bug: SOCKET must be the only line, even with comments '#'!
 
@@ -176,9 +177,10 @@ Open Postfix main.cf file '/etc/postfix/main.cf' and append the next:
 
     # DKIM
     milter_default_action = accept
-    milter_protocol = 2
-    smtpd_milters = inet:localhost:8891
-    non_smtpd_milters = inet:localhost:8891
+    milter_protocol = 6
+    smtpd_milters = unix:/run/opendkim/opendkim.sock
+    non_smtpd_milters = unix:/run/opendkim/opendkim.sock
+
 
 Test dkim key:
 

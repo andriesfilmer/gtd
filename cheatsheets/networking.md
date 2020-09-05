@@ -2,25 +2,26 @@
 
 Some notes for networking on GNU / linux
 
-## Create a simple interface 
+## ip
 
-    ifconfig eth0 192.168.1.99 netmask 255.255.255.0 broadcast 192.168.1.255
-    route add -net 192.168.1.0 netmask 255.255.255.0 gw 192.168.1.1 eth0
+ip has shortcuts: `ip address show` is the same as `ip a s`. Check `ip help` (`ip`).
 
-## netstat
+    ip a s             # address show
+    ip -c a s          # with colors for ipnrs
+    ip -4 a s dev eth0 # only ipv4 on eth0
+    ip -br -4 a s      # Show -brief output
+    ip -0 a s dev eth0 # only mac-address on eth0
 
-    netstat -tupl  # Active Internet connections (only servers)
-    netstat -tupn  # Active Internet connections (w/o servers)
-    netstat -nat   # Active Internet connections (servers and established)
+    ip r s             # show route
+
+    ip neighbor show   # Arp
+    ip -stats -human link show
 
 ## ss – Network Statistics
 
 ss command use to dump socket statistics. It allows showing information similar to netstat.
-Please note that the netstat is mostly obsolete. Hence you need to use ss command.
 
-    ss -t -a # All TCP and UDP sockets on Linux:
-    ss -u -a
-    ss -t -a -Z # Show all TCP sockets with process SELinux security contexts:
+    ss -tulp # All TCP and UDP listen sockets
 
 ## DNS
 

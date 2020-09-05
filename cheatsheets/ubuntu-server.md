@@ -18,7 +18,7 @@ Open /etc/fail2ban/jail.conf and add your own ip's:
 
 After the install off fail2ban save the current [iptables](https://wiki.debian.org/iptables) configuration.
 
-    iptables-save > /etc/iptables.rules
+  iptables-save > /etc/iptables.rules
 
 Then add some custom rules before 'COMMIT' in '/etc/iptables.rules'
 
@@ -33,7 +33,7 @@ Reconfigure de firewall
 Create a file '/etc/network/if-pre-up.d/iptables' to make this permanent after reboot.
 
     #!/bin/sh
-    /sbin/iptables-restore < /etc/iptables.rules
+    /usr/sbin/iptables-restore < /etc/iptables.rules
 
 The file needs to be executable so change the permissions:
 
@@ -56,7 +56,6 @@ These are **my** provider blocks
     # 146.185.138.134 server05
 
     sshd: 81.204.0.0/14 84.104.0.0/14 217.62.16.0/20 84.241.192.0/18 217.62.30.97 198.211.123.93 95.85.60.187 37.139.3.138 146.185.138.134
-
 
 ### hosts.deny
 
@@ -128,7 +127,7 @@ To enable automatic updates, edit `/etc/apt/apt.conf.d/10periodic` and set the a
 
 ### Swap
 
-On digitalocean the don't have swap files enabled on default
+On digitalocean they don't have swap files enabled on default
 
 To creat as swap file of 1G
 
@@ -188,13 +187,6 @@ You can make a crontab, when the file system is >80% full we'd like to receive a
 
     0 9 * * * if [ "`df -l |grep '[8|9][0-9]\%'`" ]; then `df -h|/usr/bin/mail -s 'File system > 80\% full' root` ; fi
 
-## Lynis
-Auditing, system hardening, compliance testing
-
-    cd /usr/local
-    git clone https://github.com/CISOfy/lynis.git
-    cd lynis; ./lynis audit system
-
 ## AIDE (Advanced Intrusion Detection Environment)
 
     apt install aide
@@ -230,5 +222,22 @@ Change the general configuration `/etc/default/aide`
     COPYNEWDB=yes
 
 AIDE sets up itself a daily execution script `/etc/cron.daily/aide`
+
+
+# Ubuntu upgrade
+
+Check versions
+
+    lsb_release -a
+    uname -a
+
+    sudo apt update
+    sudo apt upgrade
+    sudo apt dist-upgrade
+    sudo reboot
+    sudo apt --purge autoremove
+    sudo apt install update-manager-core
+    sudo do-release-upgrade
+    sudo reboot
 
 
