@@ -13,8 +13,8 @@ Install [Postfix](http://www.postfix.org)
     apt-get install postfix
 
 Check my config files:
-* My [main.cf](./main.cf) file.
-* My [master.cf](./master.cf) file.
+* My [/etc/postfix/main.cf](./main.cf) file.
+* My [/etc/postfix/master.cf](./master.cf) file.
 
 ## Create virtual domain/user files
 
@@ -55,7 +55,7 @@ Install [Dovecot](http://www.dovecot.org)
     chown vmail:vmail /var/log/dovecot.log
     chown vmail:vmail /var/log/dovecot-info.log
 
-Create password file `/etc/dovecot/passwd`. If you want to store [passwords encrypted](http://wiki.dovecot.org/AuthDatabase/PasswdFile)
+Create password file `/etc/dovecot/passwd`. If you want to store [passwords encrypted](https://doc.dovecot.org/configuration_manual/authentication/passwd_file/)
 
     # This is a un-encrypted example file
     test:{PLAIN}pass::::
@@ -65,14 +65,14 @@ Create password file `/etc/dovecot/passwd`. If you want to store [passwords encr
     joe@elsewhere.org:{PLAIN}whee::::
     jane@elsewhere.org:{PLAIN}mypass::::
 
-My [dovecot.conf](./dovecot.conf) (single config) file.
+My [/etc/dovecot/dovecot.conf](./dovecot.conf) (single config) file.
 
 ## Spamassassin
 Install [Spamassassin](http://packages.ubuntu.com/trusty/spamass-milter)
 
     apt-get install spamass-milter
 
-Edit /etc/default/spamass-milter:
+Edit `/etc/default/spamass-milter`
 
     OPTIONS="-u spamass-milter -i 127.0.0.1 -m -r 15 -x"
 
@@ -84,7 +84,7 @@ Add a dedicated user for SpamAssassin daemon:
 
     adduser --shell /bin/false --home /var/lib/spamassassin --disabled-password --disabled-login --gecos "" spamd
 
-Edit /etc/default/spamassassin:
+Edit `/etc/default/spamassassin`
 
     OPTIONS="--create-prefs --max-children 5 --helper-home-dir -u spamd -g spamd"
     CRON=1
@@ -283,7 +283,7 @@ Testing
 
     openssl s_client -connect mail.filmer.net:imaps
 
-    [Secure Email test](https://www.checktls.com/)
+[Secure Email test](https://www.checktls.com/)
 
 Add this to the crontab (run every first day of month at 4:30pm)
 
