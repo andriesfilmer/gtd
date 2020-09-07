@@ -195,15 +195,9 @@ Delete only the differed mail queue messages (i.e. only the ones the system inte
 
     postsuper -d ALL deferred
 
-Remove only het address
-
-     find . -name "[d,q,Q,D]f*" -exec grep -nil "address@example.com" {} \; | xargs rm
-
 Remove specific emails (i.o. andriesfilmer@hotmail.com)
 
-    mailq | tail -n +2 | grep -v '^ *(' | awk  'BEGIN { RS = "" } \
-    { if ($7 == "andriesfilmer@hotmail.com" && $9 == "") print $1 } ' \
-    | tr -d '*!' | postsuper -d -
+    mailq | tail -n +2 | grep -v '^ *(' | awk  'BEGIN { RS = "" } { if ($7 == "andriesfilmer@hotmail.com" && $9 == "") print $1 } ' | tr -d '*!' | postsuper -d -
 
 ## Query the logfile
 
