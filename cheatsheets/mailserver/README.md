@@ -1,7 +1,7 @@
 ## Install
 
-* [My mailserver install](./INSTALL.md) file.
-* [Traditional testing](./debug.md) file.
+* [My mailserver install](./INSTALL.md)
+* [Traditional testing](./debug.md)
 * Blacklist check <https://mxtoolbox.com/blacklists.aspx>
 * Test the Spammyness of your emails <https://www.mail-tester.com/>
 

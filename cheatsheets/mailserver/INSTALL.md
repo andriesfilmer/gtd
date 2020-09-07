@@ -345,30 +345,13 @@ We want to refresh ClamAV database, set the correct time on a daily basis and re
     set TimeZone=Centraal Europe Time
     export TZ=CET
 
-## Everyting running well?
+## Checking
+
 Example postfix and opendkim services
 
     journalctl --follow --unit postfix.service --unit opendkim.service
 
-Check if these services are running: `ss -tulpn`
+Check if all services are running:
 
-    Active Internet connections (only servers)
-    Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
-    tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1613/sshd·······
-    tcp        0      0 0.0.0.0:25              0.0.0.0:*               LISTEN      2110/master·····
-    tcp        0      0 127.0.0.1:8891          0.0.0.0:*               LISTEN      1680/opendkim···
-    tcp        0      0 0.0.0.0:993             0.0.0.0:*               LISTEN      1636/dovecot····
-    tcp        0      0 0.0.0.0:995             0.0.0.0:*               LISTEN      1636/dovecot····
-    tcp        0      0 95.85.60.187:3306       0.0.0.0:*               LISTEN      1843/mysqld·····
-    tcp        0      0 0.0.0.0:587             0.0.0.0:*               LISTEN      2110/master·····
-    tcp        0      0 0.0.0.0:110             0.0.0.0:*               LISTEN      1636/dovecot····
-    tcp        0      0 127.0.0.1:783           0.0.0.0:*               LISTEN      7608/spamassassin.p
-    tcp        0      0 0.0.0.0:143             0.0.0.0:*               LISTEN      1636/dovecot····
-    tcp6       0      0 :::25                   :::*                    LISTEN      2110/master·····
-    tcp6       0      0 :::993                  :::*                    LISTEN      1636/dovecot····
-    tcp6       0      0 :::995                  :::*                    LISTEN      1636/dovecot····
-    tcp6       0      0 :::587                  :::*                    LISTEN      2110/master·····
-    tcp6       0      0 :::110                  :::*                    LISTEN      1636/dovecot····
-    tcp6       0      0 ::1:783                 :::*                    LISTEN      7608/spamassassin.p
-    tcp6       0      0 :::143                  :::*                    LISTEN      1636/dovecot·
-
+    ss --tcp --listening --processes --numeric --ipv4
+    ss -tlpn4
