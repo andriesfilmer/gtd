@@ -43,6 +43,11 @@
 
 ## CSS
 
+### Colors
+* [Color wheel](https://www.canva.com/colors/color-wheel/) - Want to know what colors look good together
+* [Color-palette-genator](https://www.canva.com/colors/color-palette-generator/) - Upload logo
+* [Color-calculator](https://www.sessions.edu/color-calculator/)
+
 ### Preprocessors
 
 * [Sass](http://sass-lang.com/) | CSS with superpowers

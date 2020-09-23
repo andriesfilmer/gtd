@@ -51,7 +51,7 @@ Delete only the differed mail queue messages (i.e. only the ones the system inte
 
 Remove specific emails (i.o. andriesfilmer@hotmail.com)
 
-    mailq | tail -n +2 | grep -v '^ *(' | awk  'BEGIN { RS = "" } { if ($7 == "andriesfilmer@hotmail.com" && $9 == "") print $1 } ' | tr -d '*!' | postsuper -d -
+    mailq | grep -v '^ *(' | awk  'BEGIN { RS = "" } { if ($7 == "andriesfilmer@hotmail.com" && $9 == "") print $1 } ' | tr -d '*!' | postsuper -d -
 
 ## Query the logfile
 

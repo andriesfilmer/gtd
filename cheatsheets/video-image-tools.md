@@ -4,6 +4,10 @@
 
 ### PNG files
 
+    convert input.png png8:output.png
+
+or
+
     apt install pngquant
     pngquant --ext .compressed.png image.png
     pngquant 8 image.png -o image-8-colors.png
@@ -14,6 +18,9 @@
 
 Run option -n to see results.
 
+    convert input.jpg -strip -interlace Plane -gaussian-blur 0.05 -quality 50% output.jpg
+
+or
     jpegoptim -m 50 --strip-all image.jpg
 
 ### Online
@@ -40,6 +47,16 @@ Capture right side of screen
 When creating screencasts disable Flipping.
 
     nvidia-settings --assign="AllowFlipping=0"
+
+### Rip a DVD to one file
+
+ cat *.VOB > DVD.vob
+ ffmpeg -i DVD.vob DVD1.mp4
+
+or
+
+ ffmpeg -i "concat:VTS_01_1.VOB|VTS_01_2.VOB|VTS_01_3.VOB" -target pal-dvd -vcodec copy -acodec copy OUTPUT_DVD.mp4
+
 
 ## ImageMagic
 

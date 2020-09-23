@@ -66,6 +66,10 @@ nmap <F2> :tabnew<CR>:NERDTree<CR>
 map! <F2> <nop>
 let NERDTreeShowHidden=1
 let NERDTreeWinSize=50
+let g:NERDTreeGitStatusConcealBrackets = 1
+
+" Close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 "autocmd VimEnter * NERDTree "Open NerdTree
 "autocmd VimEnter * wincmd p "Focus on window right
 
@@ -124,6 +128,7 @@ autocmd InsertLeave * set timeoutlen=1000
 "------------------------------------------------------------------------------
 highlight ExtraWhitespace ctermbg=1 guibg=red      " Highlight trailing spaces in annoying red
 match ExtraWhitespace /\s\+$/
+autocmd BufWritePre * %s/\s\+$//e                  " Removing trailing whitespace on write
 
 autocmd Filetype markdown setlocal syntax=OFF       " Bugfix: Prevent Markdown highlighting for underscores
 "let vim_markdown_preview_hotkey='<C-m>'             " Remap becaus plugin ctrlp has also <C-p>
