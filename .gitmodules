@@ -1,0 +1,3 @@
+[submodule "/home/andries/gtd/dotfiles/.vim/pack/bundle/start/vim-searchindex"]
+	path = /home/andries/gtd/dotfiles/.vim/pack/bundle/start/vim-searchindex
+	url = https://github.com/google/vim-searchindex.git

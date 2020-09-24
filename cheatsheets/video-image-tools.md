@@ -1,3 +1,19 @@
+- [Video and Image tools](#video-and-image-tools)
+  * [Compress images](#compress-images)
+    + [PNG files](#png-files)
+    + [JPG files](#jpg-files)
+    + [Online](#online)
+  * [ffmpeg](#ffmpeg)
+    + [Rip a DVD to one file](#rip-a-dvd-to-one-file)
+  * [ImageMagic](#imagemagic)
+    + [Resize Images on the commandline](#resize-images-on-the-commandline)
+    + [Auto orientation](#auto-orientation)
+    + [Crop images](#crop-images)
+    + [Make a album](#make-a-album)
+  * [Nautilus and Image converter](#nautilus-and-image-converter)
+
+<!-- END TOC -->
+
 # Video and Image tools
 
 ## Compress images
