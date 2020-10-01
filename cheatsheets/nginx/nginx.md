@@ -105,7 +105,8 @@ And then try restarting nginx again:
 
 ## Letsencrypt certificates
 
-Install: <https://certbot.eff.org/lets-encrypt/ubuntubionic-nginx>
+    apt install letsencrypt
+    apt install python3-certbot-nginx
 
 Create a certificate
 
@@ -125,8 +126,7 @@ Testing: <https://www.ssllabs.com/ssltest/analyze.html?d=subdomain.domain.nl>
 
 Add this to the crontab (run every first day of month at 4:30pm)
 
-    30 4 1 * * /usr/bin/certbot -q renew --post-hook "service nginx reload"
-
+    30 4 1 * * /usr/bin/certbot -q renew
 
 ### Install other certificates
 

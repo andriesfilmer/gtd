@@ -36,3 +36,7 @@ OAuth goes a bit deeper and is used to grant third-party websites and apps permi
 
 [Source: Facebook, Twitter, Google+, or LinkedIn … Which should you log in with?](https://www.comparitech.com/blog/vpn-privacy/facebook-twitter-google-or-linkedin-which-should-you-log-in-with/)
 
+## Single Sign On (SSO)
+
+* [Sign In With Apple (SIWA)](https://www.bscotch.net/post/sign-in-with-apple-implementation-hurdles) Implementation Hurdles
+* [Sign in With Apple (SIWA)](https://developer.okta.com/blog/2019/06/04/what-the-heck-is-sign-in-with-apple) Implementation

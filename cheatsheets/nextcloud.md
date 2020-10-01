@@ -12,7 +12,6 @@ Check if php-sock is listening
 
     netstat -pl | grep php
 
-    apt install letsencrypt
     certbot certonly --standalone -d nextcloud.filmer.net
 
 Download Nextcloud package from https://nextcloud.com/install/#instructions-server

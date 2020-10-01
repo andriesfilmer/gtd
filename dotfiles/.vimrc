@@ -41,8 +41,8 @@ endif
 
 " Function keys
 nmap <F3> :set hlsearch!<CR>                       " Toggle highlicht search.
-map! <F3> <nop>
-map <F5> :setlocal spell! spelllang=nl_nl<CR>      " Toggle dutch spelling syntax
+cmap <F3> <nop>
+imap <F5> :setlocal spell! spelllang=nl_nl<CR>     " Toggle dutch spelling syntax
 nmap <F9> :TagbarOpenAutoClose<CR>                 " Needs TagBar plugin.
 
 " Arrow keys, Alt+leftarrow will go one window left, etc.
@@ -61,6 +61,7 @@ cmap w!! w !sudo tee % >/dev/null                  " Allow saving of files as su
 
 " NERDTree options
 "------------------------------------------------------------------------------
+nmap <F7> :NERDTreeFind<CR>
 nmap <F8> :NERDTreeToggle<CR>
 nmap <F2> :tabnew<CR>:NERDTree<CR>
 map! <F2> <nop>

@@ -41,7 +41,12 @@ Check with find
 
     git diff HEAD^..HEAD
 
+## Stage only deleted
+
+    git ls-files --deleted -- lib/foo | xargs git add
+
 ## Git undo
+
 To reset a specific file to the last-committed state (to discard uncommitted changes in a specific file):
 
     git checkout thefiletoreset.txt
@@ -78,14 +83,10 @@ If you have lots of files to restore you can use this which will re-checkout all
     git diff --name-status | sed -n '/^D/ s/^D\s*//gp' | xargs git checkout origin/master
 
 ## Submodules
-With the error: 'projectfolder' already exists in the index". You need to remove your submodule git repository (projectfolder in this case) first for git path.
 
-    rm -rf projectfolder
-    git rm -r projectfolder
+Working on one project, you need to use another project from within it.
 
-and then add submodule
-
-git submodule add <git_submodule_repository> projectfolder
+git submodule add -f https://github.com/google/vim-searchindex.git ~/gtd/dotfiles/.vim/pack/bundle/start/vim-searchindex
 
 * [Git Tools - Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 

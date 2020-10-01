@@ -150,7 +150,6 @@ Tunning
     echo 10 | tee /proc/sys/vm/swappiness
     echo vm.swappiness = 10 | tee -a /etc/sysctl.conf
 
-
 ## Alternative DNS servers
 
 Edit `/etc/resolvconf/resolv.conf.d/base`

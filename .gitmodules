@@ -4,3 +4,6 @@
 [submodule "dotfiles/.vim/pack/bundle/start/nerdtree-git-plugin"]
 	path = dotfiles/.vim/pack/bundle/start/nerdtree-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
+[submodule "dotfiles/.vim/pack/bundle/start/vim-signify"]
+	path = dotfiles/.vim/pack/bundle/start/vim-signify
+	url = https://github.com/mhinz/vim-signify.git
