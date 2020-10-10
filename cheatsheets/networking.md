@@ -27,6 +27,28 @@ ss command use to dump socket statistics. It allows showing information similar 
 
 ### Alternative DNS servers
 
+
+vi `/etc/netplan/01-network-manager-all.yaml`
+
+    network:
+      version: 2
+      #renderer: NetworkManager
+      renderer: networkd
+      ethernets:
+        enp2s0:
+          dhcp4: yes
+          dhcp4-overrides:
+            use-dns: no
+          nameservers:
+            #addresses: [8.8.4.4,8.8.8.8]
+            addresses: [208.67.222.222,208.67.220.220]
+
+
+    netplan apply
+
+
+#### Ubuntu <= 18.04
+
 Edit `/etc/resolvconf/resolv.conf.d/head`
 
     # Google DNS servers Preferred/Alternate:
@@ -53,7 +75,12 @@ Open `/etc/dnsmasq.con` and add:
 
     address=/lvh.me/127.0.0.1
 
-    systemctl restart resolvconf.service
+
+    systemctl stop systemd-resolved
+    #systemd-resolve --flush-caches
+    #systemctl restart resolvconf.service
+    #systemctl disable systemd-resolved
+
 
 ### Which DNS am I using
 
