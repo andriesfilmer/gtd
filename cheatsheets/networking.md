@@ -25,17 +25,6 @@ ss command use to dump socket statistics. It allows showing information similar 
 
 ## DNS
 
-### Enable wildcard subdomain with dnsmasq
-
-    apt-get install dnsmasq
-
-Open `/etc/NetworkManager/NetworkManager.conf` and add:
-
-    address=/lvh.me/127.0.0.1
-
-    systemctl status resolvconf.service
-    systemctl restart resolvconf.service
-
 ### Alternative DNS servers
 
 Edit `/etc/resolvconf/resolv.conf.d/head`
@@ -48,13 +37,23 @@ Edit `/etc/resolvconf/resolv.conf.d/head`
     nameserver 208.67.222.222
     nameserver 208.67.220.220
 
-   # Local DNS with dnsmasq
-   nameserver 127.0.0.1
+    # Local DNS with dnsmasq
+    nameserver 127.0.0.1
 
-Then tell resolvconf to regenerate resolv.conf.
+Tell resolvconf to regenerate a new resolv.conf.
 
     resolvconf --enable-updates
     resolvconf -u
+
+### Enable wildcard subdomain with dnsmasq
+
+    apt-get install dnsmasq
+
+Open `/etc/dnsmasq.con` and add:
+
+    address=/lvh.me/127.0.0.1
+
+    systemctl restart resolvconf.service
 
 ### Which DNS am I using
 
