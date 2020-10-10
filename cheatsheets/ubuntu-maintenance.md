@@ -9,9 +9,11 @@
     journalctl -b caf0524a1d394ce0bdbcff75b94444fe  # From boot ID
     journalctl -n 20                                # Show last 20 messages
     journalctl -f                                   # Follow the messages
-    journalctl /bin/sh --since today
+    journalctl -u postfix@-.service                 # Follow only postfix
+    journalctl -u postfix@-.service --since -10m    # Only last 10 minutes
     journalctl -u nginx.service --since today
     journalctl -u nginx.service -u php-fpm.service --since today
+    journalctl /bin/sh --since today
     journalctl _PID=8088                            # Specifying the _PID field.
     journalctl _UID=33 --since today                # Get id: `id -u www-data`
     journalctl -k                                   # Kernel messages
@@ -21,10 +23,6 @@ Clear journal
     du -hs /var/log/journal                         # How mutch space
     journalctl --vacuum-size=2G                     # Keep 2GB worth of logs, or...
     journalctl --vacuum-time=10d                    # Clearing everything older than say 10 days
-
-Witch fields are available
-
-    man systemd.journal-fields
 
 * <https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs>
 

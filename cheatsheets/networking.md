@@ -25,9 +25,40 @@ ss command use to dump socket statistics. It allows showing information similar 
 
 ## DNS
 
-Which DNS am I using
+### Enable wildcard subdomain with dnsmasq
 
-    nmcli dev show | grep DNS
+    apt-get install dnsmasq
+
+Open `/etc/NetworkManager/NetworkManager.conf` and add:
+
+    address=/lvh.me/127.0.0.1
+
+    systemctl status resolvconf.service
+    systemctl restart resolvconf.service
+
+### Alternative DNS servers
+
+Edit `/etc/resolvconf/resolv.conf.d/head`
+
+    # Google DNS servers Preferred/Alternate:
+    nameserver 8.8.8.8
+    nameserver 8.8.4.4
+
+    # OpenDNS (preferred/alternate)
+    nameserver 208.67.222.222
+    nameserver 208.67.220.220
+
+   # Local DNS with dnsmasq
+   nameserver 127.0.0.1
+
+Then tell resolvconf to regenerate resolv.conf.
+
+    resolvconf --enable-updates
+    resolvconf -u
+
+### Which DNS am I using
+
+    systemd-resolve --status
 
 Use custom nameservers add a line to `/etc/dhcp/dhclient.conf`:
 
@@ -39,7 +70,6 @@ Use custom nameservers add a line to `/etc/dhcp/dhclient.conf`:
 Benchmark DNS
 
     apt install namebench
-
 
 ## Devices
 
@@ -146,7 +176,7 @@ Spoof your MAC Address
 
     nmap --spoof-mac 00:11:22:33:44:55 192.168.1.1
 
-Spoof your MAC Address with a Random MAC 
+Spoof your MAC Address with a Random MAC
 
     nmap --spoof-mac 0 192.168.1.1
 
