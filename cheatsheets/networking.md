@@ -17,12 +17,6 @@ ip has shortcuts: `ip address show` is the same as `ip a s`. Check `ip help` (`i
     ip neighbor show   # Arp
     ip -stats -human link show
 
-## ss – Network Statistics
-
-ss command use to dump socket statistics. It allows showing information similar to netstat.
-
-    ss -tulp # All TCP and UDP listen sockets
-
 ## DNS
 
 ### Alternative DNS servers
@@ -43,9 +37,7 @@ vi `/etc/netplan/01-network-manager-all.yaml`
             #addresses: [8.8.4.4,8.8.8.8]
             addresses: [208.67.222.222,208.67.220.220]
 
-  
     netplan apply
-
 
 #### Ubuntu <= 18.04
 
@@ -69,12 +61,16 @@ Tell resolvconf to regenerate a new resolv.conf.
 
     systemctl restart networking
 
+### Clear DNS cache in chrome/chromium
+
+    chrome://net-internals/#dns
+
 
 ### Enable wildcard subdomain with dnsmasq
 
     apt-get install dnsmasq
 
-Open `/etc/dnsmasq.con` and add:
+Open `/etc/dnsmasq.conf` and add:
 
     address=/lvh.me/127.0.0.1
 
@@ -96,9 +92,11 @@ Use custom nameservers add a line to `/etc/dhcp/dhclient.conf`:
     # Google
     supersede domain-name-servers 8.8.8.8, 8.8.4.4;
 
-Benchmark DNS
+## ss – Network Statistics
 
-    apt install namebench
+ss command use to dump socket statistics. It allows showing information similar to `netstat`.
+
+    ss -tulp # All TCP and UDP listen sockets
 
 ## Devices
 
