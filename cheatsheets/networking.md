@@ -27,14 +27,14 @@ ss command use to dump socket statistics. It allows showing information similar 
 
 ### Alternative DNS servers
 
-
 vi `/etc/netplan/01-network-manager-all.yaml`
 
     network:
       version: 2
-      #renderer: NetworkManager
       renderer: networkd
       ethernets:
+        # Find your DEVICE_NAME with `ip a`
+        # DEVICE_NAME i.o. enp2s0 or enp4s0
         enp2s0:
           dhcp4: yes
           dhcp4-overrides:
@@ -43,7 +43,7 @@ vi `/etc/netplan/01-network-manager-all.yaml`
             #addresses: [8.8.4.4,8.8.8.8]
             addresses: [208.67.222.222,208.67.220.220]
 
-
+  
     netplan apply
 
 
@@ -66,6 +66,9 @@ Tell resolvconf to regenerate a new resolv.conf.
 
     resolvconf --enable-updates
     resolvconf -u
+
+    systemctl restart networking
+
 
 ### Enable wildcard subdomain with dnsmasq
 

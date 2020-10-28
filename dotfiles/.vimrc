@@ -129,7 +129,7 @@ autocmd InsertLeave * set timeoutlen=1000
 "------------------------------------------------------------------------------
 highlight ExtraWhitespace ctermbg=1 guibg=red      " Highlight trailing spaces in annoying red
 match ExtraWhitespace /\s\+$/
-autocmd BufWritePre * %s/\s\+$//e                  " Removing trailing whitespace on write
+"autocmd BufWritePre * %s/\s\+$//e                  " Removing trailing whitespace on write
 
 autocmd Filetype markdown setlocal syntax=OFF       " Bugfix: Prevent Markdown highlighting for underscores
 "let vim_markdown_preview_hotkey='<C-m>'             " Remap becaus plugin ctrlp has also <C-p>

@@ -33,12 +33,37 @@ Check versions
     lsb_release -a
     uname -a
 
-    sudo apt update
-    sudo apt upgrade
-    sudo apt dist-upgrade
-    sudo reboot
-    sudo apt --purge autoremove
-    sudo apt install update-manager-core
-    sudo do-release-upgrade
-    sudo reboot
+    apt update
+    apt upgrade
+    apt dist-upgrade
+    reboot
+    apt install update-manager-core ubuntu-release-upgrader-core
+    do-release-upgrade -d # the ‘d’ denoting ‘development’
+    do-release-upgrade
+    reboot
+    apt --purge autoremove
+
+### How to disable GUI
+
+For some reason the gdm session was starred after upgrade from 18.04 -> 20.04 when logging in via `launch console` from Digitalocean servicedesk.
+
+    systemctl set-default multi-user
+    gnome-session-quit
+    service gdm3 stop
+    systemctl disable gdm3
+    reboot
+
+### How to Re-Enable Third-Party Repositories
+
+Third-party repositories are defined in the .list files under /etc/apt/sources.list.d/ directory. First, re-enable third-party repositories with the following command, which will remove the # character in lines that begin with deb.
+
+    sudo sed -i '/deb/s/^#//g' /etc/apt/sources.list.d/*.list
+
+Then change all instances of bionic to focal.
+
+    sudo sed -i 's/bionic/focal/g' /etc/apt/sources.list.d/*.list
+
+Update package repository index.
+
+sudo apt update
 
