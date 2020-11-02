@@ -23,3 +23,5 @@ fi
 
 #bash .scripts/dbus-monitor.sh
 setxkbmap -option caps:escape
+
+export PATH="$HOME/.local/bin":$PATH

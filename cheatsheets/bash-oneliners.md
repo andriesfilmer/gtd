@@ -1,5 +1,7 @@
 # Bash oneliners
 
+Nice resource: <https://www.commandlinefu.com/>
+
 ## Kill many processes
 
 One's I started hylafax with deamontools and it started many procceses. `killall hfaxd` did't work.
@@ -113,6 +115,12 @@ Change all the php-files with the content 'someString' to 'some_string'
 Difference between two file directories
 
     diff -y <(tree app/assets/stylesheets/sites/dosc/) <(tree app/assets/stylesheets/sites/skell/)
+
+## Find Duplicate Files (based on MD5 hash)
+Calculates md5 sum of files. sort (required for uniq to work). uniq based on only the hash. use cut ro remove the hash from the result.
+
+    find -type f -exec md5sum '{}' ';' | sort | uniq --all-repeated=separate -w 33 | cut -c 35-
+
 
 ## Mix
 
