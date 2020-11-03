@@ -7,39 +7,51 @@
 
 ## Fail2ban
 
-    apt-get install fail2ban
+    apt install fail2ban
 
-Open /etc/fail2ban/jail.conf and add your own ip's:
+copy /etc/fail2ban/jail.conf /etc/fail2ban/jail.local and add your own ip's to jail.local:
 
-    #          localhost   home-ip       server02        server03      server05
-    ignoreip = 127.0.0.1/8 217.62.30.97  198.211.123.93  95.85.60.187  146.185.138.134
+    #          localhost   home-ip      server02       server03     server05        server06
+    ignoreip = 127.0.0.1/8 217.62.30.97 198.211.123.93 95.85.60.187 146.185.138.134 198.199.127.67
 
-## Iptable rules
+Checkstatus
 
-After the install off fail2ban save the current [iptables](https://wiki.debian.org/iptables) configuration.
+    systemctl status fail2ban
+    fail2ban-client status sshd
 
-  iptables-save > /etc/iptables.rules
+Check iptables with fail2ban-client
 
-Then add some custom rules before 'COMMIT' in '/etc/iptables.rules'
+    fail2ban-client set sshd unbanip 23.34.45.56
+
+
+## Configure [iptables](https://help.ubuntu.com/community/IptablesHowTo)
+
+Install `iptables-persistent` to make iptables rules permanent after reboot.
+
+    apt install iptables-persistent
+
+Check if it is running
+
+    systemctl status netfilter-persistent.service
+
+Add some custom rules before `COMMIT` in `/etc/iptables/rules.v4`
 
     # MySql/Mariadb
     -A INPUT -s 95.85.60.187 -i eth0 -p tcp -m tcp --dport 3306 -j ACCEPT
     -A INPUT -i eth0 -p tcp -m tcp --dport 3306 -j DROP
 
-Reconfigure de firewall
 
-    iptables-restore < /etc/iptables.rules
+Enable new rules
 
-Create a file '/etc/network/if-pre-up.d/iptables' to make this permanent after reboot.
+    systemctl restart netfilter-persistent.service
 
-    #!/bin/sh
-    /usr/sbin/iptables-restore < /etc/iptables.rules
+Or without disconnected from current ssh login
 
-The file needs to be executable so change the permissions:
+    iptables-restore < /etc/iptables/rules.v4
 
-    chmod +x /etc/network/if-pre-up.d/iptables
+Or enable new rules with fontend [ufw](https://help.ubuntu.com/community/UFW] for iptables and `iptables-save`
 
-### hosts.allow
+## hosts.allow
 
 [Allow ssh from dutch providers](http://nirsoft.net/countryip/nl.html) or [ip by country](https://www.ip2location.com/blockvisitorsbycountry.aspx)
 
@@ -54,10 +66,11 @@ These are **my** provider blocks
     # 95.85.60.187    server03
     # 37.139.3.138    server04
     # 146.185.138.134 server05
+    # 198.199.127.67  server06
 
-    sshd: 81.204.0.0/14 84.104.0.0/14 217.62.16.0/20 84.241.192.0/18 217.62.30.97 198.211.123.93 95.85.60.187 37.139.3.138 146.185.138.134
+    sshd: 81.204.0.0/14 84.104.0.0/14 217.62.16.0/20 84.241.192.0/18 217.62.30.97 198.211.123.93 95.85.60.187 37.139.3.138 146.185.138.134 198.199.127.67
 
-### hosts.deny
+## hosts.deny
 
 And disable access from all others in `/etc/hosts.deny`
 
@@ -101,10 +114,6 @@ Test with the following command:
 ## Timezone
 
     sudo dpkg-reconfigure tzdata
-
-Crontab
-
-    0 1 * * * /usr/bin/timedatectl
 
 ## Automatic Updates
 

@@ -14,6 +14,9 @@ Simple test
     swaks --from andries@inzetrooster.nl --to=andries.filmer@gmail.com --server=server03.filmer.net
     swaks -t andries.filmer@gmail.com -f andries@filmer.nl -a -tls -au andries@filmer.nl -ap "mypasswd" -s mail.filmer.nl
 
+## Postfix
+
+    postfix check for open relay
 
 ## Dovecot
 
