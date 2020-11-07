@@ -19,13 +19,13 @@ Resourses: <https://obsproject.com/wiki/install-instructions#ubuntu-installation
 
 Play video on 'OBS Cam'
 
-    ffmpeg -re -i moving-block.mp4 -f v4l2 /dev/video10
+    ffmpeg -re -i ~/Videos/moving-block-1.mp4 -f v4l2 /dev/video10
 
 Start webcam `cheese` with the virtual device.
 
     cheese --device='OBS Cam'
 
-Load `v4l2loopback` on reboot
+#### Load `v4l2loopback` on reboot
 
     sudo vi /etc/modprobe.d/v4l2loopback.conf
 
@@ -35,6 +35,12 @@ Add
 
 Github: <https://github.com/umlaeute/v4l2loopback>
 
+
+#### Extra
+
+    v4l2-compliance -d /dev/video0
+    v4l2-ctl -d /dev/video0 --list-ctrls
+    v4l2-ctl --set-ctrl=zoom_absolute=150 -d /dev/video0
 
 ### Create a virtual webcam for OBS Studio
 

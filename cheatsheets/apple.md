@@ -20,4 +20,14 @@ Go to sleep after 2 hours
 
 ## Developer portal
 
-* [Apple Developer Portal](https://developer.apple.com/) 
+* [Apple Developer Portal](https://developer.apple.com/)
+
+
+## MacBook
+
+### Reboot in Recovery Mode
+
+* Reboot your Mac into Recovery Mode by restarting your computer and holding down Command+R until the Apple logo appears on your screen.
+* Click Utilities > Terminal.
+* In the Terminal window, type in csrutil disable and press Enter.
+* Restart your Mac.
