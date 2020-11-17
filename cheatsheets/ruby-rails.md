@@ -1,35 +1,33 @@
 # Ruby & Rails
 
 ## Ruby Install
-    sudo apt-get install ruby2.7 ruby2.7-dev
 
-Or use rbenv <https://gorails.com/setup/ubuntu/20.04#ruby-rbenv>
+    apt install ruby ruby-dev
+    apt install nodejs
+    apt install ruby-bundler
+    apt install mariadb-client
+    apt install default-libmysqlclient-dev # Needed for gem mysql2
 
-## Gems & Bundle
+## Git
 
-    sudo gem install bundler
-    bundle install rails
+    git clone https://github.com/some-repository
+    sudo gem update
 
-Run rails without env.
+## Bundler
 
-    bundle exec rails
+    sudo bundle install
+    sudo bundle update --bundler
+    sudo bundle update
 
-Gems are the way Ruby libraries are packaged.
+## Rails
 
-  sudo gem update
+    RAILS_ENV=production rails assets:precompile
 
-Bundler is for managing gems in the app
+## Puma
 
-  bundle update --bundler
-  bundle update
+Default Ruby Web Server
 
-## Test and production envoiroments
-
-    rails db -e test
-    rails db -e production
-
-    rake db:migrate RAILS_ENV=test
-    rake db:migrate RAILS_ENV=staging
+* [Puma systemd](https://github.com/puma/puma/blob/master/docs/systemd.md)
 
 ## Mail testing
 
@@ -45,23 +43,6 @@ Non delevery to real mailaddresses:
 
 * [mailcatcher](http://mailcatcher.me/)
 
-## Passenger
-
-    apt-get install libapache2-mod-passenger
-
-* [Digitalocean - How To Install Rails, Apache, and MySQL on Ubuntu with Passenger](https://www.digitalocean.com/community/articles/how-to-install-rails-apache-and-mysql-on-ubuntu-with-passenger)
-* [scoutapp.com - Production Rails Tuning with Passenger: PassengerMaxProcesses ](http://blog.scoutapp.com/articles/2009/12/08/production-rails-tuning-with-passenger-passengermaxprocesses)
-
-## Puma server
-
-Have todo some testing with Puma.
-* [blog.wiemann.name/rails-server)](http://blog.wiemann.name/rails-server)
-
-## Working with javascript
-
-* [edgeguides.rubyonrails.org - Working with javascript in rails](http://edgeguides.rubyonrails.org/working_with_javascript_in_rails.html)
-* [railsapps.github.io - Rails-javascript-include-external](http://railsapps.github.io/rails-javascript-include-external.html)
-
 ## Rails console
 
 [View output as ascii tables and trees](https://github.com/cldwalker/hirb/tree/master#readme)
@@ -73,6 +54,7 @@ The y method is a handy way to get some pretty YAML output.
     y Model.all
 
 ## Delayed Jobs
+
 Run last job on the console:
 
     Delayed::Worker.new.run(Delayed::Job.last)
@@ -101,7 +83,9 @@ If you want to reinsert into a different SQLite database then:
     sqlite>.out file.sql
     sqlite>select * from file.sql
 
-## Database sqlite to mysql
+* [Sqlite tutorial](http://souptonuts.sourceforge.net/readme_sqlite_tutorial.html)
+
+### sqlite to mysql
 
 Simply add to your Gemfile:
     gem 'yaml_db'
@@ -114,31 +98,12 @@ All rake tasks will then be available to you. Usage
 * [github.com/ludicast/yaml_db](https://github.com/ludicast/yaml_db)
 
 
-## Foundation
-    gem 'zurb-foundation'
-    gem 'foundation-icons-sass-rails'
-    gem 'foundation-will_paginate'
-
-* [Foundation Cheat-sheet](https://princessdesign.net/foundation-cheat-sheet/)
-* [Rails Apps - Rails Foundation](http://railsapps.github.io/rails-foundation.html)
-* [Understanding M17n (Multilingualization) and encoding](http://graysoftinc.com/character-encodings/understanding-m17n-multilingualization)
-
-
-## Tools
+## Resources
 * [ruby](http://www.ruby-lang.org/en/) language
 * [rails](http://rubyonrails.org/) framework
-* [gem](http://guides.rubygems.org/what-is-a-gem/) package manager
-** [bundle](http://gembundler.com/)
-
-## Resources
-
-* [Navigating Ruby Projects in VIM]( http://www.elonflegenheimer.com/2012/09/16/navigating-ruby-projects-in-vim.html)
+* [API - Welcome to Rails](http://api.rubyonrails.org)
 * [Help and documentation for the Ruby programming language](http://www.ruby-doc.org)
-* [Ruby on Rails](http://rubyonrails.org)
-* [Ruby on Rails Guides](http://guides.rubyonrails.org)
+* [bundle](http://gembundler.com/)
 * [The Ruby community's gem hosting service](http://rubygems.org)
 * [RubyGems Guides](http://guides.rubygems.org)
-* [API - Welcome to Rails](http://api.rubyonrails.org)
 * [Ruby Tutorial - tutorialspoint.com](http://www.tutorialspoint.com/ruby/index.htm)
-* [Ruby Rails tutorial.org](http://ruby.railstutorial.org/)
-* [Sqlite tutorial](http://souptonuts.sourceforge.net/readme_sqlite_tutorial.html)

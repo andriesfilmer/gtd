@@ -94,6 +94,12 @@ I like to add these lines to `/root/.bashrc` first :-)
 
     apt install postfix
 
+Configure as smarthost for delivering mail via mailserver
+
+Reconfigure postfix?
+
+    dpkg-reconfigure postfix
+
 Redirect root mails
 
     vi /etc/aliases

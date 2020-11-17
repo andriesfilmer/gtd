@@ -1,6 +1,44 @@
 ## nginx install
     sudo apt-get install nginx
 
+## nginx config
+
+`vi /etc/nginx/nginx.conf`
+
+Global setting:
+
+    # Check our core’s limitations by issuing a ulimit command:
+    # `ulimit -n` -> 1024
+    worker_connections 1024;  # worker_connections 768
+
+    keepalive_timeout 15s;     # keepalive_timeout 75s
+    client_body_timeout 12s;   # client_body_timeout 60s
+    client_header_timeout 12s; # client_header_timeout 60s
+    send_timeout 10s;          # send_timeout 60s
+    types_hash_max_size 2048;  # default 1024
+    server_tokens off;         # default (nginx/1.18.0 (Ubuntu)
+    client_max_body_size 10m;  # default 1m
+
+Enable gzip:
+
+    gzip_comp_level 6;
+    gzip_buffers 16 8k;
+    gzip_http_version 1.1;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+    gzip_disable "msie6";
+    gzip_min_length 256;
+    gzip_disable "msie6";
+
+Expires map:
+
+  map $sent_http_content_type $expires {
+    default                    off;
+    text/html                  epoch;
+    text/css                   1w;
+    application/javascript     1w;
+    ~image/                    1w;
+  }
+
 ## fastcgi php
 
     apt install php-fpm
@@ -18,90 +56,6 @@
        log_not_found off;
        deny all;
     }
-
-## Nginx and Unicorn
-
-[Unicorn](http://unicorn.bogomips.org/)
-
-CD to your Rails application. Add  'gem 'unicorn' to you Gemfile and run:
-
-    bundle install
-    bundle install --binstubs # This will generate a relative 'bin' directory to use in our init.sh
-
-Create a '[APP_ROOT/config/unicorn.conf.rb](../inzetrooster-app/blob/master/config/unicorn.conf.rb)' config file.
-
-Create a '[APP_ROOT/config/nginx.conf](../inzetrooster-app/blob/master/config/nginx.conf)' config file.
-
-Whenever you make changes to Nginx configuration files, you should check the configuration for syntax errors, like this:
-
-    nginx -t
-
-    service nginx restart
-
-Start Unicorn or create a '[/etc/init.d/some_app](../inzetrooster-app/blob/master/config/unicorn.init.sh)' init script.
-
-    unicorn -c path/to/unicorn.rb -E development -D
-
-Stop Unicorn or use the init script
-    cat /path/to/app/tmp/pids/unicorn.pid | xargs kill -QUIT
-
-Use a init script if you want to start on reboot
-    ln -s /var/www/APP_ROOT/config/[unicorn.init.sh](/pub/scripts/rails/unicorn.init.sh) /etc/init.d/unicorn_APP_NAME.nl
-    update-rc.d some-app defaults
-
-## Converting rewrite rules from apache
-
-[Converting rewrite rules](http://nginx.org/en/docs/http/converting_rewrite_rules.html)
-
-## Multiple HTTPS/TLS/ SSL sites
-
-You can make sure that SNI is enabled on your server:
-
-    nginx -V | grep SNI
-
-After displaying the nginx version, you should see the line:
-
-    TLS SNI support enabled
-
-**Purchase a certificate by a CA**
-
-With Comodo you have to merge your certificates
-    cat yourdomain.crt ca-bundle.crt > ssl-yourdomain-ca-bundle.crt
-
-A example ngix config:
-
-    server {
-
-           listen   443;
-           server_name example.com;
-
-           root /usr/share/nginx/www;
-           index index.html index.htm;
-
-           ssl on;
-           ssl_certificate /etc/nginx/ssl/yourdomain-certificate-bundle.crt;
-           ssl_certificate_key /etc/nginx/ssl/private/yourdomain-server.key;
-    }
-
-More info:
-* [Configuring https servers](http://nginx.org/en/docs/http/configuring_https_servers.html)
-* [How To Set Up Multiple SSL Certificates on One IP with Nginx on Ubuntu 12.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-multiple-ssl-certificates-on-one-ip-with-nginx-on-ubuntu-12-04)
-
-## Address already in use
-
-If you get following error, when you try to start nginx
-
-    [emerg]: bind() to 0.0.0.0:80 failed (98: Address already in use)
-
-Then it means nginx or some other process is already using port 80.
-
-You can kill it using:
-
-    sudo fuser -k 80/tcp
-
-And then try restarting nginx again:
-
-    service nginx start
 
 ## Letsencrypt certificates
 
@@ -150,6 +104,22 @@ In your nginx config:
     ssl_certificate /etc/ssl/yourdomain-certificate.crt;
     ssl_certificate_key /etc/ssl/private/yourdomain-certificate.key; # i.o. certificate.key
 
+## Custom error page
+
+copy <error-pages.conf> map to `/etc/nginx/error-pages.conf`
+
+Use the include in your `server` directive.
+
+    include /etc/nginx/error-pages.conf;
+
+Add a `location` directive for <error.html>, see comments in `error-pages.conf`.
+
+## Dynamic SSI Example
+
+For example incluce headers, menu of footers.
+
+<https://www.nginx.com/resources/wiki/start/topics/examples/dynamic_ssi/>
+
 ## PageSpeed Module
 
 [Build ngx_pagespeed local from source](https://modpagespeed.com/doc/build_ngx_pagespeed_from_source) and created a DEB package and `scp` to server.
@@ -172,6 +142,7 @@ To prevent your custom Nginx package from being replaced in the future I **Pinne
 * [Configuring PageSpeed Filters](https://www.modpagespeed.com/doc/config_filters)
 
 ## Resources
+
 * [How to optimize nginx configuration](https://www.digitalocean.com/community/tutorials/how-to-optimize-nginx-configuration)
 * [Migrate from an Apache Web Server to Nginx](https://www.digitalocean.com/community/articles/how-to-migrate-from-an-apache-web-server-to-nginx-on-an-ubuntu-vps)
 * [Setting Up PHP behind Nginx with FastCGI](http://www.sitepoint.com/setting-up-php-behind-nginx-with-fastcgi/)
