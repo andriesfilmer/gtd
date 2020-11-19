@@ -39,6 +39,8 @@ Add some custom rules before `COMMIT` in `/etc/iptables/rules.v4`
     # MySql/Mariadb
     -A INPUT -s 95.85.60.187 -i eth0 -p tcp -m tcp --dport 3306 -j ACCEPT
     -A INPUT -i eth0 -p tcp -m tcp --dport 3306 -j DROP
+    # Mail
+    -A INPUT -i eth0 -p tcp -m tcp --dport 25 -j DROP
 
 
 Enable new rules

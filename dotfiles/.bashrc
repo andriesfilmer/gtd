@@ -69,12 +69,11 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    #alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
 # some more ls aliases
@@ -94,41 +93,38 @@ fi
 bind '"\e[A"':history-search-backward
 bind '"\e[B"':history-search-forward
 
+alias ...='cd ../../'
 alias passAndries="gpg -r andries -d .gnupg/andries.gpg | grep -i "
 alias passwordAndries="gnome-gpg -r andries -d .gnupg/andries.gpg | grep -i "
 alias keepass="~/gtd/scripts/sh/keepass.sh"
 alias myserver="~/gtd/perl/my-servers.pl"
 #alias spotify="/usr/bin/spotify --force-device-scale-factor=1.5"
 alias gitlog="git log --branches --not --remotes"
-alias gitdiff="git diff --branches --not --remotes"
+#alias gitdiff="git diff --branches --not --remotes"
+alias gitdiff="git difftool --tool=vimdiff"
 alias adb="~/Android/Sdk/platform-tools/adb"
-alias gbr="cd ~/dev/inzetrooster-app/ && br -gc :gs"
+
+# Open broot with uncommitted files for git. Open with F2
+alias brapp="cd ~/dev/inzetrooster-app/ && br -gc :gs"
+
+# Automatic LS after change directory
+cdl () {
+  cd "$@" && ls -al
+}
 
 genpasswd() {
 	local l=$1
        	[ "$l" == "" ] && l=16
-      	tr -dc A-Za-z0-9 < /dev/urandom | head -c ${l} | xargs
+      	tr -dc [:alnum:] < /dev/urandom | head -c ${l} | xargs
 }
-
-#export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-#export PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
-export PATH="$PATH:/usr/bin:/usr/local/bin/"
-
-PATH="/home/andries/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/andries/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/andries/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/andries/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/andries/perl5"; export PERL_MM_OPT;
 
 #export ANDROID_HOME=/home/andries/Android/Sdk/
 #PATH=$PATH:/home/andries/Android/Sdk/
 #PATH=$PATH:/opt/android-studio/gradle/gradle-4.1/bin/
-export ANDROID_HOME="$HOME/Android/Sdk"
-PATH=$PATH:$ANDROID_HOME/tools; PATH=$PATH:$ANDROID_HOME/platform-tools
+#export ANDROID_HOME="$HOME/Android/Sdk"
+#PATH=$PATH:$ANDROID_HOME/tools; PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export PATH
 export EDITOR='vim'
-
 
 source /home/andries/.config/broot/launcher/bash/br

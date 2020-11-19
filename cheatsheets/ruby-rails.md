@@ -7,10 +7,13 @@
     apt install ruby-bundler
     apt install mariadb-client
     apt install default-libmysqlclient-dev # Needed for gem mysql2
+    apt install build-essential
+    apt install libxslt-dev libxml2-dev # Maybe needed for nokogiri
 
 ## Git
 
     git clone https://github.com/some-repository
+    cd some-repository
     sudo gem update
 
 ## Bundler
@@ -39,6 +42,9 @@ Non delevery to real mailaddresses:
 * [Testing series rspec controllers](http://everydayrails.com/2012/04/07/testing-series-rspec-controllers.html)
 
 ## Mailcatcher
+
+For development
+
     gem install mailcatcher
 
 * [mailcatcher](http://mailcatcher.me/)

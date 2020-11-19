@@ -25,6 +25,7 @@ set ts=2                                           " set tab indent to 2 spaces
 set wildmenu                                       " enable bash style tab completion
 set wrap                                           " Wrapping on, default commented out
 set clipboard=unnamedplus                          " Copy to system clipboard (Only vim-gtk)
+set updatetime=1000                                 " vim-gitgutter, vim-signify, default value is 4000
 
 let g:snips_author="Andries Filmer"                " Assign a global variable for snippets
 let g:closetag_filenames = '*.html,*.html.erb'     " Plugin closetag enabled for html.erb'
@@ -59,8 +60,9 @@ cmap w!! w !sudo tee % >/dev/null                  " Allow saving of files as su
 
 "nnoremap  za                                       " Map folding to Spacebar
 
-" NERDTree options
+" Plugin shorcuts
 "------------------------------------------------------------------------------
+nmap <F4> :SignifyHunkDiff<CR>
 nmap <F7> :NERDTreeFind<CR>
 nmap <F8> :NERDTreeToggle<CR>
 nmap <F2> :tabnew<CR>:NERDTree<CR>
@@ -68,6 +70,9 @@ map! <F2> <nop>
 let NERDTreeShowHidden=1
 let NERDTreeWinSize=50
 let g:NERDTreeGitStatusConcealBrackets = 1
+
+autocmd Filetype markdown setlocal syntax=OFF       " Bugfix: Prevent Markdown highlighting for underscores
+let vim_markdown_preview_hotkey='<C-m>'             " Remap becaus plugin ctrlp has also <C-p>
 
 " Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -131,6 +136,4 @@ highlight ExtraWhitespace ctermbg=1 guibg=red      " Highlight trailing spaces i
 match ExtraWhitespace /\s\+$/
 "autocmd BufWritePre * %s/\s\+$//e                  " Removing trailing whitespace on write
 
-autocmd Filetype markdown setlocal syntax=OFF       " Bugfix: Prevent Markdown highlighting for underscores
-"let vim_markdown_preview_hotkey='<C-m>'             " Remap becaus plugin ctrlp has also <C-p>
 

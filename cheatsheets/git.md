@@ -33,6 +33,7 @@ Check with find
     find . -not -iwholename '*node_modules*' -not -iwholename '*.git*' -not -iwholename '*.sass-cache*' -ls
 
 ### Change name and email, remember password
+
     git config --global user.name "Your Name"
     git config --global user.email you@example.com
     git config --global credential.helper 'cache --timeout=3600'
@@ -40,6 +41,8 @@ Check with find
 ## Show last commits
 
     git diff HEAD^..HEAD
+    git difftool --tool=vimdiff
+
 
 ## Stage only deleted
 

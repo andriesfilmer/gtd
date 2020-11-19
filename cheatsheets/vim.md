@@ -5,15 +5,17 @@
   * [Find in files](#find-in-files)
   * [Replace in file](#replace-in-file)
   * [Replace in files](#replace-in-files)
+  * [Registers](#registers)
   * [Completions](#completions)
-  * [Jumps in file](#jumps-in-file)
+  * [Folding](#folding)
   * [Windows](#windows)
   * [Macros](#macros)
   * [ctags](#ctags)
   * [Spell](#spell)
-  * [Other](#other)
+  * [Mount Capslock to Esc](#mount-capslock-to-esc)
     + [Numbering lines in a file](#numbering-lines-in-a-file)
     + [Tabs and Spaces](#tabs-and-spaces)
+  * [Printing](#printing)
   * [Plugins](#plugins)
   * [Links](#links)
 
@@ -187,7 +189,7 @@ A neat filtering trick using the 'nl' for adding linenumbers.
 * [NerdTree](https://github.com/scrooloose/nerdtree) - NERDTreeToggle -> F8 mapping
 * [TagBar](https://github.com/majutsushi/tagbar) -  TagbarOpenAutoClose -> F9 mapping
 * [Vim-rails](https://github.com/tpope/vim-rails) - Easy navigation of the Rails directory structure -> `gf`
-* [Vim-signify](https://github.com/mhinz/vim-signify) - Indicate added, modified and removed lines
+* [Vim-signify](https://github.com/mhinz/vim-signify) - Indicate added, modified and removed lines (Tip: SignifyHunkDiff)
 * [gnupg.vim](http://www.vim.org/scripts/script.php?script_id=661) - Add in  .bashrc `export GPG_TTY=tty`
 * [Ctrlp](https://github.com/kien/ctrlp.vim) - Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 * [Markdown](https://github.com/JamshedVesuna/vim-markdown-preview) - markdown-preview -> Ctrl-p
