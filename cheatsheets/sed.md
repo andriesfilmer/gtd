@@ -1,3 +1,11 @@
+Remove lines containing PATTERN
+
+    find . -name "*" -type f | xargs sed -i -e '/<PATTERN>/d'
+
+Example
+
+    find vendor/assets/js/plugins -name "*.js" -type f | xargs sudo sed -i -e '/sourceMappingURL/d'
+
 # Some commandline examples for sed
 
 ## Managing spaces, tabs and new lines

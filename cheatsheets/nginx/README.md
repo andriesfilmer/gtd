@@ -3,41 +3,8 @@
 
 ## nginx config
 
-`vi /etc/nginx/nginx.conf`
+Example [nginx.conf](./nginx.conf)
 
-Global setting:
-
-    # Check our core’s limitations by issuing a ulimit command:
-    # `ulimit -n` -> 1024
-    worker_connections 1024;  # worker_connections 768
-
-    keepalive_timeout 15s;     # keepalive_timeout 75s
-    client_body_timeout 12s;   # client_body_timeout 60s
-    client_header_timeout 12s; # client_header_timeout 60s
-    send_timeout 10s;          # send_timeout 60s
-    types_hash_max_size 2048;  # default 1024
-    server_tokens off;         # default (nginx/1.18.0 (Ubuntu)
-    client_max_body_size 10m;  # default 1m
-
-Enable gzip:
-
-    gzip_comp_level 6;
-    gzip_buffers 16 8k;
-    gzip_http_version 1.1;
-    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
-    gzip_disable "msie6";
-    gzip_min_length 256;
-    gzip_disable "msie6";
-
-Expires map:
-
-  map $sent_http_content_type $expires {
-    default                    off;
-    text/html                  epoch;
-    text/css                   1w;
-    application/javascript     1w;
-    ~image/                    1w;
-  }
 
 ## fastcgi php
 
@@ -122,24 +89,7 @@ For example incluce headers, menu of footers.
 
 ## PageSpeed Module
 
-[Build ngx_pagespeed local from source](https://modpagespeed.com/doc/build_ngx_pagespeed_from_source) and created a DEB package and `scp` to server.
-
-    scp nginx_1.10.3-1~xenial_amd64.deb server02:/home/andries/
-    cp -rp /etc/nginx /home/andries/
-    apt purge nginx nginx-common
-    dpkg -i /home/andries/nginx_1.10.3-1~xenial_amd64.deb
-    mv /home/andries/nginx/ /etc/nginx
-
-To prevent your custom Nginx package from being replaced in the future I **Pinned** the version.
-
-    sudo vi /etc/apt/preferences.d/nginx
-
-    Package: nginx
-    Pin: version 1.10.3-1~xenial
-    Pin-Priority: 1001
-
-* [How To Add ngx_pagespeed to Nginx on Ubuntu 14.04](https://www.digitalocean.com/community/tutorials/how-to-add-ngx_pagespeed-to-nginx-on-ubuntu-14-04)
-* [Configuring PageSpeed Filters](https://www.modpagespeed.com/doc/config_filters)
+<cheatsheets/nginx/ngx_pagespeed.md>
 
 ## Resources
 
