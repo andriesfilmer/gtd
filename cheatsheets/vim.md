@@ -95,12 +95,13 @@ Press `:`
     "ay                                " Yank selected text in register 'a'.
     "ap                                " Past selected text form register 'a'.
     ctrl-ra                            " Past register a (in insert mode)
-    ctrl-^                             " Go to last edit file #"
+    ctrl-^                             " Jump between last edit file line"
+    ctrl-o                             " Press twice and go to back last edit file and line(s)"
 
 ## Completions
 
-    Ctrl-p                             " Completion for al (back) words from this file, other open files and registers.
-    Ctrl-n                             " Completion for al (forward) words from this file, other open files and registers.
+    Ctrl-p                             " Completion for all (back) words from this file, other open files and registers.
+    Ctrl-n                             " Completion for all (forward) words from this file, other open files and registers.
     Ctrl-x + Ctr-]                     " Completion for tags
     Ctrl-x + Ctr-f                     " Completion for filenames
     Ctrl-x + Ctr-l                     " Completion for lines

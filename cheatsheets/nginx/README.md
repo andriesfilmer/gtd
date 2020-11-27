@@ -29,9 +29,32 @@ Example [nginx.conf](./nginx.conf)
     apt install letsencrypt
     apt install python3-certbot-nginx
 
+
+## nginx config
+
+    server {
+      listen 80;
+      server_name subdomain.domain;
+    
+      # enforce https
+      return 301 https://$server_name$request_uri;
+    
+      location ^~ /.well-known/ {
+        default_type "text/plain";
+        allow all;
+        auth_basic off;
+        # Shared letsencrypt root dir (.well-known/acme-challenge)
+        root /var/www/letsencrypt/;
+      }
+    
+      error_log /var/log/nginx/letsencrypt.log error;
+      access_log /var/log/nginx/letsencrypt.log;
+    
+    }
+
 Create a certificate
 
-    certbot certonly --webroot -w /var/www/subdomain.domain.nl/letsencrypt/ -d subdomain.domain.nl
+    certbot certonly --webroot -w /var/www/letsencrypt/ -d subdomain.domain
 
 To renew the certificates
 
@@ -90,6 +113,15 @@ For example incluce headers, menu of footers.
 ## PageSpeed Module
 
 <cheatsheets/nginx/ngx_pagespeed.md>
+
+
+## Parse log files
+
+    awk '{print $9}' access.log | sort | uniq -c | sort -rn
+
+Details (error example 302)
+
+    awk '($9 ~ /302/)' access.log | awk '{print $7}' | sort | uniq -c | sort -n
 
 ## Resources
 

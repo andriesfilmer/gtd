@@ -5,6 +5,8 @@
     apt-get update
     apt-get upgrade
 
+    update-alternatives --config editor
+
 ## Fail2ban
 
     apt install fail2ban
@@ -118,6 +120,15 @@ Update postfix
 Test with the following command:
 
     echo test | mail -s "test message" root
+
+# Syslog
+
+`vi /etc/rsyslog.d/50-default.conf`
+
+The next line means log every facility at every level to /var/log/syslog, with authpriv being the only exception.
+Obviously this includes mail, so #comment/disable this line. Adjust some other preverents.
+
+    *.*;auth,authpriv.none          -/var/log/syslog
 
 ## Timezone
 

@@ -109,13 +109,17 @@ alias brapp="cd ~/dev/inzetrooster-app/ && br -gc :gs"
 
 # Automatic LS after change directory
 cdl () {
-  cd "$@" && ls -al
+  cd "$@" && ls -altr
+}
+
+backup () {
+  cp "$@" "$@".backup-`date +'%Y-%m-%m_%H:%M'`;
 }
 
 genpasswd() {
-	local l=$1
-       	[ "$l" == "" ] && l=16
-      	tr -dc [:alnum:] < /dev/urandom | head -c ${l} | xargs
+  local l=$1
+  [ "$l" == "" ] && l=16
+  tr -dc [:alnum:] < /dev/urandom | head -c ${l} | xargs
 }
 
 #export ANDROID_HOME=/home/andries/Android/Sdk/

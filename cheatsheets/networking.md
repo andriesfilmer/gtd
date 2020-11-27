@@ -19,6 +19,8 @@ ip has shortcuts: `ip address show` is the same as `ip a s`. Check `ip help` (`i
 
 ## DNS
 
+    systemd-resolve --status
+
 ### Alternative DNS servers
 
 vi `/etc/netplan/01-network-manager-all.yaml`

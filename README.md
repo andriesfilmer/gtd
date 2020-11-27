@@ -33,4 +33,6 @@ or
 - [Markdown reference](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 - [Can I Use](http://caniuse.com/#feat=css-filters) - Compare browser support
 
+## Video's
 
+* [Amazing Developers On YouTube](https://github.com/ErikCH/DevYouTubeList)

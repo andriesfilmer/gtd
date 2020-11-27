@@ -1,21 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Your Business</title>
-    <meta name="author" content="https://blog.adriaan.io/one-nginx-error-page-to-rule-them-all.html">
-    <meta http-equiv="refresh" content="2">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--# if expr="$status = 502" -->
-      <meta http-equiv="refresh" content="2">
-    <!--# endif -->
-  </head>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><!--# echo var="status_text" default="Something goes wrong" --></title>
+  <style>
+  body {
+    background-color: #fff;
+    text-align: center;
+    font-family: arial, sans-serif;
+  }
+
+  div.dialog {
+    width: 40em;
+    margin: 4em auto 0 auto;
+    border: 1px solid #CCC;
+    padding: 7px 4em 0 4em;
+  }
+  </style>
+</head>
+
 <body>
-  <!--# if expr="$status = 502" -->
-    <h1>We are updating our website </h1>
-    <p>This is only for a few seconds, you will be redirected.</p>
-  <!--# else -->
-    <h1><!--# echo var="status" default="" --> <!--# echo var="status_text" default="Something goes wrong" --></h1>
-  <!--# endif -->
+  <div class="dialog">
+    <img src="/error.png">
+    <!--# if expr="$status = 404" -->
+      <h2>Error 404</h2>
+      <p>This page does not exists (anymore)</p>
+   <!--# else -->
+      <h2><!--# echo var="status" default="" --> <!--# echo var="status_text" default="Something goes wrong" --></h2>
+      <p>Please let us know if this happens more often.</p>
+      <p><a href="mailto:postmaster@filmer.net">postmaster@filmer.net</a></p>
+   <!--# endif -->
+  </div>
 </body>
 </html>

@@ -20,13 +20,18 @@
 
 ### PNG files
 
-    convert input.png png8:output.png
+    convert input.png -color 256 png8:output.png
 
 or
 
     apt install pngquant
     pngquant --ext .compressed.png image.png
     pngquant 8 image.png -o image-8-colors.png
+
+or whole dir
+
+    pngquant *.png
+    for i in *-fs8.png ; do mv $i "`echo $i | sed "s/-fs8//"`" ; done
 
 ### JPG files
 
