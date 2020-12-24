@@ -97,7 +97,8 @@ alias ...='cd ../../'
 alias passAndries="gpg -r andries -d .gnupg/andries.gpg | grep -i "
 alias passwordAndries="gnome-gpg -r andries -d .gnupg/andries.gpg | grep -i "
 alias keepass="~/gtd/scripts/sh/keepass.sh"
-alias myserver="~/gtd/perl/my-servers.pl"
+alias keepass-cli="~/gtd/scripts/sh/keepass-cli.sh"
+alias myserver="~/gtd/scripts/perl/my-servers.pl"
 #alias spotify="/usr/bin/spotify --force-device-scale-factor=1.5"
 alias gitlog="git log --branches --not --remotes"
 #alias gitdiff="git diff --branches --not --remotes"
@@ -105,7 +106,7 @@ alias gitdiff="git difftool --tool=vimdiff"
 alias adb="~/Android/Sdk/platform-tools/adb"
 
 # Open broot with uncommitted files for git. Open with F2
-alias brapp="cd ~/dev/inzetrooster-app/ && br -gc :gs"
+alias brapp="cd ~/dev/inzetrooster-app/ && broot -gc :gs"
 
 # Automatic LS after change directory
 cdl () {
@@ -130,5 +131,3 @@ genpasswd() {
 
 export PATH
 export EDITOR='vim'
-
-source /home/andries/.config/broot/launcher/bash/br
