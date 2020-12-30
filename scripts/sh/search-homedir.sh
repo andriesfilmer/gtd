@@ -21,19 +21,19 @@ case "$2" in
    d)
       path="$path/mydoc"
       echo "finding files in mydocs...... "
-      find $path -type f -print0 | xargs -0 grep -r -i $files "$1" 
+      find $path -type f -print0 | xargs -0 grep -r -i $files "$1"
      ;;
 
    s)
-      path="$path/myscript"      
-      echo "finding files in myscripts...... "         
-      find $path -type f -print0 | xargs -0 grep -r -i $files "$1" 
+      path="$path/myscript"
+      echo "finding files in myscripts...... "
+      find $path -type f -print0 | xargs -0 grep -r -i $files "$1"
       ;;
 
    h)
       path="$path/myhowto"
       echo "finding files in myhowto...... "
-      find $path -type f -print0 | xargs -0 grep -r -i $files "$1"     
+      find $path -type f -print0 | xargs -0 grep -r -i $files "$1"
       ;;
 
    *)

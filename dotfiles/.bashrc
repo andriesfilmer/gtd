@@ -93,6 +93,9 @@ fi
 bind '"\e[A"':history-search-backward
 bind '"\e[B"':history-search-forward
 
+# Filenames with space showing as 'file name' after upgrade to 18.04
+export QUOTING_STYLE=literal
+
 alias ...='cd ../../'
 alias passAndries="gpg -r andries -d .gnupg/andries.gpg | grep -i "
 alias passwordAndries="gnome-gpg -r andries -d .gnupg/andries.gpg | grep -i "

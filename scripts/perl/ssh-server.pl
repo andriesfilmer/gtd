@@ -1,10 +1,11 @@
 #!/usr/bin/perl
 
-# This script extract a password from a encrypted GnuPG (gpg) file.
-# So you have to remember just one password to login to a server.
-# The servers a configured that you can't login as a root user. 
-# So firt we login as a regular user who can su to root. 
-# This script extract two passwords from a single line. 
+# This script extracts two passwords from a encrypted GnuPG (gpg) file.
+# So you have to remember just the gpg password to login to all servers.
+#
+# The servers are configured so that you first login as user and then su to root.
+#
+# So this script extract two passwords from a single line.
 # The format must be: 'host.domain.nl userpasswd rootpasswd'
 #
 # Install gpg (to remember te passphrase for your session)
@@ -17,7 +18,10 @@
 #######
 #
 $username = $ENV{USER};
-$encryptedPassFile = 'myEncryptedPasswords.gpg';
+$encryptedPassFile = '~/.gnupg/servers.gpg';
+
+# Only for use with 'Get password for gpg-agent from remote ssh-server' option.
+$sshCommandForRemotePasswd = 'ssh server05.filmer.net "cat .ssh/gpgpass-file"';
 
 # Perl modules
 ##############
@@ -38,6 +42,7 @@ else
 chomp($server_str);
 
 my $spawn = new Expect;
+#$spawn->debug(1);
 $spawn->raw_pty(1);
 
 # This gets the size of your terminal window
@@ -54,9 +59,13 @@ sub winch {
 }
 $SIG{WINCH} = \&winch;  # best strategy
 
-# Change this line to the place where you GnuPG file is.
+# Get password from gpg-agent with passphrase prompt.
+#--------------------------------------------------
+#$gpg_line = `/usr/bin/gpg --decrypt $encryptedPassFile | grep -i '^$server_str'`;
 #
-$gpg_line = `/usr/bin/gpg --decrypt /home/$username/.gnupg/$encryptedPassFile | grep -i '^$server_str'`;
+# Get password for gpg-agent from remote ssh-server.
+#---------------------------------------------------
+$gpg_line = `$sshCommandForRemotePasswd | gpg --batch --yes --passphrase-fd 0 -u $username --pinentry-mode loopback -d $encryptedPassFile | grep -i '^$server_str'`;
 
 $gpg_line =~ /^([^\s]+)\s+([^\s]+)\s+([^\s]+)\s*$/;
 $host = $1;
@@ -67,6 +76,7 @@ $root_pass =  $3;
 print "\033]0;$host\007";
 
 $spawn=Expect->spawn("ssh $username\@$host");
+
 # log everything if you want
 # $spawn->log_file("/tmp/autossh.log.$$");
 
@@ -74,17 +84,16 @@ $spawn=Expect->spawn("ssh $username\@$host");
 
 #my $PROMPT = "[\$|\%]";
 
-my $ret = $spawn->expect(10,
-	[ qr/\(yes\/no\)\?\s*$/ => sub { $spawn->send("yes\n"); exp_continue; } ],
-	[ qr/assword:\s*$/ 	=> sub { $spawn->send("$user_pass\n") if defined $user_pass } ],
-	[ qr/ogin:\s*$/		=> sub { $spawn->send("$username\n"); exp_continue; } ],
+my $ret = $spawn->expect(1,
+  [ qr/\(yes\/no\)\?\s*$/ => sub { $spawn->send("yes\n"); exp_continue; } ],
+  [ qr/assword:\s*$/      => sub { $spawn->send("$user_pass\n"); exp_continue; } ]
 );
 
 sleep(1);
 
-$spawn->send("su\n");
+$spawn->send("su -\n");
 my $ret = $spawn->expect(10,
-	[ qr/achtwoord:\s*$/ 	=> sub { $spawn->send("$root_pass\n") if defined $root_pass;  } ],
+  [ qr/assword:\s*$/ 	=> sub { $spawn->send("$root_pass\n") if defined $root_pass;  } ]
 );
 
 # Hand over control
