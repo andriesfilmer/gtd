@@ -28,7 +28,7 @@ Clear journal
 
 ## Check unattended-upgrade logfiles
 
-tail /var/log/unattended-upgrades/unattended-upgrades*.log
+    tail /var/log/unattended-upgrades/unattended-upgrades*.log
 
 ## Ubuntu upgrade
 
