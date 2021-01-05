@@ -136,20 +136,28 @@ Obviously this includes mail, so #comment/disable this line. Adjust some other p
 
 ## Automatic Updates
 
+Create `/etc/apt/apt.conf.d/20auto-upgrades` file.
+
     dpkg-reconfigure -plow unattended-upgrades
 
-Or
-
-To configure unattended-upgrades, edit `/etc/apt/apt.conf.d/50unattended-upgrades` and fit your needs:
-
-To enable automatic updates, edit `/etc/apt/apt.conf.d/10periodic` and set the appropriate apt configuration options:
+Looks like
 
     APT::Periodic::Update-Package-Lists "1";
-    APT::Periodic::Download-Upgradeable-Packages "1";
-    APT::Periodic::AutocleanInterval "7";
     APT::Periodic::Unattended-Upgrade "1";
+    APT::Periodic::AutocleanInterval "7";
 
-[Help.ubuntu.com - Automatic Updates](https://help.ubuntu.com/14.04/serverguide/automatic-updates.html)
+Configure unattended-upgrades, edit `/etc/apt/apt.conf.d/50unattended-upgrades` and fit your needs:
+
+* Enable updates: `"${distro_id}:${distro_codename}-updates";`
+* Setup email alert: `Unattended-Upgrade::Mail "mail@domain";
+* Reboot WITHOUT CONFORMATION: `Unattended-Upgrade::Automatic-Reboot "true";`
+* Reboot time: `Unattended-Upgrade::Automatic-Reboot-Time "02:00"`;
+
+Check logfiles
+
+    tail /var/log/unattended-upgrades/unattended-upgrades*.log
+
+Resource: <https://www.cyberciti.biz/faq/ubuntu-enable-setup-automatic-unattended-security-updates/>
 
 ## DigitalOcean
 

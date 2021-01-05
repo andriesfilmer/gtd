@@ -29,6 +29,10 @@ Which directories are using space
 
 ## GUI
 
+### Disk Usage Analyzer (also known as baobab)
+
+Keep your disk usage under control
+
 ### Unison File Synchronizer
 
 Unison is a file-synchronization tool for Unix and Windows. It allows two replicas of a collection of files and directories to be stored on different hosts (or different disks on the same host), modified separately, and then brought up to date by propagating the changes in each replica to the other.
