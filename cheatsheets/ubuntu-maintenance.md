@@ -1,6 +1,6 @@
-## Ubuntu maintenance
+# Ubuntu maintenance
 
-### Read log journal
+## Read log journal
 
     journalctl
     journalctl --list-boots
@@ -25,6 +25,10 @@ Clear journal
     journalctl --vacuum-time=10d                    # Clearing everything older than say 10 days
 
 * <https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs>
+
+## Check unattended-upgrade logfiles
+
+tail /var/log/unattended-upgrades/unattended-upgrades*.log
 
 ## Ubuntu upgrade
 

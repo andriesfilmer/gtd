@@ -136,7 +136,7 @@ Obviously this includes mail, so #comment/disable this line. Adjust some other p
 
 ## Automatic Updates
 
-Create `/etc/apt/apt.conf.d/20auto-upgrades` file.
+Create a `/etc/apt/apt.conf.d/20auto-upgrades` file with:
 
     dpkg-reconfigure -plow unattended-upgrades
 
@@ -149,7 +149,7 @@ Looks like
 Configure unattended-upgrades, edit `/etc/apt/apt.conf.d/50unattended-upgrades` and fit your needs:
 
 * Enable updates: `"${distro_id}:${distro_codename}-updates";`
-* Setup email alert: `Unattended-Upgrade::Mail "mail@domain";
+* Setup email alert: `Unattended-Upgrade::Mail "mail@domain";i`
 * Reboot WITHOUT CONFORMATION: `Unattended-Upgrade::Automatic-Reboot "true";`
 * Reboot time: `Unattended-Upgrade::Automatic-Reboot-Time "02:00"`;
 
