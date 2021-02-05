@@ -1,20 +1,3 @@
-- [Design resources](#design-resources)
-  * [Design principles](#design-principles)
-  * [UI frameworks](#ui-frameworks)
-  * [CSS](#css)
-    + [Preprocessors](#preprocessors)
-    + [CSS Examples](#css-examples)
-    + [CSS Articles](#css-articles)
-  * [Icons, mockups, Wireframes, UI kits](#icons-mockups-wireframes-ui-kits)
-  * [Icons](#icons)
-    + [Articles about icons](#articles-about-icons)
-  * [Favicons](#favicons)
-    + [Articles about favicons an apple-touch-icons](#articles-about-favicons-an-apple-touch-icons)
-  * [Photos](#photos)
-    + [Free stock photos](#free-stock-photos)
-
-<!-- END TOC -->
-
 # Design resources
 
 ## Design principles
@@ -27,6 +10,7 @@
 * [Bootstrap](https://getbootstrap.com/) | Build responsive, mobile-first projects
 * [Foundation](http://foundation.zurb.com/docs/) - [material version](https://github.com/mikolajdobrucki/material-foundation)
 * [Materialize Css](https://materializecss.com/) - A modern responsive front-end framework based on Material Design
+* [Tailwindcss](https://tailwindcss.com/)
 * [Formstone](https://formstone.it)
 * [UIkit](https://getuikit.com/)
 * [Element](https://element.eleme.io/) | A Desktop UI Library for Vue, React, Angular
@@ -40,6 +24,7 @@
 * [Weex](https://weex-project.io/index.html) | For Vue
 * [Semantic](https://semantic-ui.com/) | For React, Meteor, Ember
 
+[Any even more Alternatives](https://classpert.com/blog/top-bootstrap-alternatives)
 
 ## CSS
 

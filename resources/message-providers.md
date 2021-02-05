@@ -16,6 +16,7 @@
 * [Zoho mail](https://www.zoho.eu/mail/)
 * [Rackspace](https://www.rackspace.com/en-nl/email-hosting/webmail)
 * [Greatmail](https://www.greatmail.com/)
+* [Your Mailinglist Provider](https://www.ymlp.com/nl/) Verstuur uw e-mailnieuwsbrieven met YMLP
 
 ## Mail providers for developers
 

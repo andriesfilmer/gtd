@@ -6,6 +6,16 @@ Detect the model of your nvidia graphic card and the recommended driver.
 
     ubuntu-drivers devices
 
+## Gnome
+
+### Extentions
+
+I like [gTile extention](https://extensions.gnome.org/extension/28/gtile/) adjusted the  `Resize presets` for `Super+Alt+[KP_1..KP_9]` for my monitor with 5120x1440 resolution.
+
+* Preset resize 4: `3x1 0:0 0:0,0:0 1:0`
+* Preset resize 5: `3x1 1:0 1:0,0:0 2:0`
+* Preset resize 6: `3x1 2:0 2:0,1:0 2:0`
+
 ## Davfs
 
     sudo apt install davfs2

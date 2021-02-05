@@ -121,14 +121,20 @@ Test with the following command:
 
     echo test | mail -s "test message" root
 
-# Syslog
+## Syslog
 
-`vi /etc/rsyslog.d/50-default.conf`
+Set log preferences `vi /etc/rsyslog.d/50-default.conf`
 
 The next line means log every facility at every level to /var/log/syslog, with authpriv being the only exception.
-Obviously this includes mail, so #comment/disable this line. Adjust some other preverents.
+Obviously this includes mail, so #comment/disable this line. Adjust some other preferences.
 
     *.*;auth,authpriv.none          -/var/log/syslog
+
+### Journal
+
+Set max file size `vi /etc/systemd/journald.conf`
+
+    SystemMaxFileSize=2G
 
 ## Timezone
 

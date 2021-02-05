@@ -9,10 +9,12 @@
     journalctl -b caf0524a1d394ce0bdbcff75b94444fe  # From boot ID
     journalctl -n 20                                # Show last 20 messages
     journalctl -f                                   # Follow the messages
-    journalctl -u postfix@-.service                 # Follow only postfix
+    journalctl -u spamassassin.service -f           # Follow only spamd
+    journalctl -u postfix@-.service -f              # Follow only postfix
     journalctl -u postfix@-.service --since -10m    # Only last 10 minutes
+    journalctl -u spamassassin.service -u postfix@-.service -u opendkim.service --since -30m
     journalctl -u nginx.service --since today
-    journalctl -u nginx.service -u php-fpm.service --since today
+    journalctl -u ssh.service --since today
     journalctl /bin/sh --since today
     journalctl _PID=8088                            # Specifying the _PID field.
     journalctl _UID=33 --since today                # Get id: `id -u www-data`

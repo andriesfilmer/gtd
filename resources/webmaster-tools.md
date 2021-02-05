@@ -7,12 +7,12 @@
 * [Manage your Google Ads](https://marketingplatform.google.com/)
 
 
-## Tools waarmee je een website kunt optimaliseren of analyseren
-* [WooRank](http://www.woorank.com) is een service waarmee je een site kunt laten analyseren op meer dan 50 SEO-gerelateerde punten.
-* [Marcro testing](http://seleniumhq.org). Zie ook PHPUnit
+## Tools for optimize or analyse your website
+* [GT Metrix](https://gtmetrix.com/) How fast does your website load?
+* [WooRank](http://www.woorank.com) is a service that allows you to have a site analysed on more than 50 SEO-related points.
 * [Browsershots](http://browsershots.org/) Check Browser Compatibility, Cross Platform Browser Test
 
-## Links om domeinnamen of netwerken te analiseren
+## Analyse domainname or network
 * [Whois domaintools](http://whois.domaintools.com/filmer.nl) (filmer.nl as a example)
 * [Alexa site info](http://www.alexa.com/siteinfo/filmer.nl) (filmer.nl as a example)
 * [DNSlytics](https://dnslytics.com/tools) online network tools
@@ -24,3 +24,7 @@
 * Regex101](https://regex101.com/)
 * [Regexone - through lessons](http://regexone.com)
 * [Rubular - Ruby regular expression editor](http://rubular.com/)
+
+
+## Online convertions
+* [ZamZar](https://www.zamzar.com/) File conversion made easy
