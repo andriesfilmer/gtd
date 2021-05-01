@@ -4,27 +4,27 @@
 
 * [Marvelapp](https://marvelapp.com/) | Free mobile & web prototyping.
 * [Figma](https://www.figma.com/) | Brings your teams together to design better products
-* [InVision](https://www.invisionapp.com/) Mobile Mood Board
+* [InVision](https://www.invisionapp.com/) | Mobile Mood Board
 * [Balsamiq](https://balsamiq.com/) |  Rapid wireframing tool sketching on a whiteboard
 
 ## Design principles
 
 * [Material Design](https://material.io/guidelines/)
-* [UsabilityHub](https://usabilityhub.com/) A remote user research platform that takes the guesswork out of design decisions by validating them with real users.
+* [UsabilityHub](https://usabilityhub.com/) | A remote user research platform that takes the guesswork out of design decisions by validating them with real users.
 
 ## UI frameworks
 
 * [Bootstrap](https://getbootstrap.com/) | Build responsive, mobile-first projects
-* [Foundation](http://foundation.zurb.com/docs/) - [material version](https://github.com/mikolajdobrucki/material-foundation)
-* [Materialize Css](https://materializecss.com/) - A modern responsive front-end framework based on Material Design
+* [Foundation](http://foundation.zurb.com/docs/) | [material version](https://github.com/mikolajdobrucki/material-foundation)
+* [Materialize Css](https://materializecss.com/) | A modern responsive front-end framework based on Material Design
 * [Tailwindcss](https://tailwindcss.com/)
 * [Formstone](https://formstone.it)
 * [UIkit](https://getuikit.com/)
 * [Element](https://element.eleme.io/) | A Desktop UI Library for Vue, React, Angular
 * [Material design lite](https://getmdl.io/)
-* [VitalCss](https://vitalcss.com/) - A minimally invasive CSS framework
-* [PureCss](https://purecss.io) - A set of small, responsive CSS modules
-* [JuicedCss](http://juicedcss.com/) - a Flexbox CSS Framework
+* [VitalCss](https://vitalcss.com/) | A minimally invasive CSS framework
+* [PureCss](https://purecss.io) | A set of small, responsive CSS modules
+* [JuicedCss](http://juicedcss.com/) | a Flexbox CSS Framework
 * [BlazeUI](https://www.blazeui.com/)
 * [Vuetify](https://vuetifyjs.com/) | Material Component Framework for Vue
 * [Quasar](http://quasar-framework.org/) | For Vue
@@ -36,8 +36,8 @@
 ## CSS
 
 ### Colors
-* [Color wheel](https://www.canva.com/colors/color-wheel/) - Want to know what colors look good together
-* [Color-palette-genator](https://www.canva.com/colors/color-palette-generator/) - Upload logo
+* [Color wheel](https://www.canva.com/colors/color-wheel/) | Want to know what colors look good together
+* [Color-palette-genator](https://www.canva.com/colors/color-palette-generator/) | Upload logo
 * [Color-calculator](https://www.sessions.edu/color-calculator/)
 
 ### Preprocessors
@@ -50,20 +50,20 @@
 
 ### CSS Examples
 
-* [Animate.css](http://daneden.github.io/animate.css/) - Just-add-water CSS animations
-* [Effeckt.css](http://h5bp.github.io/Effeckt.css/) - UI-Less & Performant Transitions & Animations
-* [Ultimate CSS Gradient Generator - ColorZilla.com](http://www.colorzilla.com/gradient-editor/) - A powerful Photoshop-like CSS gradient editor
-* [CSS Button Generator](http://www.cssbuttongenerator.com) - Imageless CSS Buttons Simplified
+* [Animate.css](http://daneden.github.io/animate.css/) | Just-add-water CSS animations
+* [Effeckt.css](http://h5bp.github.io/Effeckt.css/) | UI-Less & Performant Transitions & Animations
+* [Ultimate CSS Gradient Generator | ColorZilla.com](http://www.colorzilla.com/gradient-editor/) | A powerful Photoshop-like CSS gradient editor
+* [CSS Button Generator](http://www.cssbuttongenerator.com) | Imageless CSS Buttons Simplified
 * [Inspiration for Custom Select Elements](http://tympanus.net/codrops/2014/07/10/inspiration-for-custom-select-elements/) |
    Inspiration for styling a custom version of the select element
-* [CSS Tricks](https://css-tricks.com/glitch-effect-text-images-svg/) - Glitch Effect on Text / Images / SVG
-* [CSS Filters playground](http://bennettfeely.com/filters/) - Css filter examples
+* [CSS Tricks](https://css-tricks.com/glitch-effect-text-images-svg/) | Glitch Effect on Text / Images / SVG
+* [CSS Filters playground](http://bennettfeely.com/filters/) | Css filter examples
 * [CSS Filter effects](http://html5-demos.appspot.com/static/css/filters/index.html)
 
 ### CSS Articles
 
-* [QuirksBlog](http://www.quirksmode.org/blog/archives/2010/04/a_pixel_is_not.html) - A pixel is not a pixel is not a pixel
-* [Responsive grid](http://www.adamkaplan.me/grid/) - A simple guide to responsive design.
+* [QuirksBlog](http://www.quirksmode.org/blog/archives/2010/04/a_pixel_is_not.html) | A pixel is not a pixel is not a pixel
+* [Responsive grid](http://www.adamkaplan.me/grid/) | A simple guide to responsive design.
 
 
 ## Icons, mockups, Wireframes, UI kits
@@ -77,22 +77,18 @@
 * [Famfamfam](http://www.famfamfam.com/) | The best price there is (free!)?
 * [Unicode icons](https://graphemica.com/) | Graphemica For people who ♥ letters, numbers, punctuation, &c
 
-### Articles about icons
-
-* [Everything you always wanted to know about touch icons - Mathias Bynens](https://mathiasbynens.be/notes/touch-icons)
-* [Using Icon Fonts](http://gomakethings.com/icon-fonts/)
-* [The Big List of Flat Icons & Icon Fonts | CSS-Tricks](http://css-tricks.com/flat-icons-icon-fonts/)
-
-## Favicons
+### Favicons
 
 * [Favicon Generator](http://realfavicongenerator.net) | Generate the favicon pictures and HTML code
 * [Favicon & App Icon Generator](https://www.favicon-generator.org/)
 * [Node Favicons generator](https://github.com/haydenbleasel/favicons)
 
-### Articles about favicons an apple-touch-icons
+### Articles about icons
 
+* [Everything you always wanted to know about touch icons](https://mathiasbynens.be/notes/touch-icons) | Mathias Bynens
+* [Using Icon Fonts](http://gomakethings.com/icon-fonts/)
+* [The Big List of Flat Icons & Icon Fonts](http://css-tricks.com/flat-icons-icon-fonts/) | CSS-Tricks
 * [Icons & Browser colors](https://developers.google.com/web/fundamentals/design-and-ux/browser-customization/) | favicon, etc.
-* [Everything you always wanted to know about touch icons - Mathias Bynens](https://mathiasbynens.be/notes/touch-icons)
 * [Audreyr/favicon-cheat-sheet · GitHub](https://github.com/audreyr/favicon-cheat-sheet)
 * [Using Icon Fonts](http://gomakethings.com/icon-fonts/)
 
@@ -116,8 +112,8 @@
 * [SplitShare](http://splitshire.com/)
 * [IM Free](http://www.imcreator.com/free)
 
+## Mockups
 
-### Mockups
 * [Sketch App sources](https://www.sketchappsources.com/) | Lot off free resources
 * [Smart Mockups](https://smartmockups.com)
 
