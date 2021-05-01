@@ -138,7 +138,7 @@ Set max file size `vi /etc/systemd/journald.conf`
 
 ## Timezone
 
-    sudo dpkg-reconfigure tzdata
+    dpkg-reconfigure tzdata
 
 ## Automatic Updates
 

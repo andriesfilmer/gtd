@@ -4,6 +4,7 @@
 * [Got 15 minutes and want to learn Git?](http://try.github.io/levels/1/challenges/1) Very good!
 * [Git in 5 minutes](http://classic.scottr.org/presentations/git-in-5-minutes)
 * [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
+* [How to undo almost anything with git](https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/)
 
 ## Create a new repository on the command line
 Create a new repository online: [https://github.com/andriesfilmer](https://github.com/andriesfilmer) -> Repositories -> New
