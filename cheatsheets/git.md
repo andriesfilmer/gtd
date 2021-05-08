@@ -24,6 +24,21 @@ Clone or copy a repository (which already exists).
 ## Push
     git pull orgin master
 
+## Branches
+
+    git branch issue53   # Create branch 'issue53'
+    git checkout issue53
+    git branch issue53   # Shorthand create switch and checkout branch 'issue53'
+
+Fix issue53 and commit the fix.
+
+    git commit -am 'Fixed issue53'
+    git push -u origin issue53     # push to remote
+
+Back to master branch
+
+    git checkout master  # Switched to branch 'master'
+
 ## Tips
 
 ### Which files need to push
