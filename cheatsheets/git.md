@@ -28,7 +28,7 @@ Clone or copy a repository (which already exists).
 
     git branch issue53   # Create branch 'issue53'
     git checkout issue53
-    git branch issue53   # Shorthand create switch and checkout branch 'issue53'
+    git branch issue53   # Shorthand create and checkout branch 'issue53'
 
 Fix issue53 and commit the fix.
 
@@ -38,6 +38,10 @@ Fix issue53 and commit the fix.
 Back to master branch
 
     git checkout master  # Switched to branch 'master'
+
+Delete old (stale) branches on remote.
+
+    git push origin --delete issue49
 
 ## Tips
 
