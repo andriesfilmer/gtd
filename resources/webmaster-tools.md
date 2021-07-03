@@ -2,6 +2,7 @@
 * [Page speed](https://developers.google.com/speed/pagespeed/insights/)
 * [Google Search Console](https://search.google.com/search-console)
 * [Console Cloud](https://console.cloud.google.com/)
+* [Safe Browsing-status websites](https://transparencyreport.google.com/safe-browsing/)
 * [Google Analytics](https://analytics.google.com/analytics/web)
 * [Google AdSense](https://www.google.com/adsense/)
 * [Manage your Google Ads](https://marketingplatform.google.com/)

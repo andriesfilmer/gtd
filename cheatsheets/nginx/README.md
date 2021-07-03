@@ -78,7 +78,7 @@ Combine all the certificates into a single file. For Nginx it is required to hav
 
 To combine the certificates in case of PositiveSSL, run the following command in terminal:
 
-    cat certificate.crt cabundle.crt > yourdomain-certificate.crt
+    cat certificate.crt <(echo) cabundle.crt > yourdomain-certificate.crt
 
 Check that begin certificat start on new line. Not:
 

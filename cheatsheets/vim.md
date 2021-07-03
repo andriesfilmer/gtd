@@ -98,6 +98,11 @@ Press `:`
     ctrl-^                             " Jump between last edit file line"
     ctrl-o                             " Press twice and go to back last edit file and line(s)"
 
+## Sessions
+
+    :mks                               " Save your session in current dir
+    vim -S                             " Start with your saved session in current dir
+
 ## Completions
 
     Ctrl-p                             " Completion for all (back) words from this file, other open files and registers.

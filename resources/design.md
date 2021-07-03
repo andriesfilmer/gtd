@@ -66,12 +66,20 @@
 * [Responsive grid](http://www.adamkaplan.me/grid/) | A simple guide to responsive design.
 
 
-## Icons, mockups, Wireframes, UI kits
+## Photos
+
+* [Adobe Stock](https://stock.adobe.com/)
+* [123rf stock](https://nl.123rf.com/)
+* [500px](https://web.500px.com/)
+
+## Icons, Mockups, Wireframes, UI kits
 
 * [Sketch App sources](https://www.sketchappsources.com/) | Lot off free resources
+* [Canva](https://www.canva.com/) | Designing, collaborating, sharing
+* [Dribbble](https://dribbble.com/) | Discover the world’s top designers & creatives
 
-## Icons
-
+### Icons
+* [Heroicons](https://heroicons.com/) | Beautiful hand-crafted SVG icons
 * [Foundation Icon Fonts 3](http://zurb.com/playground/foundation-icon-fonts-3)
 * [icomoon](https://icomoon.io/) | All of our icons are designed on a precise pixel grid.
 * [Famfamfam](http://www.famfamfam.com/) | The best price there is (free!)?
@@ -92,12 +100,6 @@
 * [Audreyr/favicon-cheat-sheet · GitHub](https://github.com/audreyr/favicon-cheat-sheet)
 * [Using Icon Fonts](http://gomakethings.com/icon-fonts/)
 
-## Photos
-
-* [Adobe Stock](https://stock.adobe.com/)
-* [123rf stock](https://nl.123rf.com/)
-* [500px](https://web.500px.com/)
-
 ### Free stock photos
 
 * [Pexels](https://www.pexels.com/)
@@ -112,8 +114,10 @@
 * [SplitShare](http://splitshire.com/)
 * [IM Free](http://www.imcreator.com/free)
 
-## Mockups
+### Mockups
 
 * [Sketch App sources](https://www.sketchappsources.com/) | Lot off free resources
 * [Smart Mockups](https://smartmockups.com)
 
+### SVG illustrations
+* [unDraw](https://undraw.co/illustrations) | Open-source illustrations for any idea

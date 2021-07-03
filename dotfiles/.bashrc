@@ -110,6 +110,7 @@ alias adb="~/Android/Sdk/platform-tools/adb"
 
 # Open broot with uncommitted files for git. Open with F2
 alias brapp="cd ~/dev/inzetrooster-app/ && broot -gc :gs"
+alias railss="cd ~/dev/inzetrooster-app/ && rails s"
 
 # Automatic LS after change directory
 cdl () {
