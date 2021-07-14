@@ -1,5 +1,25 @@
 # Nice to know for Postfix
 
+
+## Transport to other mailserver
+
+You can set in the transport file /etc/postfix/transport a line like this:
+
+    * smtp:[new_server_dns_or_ip]
+
+Then do:
+
+    postmap /etc/postfix/transport
+
+Then do postfix reload to load changes.
+
+Then flush the queue with:
+
+    postqueue -f
+
+If instead of setting * you set a domain name, only mails to this domain will be redirected to the new server.
+
+
 ## Deliver e-mail to an alternate address
 
 ### Find the mail ID in postfix
@@ -33,3 +53,5 @@ Now that you’ve extracted that e-mail, you can have it be sent to a different 
 
     $ postsuper -d  CF452C1239FB
     $ rm -f /tmp/m.eml
+
+Resource: [Mattias Geniar](https://ma.ttias.be/postfix-mail-queue-deliver-e-mail-alternate-address/)

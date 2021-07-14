@@ -11,10 +11,10 @@
 
     apt install fail2ban
 
-copy /etc/fail2ban/jail.conf /etc/fail2ban/jail.local and add your own ip's to jail.local:
+`cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local` and add your own ip's to jail.local:
 
-    #          localhost   home-ip      server02       server03     server05        server06
-    ignoreip = 127.0.0.1/8 94.211.146.214 198.211.123.93 95.85.60.187 146.185.138.134 198.199.127.67
+    #          localhost   home-ip        server03     server05        server06       server08
+    ignoreip = 127.0.0.1/8 94.211.146.214 95.85.60.187 198.199.127.67  198.199.127.67 159.65.199.31
 
 Checkstatus
 
@@ -25,6 +25,33 @@ Check iptables with fail2ban-client
 
     fail2ban-client set sshd unbanip 23.34.45.56
 
+
+## hosts.allow
+
+[Allow ssh from dutch providers](http://nirsoft.net/countryip/nl.html) or [ip by country](https://www.ip2location.com/blockvisitorsbycountry.aspx)
+
+These are **my** provider blocks
+
+    # 81.204.0.0/14   KPN
+    # 84.104.0.0/14   ZIGGO
+    # 217.62.16.0/20  ZIGGO
+    # 94.211.144.0/21 ZIGGO
+    # 84.241.192.0/18 T-MOBILE
+    #
+    # 95.85.60.187    server03
+    # 37.139.3.138    server04*
+    # 146.185.138.134 server05
+    # 198.199.127.67  server06
+    # 37.139.14.57    server07*
+    # 159.65.199.31   server08
+
+    sshd: 81.204.0.0/14 84.104.0.0/14 217.62.16.0/20 94.211.144.0/21 84.241.192.0/18 95.85.60.187 37.139.3.138 206.189.108.222 198.199.127.67 159.65.199.31
+
+## hosts.deny
+
+And disable access from all others in `/etc/hosts.deny`
+
+    sshd: ALL
 
 ## Configure [iptables](https://help.ubuntu.com/community/IptablesHowTo)
 
@@ -53,33 +80,7 @@ Or without disconnected from current ssh login
 
     iptables-restore < /etc/iptables/rules.v4
 
-Or enable new rules with fontend [ufw](https://help.ubuntu.com/community/UFW] for iptables and `iptables-save`
-
-## hosts.allow
-
-[Allow ssh from dutch providers](http://nirsoft.net/countryip/nl.html) or [ip by country](https://www.ip2location.com/blockvisitorsbycountry.aspx)
-
-These are **my** provider blocks
-
-    # 81.204.0.0/14   KPN
-    # 84.104.0.0/14   ZIGGO
-    # 217.62.16.0/20  ZIGGO
-    # 94.211.144.0/21 ZIGGO
-    # 84.241.192.0/18 T-MOBILE
-    #
-    # 95.85.60.187    server03
-    # 37.139.3.138    server04
-    # 146.185.138.134 server05
-    # 198.199.127.67  server06
-    # 37.139.14.57    server07
-
-    sshd: 81.204.0.0/14 84.104.0.0/14 217.62.16.0/20 94.211.144.0/21 84.241.192.0/18 95.85.60.187 37.139.3.138 206.189.108.222 198.199.127.67
-
-## hosts.deny
-
-And disable access from all others in `/etc/hosts.deny`
-
-    sshd: ALL
+Or enable new rules with fontend [ufw](https://help.ubuntu.com/community/UFW) for iptables and `iptables-save`
 
 ## sudo
 
