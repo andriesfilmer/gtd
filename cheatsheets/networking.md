@@ -94,6 +94,15 @@ Use custom nameservers add a line to `/etc/dhcp/dhclient.conf`:
     # Google
     supersede domain-name-servers 8.8.8.8, 8.8.4.4;
 
+
+## AdGuard
+
+AdGuard Home is a network-wide software for blocking ads & tracking.
+After you set it up, it'll cover ALL your home devices,
+and you don't need any client-side software for that.
+
+<https://github.com/AdguardTeam/AdGuardHome#getting-started>
+
 ## ss – Network Statistics
 
 ss command use to dump socket statistics. It allows showing information similar to `netstat`.

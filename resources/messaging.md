@@ -49,11 +49,13 @@ I'm don't like to promoot centralized communication service. Things like IRC, XM
 * [Greatmail](https://www.greatmail.com/)
 * [Your Mailinglist Provider](https://www.ymlp.com/nl/) Verstuur uw e-mailnieuwsbrieven met YMLP
 
-### Mail providers for developers
+### Mail providers for developers (transactional)
 
-* Sendgrid
-* Mandrill
-* Mailgun
+* [Sendgrid](https://sendgrid.com/) USA
+* [Mailchimp](https://mailchimp.com/pricing/transactional-email/) USA
+* [Mailgun](https://www.mailgun.com/email-api/) USA
+* [Flowmailer](https://flowmailer.com/) Europe, Netherlands
+* [Rapidmail](https://www.rapidmail.com/) Europe, Germany
 
 ### Leanstack
 

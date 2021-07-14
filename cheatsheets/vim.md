@@ -100,8 +100,10 @@ Press `:`
 
 ## Sessions
 
-    :mks                               " Save your session in current dir
+    :mks                               " Save your session in current dir (default: `session.vim`)
     vim -S                             " Start with your saved session in current dir
+    vim mks! .session-lang.vim         " Save session to `.session.lang.vim` file
+    vim -S .session-lang.vim           " Start with your a session
 
 ## Completions
 
