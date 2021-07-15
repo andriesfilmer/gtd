@@ -3,7 +3,7 @@
 
 ## Transport to other mailserver
 
-You can set in the transport file /etc/postfix/transport a line like this:
+You can set in the transport file `/etc/postfix/transport` a line like this:
 
     * smtp:[new_server_dns_or_ip]
 

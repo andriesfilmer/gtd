@@ -16,6 +16,10 @@ Check my config files:
 * My [/etc/postfix/main.cf](./main.cf) file.
 * My [/etc/postfix/master.cf](./master.cf) file.
 
+Reconfigure postfix?
+
+    dpkg-reconfigure postfix
+
 ## Create virtual domain/user files
 
 File: /etc/postfix/vdomains
@@ -151,7 +155,7 @@ Change the line in `/etc/postfix-policyd-spf-python/policyd-spf.conf` to:
 
 We also want to use [DKIM](http://www.dkim.org/), so we need to install dkim-filter and create keys.
 
-    sudo apt-get install opendkim opendkim-tools
+    apt install opendkim opendkim-tools
 
 Opendkim configuration [/etc/opendkim.conf](./opendkim.conf) file.
 
@@ -164,25 +168,23 @@ Open `/etc/default/opendkim` and add the next line (postfix runs chroot):
     PIDFILE=$RUNDIR/$NAME.pid
     EXTRAAFTER=
 
+
     mkdir -p /var/spool/postfix/run/opendkim
-    chown R opendkim:postfix /var/spool/postfix/run
+    chown -R opendkim:postfix /var/spool/postfix/run
 
 Open `/etc/systemd/system/multi-user.target.wants/opendkim.service` and add next lines to [service]
 
     User=opendkim
     Group=postfix
 
-* Pitfall: Your changes won't be applied it you just reload your systemd-configuration files by:
+Your changes won't be applied it you just reload your systemd-configuration files by:
 
-    cd
     bash /lib/opendkim/opendkim.service.generate
     systemctl daemon-reload
 
 Key generation for dkim-milter and its setup with DNS.
 
     opendkim-genkey -D /etc/postfix/dkim/ -d filmer.net -s mail
-
-
 
 Create a DNS record. Copy `/etc/postfix/dkim/mail.txt`.
 
