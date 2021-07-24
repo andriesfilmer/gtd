@@ -56,6 +56,7 @@ I'm don't like to promoot centralized communication service. Things like IRC, XM
 * [Mailgun](https://www.mailgun.com/email-api/) USA
 * [Flowmailer](https://flowmailer.com/) Europe, Netherlands
 * [Rapidmail](https://www.rapidmail.com/) Europe, Germany
+* [Sendinblue](https://www.sendinblue.com/)
 
 ### Leanstack
 

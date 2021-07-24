@@ -184,7 +184,7 @@ Your changes won't be applied it you just reload your systemd-configuration file
 
 Key generation for dkim-milter and its setup with DNS.
 
-    opendkim-genkey -D /etc/postfix/dkim/ -d filmer.net -s mail
+    opendkim-genkey -D /etc/postfix/dkim/ -b 2048 -d filmer.net -s mail
 
 Create a DNS record. Copy `/etc/postfix/dkim/mail.txt`.
 
@@ -359,3 +359,10 @@ Check if all services are running:
 
     ss --tcp --listening --processes --numeric --ipv4
     ss -tlpn4
+
+
+### Mail-tester
+
+DKIM, SPF and more checker
+
+    <https://www.mail-tester.com/>
