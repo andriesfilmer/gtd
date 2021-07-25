@@ -186,7 +186,36 @@ Key generation for dkim-milter and its setup with DNS.
 
     opendkim-genkey -D /etc/postfix/dkim/ -b 2048 -d filmer.net -s mail
 
-Create a DNS record. Copy `/etc/postfix/dkim/mail.txt`.
+
+KeyTable            file:/etc/opendkim/key.table
+
+    default._domainkey.igroupware.org igroupware.org:default:/etc/opendkim/keys/igroupware.org/default.private
+
+SigningTable        file:/etc/opendkim/signing.table
+
+    igroupware.org default._domainkey.igroupware.org
+    filmer.nl  default._domainkey.igroupware.org
+    inzetrooster.nl default._domainkey.igroupware.org
+    shiftplanner.org default._domainkey.igroupware.org
+
+InternalHosts       file:/etc/opendkim/trusted.hosts
+
+    127.0.0.1
+    ::1
+    localhost
+    # Ip thuis
+    94.211.146.214
+    # Server03
+    95.85.60.187
+    *.igroupware.org
+    *.inzetrooser.nl
+    *.filmer.nl
+
+
+Create a DNS record. Copy `/etc/postfix/keys/igroupware.org/[default.txt](./default.txt)`.
+
+    default._domainkey      IN      TXT     "v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxYE/Zu4JbLDqC+AzSjoGNGQthLfsewdLPWE9Sf7WiaG9HYtanKclEpbgeJWeDT55jrEnJpSZZdIXPZFOTuSJCNZaZ/Na4iwBRffZFTlA2AGP7wQnZCvhOsCqWCYryLHMFW5/B68WsgR/x5Omzd54TZRJONckIgCD0AbeejX38aMvk3OCP6yA77iWczvjvvmtHBZ4LtC4gHghLoLJllcnm7Bzj/6CzYaFQFMU1McRh1vASR/tj+0S71QG5fwUcVoA20yhIF1UVseZXjrIjGeoeuyBlYjbOPg8eVRTDWFb3rxkacPjXeQepzm+Sc8PI/6llPuNlgiDHU8HYu2nm13IhwIDAQAB"
+
 
 Open Postfix main.cf file '/etc/postfix/main.cf' and append the next:
 
