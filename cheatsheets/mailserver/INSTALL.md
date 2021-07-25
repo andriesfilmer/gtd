@@ -184,19 +184,19 @@ Your changes won't be applied it you just reload your systemd-configuration file
 
 Key generation for dkim-milter and its setup with DNS.
 
-    opendkim-genkey -D /etc/postfix/dkim/ -b 2048 -d filmer.net -s mail
+    opendkim-genkey -D /etc/postfix/dkim/ -b 2048 -d filmer.net -s default
 
 
 KeyTable            file:/etc/opendkim/key.table
 
-    default._domainkey.igroupware.org igroupware.org:default:/etc/opendkim/keys/igroupware.org/default.private
+    default._domainkey.filmer.net filmer.net:default:/etc/opendkim/keys/filmer.net/default.private
 
 SigningTable        file:/etc/opendkim/signing.table
 
-    igroupware.org default._domainkey.igroupware.org
-    filmer.nl  default._domainkey.igroupware.org
-    inzetrooster.nl default._domainkey.igroupware.org
-    shiftplanner.org default._domainkey.igroupware.org
+    filmer.net default._domainkey.filmer.net
+    filmer.nl  default._domainkey.filmer.net
+    inzetrooster.nl default._domainkey.filmer.net
+    shiftplanner.org default._domainkey.filmer.net
 
 InternalHosts       file:/etc/opendkim/trusted.hosts
 
@@ -212,7 +212,7 @@ InternalHosts       file:/etc/opendkim/trusted.hosts
     *.filmer.nl
 
 
-Create a DNS record. Copy `/etc/postfix/keys/igroupware.org/[default.txt](./default.txt)`.
+Create a DNS record. Copy `/etc/postfix/keys/filmer.net/[default.txt](./default.txt)`.
 
     default._domainkey      IN      TXT     "v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxYE/Zu4JbLDqC+AzSjoGNGQthLfsewdLPWE9Sf7WiaG9HYtanKclEpbgeJWeDT55jrEnJpSZZdIXPZFOTuSJCNZaZ/Na4iwBRffZFTlA2AGP7wQnZCvhOsCqWCYryLHMFW5/B68WsgR/x5Omzd54TZRJONckIgCD0AbeejX38aMvk3OCP6yA77iWczvjvvmtHBZ4LtC4gHghLoLJllcnm7Bzj/6CzYaFQFMU1McRh1vASR/tj+0S71QG5fwUcVoA20yhIF1UVseZXjrIjGeoeuyBlYjbOPg8eVRTDWFb3rxkacPjXeQepzm+Sc8PI/6llPuNlgiDHU8HYu2nm13IhwIDAQAB"
 
@@ -229,7 +229,7 @@ Open Postfix main.cf file '/etc/postfix/main.cf' and append the next:
 Test dkim key:
 
     postfix reload
-    opendkim-testkey -d filmer.net -s mail -vvv
+    opendkim-testkey -d filmer.net -s default -vvv
 
 Or check/test you DKIM on several sites, for example: [dkimcore.org](http://dkimcore.org/tools/keycheck.html)
 
