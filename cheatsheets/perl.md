@@ -14,10 +14,6 @@ If a module is missing you can install it like:
 
 Hint: you can find the module-names on http://search.cpan.org/
 
-When using CPAN for the first time it has to be configured. Give the default answer to all questions except one. Give this answer when it is suggested:
-
-    UNINST=1
-
 Sometimes the install command doesn't work.
 
     perl -MCPAN -e 'install LWP::UserAgent'
@@ -27,6 +23,12 @@ If this happens enter the CPAN shell and give the command there
 
     perl -MCPAN -eshell
     cpan> install LWP::UserAgent
+
+## Install DBI
+
+    apt-get install build-essential
+    apt-get install libdbd-mysql-perl
+    perl -MCPAN -e 'install DBD::mysql'
 
 ## Check if the syntax of a perl script is ok.
 

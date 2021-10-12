@@ -139,8 +139,6 @@ Create a [SPF](http://www.openspf.org/) record for each domain who we are sendin
     @         TXT           "v=spf1 mx mx:filmer.nl ~all"
     @         TXT           "v=spf1 mx ptr ip4:95.85.60.187 ip6:fe80::601:18ff:fe1b:8e01/64 mx:mail.filmer.nl ~all"
 
-[Wizard for SPF](http://www.microsoft.com/mscorp/safety/content/technologies/senderid/wizard/)
-
 ### Postfix/SPF
 
     sudo apt-get install postfix-policyd-spf-python

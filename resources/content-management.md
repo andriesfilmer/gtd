@@ -31,3 +31,6 @@
 
 * [LimeSurvey](https://www.limesurvey.org/) Turn questions into answers.
 
+## Data visualization
+
+* [Apache Superset data exploration and visualization platform](https://superset.apache.org/)

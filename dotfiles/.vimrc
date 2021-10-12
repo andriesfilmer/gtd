@@ -115,7 +115,7 @@ set statusline+=\ Buf:%n                          " Buffer number
 
 " Exuberant-ctags`
 "------------------------------------------------------------------------------
-" First install `sudo apt-get install exuberant-ctags`
+" First install `sudo apt install exuberant-ctags`
 " Run ctags only if project (.git) exists
 if !empty(glob(".git"))
   au BufWritePost *.erb,*.rb silent! !eval 'ctags -R --languages=ruby --exclude=.git -o newtags; mv newtags tags;' &

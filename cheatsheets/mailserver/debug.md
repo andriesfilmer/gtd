@@ -199,6 +199,16 @@ Remove specific emails (i.o. andriesfilmer@hotmail.com)
 
     mailq | tail -n +2 | grep -v '^ *(' | awk  'BEGIN { RS = "" } { if ($7 == "andriesfilmer@hotmail.com" && $9 == "") print $1 } ' | tr -d '*!' | postsuper -d -
 
+## Trouble shooting with qshape
+
+When mail is draining slowly or the queue is unexpectedly large, run qshape(1) as the super-user (root) to help zero in on the problem
+
+For example:
+
+    qshape -s deferred | head
+
+More: <http://www.postfix.org/QSHAPE_README.html>
+
 ## Query the logfile
 
 Find hard bounces

@@ -44,7 +44,9 @@ I'm don't like to promoot centralized communication service. Things like IRC, XM
 
 ### Mail providers for end users
 
-* [Zoho mail](https://www.zoho.eu/mail/)
+* [ProtonMail](https://protonmail.com/) - Based in Switzerland
+* [Tutanota](https://tutanota.com/) - Werelds veiligste e-maildienst.
+* [Zoho mail](https://www.zoho.eu/mail/) - Secure Business Email for your organization
 * [Rackspace](https://www.rackspace.com/en-nl/email-hosting/webmail)
 * [Greatmail](https://www.greatmail.com/)
 * [Your Mailinglist Provider](https://www.ymlp.com/nl/) Verstuur uw e-mailnieuwsbrieven met YMLP

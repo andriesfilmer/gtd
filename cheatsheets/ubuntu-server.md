@@ -124,6 +124,11 @@ Test with the following command:
 
     echo test | mail -s "test message" root
 
+
+## Essential
+
+    apt install build-essential
+
 ## Syslog
 
 Set log preferences `vi /etc/rsyslog.d/50-default.conf`

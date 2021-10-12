@@ -52,9 +52,20 @@ Delete only the differed mail queue messages (i.e. only the ones the system inte
 
     postsuper -d ALL deferred
 
-Remove specific emails (i.o. andriesfilmer@hotmail.com)
+### Remove specific emails (i.o. andries@example.com)
 
-    mailq | grep -v '^ *(' | awk  'BEGIN { RS = "" } { if ($7 == "andriesfilmer@hotmail.com" && $9 == "") print $1 } ' | tr -d '*!' | postsuper -d -
+With tail-grep-awk
+
+    mailq | tail -n +2 | grep -v '^ *(' | awk  'BEGIN { RS = "" } { if ($8 ~ /andries@example.com/ && $9 == "") print $1 }' | tr -d '*!' | postsuper -d -
+
+or postqueue-tail-awk
+
+    postqueue -p | tail -n +2 | awk 'BEGIN { RS = "" } /andries@example\.com/ { print $1 }' | tr -d '*!' | postsuper -d -
+
+or grep solution assumes ID is between 10 and 11 digits, (based on inodes)
+
+    mailq | grep 'andries@example.com' -B1 | grep -oE "^[A-Z0-9]{10,11}" | sudo postsuper -d -
+
 
 ## Query the logfile
 

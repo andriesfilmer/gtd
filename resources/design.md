@@ -14,6 +14,7 @@
 
 ## UI frameworks
 
+* [Bulma](https://bulma.io/documentation/)
 * [Bootstrap](https://getbootstrap.com/) | Build responsive, mobile-first projects
 * [Foundation](http://foundation.zurb.com/docs/) | [material version](https://github.com/mikolajdobrucki/material-foundation)
 * [Materialize Css](https://materializecss.com/) | A modern responsive front-end framework based on Material Design
@@ -49,8 +50,9 @@
 
 
 ### CSS Examples
-
+* [A guide to CSS animations using clip-path()](https://blog.logrocket.com/guide-to-css-animations-using-clip-path/)
 * [Animate.css](http://daneden.github.io/animate.css/) | Just-add-water CSS animations
+* [Hover.css](http://ianlunn.github.io/Hover/) | A collection of CSS3 powered hover effects
 * [Effeckt.css](http://h5bp.github.io/Effeckt.css/) | UI-Less & Performant Transitions & Animations
 * [Ultimate CSS Gradient Generator | ColorZilla.com](http://www.colorzilla.com/gradient-editor/) | A powerful Photoshop-like CSS gradient editor
 * [CSS Button Generator](http://www.cssbuttongenerator.com) | Imageless CSS Buttons Simplified

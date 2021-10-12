@@ -106,7 +106,8 @@ All rake tasks will then be available to you. Usage
 
 ## Resources
 * [ruby](http://www.ruby-lang.org/en/) language
-* [rails](http://rubyonrails.org/) framework
+* [Ruby on Rails Guides](http://guides.rubyonrails.org/)
+ * [Active Support Core Extensions](https://guides.rubyonrails.org/active_support_core_extensions.html) - Extensions, utilities, and other transversal stuff
 * [API - Welcome to Rails](http://api.rubyonrails.org)
 * [Help and documentation for the Ruby programming language](http://www.ruby-doc.org)
 * [bundle](http://gembundler.com/)
