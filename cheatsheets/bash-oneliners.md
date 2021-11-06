@@ -32,9 +32,9 @@ If you want to find all your writable directories, issue:
 
 Changing Permissions Recursively. Be sure to be in the right directorie!
 
-    find ./www/ -type f -exec chmod 664 {} ;
-    find ./www/ -type d -exec chmod 775 {} ;
-    find ./www/ -exec chown nobody:users {} ;
+    find ./www/ -type f -exec chmod 664 {} \;
+    find ./www/ -type d -exec chmod 775 {} \;
+    find ./www/ -exec chown nobody:users {} \;
 
 
 ## Rename files

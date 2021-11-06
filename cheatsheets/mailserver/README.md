@@ -58,9 +58,9 @@ With tail-grep-awk
 
     mailq | tail -n +2 | grep -v '^ *(' | awk  'BEGIN { RS = "" } { if ($8 ~ /andries@example.com/ && $9 == "") print $1 }' | tr -d '*!' | postsuper -d -
 
-or postqueue-tail-awk
+or postqueue-tail-awk (MAILER-DAEMON)
 
-    postqueue -p | tail -n +2 | awk 'BEGIN { RS = "" } /andries@example\.com/ { print $1 }' | tr -d '*!' | postsuper -d -
+    postqueue -p | tail -n +2 | awk 'BEGIN { RS = "" } /MAILER-DAEMON/ { print $1 }' | tr -d '*!' | postsuper -d -
 
 or grep solution assumes ID is between 10 and 11 digits, (based on inodes)
 
