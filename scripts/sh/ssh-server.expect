@@ -1,0 +1,50 @@
+#!/usr/bin/expect -f
+
+set server [lindex $argv 0];
+set keepass_pwd [exec ssh server05.filmer.net "cat .ssh/keepass-file"]
+set keepass_db "/home/andries/Nextcloud/Private/andries.kdbx"
+
+if { $server != "" } {
+
+  set credentials [exec echo $keepass_pwd | keepassxc-cli show -q -a UserName -a Password -a URL /home/andries/Nextcloud/Private/andries.kdbx $server]
+
+  puts $credentials
+
+  set awkUser {BEGIN {RS="";}{print $1}}
+  set awkPass {BEGIN {RS="";}{print $2}}
+  set awkUrl  {BEGIN {RS="";}{print $3}}
+
+  set userpass [exec echo $credentials | awk $awkUser]
+  set rootpass [exec echo $credentials | awk $awkPass]
+  set url      [exec echo $credentials | awk $awkUrl]
+
+  set timeout 2
+
+  if { $url != "" } {
+    spawn ssh $url
+    expect {
+      "?assword: " { send "$userpass\r" }
+    }
+    sleep 2
+    expect {
+      "*:~$"      { send   "su -\r" }
+    }
+    expect {
+      "?assword: " { send "$rootpass\r" }
+      "*:~#"
+    }
+
+    interact
+
+  } else {
+
+    puts "No server found"
+
+  }
+
+} else {
+
+    puts "Usage: ./ssh-server.expect server.domain.tld"
+
+}
+

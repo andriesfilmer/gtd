@@ -123,3 +123,6 @@
 
 ### SVG illustrations
 * [unDraw](https://undraw.co/illustrations) | Open-source illustrations for any idea
+
+### Drawing
+* [Gaphor](https://gaphor.org/) - Gaphor is a UML, SysML, RAAML, and C4 modeling application

@@ -1,10 +1,8 @@
 ## Messengers
 
-I'm don't like to promoot centralized communication service. Things like IRC, XMPP, Mastodon, GNU Social and Diaspora is the way to go in my opinion. You need a public protocol, at least one open source implementation. Otherwise, it's just not worth having. Anyway here is a short list.
-
+* Signal | [Speak Freely](https://signal.org/) Open Source.
 * Whatsapp | Owner is Facebook
 * Telegram | Opensource client messengers (not server) available but still centralized.
-* Signal | Client is open source. Most save chatapp available.
 * [Convos.by](https://convos.by/) | Convos is the simplest way to use IRC. It is always online, and accessible to your web browser, both on desktop and mobile. Run it on your home server, or cloud service easily.
 * Threema | Populair messenger with encryptie en groupchats, send photo's and video's.
 * TextSecure | From Open Whisper Systems and is free, opensource and end-to-end encryption
@@ -12,10 +10,11 @@ I'm don't like to promoot centralized communication service. Things like IRC, XM
 * Bleep | BitTorrent developers
 * Allo | From Google. Only on smartphones.
 * Dino | A modern open-source chat client for the desktop. It focuses on providing a clean and reliable Jabber/XMPP experience while having your privacy in mind.
+* Fractal | An instant messaging client for the GNOME desktop based on the [Matrix protocol](https://matrix.org/).
 
 ## Socialnetworks
-* [Diasspora foundation](https://diasporafoundation.org/) is een gedecentraliseerd social network. Met zgn Pods.
 * [Mastodon](https://joinmastodon.org/) | Social networking, back in your hands
+* [Diasspora foundation](https://diasporafoundation.org/) is een gedecentraliseerd social network. Met zgn Pods.
 * Mattermost | Open source, private cloud Slack-alternative
 * HumHub | The flexible Open Source Social Network Kit. Can be used as a service in the cloud or installed on your own server.
 * Buddypress | helps you run any kind of social network on your WordPress, with member profiles, activity streams, user groups, messaging, and more.

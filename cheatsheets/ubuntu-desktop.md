@@ -16,6 +16,32 @@ I like [gTile extention](https://extensions.gnome.org/extension/28/gtile/) adjus
 * Preset resize 5: `3x1 1:0 1:0,0:0 2:0`
 * Preset resize 6: `3x1 2:0 2:0,1:0 2:0`
 
+### gnome-tweaks
+
+    sudo apt-get install gnome-tweak-tool
+
+### dconf-editor
+
+Very fast & easy, without any installations/extensions:
+
+#### ALT-TAB cycle through apps on current workspace only.
+
+    dconf-editor -> org/gnome/shell/app-switcher/
+
+or
+    gsettings set org.gnome.shell.app-switcher current-workspace-only true
+
+
+### Scaling 4k monitors with wayland (2019)
+
+#### X11
+
+    gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+
+#### Wayland
+    gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+    gsettings reset org.gnome.mutter experimental-features
+
 ## Davfs
 
     sudo apt install davfs2
