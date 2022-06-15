@@ -121,7 +121,8 @@
 * [Sketch App sources](https://www.sketchappsources.com/) | Lot off free resources
 * [Smart Mockups](https://smartmockups.com)
 
-### SVG illustrations
+### SVG
+* [SVGcode](https://svgco.de/) Convert raster images to SVG vector graphics
 * [unDraw](https://undraw.co/illustrations) | Open-source illustrations for any idea
 
 ### Drawing

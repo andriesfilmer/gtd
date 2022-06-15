@@ -4,6 +4,12 @@ Some uncommon tools and programs for GNU Linux not default on a system.
 
 ## Commandline
 
+
+### PDF
+Extract page 12-15
+
+    pdftk full-pdf.pdf cat 12-15 output outfile_p12-15.pdf
+
 ### inxi
 
 Analyse linux hardware with inxi

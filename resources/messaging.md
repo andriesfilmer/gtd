@@ -1,6 +1,9 @@
-## Messengers
+* [Matrix](https://matrix.org/) An open network for secure, decentralized communication like email.
 
-* Signal | [Speak Freely](https://signal.org/) Open Source.
+The core Matrix team maintains bridges to Slack, IRC, XMPP and Gitter, and meanwhile the wider Matrix community provides bridges for Telegram, Discord, WhatsApp, Facebook, Hangouts, Signal and many more.
+
+## Messengers
+* [Signal](https://signal.org/) Open Source.
 * Whatsapp | Owner is Facebook
 * Telegram | Opensource client messengers (not server) available but still centralized.
 * [Convos.by](https://convos.by/) | Convos is the simplest way to use IRC. It is always online, and accessible to your web browser, both on desktop and mobile. Run it on your home server, or cloud service easily.

@@ -16,6 +16,10 @@ I like [gTile extention](https://extensions.gnome.org/extension/28/gtile/) adjus
 * Preset resize 5: `3x1 1:0 1:0,0:0 2:0`
 * Preset resize 6: `3x1 2:0 2:0,1:0 2:0`
 
+User-defined shortcuts does not work after upgrade
+
+    dconf dump /org/gnome/shell/extensions/gtile/ | perl -p -e "s/(\d+):(\d+)/(\$1+1).':'.(\$2+1)/ge" | dconf load /org/gnome/shell/extensions/gtile/
+
 ### gnome-tweaks
 
     sudo apt-get install gnome-tweak-tool
@@ -29,8 +33,8 @@ Very fast & easy, without any installations/extensions:
     dconf-editor -> org/gnome/shell/app-switcher/
 
 or
-    gsettings set org.gnome.shell.app-switcher current-workspace-only true
 
+    gsettings set org.gnome.shell.app-switcher current-workspace-only true
 
 ### Scaling 4k monitors with wayland (2019)
 
@@ -114,3 +118,10 @@ For firefox type in the address `about:config`.
 For Thunderbird go to: Prefrences -> Advanced -> Config Editor:
 
     set layout.css.devPixelsPerPx: 1.25
+
+### Opening applications on startup
+
+Example: Reset Thunderbird position on startup
+
+    xdotool search --name "Mozilla Thunderbird" windowmove 0 0
+

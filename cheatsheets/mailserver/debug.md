@@ -195,10 +195,6 @@ Delete only the differed mail queue messages (i.e. only the ones the system inte
 
     postsuper -d ALL deferred
 
-Remove specific emails (i.o. andriesfilmer@hotmail.com)
-
-    mailq | tail -n +2 | grep -v '^ *(' | awk  'BEGIN { RS = "" } { if ($7 == "andriesfilmer@hotmail.com" && $9 == "") print $1 } ' | tr -d '*!' | postsuper -d -
-
 ## Trouble shooting with qshape
 
 When mail is draining slowly or the queue is unexpectedly large, run qshape(1) as the super-user (root) to help zero in on the problem

@@ -1,38 +1,3 @@
-- [Javascript resources](#javascript-resources)
-  * [Frontend frameworks](#frontend-frameworks)
-    + [Angular](#angular)
-    + [Vue.js](#vuejs)
-    + [Meteor (and backend)](#meteor-and-backend)
-    + [Electron](#electron)
-    + [AmberJs](#amberjs)
-    + [BackboneJs](#backbonejs)
-    + [Mithril](#mithril)
-  * [HTML, CSS and JS frameworks](#html-css-and-js-frameworks)
-    + [Bootstrap](#bootstrap)
-    + [Ionic](#ionic)
-    + [Framework7 - Vue](#framework7---vue)
-  * [Backend frameworks](#backend-frameworks)
-    + [NodeJs](#nodejs)
-    + [Express](#express)
-  * [Development tools/frameworks](#development-toolsframeworks)
-    + [Yeoman](#yeoman)
-    + [Linemanjs](#linemanjs)
-    + [Grunt](#grunt)
-    + [Bower](#bower)
-    + [CoffeScript](#coffescript)
-    + [BrowserSync](#browsersync)
-    + [Compass](#compass)
-    + [SASS](#sass)
-  * [Library's](#librarys)
-    + [jQuery](#jquery)
-    + [Modernizr](#modernizr)
-    + [Normalize](#normalize)
-    + [UnderscoreJs](#underscorejs)
-    + [RequireJs](#requirejs)
-  * [Testing](#testing)
-  * [Other reading](#other-reading)
-
-<!-- END TOC -->
 
 # Javascript resources
 
@@ -41,79 +6,24 @@
 
 ## Frontend frameworks
 
-### Angular
-
 * [Angular](angular.io)
-* [Material Angular](https://material.angular.io/)
-
-### Vue.js
-
+ * [Material Angular](https://material.angular.io/)
+* [Ionic](https://ionicframework.com/docs/) - A library of mobile-optimized HTML, CSS and JS CSS components, optimized for AngularJS.
 * [Vue](https://vuejs.org/) | The Progressive JavaScript Framework
-* [Quasar](http://quasar-framework.org/) | PWAs with UI for Material design and iOs, powered with Vue and wrapped with Cordova.
-* [Vuetify](https://vuetifyjs.com/) | Material Component Framework for Vue
-* [Onsen UI](https://github.com/OnsenUI/vue-cordova-webpack)
- | A full-featured Webpack with cordova, hot-reload, lint-on-save, unit testing & css extraction
+ * [Quasar](http://quasar-framework.org/) | PWAs with UI for Material design and iOs, powered with Vue and wrapped with Cordova.
+ * [Vuetify](https://vuetifyjs.com/) | Material Component Framework for Vue
+ * [Onsen UI](https://github.com/OnsenUI/vue-cordova-webpack) | A full-featured Webpack with cordova, hot-reload, lint-on-save, unit testing & css extraction
+ * [Vue.js plugin for Cordova](https://github.com/kartsims/vue-cordova) - More info/examples:
+* [Svelte](https://svelte.dev/) - A radical new approach to building user interfaces
+* [Meteor (and backend)](https://www.meteor.com/) - Meteor is a complete framework in pure JavaScript for client en server side.
+* [Electron](https://electronjs.org/) - Build cross platform desktop apps with JavaScript, HTML, and CSS
+* [AmberJs](http://emberjs.com/) - A other framework for creating ambitious web applications.
+* [BackboneJs](http://backbonejs.org/) - Gives structure by providing models with key-value binding and custom events, collections...
+* [Mithril](https://mithril.js.org/) - A client-side MVC framework, a tool to organize code in a way that is easy to think about and to maintain
 
-More info/examples:
-
-* [Vue.js plugin for Cordova](https://github.com/kartsims/vue-cordova)
-
-### Meteor (and backend)
-Meteor is a complete framework in pure JavaScript for client en server side.
-* <https://www.meteor.com/>
-* [Meteor vs Angular by Greg Neiheisel by Greg Neiheisel - May 2014](http://differential.com/blog/meteor-vs-angular)
-
-### Electron
-
-Build cross platform desktop apps with JavaScript, HTML, and CSS
-
-* <https://electronjs.org/>
-
-### AmberJs
-A other framework for creating ambitious web applications.
-* <http://emberjs.com/>
-
-### BackboneJs
-Backbone.js gives structure to web applications by providing models with key-value binding and custom events, collections with a rich API of enumerable functions, views with declarative event handling, and connects it all to your existing API over a RESTful JSON interface.
-* <http://backbonejs.org/>
-
-### Mithril
-
-Mithril is a client-side MVC framework - a tool to organize code in a way that is easy to think about and to maintain
-Only 7.8 kB gzipped, no dependencie
-* <https://mithril.js.org/>
-
-## HTML, CSS and JS frameworks
-
-### Bootstrap
-
-Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.
-* <http://getbootstrap.com/>
-
-
-### Ionic
-
-Free and open source, Ionic offers a library of mobile-optimized HTML, CSS and JS CSS components, gestures, and tools for building highly interactive apps. Built with Sass and optimized for AngularJS.
-
-* [Ionic docs](https://ionicframework.com/docs/)
-* [Ionic developers](https://ionicframework.com/developers/)
-* [Ionic Icons](https://ionicframework.com/docs/ionicons/)
-* [Ionic Team](https://github.com/ionic-team/) Github
-* [Ionic tutorial](https://ionicframework.com/docs/intro/tutorial/)
-
-More info/examples  
-* [Auth0 ionic example](https://auth0.com/blog/ionic-framework-how-to-get-started/)
-* [Ionic Push notifications](https://github.com/aggarwalankush/ionic-push-base)
-* [My Firebase console](https://console.firebase.google.com/)
-
-
-### Framework7 - Vue
-
-Bring components-syntax, structured data and data bindings to Framework7 with power and simplicity of Vue.js
-
-* <http://framework7.io/vue/>
 
 ## Backend frameworks
+
 ### NodeJs
 Node.js® is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
 * <http://nodejs.org/>
@@ -168,7 +78,7 @@ Modernizr is a small JavaScript library that detects the availability of native 
 * <http://modernizr.com/>
 
 ### Normalize
-A modern, HTML5-ready alternative to CSS resets.  
+A modern, HTML5-ready alternative to CSS resets.
 Normalize.css makes browsers render all elements more consistently and in line with modern standards. It precisely targets only the styles that need normalizing
 <http://necolas.github.io/normalize.css/>
 
