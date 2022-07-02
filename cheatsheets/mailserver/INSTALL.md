@@ -290,7 +290,7 @@ Install [Sieve plugin](https://doc.dovecot.org/configuration_manual/sieve/)
     apt-get install dovecot-managesieved dovecot-sieve
 
 With the installed Sieve plugin for vacation message and we want to move ''Spam'' to the spambox.
-We have configured `/etc/dovecot/dovecot.conf` to use managesieve (see [dovecot.conf](/pub/scripts/mailserver/dovecot.conf)).
+We have configured `/etc/dovecot/dovecot.conf` to use managesieve (see [dovecot.conf](./dovecot.conf)).
 
 Create a [.dovecot.sieve](./dovecot.sieve) file in the dovecot `mail_home` variable.
 
