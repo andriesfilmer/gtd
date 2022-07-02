@@ -283,21 +283,25 @@ Feedback must be something like:
 
     "Client host blocked using Barracuda Reputation, see http://www.barracudanetworks.com/reputation/?r=1&ip=139.162.157.247"
 
-## Autoreply and Spambox
-Install [Sieve plugin](http://wiki2.dovecot.org/Pigeonhole/Sieve)
+## Autoreply (vacation) and move to Spambox
+
+Install [Sieve plugin](https://doc.dovecot.org/configuration_manual/sieve/)
 
     apt-get install dovecot-managesieved dovecot-sieve
 
-With the installed Sieve plugin for autoreply (vacation) message and we want to move ''Spam'' to the spambox.
-We have configured ''/etc/dovecot/dovecot.conf'' to use managesieve (see [dovecot.conf](/pub/scripts/mailserver/dovecot.cf)).
+With the installed Sieve plugin for vacation message and we want to move ''Spam'' to the spambox.
+We have configured `/etc/dovecot/dovecot.conf` to use managesieve (see [dovecot.conf](/pub/scripts/mailserver/dovecot.conf)).
 
-Create a `/home/vmail/<domain>/<mailbox>/.dovecot.sieve` file
+Create a [.dovecot.sieve](./dovecot.sieve) file in the dovecot `mail_home` variable.
 
-Example [.dovecot.sieve](./dovecot.sieve) file.
+Compile `.dovecot.sieve` to `.dovecot.svbin`.
 
-Create a default Sieve file for all users
+    sievec .dovecot.sieve
+
+Create a default Sieve file for all users and compile this to.
 
     /etc/dovecot/default.sieve
+
 
 ## Letsencrypt certificates
 
