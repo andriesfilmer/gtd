@@ -37,6 +37,10 @@
 ## CSS
 
 ### Colors
+* [HSL Color picker](http://tools.filmer.nl/hslcolorpicker/)
+ * Hue is a degree on the color wheel from 0 to 360. 0 is red, 120 is green, 240 is blue.
+ * Saturation is a percentage value; 0% means a shade of gray and 100% is the full color.
+ * Lightness is also a percentage; 0% is black, 100% is white.
 * [Color wheel](https://www.canva.com/colors/color-wheel/) | Want to know what colors look good together
 * [Color-palette-genator](https://www.canva.com/colors/color-palette-generator/) | Upload logo
 * [Color-calculator](https://www.sessions.edu/color-calculator/)
@@ -51,6 +55,8 @@
 
 ### CSS Examples
 * [A guide to CSS animations using clip-path()](https://blog.logrocket.com/guide-to-css-animations-using-clip-path/)
+* [Gooey Menu -Codepen.id](https://codepen.io/lbebber/pen/LELBEo) - Using CSS and SVG Filters
+* [Intro to CSS 3D transforms](https://3dtransforms.desandro.com/)
 * [Animate.css](http://daneden.github.io/animate.css/) | Just-add-water CSS animations
 * [Hover.css](http://ianlunn.github.io/Hover/) | A collection of CSS3 powered hover effects
 * [Effeckt.css](http://h5bp.github.io/Effeckt.css/) | UI-Less & Performant Transitions & Animations

@@ -97,6 +97,7 @@ bind '"\e[B"':history-search-forward
 export QUOTING_STYLE=literal
 
 alias ...='cd ../../'
+alias dfx='df -h -x squashfs -x tmpfs -x devtmpfs'
 alias passAndries="gpg -r andries -d .gnupg/andries.gpg | grep -i "
 alias passwordAndries="gnome-gpg -r andries -d .gnupg/andries.gpg | grep -i "
 alias keepass="~/gtd/scripts/sh/keepass.sh"

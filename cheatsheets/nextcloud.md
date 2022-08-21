@@ -55,11 +55,15 @@ Password
     sudo -u www-data php occ passwords:backup:restore 2019-01-18_15-56-11
 
 
-### Onlyoffice
-
-    sudo -u www-data php occ app:install documentserver_community
-    sudo -u www-data php occ app:install onlyoffice
-
 ### Upgrade
 
     sudo -u www-data php occ upgrade -vv
+
+
+    # Fix upgrade to version 23.
+    # Check `settings\admin\overview' warnings.
+    sudo -u www-data php occ db:add-missing-indices
+    #
+    # error: Index column size too large
+    ALTER TABLE oc_properties ROW_FORMAT=DYNAMIC
+

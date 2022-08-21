@@ -134,6 +134,12 @@ Press `:`
     q                                  " Stops recording the macro
     <num>@q                            " Repeat the macro <num> number of times
 
+To save a macro: Use `qq` as normal, with the `qp` command you can paste the register into `.vimrc`.
+
+    let @q = 'macro contents' "Be careful of quotes, though. They would have to be escaped properly.
+
+Now you can use this macro in normal mode: `@q`
+
 ## ctags
 
     ctags -R *

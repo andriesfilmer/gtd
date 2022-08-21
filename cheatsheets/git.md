@@ -39,6 +39,17 @@ Back to master branch
 
     git checkout master  # Switched to branch 'master'
 
+## Stash
+
+Stash a working branch (workingbranch)
+
+    git stash                  # Saved workingbranch with state WIP, use option -u for untracked files.
+    git checkout otherbranch   # Work in otherbranch and commit you changes.
+    git checkout workingbranch
+    git stash pop              # Load previous work from workingbranch
+
+* More info about git stash: <https://www.atlassian.com/git/tutorials/saving-changes/git-stash>
+
 Delete old (stale) branches on remote.
 
     git push origin --delete issue49

@@ -19,7 +19,7 @@ ip has shortcuts: `ip address show` is the same as `ip a s`. Check `ip help` (`i
 
 ## DNS
 
-    systemd-resolve --status
+    resolvectl status
 
 ### Alternative DNS servers
 
