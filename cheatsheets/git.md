@@ -39,6 +39,13 @@ Back to master branch
 
     git checkout master  # Switched to branch 'master'
 
+Remove local branch
+
+    git branch --delete issue53
+
+The corresponding remote branch in a repository like GitHub or GitLab remains alive and active.
+Further steps must be taken to delete branches on the remote repository's accounts.
+
 ## Stash
 
 Stash a working branch (workingbranch)

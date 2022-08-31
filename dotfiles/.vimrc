@@ -36,6 +36,11 @@ if !empty(glob("~/.vim/colors/PaperColor.vim"))
   set background=dark
 endif
 
+" Jump to the last position when reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
 " Mappings
 "------------------------------------------------------------------------------
 " In `.profile` remaps Caps Lock -> Esc `setxkbmap -option caps:escape`
