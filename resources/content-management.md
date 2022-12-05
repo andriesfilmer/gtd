@@ -1,5 +1,8 @@
 # Content Management Systems
 
+## SSD (Static site generators)
+* [Pelican](https://getpelican.com/) - a static site generator that requires no database or server-side logic.
+
 ## Webpublishing sites
 * [Wordpress](https://wordpress.org)
 * [Neos](https://www.neos.io/) Open Source Content Application Framework

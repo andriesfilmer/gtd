@@ -39,6 +39,11 @@ Back to master branch
 
     git checkout master  # Switched to branch 'master'
 
+Merge a branch
+
+   git checkout master
+   git merge issue53
+
 Remove local branch
 
     git branch --delete issue53

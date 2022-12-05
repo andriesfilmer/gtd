@@ -38,9 +38,10 @@
 
 ### Colors
 * [HSL Color picker](http://tools.filmer.nl/hslcolorpicker/)
- * Hue is a degree on the color wheel from 0 to 360. 0 is red, 120 is green, 240 is blue.
- * Saturation is a percentage value; 0% means a shade of gray and 100% is the full color.
- * Lightness is also a percentage; 0% is black, 100% is white.
+ - Hue is a degree on the color wheel from 0 to 360. 0 is red, 120 is green, 240 is blue.
+ - Saturation is a percentage value; 0% means a shade of gray and 100% is the full color.
+ - Lightness is also a percentage; 0% is black, 100% is white.
+* [Color contrast](https://dequeuniversity.com/rules/axe/4.4/color-contrast) - Sufficient color contrast against the background
 * [Color wheel](https://www.canva.com/colors/color-wheel/) | Want to know what colors look good together
 * [Color-palette-genator](https://www.canva.com/colors/color-palette-generator/) | Upload logo
 * [Color-calculator](https://www.sessions.edu/color-calculator/)
@@ -87,6 +88,7 @@
 * [Dribbble](https://dribbble.com/) | Discover the world’s top designers & creatives
 
 ### Icons
+* [Google fonts](https://fonts.google.com/icons) Material desgin symbols
 * [Heroicons](https://heroicons.com/) | Beautiful hand-crafted SVG icons
 * [Foundation Icon Fonts 3](http://zurb.com/playground/foundation-icon-fonts-3)
 * [icomoon](https://icomoon.io/) | All of our icons are designed on a precise pixel grid.

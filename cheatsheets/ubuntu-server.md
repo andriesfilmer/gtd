@@ -28,25 +28,28 @@ Check iptables with fail2ban-client
 
 ## hosts.allow
 
-[Allow ssh from dutch providers](http://nirsoft.net/countryip/nl.html) or [ip by country](https://www.ip2location.com/blockvisitorsbycountry.aspx)
+* [CIDR blocks for Ziggo (ipinfo.io)](https://ipinfo.io/AS33915)
+* [ip by country](https://www.ip2location.com/blockvisitorsbycountry.aspx)
+* [Allow ssh from dutch providers](http://nirsoft.net/countryip/nl.html)
 
-These are **my** provider blocks
-
-    # 81.204.0.0/14   KPN
-    # 84.104.0.0/14   ZIGGO
-    # 217.62.16.0/20  ZIGGO
-    # 94.211.144.0/21 ZIGGO
-    # 84.241.192.0/18 T-MOBILE
-    #
+    # CIDR ranges with ssh access
+    #------------------------------
+    # 81.204.0.0/14    KPN
+    # 84.104.0.0/14    ZIGGO
+    # 217.62.16.0/20   ZIGGO
+    # 94.211.144.0/21  ZIGGO
+    # 212.204.160.0/19 ZIGGO
+    # 84.241.192.0/18  T-MOBILE
+    #-------------------------------
     # 95.85.60.187    server03
-    # 37.139.3.138    server04*
     # 206.189.108.222 server05
     # 198.199.127.67  server06
-    # 37.139.14.57    server07*
     # 159.65.199.31   server08
-    # 37.97.176.211   server09
+    # 143.0.32.201    Saba Palm 19
+    #-------------------------------
+    
+    sshd: 81.204.0.0/14 84.104.0.0/14 217.62.16.0/20 94.211.144.0/21 84.241.192.0/18 212.204.160.0/19 95.85.60.187 206.189.108.222 198.199.127.67 143.0.32.201
 
-    sshd: 81.204.0.0/14 84.104.0.0/14 217.62.16.0/20 94.211.144.0/21 84.241.192.0/18 95.85.60.187 37.139.3.138 206.189.108.222 198.199.127.67 159.65.199.31 37.97.176.211
 
 ## hosts.deny
 

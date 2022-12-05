@@ -82,8 +82,3 @@ Leanstack helps developers find and decide on the best cloud services. Search an
 * Litmus
 * Experian
 
-### Mail monitoring
-
-* [Google postmaster tools](https://postmaster.google.com/)
-* [MX Toolbox](https://mxtoolbox.com/blacklists.aspx) The blacklist check will test a mail server IP address against over 100 DNS based email blacklists
-* [Blacklistalert.org/](https://www.blacklistalert.org/)
