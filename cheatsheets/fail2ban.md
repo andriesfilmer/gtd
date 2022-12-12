@@ -167,6 +167,10 @@ Restart fail2ban
 
     /etc/init.d/fail2ban restart
 
+## Ban IP manually on the command line by jail-name (sshd)
+
+  fail2ban-client  set sshd banip 81.204.211.58
+
 ## External links
 
 [www/fail2ban.org](http://www.fail2ban.org)

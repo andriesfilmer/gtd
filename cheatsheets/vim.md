@@ -116,8 +116,8 @@ Press `:`
 
 ## Folding
 
+    zf                                 " Fold current selection
     zi                                 " Switch folding on or off
-    za                                 " Toggle current fold open/closed
     zR                                 " Open all folds
     zM                                 " Close all folds
 

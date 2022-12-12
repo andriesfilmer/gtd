@@ -1,7 +1,8 @@
 filetype plugin indent on
-syntax on
+"syntax on
 
-"set cursorline                                     " highlight current line. Is slower :-(
+set cursorline                                     " highlight current line. Is slower :-(
+"set cursorcolumn                                   " highlight column line. Is slower :-(
 "set foldmethod=syntax                              " Folds are defined by syntax highlighting
 "
 set encoding=utf-8
@@ -10,7 +11,7 @@ set hlsearch                                       " highlight all search matche
 set ignorecase                                     " Set ignore case, Search case insensitive
 set incsearch                                      " Set increase search,	Search while you type
 set laststatus=2                                   " first, enable status line always
-set list                                           " See end of line's
+set list                                           " See end of line's (i.o. see gray dot)
 set list listchars=tab:»·,trail:·                  " Make tabs visual: ».......
 set number                                         " Set line numbers, default commented out
 set nocompatible                                   " don't need to be compatible with old vim
@@ -30,6 +31,11 @@ set updatetime=1000                                 " vim-gitgutter, vim-signify
 let g:snips_author="Andries Filmer"                " Assign a global variable for snippets
 let g:closetag_filenames = '*.html,*.html.erb'     " Plugin closetag enabled for html.erb'
 
+let NERDTreeShowHidden=1
+let NERDTreeWinSize=50
+"let g:NERDTreeGitStatusConcealBrackets = 1
+
+
 " https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim
 if !empty(glob("~/.vim/colors/PaperColor.vim"))
   colorscheme PaperColor
@@ -46,9 +52,13 @@ endif
 " In `.profile` remaps Caps Lock -> Esc `setxkbmap -option caps:escape`
 
 " Function keys
-nmap <F3> :set hlsearch!<CR>                       " Toggle highlicht search.
+nmap <F2> :tabnew<CR>:NERDTree<CR>
+map! <F2> <nop>
+nmap <F3> :set hlsearch!<CR>                       " Toggle highligt all searches.
 cmap <F3> <nop>
-imap <F5> :setlocal spell! spelllang=nl_nl<CR>     " Toggle dutch spelling syntax
+nmap <F4> :SignifyHunkDiff<CR>
+nmap <F7> :NERDTreeFind<CR>
+nmap <F8> :NERDTreeToggle<CR>
 nmap <F9> :TagbarOpenAutoClose<CR>                 " Needs TagBar plugin.
 
 " Arrow keys, Alt+leftarrow will go one window left, etc.
@@ -63,19 +73,6 @@ nmap <C-Left> :tabp<CR><CR>                         " Go to previous tab.
 
 cmap w!! w !sudo tee % >/dev/null                  " Allow saving of files as sudo when I forgot to start vim using sudo.
 
-"nnoremap  za                                       " Map folding to Spacebar
-
-" Plugin shorcuts
-"------------------------------------------------------------------------------
-nmap <F4> :SignifyHunkDiff<CR>
-nmap <F7> :NERDTreeFind<CR>
-nmap <F8> :NERDTreeToggle<CR>
-nmap <F2> :tabnew<CR>:NERDTree<CR>
-map! <F2> <nop>
-let NERDTreeShowHidden=1
-let NERDTreeWinSize=50
-let g:NERDTreeGitStatusConcealBrackets = 1
-
 autocmd Filetype markdown setlocal syntax=OFF       " Bugfix: Prevent Markdown highlighting for underscores
 let vim_markdown_preview_hotkey='<C-m>'             " Remap becaus plugin ctrlp has also <C-p>
 
@@ -88,9 +85,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Statusbar
 "------------------------------------------------------------------------------
 function! InsertStatuslineColor(mode)
-  if a:mode == 'i'
+  if a:mode == 'i' " Insert mode
     hi statusline guibg=Cyan ctermfg=6 guifg=Black ctermbg=0
-  elseif a:mode == 'r'
+  elseif a:mode == 'r' " Replace mode
     hi statusline guibg=Purple ctermfg=5 guifg=Black ctermbg=0
   else
     hi statusline guibg=DarkRed ctermfg=1 guifg=Black ctermbg=0
@@ -139,6 +136,6 @@ autocmd InsertLeave * set timeoutlen=1000
 "------------------------------------------------------------------------------
 highlight ExtraWhitespace ctermbg=1 guibg=red      " Highlight trailing spaces in annoying red
 match ExtraWhitespace /\s\+$/
-"autocmd BufWritePre * %s/\s\+$//e                  " Removing trailing whitespace on write
+autocmd BufWritePre * %s/\s\+$//e                  " Removing trailing whitespace on write
 
 

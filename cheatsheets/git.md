@@ -17,6 +17,7 @@ Create a new repository online: [https://github.com/andriesfilmer](https://githu
     git push --force origin master # This wil overwrite the server files!
 
 ## Clone
+
 Clone or copy a repository (which already exists).
 
     git clone https://github.com/andriesfilmer/someApp
@@ -26,14 +27,14 @@ Clone or copy a repository (which already exists).
 
 ## Branches
 
+    git branch           # Show branches
     git branch issue53   # Create branch 'issue53'
-    git checkout issue53
-    git branch issue53   # Shorthand create and checkout branch 'issue53'
+    git checkout issue53 # Work with branch 'issue53'
 
 Fix issue53 and commit the fix.
 
     git commit -am 'Fixed issue53'
-    git push -u origin issue53     # push to remote
+    git push -u origin issue53 # Push to remote
 
 Back to master branch
 
@@ -41,35 +42,26 @@ Back to master branch
 
 Merge a branch
 
-   git checkout master
-   git merge issue53
+    git checkout master
+    git merge issue53
 
-Remove local branch
+Remove branch
 
-    git branch --delete issue53
-
-The corresponding remote branch in a repository like GitHub or GitLab remains alive and active.
-Further steps must be taken to delete branches on the remote repository's accounts.
+    git branch --delete issue53        # Remove local branch
+    git push origin --delete issue49   # Delete old (stale) branch on remote.
 
 ## Stash
 
-Stash a working branch (workingbranch)
+Stash (save current state) a working branch (issue54)
 
-    git stash                  # Saved workingbranch with state WIP, use option -u for untracked files.
-    git checkout otherbranch   # Work in otherbranch and commit you changes.
-    git checkout workingbranch
-    git stash pop              # Load previous work from workingbranch
+    git stash                  # Saved workingbranchi (issue54) with state WIP, use option -u for untracked files.
+    git checkout issue53       # Work in otherbranch and commit you changes.
+    git checkout issue54
+    git stash pop              # Load previous work from branch issue54
 
 * More info about git stash: <https://www.atlassian.com/git/tutorials/saving-changes/git-stash>
 
-Delete old (stale) branches on remote.
-
-    git push origin --delete issue49
-
 ## Tips
-
-### Which files need to push
-    git status
 
 Check with find
 
