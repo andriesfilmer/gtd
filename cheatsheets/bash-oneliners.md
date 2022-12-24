@@ -90,13 +90,17 @@ Find files for a certain word or phrase within the files:
 
     find . -type f -name '*.txt' -print0 | xargs -0 grep -r -i 'some.*thing'
 
-Find files with 'sometext' who a not in de Sent Items map.
+Find files with 'sometext' who are not in de Sent Items map.
 
     find . -type f ! -regex '.*/.Sent*.*' -print0 | xargs -0 grep -r -i 'sometext'
 
 Find files older then 3 days
 
     find /tmp/mydir/ -type f ! -atime -3d -print0 | xargs -0 rm
+
+Find large files
+
+    find /path/to/ -type f -size +100M
 
 Find and remove small files
 

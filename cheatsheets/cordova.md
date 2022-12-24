@@ -43,12 +43,19 @@ Start latest version `adb`
 
 Some usefull commands
 
+    adb kill-server
+    adb start-server
+    adb devices
     adb shell content query --uri content://settings/system
     adb shell content query --uri content://settings/secure --where "name=\'android_id\'"
 
 Debug with adb
 
     adb logcat | grep -i "name.ofyour.app"
+
+Uninstall apps (oneplus membership)
+
+    adb shell pm uninstall --user 0 com.oneplus.membership
 
 ## Notifications
 

@@ -43,6 +43,8 @@ Run option -n to see results.
 
 or
     jpegoptim -m 50 --strip-all image.jpg
+    find /path/to \( -iname \*.jpg -or -iname \*.jpeg \) -print0 | xargs -0 jpegoptim # recursively for each file
+
 
 ### Online
 

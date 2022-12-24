@@ -107,7 +107,7 @@ alias myserver="~/gtd/scripts/perl/my-servers.pl"
 alias gitlog="git log --branches --not --remotes"
 #alias gitdiff="git diff --branches --not --remotes"
 alias gitdiff="git difftool --tool=vimdiff"
-alias adb="~/Android/Sdk/platform-tools/adb"
+#alias adb="~/Android/Sdk/platform-tools/adb"
 
 # Open broot with uncommitted files for git. Open with F2
 alias brapp="cd ~/dev/inzetrooster-app/ && broot -gc :gs"
