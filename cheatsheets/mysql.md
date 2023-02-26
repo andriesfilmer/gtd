@@ -46,6 +46,16 @@ Restart MySQL service.
     service mysqld restart
 
 
+## Search history
+
+In the mysql-client command
+
+    ctr-r
+
+or
+
+    sed "s/\\\040/ /g" < .mysql_history | grep 'search sql'
+
 ## To create a FULLTEXT index
 
     CREATE FULLTEXT INDEX fulltext_index ON table_name (column_1,column_2,column_3);

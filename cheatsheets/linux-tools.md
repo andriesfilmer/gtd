@@ -10,6 +10,11 @@ Extract page 12-15
 
     pdftk full-pdf.pdf cat 12-15 output outfile_p12-15.pdf
 
+### Miller
+Miller is a command-line tool for querying, shaping, and reformatting data files in various formats including CSV, TSV, JSON, and JSON Lines.
+
+ sudo apt install miller
+
 ### inxi
 
 Analyse linux hardware with inxi

@@ -1,29 +1,11 @@
-- [vim (my) Cheatsheet](#vim-my-cheatsheet)
-  * [Command mode](#command-mode)
-  * [Visual mode](#visual-mode)
-  * [Search in file](#search-in-file)
-  * [Find in files](#find-in-files)
-  * [Replace in file](#replace-in-file)
-  * [Replace in files](#replace-in-files)
-  * [Registers](#registers)
-  * [Completions](#completions)
-  * [Folding](#folding)
-  * [Windows](#windows)
-  * [Macros](#macros)
-  * [ctags](#ctags)
-  * [Spell](#spell)
-  * [Mount Capslock to Esc](#mount-capslock-to-esc)
-    + [Numbering lines in a file](#numbering-lines-in-a-file)
-    + [Tabs and Spaces](#tabs-and-spaces)
-  * [Printing](#printing)
-  * [Plugins](#plugins)
-  * [Links](#links)
-
-<!-- END TOC -->
-
 # vim (my) Cheatsheet
 
-* [Moving around](http://vim.wikia.com/wiki/Moving_around)
+* [Vim help files](https://vimhelp.org)
+* [Vim quickreferenc](https://vimhelp.org/quickref.txt.html)
+* [Vim command index](https://vimhelp.org/index.html)
+* [Learn Vim](https://learnvim.irian.to/)
+* [Vimcasts](http://vimcasts.org/)
+* [Let Vim Do the Typing - Video](https://www.youtube.com/watch?v=3TX3kV3TICU)
 
 ## Command mode
 
@@ -35,16 +17,11 @@
     .                                  " repeat
     *                                  " Goto next word under cursor
     #                                  " Goto previeus word under cursor
-    ctr]                               " Goto tag in buffers (ctr-o) togo back.
-    m{a-z}                             " Mark position as {a-z} E.g. ma
-    '{a-z}                             " Move to mark position {a-z} E.g. 'a
-    ''                                 " Move to mark previous position
+    ctr]                               " Goto tag in buffers (ctr-o) to go back.
     cit                                " Change In-to tag
     ci"                                " Change In-to "
     ci)                                " Change In-to )
     ci]                                " Change In-to ]
-    :ls                                " Show buffers
-    :vertical sb 3                     " Open buffer 3 in split window
 
 ## Visual mode
 
@@ -53,6 +30,7 @@
     vit                                " Select inner tag block.
     Shift+v                            " Select lines
     Ctrl+v                             " Select column
+    o                                  " In visual mode jump to other side of visual selection, with capital O jump visual block
     ~                                  " Switch case on selected, lower to upper or upper to lower case
     =                                  " Auto ident
     Shift+>                            " Indent section
@@ -89,11 +67,28 @@ Press `:`
     :arg **/*.js                           " Set all *.js files and below current directory in :arg
     :argdo %s/pattern/replace/gce | update " Confirm updates in recursieve files
 
+## Moving around
+
+    :buffers                           " Show buffers, alias :ls
+    :vertical sb 3                     " Open buffer 3 in split window
+    :marks                             " Show list of marks
+    m{a-z}                             " Mark position as {a-z} E.g. ma
+    '{a-z}                             " Move to mark position {a-z} E.g. 'a
+    ''                                 " Move to mark previous position
+    :jumps                             " Show list of postions you jumpeds, alias :ju
+    ctrl-o                             " Jump to older position
+    ctrl-i                             " Jump to newer position
+
+## Moving Viewport
+    zz                                 " Set viewport in center
+    zt                                 " Set viewport in top
+    zb                                 " Set viewport in bottom
+
 ## Registers
 
     :reg                               " See registers
-    "ay                                " Yank selected text in register 'a'.
-    "ap                                " Past selected text form register 'a'.
+    "ay                                " Yank selected text in register 'a'
+    "ap                                " Past selected text form register 'a'
     ctrl-ra                            " Past register a (in insert mode)
     ctrl-^                             " Jump between last edit file line"
     ctrl-o                             " Press twice and go to back last edit file and line(s)"
@@ -114,12 +109,22 @@ Press `:`
     Ctrl-x + Ctr-l                     " Completion for lines
     Ctrl-x + Ctr-o                     " Completion for methods (omnifunction must be on)
 
+## Changes
+
+    :changes                           " Show the list of changes
+    3g;                                " Go 3 changes back
+
 ## Folding
 
     zf                                 " Fold current selection
+    zf}                                " Fold current paragraph
     zi                                 " Switch folding on or off
     zR                                 " Open all folds
     zM                                 " Close all folds
+
+## Indent
+
+    =ap                                " Align and ident paragraph
 
 ## Windows
 
@@ -138,7 +143,7 @@ To save a macro: Use `qq` as normal, with the `qp` command you can paste the reg
 
     let @q = 'macro contents' "Be careful of quotes, though. They would have to be escaped properly.
 
-Now you can use this macro in normal mode: `@q`
+Now you can use this macro in normal mode: @q
 
 ## ctags
 
@@ -165,23 +170,13 @@ Download
     :set spell
     :set nospell
 
-## Mount Capslock to Esc
-
-I like to mount the CapsLock to the Esc key. Install `dconf-tools` and open `dconf-editor`.
-
-Navigate to `org >> gnome >> desktop >> input-sources`
-
-Put your options under xkb-options as a list. Ex: ['caps:escape','..other..']
-
-Or just run `setxkbmap -option caps:escape` but this vanishes after reboot.
-
-### Numbering lines in a file
+## Numbering lines in a file
 A neat filtering trick using the 'nl' for adding linenumbers.
 
     :%! nl -ba                           " Whole file
     :'<,'>! nl -ba                       " Visual selection
 
-### Tabs and Spaces
+## Tabs and Spaces
 
 1 - Convert tabs to spaces
     :set expandtab
@@ -213,7 +208,3 @@ Packages added in the `.vim/pack/bundle/opt` folder may be loaded using
 
     :packadd packagename
 
-## Links
-
-* [Vimcasts](http://vimcasts.org/)
-* [Let Vim Do the Typing - Video](https://www.youtube.com/watch?v=3TX3kV3TICU)
