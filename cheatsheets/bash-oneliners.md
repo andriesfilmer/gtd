@@ -28,28 +28,62 @@ When there are many thousand of files in a directory you can't remove them with 
 
 Find permissons on files and directories
 
-    find /path/to/dir -perm -0777 -type d
-    find /path/to/dir -not -perm 400
-    find /path/to/dir -not -group sudo
+    find /path/to/dir/ -perm -0777 -type d
+    find /path/to/dir/ -not -perm 400
+    find /path/to/dir/ -not -group sudo
 
 Changing Permissions Recursively.
 
-    find /path/to/dir -type f -exec chmod 664 {} \;
-    find /path/to/dir -type d -exec chmod 775 {} \;
-    find /path/to/dir -exec chown www-data:www-data {} \;
+    find /path/to/dir/ -type f -exec chmod 664 {} \;
+    find /path/to/dir/ -type d -exec chmod 775 {} \;
+    find /path/to/dir/ -exec chown www-data:www-data {} \;
 
 Find empy directories
 
     find . -type d -empty
 
+Find large files
+
+    find /path/to/ -type f -size +100M
+
 Find recently modified files
 
     find /path/to/file -newer notes.txt
-    find /path/to/dir -amin -30
+    find /path/to/dir/ -amin -30
 
 Find with regular expression (files whose names start with the letter w)
 
-    find /path/to/dir -regex "./w.*"
+    find /path/to/dir/ -regex "./w.*"
+
+### Find mixings
+
+Delete files using xargs:
+
+    find . -name "*.old" -print0 | xargs -0 rm
+
+Find files older than -x (-1) days created and show this with date and time
+
+    find /path/to/dir/ -type f -ctime -1 -ls | awk '{print $8 "" $9 "" $10 "" $11 " (" $7 ")" }'
+
+Find files for a certain word or phrase within the files:
+
+    find . -type f -name '*.txt' -print0 | xargs -0 grep -r -i 'some.*thing'
+
+Find files with 'sometext' who are not in de Sent Items map.
+
+    find /path/to/dir/ -type f ! -regex '.*/.Sent*.*' -print0 | xargs -0 grep -r -i 'sometext'
+
+Find and remove files older then 3 days
+
+    find /path/to/dir/ -type f ! -atime -3d -print0 | xargs -0 rm
+
+Find all media outside 'Photo Library' directory
+
+    find /path/to/media -name '*Photo Library*' -prune -o -iregex ".*(jpg|dv|avi|mp3)$" | less
+
+Change all the ruby-files with the content 'someString' to 'some_string'
+
+    find /path/to/dir/ -name "*.rb" | xargs perl -pi -e 's/someString/some_string/g'
 
 
 ## Rename files
@@ -87,59 +121,11 @@ Example: pretty girl.jpg to pretty_girl.jpg<br>
 
     for i in ** ;do j="`echo ./$i |sed 's/JPG$/jpg/'`" ;mv -i -- "./$i" "./$j" ;done
 
-## Find
-
-Delete files using xargs:
-
-    find . -name "*.old" -print0 | xargs -0 rm
-
-Find files who have been modified one day (24 hours) ago.
-
-    find ~ -type f -mtime 1 -ls | less
-
-Find files older than -x (-1) days created and show this with date and time
-
-    find /directorie/ -type f -ctime -1 -ls | awk '{print $8 "" $9 "" $10 "" $11 " (" $7 ")" }'
-
-Find files for a certain word or phrase within the files:
-
-    find . -type f -name '*.txt' -print0 | xargs -0 grep -r -i 'some.*thing'
-
-Find files with 'sometext' who are not in de Sent Items map.
-
-    find . -type f ! -regex '.*/.Sent*.*' -print0 | xargs -0 grep -r -i 'sometext'
-
-Find files older then 3 days
-
-    find /tmp/mydir/ -type f ! -atime -3d -print0 | xargs -0 rm
-
-Find large files
-
-    find /path/to/ -type f -size +100M
-
-Find and remove small files
-
-    find /backup/tarballs/ -type f -exec ls -s {} ; | sort -n  | head -10 | xargs -0 rm
-
-Find all media outside 'Photo Library' directory
-
-    find /path/to/media -name '*Photo Library*' -prune -o -iregex ".*(jpg|dv|avi|mp3)$" | less
-
-Change all the php-files with the content 'someString' to 'some_string'
-
-    find ./dirname -name "*.php" | xargs perl -pi -e 's/someString/some_string/g'
-
-
 ## diff
-Difference between two file directories
+
+Difference between two file directories (side-by-side)
 
     diff -y <(tree app/assets/stylesheets/sites/dosc/) <(tree app/assets/stylesheets/sites/skell/)
-
-## Find Duplicate Files (based on MD5 hash)
-Calculates md5 sum of files. sort (required for uniq to work). uniq based on only the hash. use cut ro remove the hash from the result.
-
-    find -type f -exec md5sum '{}' ';' | sort | uniq --all-repeated=separate -w 33 | cut -c 35-
-
 
 ## Mix
 
