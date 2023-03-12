@@ -24,17 +24,32 @@ When there are many thousand of files in a directory you can't remove them with 
 
     for i in `jot 5000` ; do wget --save-headers http://www.filmer.nl/ ; done
 
-## File change commands
+## Find commands
 
-If you want to find all your writable directories, issue:
+Find permissons on files and directories
 
-    find / -perm -0777 -type d -ls
+    find /path/to/dir -perm -0777 -type d
+    find /path/to/dir -not -perm 400
+    find /path/to/dir -not -group sudo
 
-Changing Permissions Recursively. Be sure to be in the right directorie!
+Changing Permissions Recursively.
 
-    find ./www/ -type f -exec chmod 664 {} \;
-    find ./www/ -type d -exec chmod 775 {} \;
-    find ./www/ -exec chown nobody:users {} \;
+    find /path/to/dir -type f -exec chmod 664 {} \;
+    find /path/to/dir -type d -exec chmod 775 {} \;
+    find /path/to/dir -exec chown www-data:www-data {} \;
+
+Find empy directories
+
+    find . -type d -empty
+
+Find recently modified files
+
+    find /path/to/file -newer notes.txt
+    find /path/to/dir -amin -30
+
+Find with regular expression (files whose names start with the letter w)
+
+    find /path/to/dir -regex "./w.*"
 
 
 ## Rename files

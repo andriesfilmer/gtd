@@ -1,19 +1,3 @@
-- [Video and Image tools](#video-and-image-tools)
-  * [Compress images](#compress-images)
-    + [PNG files](#png-files)
-    + [JPG files](#jpg-files)
-    + [Online](#online)
-  * [ffmpeg](#ffmpeg)
-    + [Rip a DVD to one file](#rip-a-dvd-to-one-file)
-  * [ImageMagic](#imagemagic)
-    + [Resize Images on the commandline](#resize-images-on-the-commandline)
-    + [Auto orientation](#auto-orientation)
-    + [Crop images](#crop-images)
-    + [Make a album](#make-a-album)
-  * [Nautilus and Image converter](#nautilus-and-image-converter)
-
-<!-- END TOC -->
-
 # Video and Image tools
 
 ## Compress images
@@ -143,3 +127,12 @@ We can also use Nautilus extention which uses ImageMagick.
 
 Login out/in (or killall nautilus) to get the new options when right-click on a image in Nautilus
 Now you can resize or scale images with a mouse ;)
+
+## AI image generators
+
+* [Dall-E](https://openai.com/dall-e-2/)
+* [Craiyon](https://www.craiyon.com/)
+* [Midjourney](https://www.midjourney.com/)
+* [Dreamstudio](https://beta.dreamstudio.ai)
+* [NightCafe Creator](https://creator.nightcafe.studio/create)
+* [Wombo Dream](https://dream.ai/create)

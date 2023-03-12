@@ -49,6 +49,12 @@ Edit `/etc/resolvconf/resolv.conf.d/head`
     nameserver 8.8.8.8
     nameserver 8.8.4.4
 
+    # Quad9 - An open DNS recursive service
+    nameserver 9.9.9.9
+    nameserver 149.112.112.112
+    nameserver 2620:fe::fe
+    nameserver 2620:fe::9
+
     # OpenDNS (preferred/alternate)
     nameserver 208.67.222.222
     nameserver 208.67.220.220

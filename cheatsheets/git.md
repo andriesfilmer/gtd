@@ -63,6 +63,12 @@ Stash (save current state) a working branch (issue54)
 
 ## Tips
 
+See recent changes of a specific file.
+
+   git blame /path/to/file
+   git reflog /path/to/file
+   git log /path/to/file
+
 Check with find
 
     find . -not -iwholename '*node_modules*' -not -iwholename '*.git*' -not -iwholename '*.sass-cache*' -ls

@@ -35,3 +35,7 @@
 * Email2Cloud
 * Amazon Cloud Drive
 * OpenStack Swift Storage
+
+
+# Database platforms
+* [PlanetScale - MySQL](https://planetscale.com/) Serverless MySQL platform

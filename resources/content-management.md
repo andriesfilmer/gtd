@@ -30,6 +30,9 @@
 
 * [Zamad](https://www.zammad.com/) Customer support (Open Source)
 
+## Media Systems
+* [Jellyfin](https://jellyfin.org/) Free Streaming server, but also Music, Live TV, Books, Photos
+
 ## Survey
 
 * [LimeSurvey](https://www.limesurvey.org/) Turn questions into answers.

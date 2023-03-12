@@ -18,7 +18,8 @@
 * [Bootstrap](https://getbootstrap.com/) | Build responsive, mobile-first projects
 * [Foundation](http://foundation.zurb.com/docs/) | [material version](https://github.com/mikolajdobrucki/material-foundation)
 * [Materialize Css](https://materializecss.com/) | A modern responsive front-end framework based on Material Design
-* [Tailwindcss](https://tailwindcss.com/)
+* [Tailwindcss](https://tailwindcss.com/ | )
+* [Primer CSS](https://primer.style/css/) | GitHub teams build and maintain Primer
 * [Formstone](https://formstone.it)
 * [UIkit](https://getuikit.com/)
 * [Element](https://element.eleme.io/) | A Desktop UI Library for Vue, React, Angular
