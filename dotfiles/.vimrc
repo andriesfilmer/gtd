@@ -1,6 +1,7 @@
 filetype plugin indent on
 "syntax on
 
+set belloff=all                                    " Disable beep
 set cursorline                                     " highlight current line. Is slower :-(
 "set cursorcolumn                                   " highlight column line. Is slower :-(
 "set foldmethod=syntax                              " Folds are defined by syntax highlighting

@@ -61,6 +61,10 @@ Delete files using xargs:
 
     find . -name "*.old" -print0 | xargs -0 rm
 
+Find files between dates (and times)
+
+    find public/uploads/sites/ -type f -newermt "2023-03-01 10:17:00" ! -newermt "2023-04-02 10:53:00"
+
 Find files older than -x (-1) days created and show this with date and time
 
     find /path/to/dir/ -type f -ctime -1 -ls | awk '{print $8 "" $9 "" $10 "" $11 " (" $7 ")" }'

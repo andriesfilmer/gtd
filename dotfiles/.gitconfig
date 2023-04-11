@@ -5,3 +5,7 @@
 	default = matching
 [credential]
 	helper = cache --timeout=259200
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
