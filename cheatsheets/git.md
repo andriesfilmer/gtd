@@ -40,6 +40,10 @@ Back to master branch
 
     git checkout master  # Switched to branch 'master'
 
+Diff between branches
+
+    git diff HEAD..origin/master [path]
+
 Merge a branch
 
     git checkout master
@@ -49,6 +53,10 @@ Remove branch
 
     git branch --delete issue53        # Remove local branch
     git push origin --delete issue49   # Delete old (stale) branch on remote.
+
+Get rid of remote branches that no longer exist on the remote
+
+    git fetch --prune
 
 ## Stash
 

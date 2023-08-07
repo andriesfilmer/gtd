@@ -47,4 +47,7 @@ Victory! Open http://localhost:5232/ in your browser! You can login with any use
 
 ## Resources
 
-<https://radicale.org/>
+* <https://radicale.org/>
+* [vCard properties](https://www.iana.org/assignments/vcard-elements/vcard-elements.xhtml)
+* [iCalendar properties](https://www.iana.org/assignments/icalendar/icalendar.xhtml)
+

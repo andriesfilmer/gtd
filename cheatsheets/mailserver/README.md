@@ -5,6 +5,14 @@
 * Blacklist check <https://mxtoolbox.com/blacklists.aspx>
 * Test the Spammyness of your emails <https://www.mail-tester.com/>
 
+## Check postfix configuration
+
+    postfix check
+
+To see all of your configs, type postconf. To see how you differ from the defaults, try postconf -n
+
+    postconf -n
+
 ## Swaks - SMTP transaction tester
 
     sudo apt-get install swaks

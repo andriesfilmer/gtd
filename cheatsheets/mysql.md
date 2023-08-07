@@ -106,7 +106,8 @@ You may also have to call mysql with the --local-infile option.
 
 ## Table to CSV
 
-    mysql my_db -e "SELECT * FROM my_table" | sed 's//  ","/g;s/^/"/;s/$/"/;' > my_db.my_table.csv
+    SELECT REPLACE(CONCAT(first_name,' ',IFNULL(infix,''),' ',last_name),'  ',' '),email FROM people
+    INTO OUTFILE 'inzetrooster/admins.csv' FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
 
 ## Score example
 

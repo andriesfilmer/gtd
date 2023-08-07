@@ -14,14 +14,14 @@
 
 ## UI frameworks
 
-* [Bulma](https://bulma.io/documentation/)
+* [UIkit](https://getuikit.com/)
 * [Bootstrap](https://getbootstrap.com/) | Build responsive, mobile-first projects
 * [Foundation](http://foundation.zurb.com/docs/) | [material version](https://github.com/mikolajdobrucki/material-foundation)
 * [Materialize Css](https://materializecss.com/) | A modern responsive front-end framework based on Material Design
 * [Tailwindcss](https://tailwindcss.com/ | )
+* [Bulma](https://bulma.io/documentation/)
 * [Primer CSS](https://primer.style/css/) | GitHub teams build and maintain Primer
 * [Formstone](https://formstone.it)
-* [UIkit](https://getuikit.com/)
 * [Element](https://element.eleme.io/) | A Desktop UI Library for Vue, React, Angular
 * [Material design lite](https://getmdl.io/)
 * [VitalCss](https://vitalcss.com/) | A minimally invasive CSS framework
@@ -73,7 +73,6 @@
 ### CSS Articles
 
 * [QuirksBlog](http://www.quirksmode.org/blog/archives/2010/04/a_pixel_is_not.html) | A pixel is not a pixel is not a pixel
-* [Responsive grid](http://www.adamkaplan.me/grid/) | A simple guide to responsive design.
 
 
 ## Photos
@@ -89,7 +88,8 @@
 * [Dribbble](https://dribbble.com/) | Discover the world’s top designers & creatives
 
 ### Icons
-* [Google fonts](https://fonts.google.com/icons) Material desgin symbols
+* [Icon svg setup](https://css-tricks.com/how-i-made-an-icon-system-out-of-css-custom-properties/) Icon System Out of CSS Custom Properties
+* [Google fonts - Material Icons Guide](https://developers.google.com/fonts/docs/material_icons)
 * [Heroicons](https://heroicons.com/) | Beautiful hand-crafted SVG icons
 * [Foundation Icon Fonts 3](http://zurb.com/playground/foundation-icon-fonts-3)
 * [icomoon](https://icomoon.io/) | All of our icons are designed on a precise pixel grid.

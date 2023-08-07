@@ -217,11 +217,15 @@ Edit `/etc/sysctl.conf` and run following command to load changes to sysctl.
 
     sysctl -p
 
-## Add file system full cronjob
+## Add cronjobs
 
 You can make a crontab, when the file system is >80% full we'd like to receive a mail.
 
     0 9 * * * if [ "`df -l |grep '[8|9][0-9]\%'`" ]; then `df -h|/usr/bin/mail -s 'File system > 80\% full' root` ; fi
+
+Cleanup journal logfile upto 2G
+
+    2 2 2 * * /usr/bin/journalctl --vacuum-size=2G
 
 ## AIDE (Advanced Intrusion Detection Environment)
 
