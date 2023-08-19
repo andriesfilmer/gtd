@@ -32,6 +32,8 @@ Check iptables with fail2ban-client
 * [ip by country](https://www.ip2location.com/blockvisitorsbycountry.aspx)
 * [Allow ssh from dutch providers](http://nirsoft.net/countryip/nl.html)
 
+content hosts.allow
+
     # CIDR ranges with ssh access
     # -----------------------------
     # 81.204.0.0/14    KPN

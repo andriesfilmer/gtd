@@ -49,6 +49,20 @@ Check versions
     reboot
     apt --purge autoremove
 
+ ## Ubuntu downgrade
+
+Sometimes a upgrade is broken and you want to go back to a older version. See example:
+
+    apt list -a libmysqlclient21
+    apt install libmysqlclient21=8.0.28-0ubuntu4
+    apt-mark hold libmysqlclient21
+
+When that has been fixed, you can undo the above with:
+
+    apt-mark unhold libmysqlclient21
+    apt update
+    apt upgrade
+
 ### How to Re-Enable Third-Party Repositories
 
 Third-party repositories are defined in the .list files under /etc/apt/sources.list.d/ directory. First, re-enable third-party repositories with the following command, which will remove the # character in lines that begin with deb.
