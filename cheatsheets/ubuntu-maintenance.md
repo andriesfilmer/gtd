@@ -2,13 +2,14 @@
 
 ## Read log journal
 
-    journalctl
+    journalctl -r                                   # Show log reverse, io last messages
+    journalctl --since "1 hour ago"
+    journalctl -n 20                                # Show last 20 messages
+    journalctl -f                                   # Follow the messages
     journalctl --list-boots
     journalctl -b                                   # Displaying Logs from the Current Boot
     journalctl -b -1                                # previous boot
     journalctl -b caf0524a1d394ce0bdbcff75b94444fe  # From boot ID
-    journalctl -n 20                                # Show last 20 messages
-    journalctl -f                                   # Follow the messages
     journalctl -u spamassassin.service -f           # Follow only spamd
     journalctl -u postfix@-.service -f              # Follow only postfix
     journalctl -u postfix@-.service --since -10m    # Only last 10 minutes

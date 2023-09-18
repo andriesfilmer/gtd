@@ -14,7 +14,7 @@ Test the Spammyness of your emails <https://www.mail-tester.com/>
 
 Simple test
 
-    swaks -t andries.filmer@gmail.com -f andries@filmer.nl -a -tls -au andries@filmer.nl -ap "mypasswd" -s mail.filmer.nl
+    swaks -t andries.filmer@gmail.com -f andries@filmer.nl -a -tls -au andries@filmer.nl -ap "mypasswd" -s mail.filmer.nl:587
 
 
 ## Traditional mail debug

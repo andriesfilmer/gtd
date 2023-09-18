@@ -12,8 +12,8 @@ CREATE TABLE MyGuests (
 ## Grant privileges
 
     SELECT password('secret_pass');
-    GRANT USAGE ON *.* TO 'testuser'@'localhost' IDENTIFIED BY PASSWORD '*B4D3172CC9FCDC297A3E95948AABE93C2D0BD44B';
-    GRANT ALL PRIVILEGES ON `testdb`.* TO testuser@'localhost';
+    GRANT USAGE ON *.* TO testuser@localhost IDENTIFIED BY PASSWORD '*B4D3172CC9FCDC297A3E95948AABE93C2D0BD44B';
+    GRANT ALL PRIVILEGES ON testdb.* TO testuser@localhost;
 
 Request grants:
 
@@ -24,9 +24,13 @@ Request grants:
 
     REVOKE ALL PRIVILEGES ON testdb.* FROM testuser@'localhost';
 
+## Drop and revoke
+
+    DROP user testuser@localhost;
+
 If user can't make databases
 
-    REVOKE CREATE ON *.* FROM testuser@'localhost';
+    REVOKE CREATE ON *.* FROM testuser@localhost;
 
 ## Change password user
 

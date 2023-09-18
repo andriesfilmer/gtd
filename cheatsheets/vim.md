@@ -100,7 +100,7 @@ Press `:`
     vim mks! .session-lang.vim         " Save session to `.session.lang.vim` file
     vim -S .session-lang.vim           " Start with your a session
 
-## Completions
+## Completions (edit mode)
 
     Ctrl-p                             " Completion for all (back) words from this file, other open files and registers.
     Ctrl-n                             " Completion for all (forward) words from this file, other open files and registers.
@@ -199,10 +199,12 @@ A neat filtering trick using the 'nl' for adding linenumbers.
 * [TagBar](https://github.com/majutsushi/tagbar) -  TagbarOpenAutoClose -> F9 mapping
 * [Vim-rails](https://github.com/tpope/vim-rails) - Easy navigation of the Rails directory structure -> `gf`
 * [Vim-signify](https://github.com/mhinz/vim-signify) - Indicate added, modified and removed lines (Tip: SignifyHunkDiff)
+* [vim-searchindex](https://github.com/google/vim-searchindex) - This simple plugin shows how many times a search pattern occurs in the current buffer.
 * [gnupg.vim](http://www.vim.org/scripts/script.php?script_id=661) - Add in  .bashrc `export GPG_TTY=tty`
 * [Ctrlp](https://github.com/kien/ctrlp.vim) - Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 * [Markdown](https://github.com/JamshedVesuna/vim-markdown-preview) - markdown-preview -> Ctrl-p
 * [Emmet tutorial](https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL)
+* **vim-addon-mw-utils** is a Vim plugin that provides various utility functions and scripts to enhance your Vim experience. It doesn't provide any specific features on its own but serves as a foundation for other Vim plugins.
 
 Packages added in the `.vim/pack/bundle/opt` folder may be loaded using
 

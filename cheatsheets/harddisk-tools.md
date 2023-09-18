@@ -70,7 +70,7 @@ Enter passphrase twice. Then make a file system:
 
     mkfs.ext4 /dev/mapper/backup
 
-Add a key (password in `luks-disk-key-file`):
+Add the passphrase (password) in `luks-disk-key-file`:
 
     cryptsetup luksAddKey /dev/sda1 /tmp/luks-disk-key-file
     cryptsetup luksAddKey /dev/disk/by-uuid/247ad289-dbe5-4419-9965-e3cd30f0b080 /tmp/luks-disk-key-file
@@ -92,7 +92,15 @@ See how many slots are taken:
 Label the partion
 
     cryptsetup config /dev/sdb1 --label Backup                        # Does not work :-] Maybe only on creation?
-    e2label /dev/mapper/247ad289-dbe5-4419-9965-e3cd30f0b080 Backup   # Only after it has been mounted
+    e2label /dev/mapper/247ad289-dbe5-4419-9965-e3cd30f0b080 backup   # Only after it has been mounted
+
+Permissions to unlock luks device for regular user. `visudo` and add
+
+    someuser ALL=(root) NOPASSWD: /sbin/cryptsetup luksOpen /dev/disk/by-uuid/c22b5cec-95e5-4fb5-bb73-113b02b73828 backup --key-file=.key-file
+    someuser ALL=(root) NOPASSWD: /bin/mount /dev/mapper/backup /mnt/backup
+    someuser ALL=(root) NOPASSWD: /bin/umount /mnt/backup && sudo /sbin/cryptsetup luksClose backup
+    someuser ALL=(root) NOPASSWD: /bin/umount /mnt/backup
+    someuser ALL=(root) NOPASSWD: /sbin/cryptsetup luksClose backup
 
 
 ## Shred - Erase harddisk

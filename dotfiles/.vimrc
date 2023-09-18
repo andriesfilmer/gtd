@@ -27,7 +27,7 @@ set ts=2                                           " set tab indent to 2 spaces
 set wildmenu                                       " enable bash style tab completion
 set wrap                                           " Wrapping on, default commented out
 set clipboard=unnamedplus                          " Copy to system clipboard (Only vim-gtk)
-set updatetime=1000                                 " vim-gitgutter, vim-signify, default value is 4000
+set updatetime=1000                                " vim-gitgutter, vim-signify, default value is 4000
 
 let g:snips_author="Andries Filmer"                " Assign a global variable for snippets
 let g:closetag_filenames = '*.html,*.html.erb'     " Plugin closetag enabled for html.erb'
@@ -60,7 +60,7 @@ cmap <F3> <nop>
 nmap <F4> :SignifyHunkDiff<CR>
 nmap <F7> :NERDTreeFind<CR>
 nmap <F8> :NERDTreeToggle<CR>
-nmap <F9> :TagbarOpenAutoClose<CR>                 " Needs TagBar plugin.
+nmap <F9> :TagbarToggle<CR>                        " Needs TagBar plugin.
 
 " Arrow keys, Alt+leftarrow will go one window left, etc.
 nmap <silent> <A-Up> :wincmd k<CR>
