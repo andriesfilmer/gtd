@@ -180,21 +180,24 @@ Your changes won't be applied it you just reload your systemd-configuration file
     bash /lib/opendkim/opendkim.service.generate
     systemctl daemon-reload
 
-Key generation for dkim-milter and its setup with DNS.
+Key generation for each domain and setup with DNS.
 
-    opendkim-genkey -D /etc/postfix/dkim/ -b 2048 -d filmer.net -s default
+    opendkim-genkey -D /etc/opendkim/keys/filmer.net -b 2048 -d filmer.net -s default
+    opendkim-genkey -D /etc/opendkim/keys/filmer.nl -b 2048 -d filmer.nl -s default
+    ...
 
 
 KeyTable            file:/etc/opendkim/key.table
 
     default._domainkey.filmer.net filmer.net:default:/etc/opendkim/keys/filmer.net/default.private
+    default._domainkey.filmer.nl filmer.nl:default:/etc/opendkim/keys/filmer.nl/default.private
+    ...
 
 SigningTable        file:/etc/opendkim/signing.table
 
     filmer.net default._domainkey.filmer.net
-    filmer.nl  default._domainkey.filmer.net
-    inzetrooster.nl default._domainkey.filmer.net
-    shiftplanner.org default._domainkey.filmer.net
+    filmer.nl  default._domainkey.filmer.nl
+    ...
 
 InternalHosts       file:/etc/opendkim/trusted.hosts
 
@@ -206,11 +209,11 @@ InternalHosts       file:/etc/opendkim/trusted.hosts
     # Server03
     95.85.60.187
     *.igroupware.org
-    *.inzetrooser.nl
+    *.inzetrooster.nl
     *.filmer.nl
 
 
-Create a DNS record. Copy `/etc/postfix/keys/filmer.net/[default.txt](./default.txt)`.
+Create a DNS record. Copy `/etc/opendkim/keys/filmer.net/default.txt`.
 
     default._domainkey      IN      TXT     "v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxYE/Zu4JbLDqC+AzSjoGNGQthLfsewdLPWE9Sf7WiaG9HYtanKclEpbgeJWeDT55jrEnJpSZZdIXPZFOTuSJCNZaZ/Na4iwBRffZFTlA2AGP7wQnZCvhOsCqWCYryLHMFW5/B68WsgR/x5Omzd54TZRJONckIgCD0AbeejX38aMvk3OCP6yA77iWczvjvvmtHBZ4LtC4gHghLoLJllcnm7Bzj/6CzYaFQFMU1McRh1vASR/tj+0S71QG5fwUcVoA20yhIF1UVseZXjrIjGeoeuyBlYjbOPg8eVRTDWFb3rxkacPjXeQepzm+Sc8PI/6llPuNlgiDHU8HYu2nm13IhwIDAQAB"
 

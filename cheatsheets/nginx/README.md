@@ -72,6 +72,12 @@ Add this to the crontab (run every first day of month at 4:30pm)
 
     30 4 1 * * /usr/bin/certbot -q renew
 
+Wildcard domain
+
+    /usr/bin/certbot certonly --manual --preferred-challenges=dns --email andries@filmer.nl --server https://acme-v02.api.letsencrypt.org/directory --agree-tos -d filmer.nl -d "*.filmer.nl"
+    /usr/bin/certbot renew --cert-name filmer.nl --manual --preferred-challenges dns
+
+
 ### Install other certificates
 
 Combine all the certificates into a single file. For Nginx it is required to have all the certificates (one for your domain name and CA ones) combined in a single file. The certificate for your domain should be listed first in the file, followed by the chain of CA certificates.

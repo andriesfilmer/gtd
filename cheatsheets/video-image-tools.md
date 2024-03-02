@@ -26,9 +26,9 @@ Run option -n to see results.
     convert input.jpg -strip -interlace Plane -gaussian-blur 0.05 -quality 50% output.jpg
 
 or
+
     jpegoptim -m 50 --strip-all image.jpg
     find /path/to \( -iname \*.jpg -or -iname \*.jpeg \) -print0 | xargs -0 jpegoptim # recursively for each file
-
 
 ### Online
 

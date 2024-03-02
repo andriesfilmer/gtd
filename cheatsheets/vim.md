@@ -14,10 +14,13 @@
     :19t33                             " copy line 19 to 33
     u                                  " undo
     Ctrl+r                             " redo
-    .                                  " repeat
+    .                                  " repeat last
     *                                  " Goto next word under cursor
     #                                  " Goto previeus word under cursor
+    ctrl-o                             " Jump to older position
+    ctrl-i                             " Jump to newer position
     ctr]                               " Goto tag in buffers (ctr-o) to go back.
+    %                                  " Commands such as %, [(, [{, ][, and [] navigation between brackets.
     cit                                " Change In-to tag
     ci"                                " Change In-to "
     ci)                                " Change In-to )
@@ -35,6 +38,16 @@
     =                                  " Auto ident
     Shift+>                            " Indent section
     zf                                 " Folding, nice in combination with `vat`
+
+## Moving around
+
+    :buffers                           " Show buffers, alias :ls
+    :vertical sb 3                     " Open buffer 3 in split window
+    :marks                             " Show list of marks
+    m{a-z}                             " Mark position as {a-z} E.g. ma
+    '{a-z}                             " Move to mark position {a-z} E.g. 'a
+    ''                                 " Move to mark previous position
+    :jumps                             " Show list of postions you jumpeds, alias :ju
 
 ## Search in file
 
@@ -66,18 +79,6 @@ Press `:`
 
     :arg **/*.js                           " Set all *.js files and below current directory in :arg
     :argdo %s/pattern/replace/gce | update " Confirm updates in recursieve files
-
-## Moving around
-
-    :buffers                           " Show buffers, alias :ls
-    :vertical sb 3                     " Open buffer 3 in split window
-    :marks                             " Show list of marks
-    m{a-z}                             " Mark position as {a-z} E.g. ma
-    '{a-z}                             " Move to mark position {a-z} E.g. 'a
-    ''                                 " Move to mark previous position
-    :jumps                             " Show list of postions you jumpeds, alias :ju
-    ctrl-o                             " Jump to older position
-    ctrl-i                             " Jump to newer position
 
 ## Moving Viewport
     zz                                 " Set viewport in center

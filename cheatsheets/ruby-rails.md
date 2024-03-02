@@ -8,7 +8,7 @@
     apt install mariadb-client
     apt install default-libmysqlclient-dev # Needed for gem mysql2
     apt install build-essential
-    apt install libxslt-dev libxml2-dev # Maybe needed for nokogiri
+    apt install libyaml-dev # 2023-10-25 was needed for bundle update ?!
 
 ## Git
 
@@ -21,6 +21,11 @@
     sudo bundle install
     sudo bundle update --bundler
     sudo bundle update
+
+Find where the gems are stored.
+
+    gem enviroment
+    bundle env
 
 ## Rails
 

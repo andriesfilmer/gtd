@@ -125,3 +125,6 @@ Example: Reset Thunderbird position on startup
 
     xdotool search --name "Mozilla Thunderbird" windowmove 0 0
 
+## Webcam zoom
+
+    v4l2-ctl -d /dev/video0 -c zoom_absolute=200

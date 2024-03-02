@@ -74,6 +74,7 @@ Leanstack helps developers find and decide on the best cloud services. Search an
 
 ### Maillist providers voor end users
 
+* [Spotler](https://spotler.com/) | Helping marketing teams succeed
 * [Mailchimp](http://mailchimp.com/) | Marketing platform for small businesses
 * [CleverReach](http://www.cleverreach.nl/) | Email marketing solution
 

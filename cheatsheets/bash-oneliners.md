@@ -125,6 +125,16 @@ Example: pretty girl.jpg to pretty_girl.jpg<br>
 
     for i in ** ;do j="`echo ./$i |sed 's/JPG$/jpg/'`" ;mv -i -- "./$i" "./$j" ;done
 
+Remove files with strange names like '?????OA??'
+
+Solution: Remove file by an inode number.  The -i option to ls displays the index number (inode) of each file:
+
+    ls -li
+
+Use find command as follows to delete the file if the file has inode number 4063242:
+
+    find . -inum 4063242 -delete
+
 ## diff
 
 Difference between two file directories (side-by-side)
