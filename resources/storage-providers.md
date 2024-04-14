@@ -38,4 +38,5 @@
 
 
 # Database platforms
+* [Supabase](https://supabase.com/) The opensource Firebase alternative
 * [PlanetScale - MySQL](https://planetscale.com/) Serverless MySQL platform

@@ -9,24 +9,16 @@
 * [OpenID Connect is a simple yet powerful signin protocol](http://openid.net/developers/libraries/)
 * [Mozilla Persona - A sign-in system for the web](https://www.mozilla.org/en-US/persona/) [Github](https://github.com/mozilla/persona)
 
-## NodeJs
-
-* [Authentication with AngularJS and a Node.js REST api](http://www.kdelemme.com/2014/03/09/authentication-with-angularjs-and-a-node-js-rest-api/) |
-[Demo]( http://projects.kdelemme.com/blog/app/#/)
-* [How To Implement Password Reset In Node.js](http://sahatyalkabov.com/how-to-implement-password-reset-in-nodejs/) using Express, MongoDB, Passport and Nodemailer.
-* [Creating a REST API using Node.js, Express, and MongoDB](http://coenraets.org/blog/2012/10/creating-a-rest-api-using-node-js-express-and-mongodb/)
-
-## Rails
-
-* [Using CORS with Rails](http://leopard.in.ua/2012/07/08/using-cors-with-rails/)
-
-
 ## Token based authentication
 
 * [Token Based Authentication in Rails](http://blog.envylabs.com/post/75521798481/token-based-authentication-in-rails)
 * [Example of Token-based authentication in AngularJS with Express](https://github.com/auth0/angular-token-auth)
 * [Token-Based Authentication With AngularJS & NodeJS](http://code.tutsplus.com/tutorials/token-based-authentication-with-angularjs-nodejs--cms-22543)
 * [Reissues accesstoken with endpoint](https://nudgestage.jawbone.com/up/developer/authentication)
+
+## 2FA
+
+* [2FAuth](https://github.com/Bubka/2FAuth) 2FAuth is a web based self-hosted alternative to One Time Passcode (OTP) generators like Google Authenticator, designed for both mobile and desktop.
 
 ## OpenID & OAuth
 

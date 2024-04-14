@@ -28,3 +28,6 @@
 
 ## GPS
 * [GPS Coordinates](https://gps-coordinates.org/)
+
+## Speech to text
+* [Whisper OpenAi](https://github.com/openai/whisper) - speech2text

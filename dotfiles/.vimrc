@@ -53,10 +53,11 @@ endif
 " In `.profile` remaps Caps Lock -> Esc `setxkbmap -option caps:escape`
 
 " Function keys
-nmap <F2> :tabnew<CR>:NERDTree<CR>
-map! <F2> <nop>
+"nmap :ww :w<CR>:ChromiumReload<CR>                 " Requires browser-reload-linux plugin
+nmap <F2> :tabnew<CR>:NERDTree<CR>                 " Requires NERDTree plugin
+map! <F2> <nop>                                    " Do not print <F2> in write mode.
 nmap <F3> :set hlsearch!<CR>                       " Toggle highligt all searches.
-cmap <F3> <nop>
+cmap <F3> <nop>                                    " Do not print <F3> in write mode.
 nmap <F4> :SignifyHunkDiff<CR>
 nmap <F7> :NERDTreeFind<CR>
 nmap <F8> :NERDTreeToggle<CR>

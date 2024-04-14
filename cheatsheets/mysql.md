@@ -106,6 +106,14 @@ or
     LOAD DATA LOCAL INFILE '/home/user/import.csv' INTO TABLE `import`
     FIELDS TERMINATED BY ',' ENCLOSED BY '"' ESCAPED BY '\' LINES TERMINATED BY '';
 
+Other example with multiple lines in column 'notes'.
+
+    LOAD DATA INFILE '/path/to/yourfile.csv' INTO TABLE your_table_name
+    FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n'
+    IGNORE 1 ROWS
+    (title, description, tags, url, @notes, updated_at, created_at)
+    SET notes = REPLACE(@notes, '\\n', '\n');
+
 You may also have to call mysql with the --local-infile option.
 
 ## Table to CSV

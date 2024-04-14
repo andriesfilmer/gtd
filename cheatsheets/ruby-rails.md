@@ -29,6 +29,11 @@ Find where the gems are stored.
 
 ## Rails
 
+Minimal install
+    rails new app-with-trilogy --database=trilogy --api --minimal --skip-test --skip-system-test --skip-javascript
+
+Precompile assets
+
     RAILS_ENV=production rails assets:precompile
 
 ## Puma
