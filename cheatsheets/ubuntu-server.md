@@ -13,8 +13,8 @@
 
 `cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local` and add your own ip's to jail.local:
 
-    #          localhost   home-ip        server03     server05        server06       server08
-    ignoreip = 127.0.0.1/8 94.211.146.214 95.85.60.187 198.199.127.67  198.199.127.67 159.65.199.31
+    #          localhost   home-ip        server01        server03     server05        server06       server08
+    ignoreip = 127.0.0.1/8 94.211.146.214 178.128.254.144 95.85.60.187 206.189.108.222 198.199.127.67 159.65.199.31
 
 Checkstatus
 
@@ -25,6 +25,11 @@ Check iptables with fail2ban-client
 
     fail2ban-client set sshd unbanip 23.34.45.56
 
+## bugfix ubuntu 24.04 (fail2ban No module named 'asynchat')
+
+    apt install python3-pip
+    python3 -m pip install pyasynchat --break-system-packages
+    systemctl start fail2ban
 
 ## hosts.allow
 
@@ -43,14 +48,14 @@ content hosts.allow
     # 212.204.160.0/19 ZIGGO
     # 84.241.192.0/18  T-MOBILE
     # ------------------------------
+    # 178.128.254.144 server01
     # 95.85.60.187    server03
     # 206.189.108.222 server05
     # 198.199.127.67  server06
     # 159.65.199.31   server08
-    # 143.0.32.201    Saba Palm 19
     # ------------------------------
 
-    sshd: 81.204.0.0/14 84.104.0.0/14 217.62.16.0/20 94.211.144.0/21 84.241.192.0/18 212.204.160.0/19 95.85.60.187 206.189.108.222 198.199.127.67 143.0.32.201
+    sshd: 81.204.0.0/14 84.104.0.0/14 217.62.16.0/20 94.211.144.0/21 212.204.160.0/19 84.241.192.0/18 178.128.254.144 95.85.60.187 206.189.108.222 198.199.127.67 159.65.199.31
 
 
 ## hosts.deny
@@ -88,12 +93,9 @@ Or without disconnected from current ssh login
 
 Or enable new rules with fontend [ufw](https://help.ubuntu.com/community/UFW) for iptables and `iptables-save`
 
-## sudo
-
-Add a new user (your self)
+## Add a new user (your self)
 
     adduser yourname
-    usermod -aG sudo yourname
 
 ## .bashrc
 
@@ -130,10 +132,6 @@ Test with the following command:
     echo test | mail -s "test message" root
 
 
-## Essential
-
-    apt install build-essential
-
 ## Syslog
 
 Set log preferences `vi /etc/rsyslog.d/50-default.conf`
@@ -141,7 +139,13 @@ Set log preferences `vi /etc/rsyslog.d/50-default.conf`
 The next line means log every facility at every level to /var/log/syslog, with authpriv being the only exception.
 Obviously this includes mail, so #comment/disable this line. Adjust some other preferences.
 
-    *.*;auth,authpriv.none          -/var/log/syslog
+    #*.*;auth,authpriv.none         -/var/log/syslog
+    cron.*                          /var/log/cron.log
+    daemon.*                        -/var/log/daemon.log
+    kern.*                          -/var/log/kern.log
+    #lpr.*                          -/var/log/lpr.log
+    mail.*                          -/var/log/mail.log
+    user.*                          -/var/log/user.log
 
 ### Journal
 
@@ -167,17 +171,16 @@ Looks like
 
 Configure unattended-upgrades, edit `/etc/apt/apt.conf.d/50unattended-upgrades` and fit your needs:
 
-* Enable updates: `"${distro_id}:${distro_codename}-updates";`
-* Setup email alert: `Unattended-Upgrade::Mail "mail@domain";i`
-* Reboot WITHOUT CONFORMATION: `Unattended-Upgrade::Automatic-Reboot "true";`
-* Reboot time: `Unattended-Upgrade::Automatic-Reboot-Time "02:00"`;
+* `${distro_id}:${distro_codename}-updates;`
+* `Unattended-Upgrade::Mail "mail@domain;`
+* `Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";`
+* `Unattended-Upgrade::Remove-New-Unused-Dependencies "true";`
+* `Unattended-Upgrade::Automatic-Reboot "true";`
+* `Unattended-Upgrade::Automatic-Reboot-Time "07:00"`;
 
-Check logfiles
+## Backup
 
-    tail /var/log/unattended-upgrades/unattended-upgrades*.log
-
-Resource: <https://www.cyberciti.biz/faq/ubuntu-enable-setup-automatic-unattended-security-updates/>
-
+m
 ## DigitalOcean
 
 ### Swap
@@ -209,6 +212,7 @@ Tunning
 
 To find out all services that have been run at startup:
 
+    systemctl --state=running
     systemctl list-units --type service
 
 ## Sysctl Tweaks

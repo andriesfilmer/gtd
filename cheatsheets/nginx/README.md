@@ -35,10 +35,10 @@ Example [nginx.conf](./nginx.conf)
     server {
       listen 80;
       server_name subdomain.domain;
-    
+
       # enforce https
       return 301 https://$server_name$request_uri;
-    
+
       location ^~ /.well-known/ {
         default_type "text/plain";
         allow all;
@@ -46,10 +46,10 @@ Example [nginx.conf](./nginx.conf)
         # Shared letsencrypt root dir (.well-known/acme-challenge)
         root /var/www/letsencrypt/;
       }
-    
+
       error_log /var/log/nginx/letsencrypt.log error;
       access_log /var/log/nginx/letsencrypt.log;
-    
+
     }
 
 Create a certificate
@@ -72,11 +72,21 @@ Add this to the crontab (run every first day of month at 4:30pm)
 
     30 4 1 * * /usr/bin/certbot -q renew
 
-Wildcard domain
+### Wildcard domain
 
     /usr/bin/certbot certonly --manual --preferred-challenges=dns --email andries@filmer.nl --server https://acme-v02.api.letsencrypt.org/directory --agree-tos -d filmer.nl -d "*.filmer.nl"
     /usr/bin/certbot renew --cert-name filmer.nl --manual --preferred-challenges dns
 
+Then deploy two times a DNS TXT record `acme-challenge` by following the instructions.
+
+Add the next lines to you nginx `server` config
+
+    ssl_certificate /etc/letsencrypt/live/filmer.nl/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/filmer.nl/privkey.pem;
+
+Also put a crontab to renew the certificattes each month. For example:
+
+    15 4 1 * * /usr/bin/certbot renew
 
 ### Install other certificates
 

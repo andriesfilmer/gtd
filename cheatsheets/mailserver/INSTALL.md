@@ -250,6 +250,8 @@ Change delay to one minuut instead of 5 minutes in `/etc/default/postgrey`
 
     POSTGREY_OPTS="--inet=127.0.0.1:10023 --delay=60"
 
+<https://help.ubuntu.com/community/PostfixGreylisting>
+
 ## DMARC
 
 Greate a [dmarc](https://dmarc.org/) record for each domain for who we are sending mail.

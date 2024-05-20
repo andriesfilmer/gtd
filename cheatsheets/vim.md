@@ -61,6 +61,7 @@ Press `/` to start a search.
 
     :vim foo **/*.js | cw              " Search for foo in every JavaScript file in the parent directories recursively.
     :vim foo app/**/*.rb | cw          " Search for foo in every Ruby file in the app directory recursively.
+    /[^\x00-\x7F]                      " Find non-ascii characters
 
 ## Replace in file
 
@@ -193,6 +194,11 @@ A neat filtering trick using the 'nl' for adding linenumbers.
     :set printfont=courier:h10           " Height 10
     :set printoptions=left:2pc           " Left marigin (default 10pc)
     :ha(rdcopy)
+
+## Colorscheme
+
+    set colorscheme [tab]
+    set background=light
 
 ## Plugins
 

@@ -1,10 +1,8 @@
 #!/usr/bin/perl
 
 # This script extracts two passwords from a encrypted GnuPG (gpg) file.
-# So you have to remember just the gpg password to login to all servers.
 #
 # The servers are configured so that you first login as user and then su to root.
-#
 # So this script extract two passwords from a single line.
 # The format must be: 'host.domain.nl userpasswd rootpasswd'
 #
@@ -63,8 +61,8 @@ $SIG{WINCH} = \&winch;  # best strategy
 #--------------------------------------------------
 #$gpg_line = `/usr/bin/gpg --decrypt $encryptedPassFile | grep -i '^$server_str'`;
 #
-# Get password for gpg-agent from remote ssh-server.
-#---------------------------------------------------
+# Get password(s) for gpg-agent from remote ssh-server.
+#------------------------------------------------------
 $gpg_line = `$sshCommandForRemotePasswd | gpg --batch --yes --passphrase-fd 0 -u $username --pinentry-mode loopback -d $encryptedPassFile | grep -i '^$server_str'`;
 
 $gpg_line =~ /^([^\s]+)\s+([^\s]+)\s+([^\s]+)\s*$/;

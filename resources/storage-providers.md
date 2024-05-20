@@ -38,5 +38,6 @@
 
 
 # Database platforms
+* [Baserow](https://baserow.io/) The open platform to create scalable databases and applications—without coding.
 * [Supabase](https://supabase.com/) The opensource Firebase alternative
 * [PlanetScale - MySQL](https://planetscale.com/) Serverless MySQL platform

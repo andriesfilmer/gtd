@@ -140,4 +140,6 @@ highlight ExtraWhitespace ctermbg=1 guibg=red      " Highlight trailing spaces i
 match ExtraWhitespace /\s\+$/
 autocmd BufWritePre * %s/\s\+$//e                  " Removing trailing whitespace on write
 
+syntax match nonascii "[^\x00-\x7F]"               " Display non ascii chars
+highlight nonascii guibg=Red ctermbg=2
 
