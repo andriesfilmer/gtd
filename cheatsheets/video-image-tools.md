@@ -2,7 +2,11 @@
 
 ## Compress images
 
+Nice tool to make your images smaller. <https://squoosh.app/>
+
 ### PNG files
+
+Or command line
 
     convert input.png -color 256 png8:output.png
 

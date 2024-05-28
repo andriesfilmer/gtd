@@ -147,6 +147,18 @@ Obviously this includes mail, so #comment/disable this line. Adjust some other p
     mail.*                          -/var/log/mail.log
     user.*                          -/var/log/user.log
 
+Set log rotate mail daily instead of weekly.
+
+    vi /etc/logrotate.d/rsyslog
+
+    /var/log/mail.info
+    /var/log/mail.warn
+    /var/log/mail.err
+    /var/log/mail.log
+    {
+            daily
+    }
+
 ### Journal
 
 Set max file size `vi /etc/systemd/journald.conf`
@@ -178,9 +190,6 @@ Configure unattended-upgrades, edit `/etc/apt/apt.conf.d/50unattended-upgrades` 
 * `Unattended-Upgrade::Automatic-Reboot "true";`
 * `Unattended-Upgrade::Automatic-Reboot-Time "07:00"`;
 
-## Backup
-
-m
 ## DigitalOcean
 
 ### Swap

@@ -3,12 +3,12 @@
 ## Ruby Install
 
     apt install ruby ruby-dev
-    apt install nodejs
-    apt install ruby-bundler
-    apt install mariadb-client
+    apt install bundler # or ruby-bundler?
+    apt install libyaml-dev # Needed for gem psych
     apt install default-libmysqlclient-dev # Needed for gem mysql2
+    apt install mariadb-client
+    apt install nodejs
     apt install build-essential
-    apt install libyaml-dev # 2023-10-25 was needed for bundle update ?!
 
 ## Git
 
@@ -30,6 +30,7 @@ Find where the gems are stored.
 ## Rails
 
 Minimal install
+
     rails new app-with-trilogy --database=trilogy --api --minimal --skip-test --skip-system-test --skip-javascript
 
 Precompile assets
@@ -37,6 +38,9 @@ Precompile assets
     RAILS_ENV=production rails assets:precompile
 
 ## Puma
+
+    adduser puma
+    chown -R puma:www-data /path/to/workdir
 
 Default Ruby Web Server
 
@@ -115,6 +119,7 @@ All rake tasks will then be available to you. Usage
 
 
 ## Resources
+
 * [ruby](http://www.ruby-lang.org/en/) language
 * [Ruby on Rails Guides](http://guides.rubyonrails.org/)
  * [Active Support Core Extensions](https://guides.rubyonrails.org/active_support_core_extensions.html) - Extensions, utilities, and other transversal stuff

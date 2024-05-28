@@ -2,12 +2,14 @@
 
 ## Create table expample
 
+````
 CREATE TABLE MyGuests (
   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(30) NOT NULL,
   email VARCHAR(50),
   reg_date TIMESTAMP
 )
+````
 
 ## Grant privileges
 

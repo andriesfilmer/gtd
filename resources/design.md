@@ -83,6 +83,8 @@
 * [123rf stock](https://nl.123rf.com/)
 * [500px](https://web.500px.com/)
 
+Upscale your photos with [Magnific AI](https://magnific.ai) - Payed account but very nice.
+
 ## Icons, Mockups, Wireframes, UI kits
 
 * [Sketch App sources](https://www.sketchappsources.com/) | Lot off free resources
@@ -90,7 +92,6 @@
 * [Dribbble](https://dribbble.com/) | Discover the world’s top designers & creatives
 
 ### Icons
-* [Icon svg setup](https://css-tricks.com/how-i-made-an-icon-system-out-of-css-custom-properties/) Icon System Out of CSS Custom Properties
 * [Google fonts - Material Icons Guide](https://developers.google.com/fonts/docs/material_icons)
 * [Heroicons](https://heroicons.com/) | Beautiful hand-crafted SVG icons
 * [Foundation Icon Fonts 3](http://zurb.com/playground/foundation-icon-fonts-3)
