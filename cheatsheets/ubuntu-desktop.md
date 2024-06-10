@@ -24,17 +24,15 @@ User-defined shortcuts does not work after upgrade
 
     sudo apt-get install gnome-tweak-tool
 
-### dconf-editor
+#### dconf-editor
 
-Very fast & easy, without any installations/extensions:
-
-#### ALT-TAB cycle through apps on current workspace only.
-
+ALT-TAB cycle through apps on current workspace only.
     dconf-editor -> org/gnome/shell/app-switcher/
 
-or
+#### gsetting
 
     gsettings set org.gnome.shell.app-switcher current-workspace-only true
+    gsettings set org.gnome.desktop.interface color-scheme [default | prefer-dark | prefer-light]
 
 ### Scaling 4k monitors with wayland (2019)
 
@@ -43,6 +41,7 @@ or
     gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
 
 #### Wayland
+
     gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
     gsettings reset org.gnome.mutter experimental-features
 

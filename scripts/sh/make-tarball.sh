@@ -5,6 +5,7 @@ echo "Create a backup using tar";
 show_usage()
 {
     echo "Usage: "`basename $0`" [OPTION]... <object_to_store> [dest_directory]";
+    echo "Option -h for help";
 }
 
 show_help()
@@ -119,8 +120,9 @@ then                    # if $? is empty then "$1" end with /, so
 fi;
 
 TOFILE="${DEST_DIR}/${FROMFILE}_"`date +%Y-%m-%d`"${EXT}";
+TOFILETXT="${DEST_DIR}/${FROMFILE}_"`date +%Y-%m-%d`".txt";
 
-# add a timestamp if file alredy exist
+# add a timestamp if file already exist
 if test -f "${TOFILE}"
 then
     TOFILE="${DEST_DIR}/${FROMFILE}_"`date +%Y-%m-%d`"${EXT}";
@@ -138,11 +140,9 @@ test "$?" -ne 0 && { echo -e "\nError, exit." >&2 ; exit 4; };
 echo "]"
 
 echo "Create a file with all the file names for easy search";
-find "${FROMPATH}" -type f > "${FROMFILE}".txt";
+find "${FROMPATH}" -type f -exec du -h {} \; > "${TOFILETXT}";
 
-# see the result
-ls --color -hl "${TOFILE}"*;
+# Show the result
+echo "Create tarball -> ${TOFILE}";
+echo "Create textfile-> ${TOFILETXT}";
 
-
-
-# End

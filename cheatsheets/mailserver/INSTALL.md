@@ -370,6 +370,31 @@ service bind9 restart
 
 <https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-caching-or-forwarding-dns-server-on-ubuntu-16-04>
 
+## Logrotate
+
+
+Create a new configuration file for Postfix logs in the logrotate `/etc/logrotate.d/postfix`
+
+    /var/log/mail.info
+    /var/log/mail.warn
+    /var/log/mail.err
+    /var/log/mail.log
+    {
+        su root adm
+        rotate 20
+        daily
+        compress
+        missingok
+    }
+
+remove the mail.* config from `/etc/logrotate.d/rsyslog`
+
+Test and execute logrotate on Postfix manually:
+
+    logrotate /etc/logrotate.d/postfix
+    logrotate -v -d /etc/logrotate.conf   # Turn on debug mode, which means that no changes are made
+    logrotate -v -f /etc/logrotate.conf   # Tells logrotate to force the rotation, even if it doesn't think this is necessary
+
 ## Crontab
 
 We want to refresh ClamAV database, set the correct time on a daily basis and refresh dnswl on a monthly basis.

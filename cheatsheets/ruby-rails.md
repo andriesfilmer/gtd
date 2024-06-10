@@ -79,35 +79,10 @@ Run last job on the console:
 
     Delayed::Worker.new.run(Delayed::Job.last)
 
-## Sqlite
-
-Use the following to get a CSV file, which I can import into almost everything
-
-    sqlite>.mode csv
-    sqlite>.header on
-    sqlite>.out file.csv
-    sqlite>select * from people;
-
-To import from an SQL file use the following:
-
-    sqlite> .read <filename>
-
-To import from a CSV file you will need to specify the file type and destination table:
-
-    sqlite> .mode csv <table>
-    sqlite> .import <filename> <table>
-
-If you want to reinsert into a different SQLite database then:
-
-    sqlite>.mode insert
-    sqlite>.out file.sql
-    sqlite>select * from file.sql
-
-* [Sqlite tutorial](http://souptonuts.sourceforge.net/readme_sqlite_tutorial.html)
-
-### sqlite to mysql
+## sqlite to mysql
 
 Simply add to your Gemfile:
+
     gem 'yaml_db'
 
 All rake tasks will then be available to you. Usage

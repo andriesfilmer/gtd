@@ -74,7 +74,7 @@ Add this to the crontab (run every first day of month at 4:30pm)
 
 ### Wildcard domain
 
-    /usr/bin/certbot certonly --manual --preferred-challenges=dns --email andries@filmer.nl --server https://acme-v02.api.letsencrypt.org/directory --agree-tos -d filmer.nl -d "*.filmer.nl"
+    /usr/bin/certbot certonly --nignx --preferred-challenges=dns --email andries@filmer.nl --server https://acme-v02.api.letsencrypt.org/directory --agree-tos -d filmer.nl -d "*.filmer.nl"
     /usr/bin/certbot renew --cert-name filmer.nl --manual --preferred-challenges dns
 
 Then deploy two times a DNS TXT record `acme-challenge` by following the instructions.
