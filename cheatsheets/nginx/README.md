@@ -72,13 +72,13 @@ In your nginx config:
 
 ## Custom error page
 
-copy [error-pages.conf](.error-pages.conf) to `/etc/nginx/error-pages.conf`
+copy [error-pages.conf](error-pages.conf) to `/etc/nginx/error-pages.conf`
 
 Use the include in your `server` directive.
 
     include /etc/nginx/error-pages.conf;
 
-Add a `location` directive for [error.html](.error.html], see comments in `error-pages.conf`.
+Add a `location` directive for [error.html](error.html], see comments in `error-pages.conf`.
 
 ## Parse log files
 
@@ -98,5 +98,4 @@ Details (error example 302)
 * [Github and Unicorn](https://github.com/blog/517-unicorn)
 * [Setting up Ubuntu with Nginx, Unicorn, ree, rvm](http://tomkersten.com/articles/nginx-unicorn-rvm-server-setup/)
 * [.htaccess converter](http://winginx.com/en/htaccess)
-
 
