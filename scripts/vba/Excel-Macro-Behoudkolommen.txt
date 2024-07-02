@@ -1,0 +1,50 @@
+' Deze macro zal alleen de specifieke kolommen zichtbaar laten en de rest verwijderen.
+' Zorg ervoor dat je een back-up hebt van je document voordat je de macro uitvoert, voor het geval er iets misgaat.
+'------------------------------------------------------------------------------
+'
+' Instructies om de macro te gebruiken:
+'
+' 1 - Open Excel.
+' 2 - Druk op Alt + F11 om de Visual Basic for Applications-editor te openen.
+' 3 - Ga naar Invoegen > Module om een nieuwe module te maken.
+' 4 - Plak de bovenstaande code in de module.
+' 5 - Sla de macro op en sluit de editor.
+' 6 - Voer de macro uit door Alt + F8 te drukken, selecteer BehoudKolommen en klik op Uitvoeren.
+'
+'------------------------------------------------------------------------------
+
+Sub BehoudKolommen()
+    Dim ws As Worksheet
+    Dim KolommenToBehouden As Variant
+    Dim i As Integer
+    Dim MaxColumns As Integer
+    
+    ' Het werkblad ophalen
+    Set ws = ThisWorkbook.Sheets(1) ' Verander de index als je een ander werkblad wilt gebruiken
+    
+    ' De kolommen die behouden moeten blijven
+    KolommenToBehouden = Array("D", "E", "F", "G", "I", "W", "AR", "AW", "BT", "BZ", "CN", "CT", "DH", "DN", "EB", "EH", "EV", "FB")
+    
+    ' Het maximum aantal kolommen in het werkblad
+    MaxColumns = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column
+    
+    ' Kolommen doorlopen van rechts naar links
+    For i = MaxColumns To 1 Step -1
+        If IsInArray(ws.Cells(1, i).Address(False, False), KolommenToBehouden) = False Then
+            ws.Columns(i).EntireColumn.Delete
+        End If
+    Next i
+End Sub
+
+Function IsInArray(value As Variant, arr As Variant) As Boolean
+    Dim element As Variant
+    IsInArray = False
+    For Each element In arr
+        If element = value Then
+            IsInArray = True
+            Exit Function
+        End If
+    Next element
+End Function
+
+

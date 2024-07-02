@@ -1,9 +1,5 @@
 # Commandline system monitoring
 
-## Introduction
-
-There are many commandline monitoring tools. On this page you can find a list of commands who I commonly use. The first part are commands you can use without installing a package. This page gives only some shorthand examples. The man pages can tell you much more ;)
-
 ## Part 1 (default system tools)
 
 ### ps - Print process on the server
@@ -15,18 +11,24 @@ There are many commandline monitoring tools. On this page you can find a list of
     pgrep apache                        # Display Only The Process IDs of apache
     ps -auxf | sort -nr -k 4 | head -10 # Find Out The Top 10 Memory Consuming Process
 
+
+### ss - Another utility to investigate sockets
+
+    ss -tlp
+
 ### lscpu - Info about CPU's
 
     lscpu
     cat /proc/cpuinfo
 
-### top - Displays the most CPU-intensive tasks
+### top / htop - Displays the most CPU-intensive tasks
 
     top
+    htop
 
 ### free - Displays Memory Usage
 
-    free
+    free -h
 
 ### vmstat - System Activity, Hardware and System Information
 
@@ -42,13 +44,6 @@ There are many commandline monitoring tools. On this page you can find a list of
 
     watch free                                    # reruns the 'free' a command every 2 seconds by default.
     watch -n.1 'cat /proc/interrupts'# To see the interrupts occurring on your sys  tem.
-
-### pmap – Montor process memory usage on Linux
-
-Use this command to find out causes of memory bottlenecks.
-
-    pmap -d PID
-
 
 ## Part II (installed system tools)
 

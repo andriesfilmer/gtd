@@ -19,6 +19,7 @@
 ## Analyse domainname or network
 * [Urlscan.io](https://urlscan.io) is a free service to scan and analyse websites
 * [Whois domaintools](http://whois.domaintools.com/filmer.nl) (filmer.nl as a example)
+* [Geotool](https://iplookup.flagfox.net/) - IP address lookup. IP and host lookup tool.
 * [Alexa site info](http://www.alexa.com/siteinfo/filmer.nl) (filmer.nl as a example)
 * [DNSlytics](https://dnslytics.com/tools) online network tools
 

@@ -1,15 +1,6 @@
 ## nginx install
     sudo apt-get install nginx
 
-## nginx config
-
-Example [nginx.conf](./nginx.conf)
-
-
-## fastcgi php
-
-    apt install php-fpm
-
 ## Deny access
 
     # Under location
@@ -24,69 +15,38 @@ Example [nginx.conf](./nginx.conf)
        deny all;
     }
 
-## Letsencrypt certificates
+## Create a wildcard certificate
 
-    apt install letsencrypt
-    apt install python3-certbot-nginx
+Get an [ACME Shell script](https://github.com/acmesh-official/acme.sh)
 
+    curl https://get.acme.sh | sh # reload your shell so the alias `acme.sh` is available.
 
-## nginx config
+Use the automatic DNS API integration, for example: [Transip](https://github.com/acmesh-official/acme.sh/wiki/dnsapi2#dns_transip)
 
-    server {
-      listen 80;
-      server_name subdomain.domain;
+Create a key pair - [Transip](https://www.transip.nl/cp/account/api/)
 
-      # enforce https
-      return 301 https://$server_name$request_uri;
-
-      location ^~ /.well-known/ {
-        default_type "text/plain";
-        allow all;
-        auth_basic off;
-        # Shared letsencrypt root dir (.well-known/acme-challenge)
-        root /var/www/letsencrypt/;
-      }
-
-      error_log /var/log/nginx/letsencrypt.log error;
-      access_log /var/log/nginx/letsencrypt.log;
-
-    }
-
-Create a certificate
-
-    certbot certonly --webroot -w /var/www/letsencrypt/ -d subdomain.domain
-
-To renew the certificates
-
-    certbot renew --dry-run
-
-Revoke the certificates
-
-    certbot revoke --cert-path /etc/letsencrypt/live/subdomain.domain.nl-0001/fullchain.pem
-
-<https://certbot.eff.org/docs/using.html#nginx>
-
-Testing: <https://www.ssllabs.com/ssltest/analyze.html?d=subdomain.domain.nl>
-
-Add this to the crontab (run every first day of month at 4:30pm)
-
-    30 4 1 * * /usr/bin/certbot -q renew
-
-### Wildcard domain
-
-    /usr/bin/certbot certonly --nignx --preferred-challenges=dns --email andries@filmer.nl --server https://acme-v02.api.letsencrypt.org/directory --agree-tos -d filmer.nl -d "*.filmer.nl"
-    /usr/bin/certbot renew --cert-name filmer.nl --manual --preferred-challenges dns
-
-Then deploy two times a DNS TXT record `acme-challenge` by following the instructions.
+    # These varialbes are stored in `/root/.acme.sh/account.conf` after running acme.sh
+    export TRANSIP_Username="your_username"
+    export TRANSIP_Key_File="/path/to/transip-private.key"
+    acme.sh --issue --dns dns_transip --dnssleep 100 -d domain.org -d *.domain.org
 
 Add the next lines to you nginx `server` config
 
-    ssl_certificate /etc/letsencrypt/live/filmer.nl/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/filmer.nl/privkey.pem;
+    # Letsencrypt certificates
+    ssl_certificate /etc/letsencrypt/live/domain.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/domain.com/privkey.pem;
 
-Also put a crontab to renew the certificattes each month. For example:
+Install certificate (
 
-    15 4 1 * * /usr/bin/certbot renew
+    acme.sh --install-cert -d shiftplanner.org \
+    --key-file /etc/letsencrypt/live/shiftplanner.org/privkey.pem \
+    --fullchain-file /etc/letsencrypt/live/shiftplanner.org/fullchain.pem \
+    --reloadcmd "service nginx force-reload"
+
+Also put a [crontab](https://crontab.guru/) to renew the certificattes each month. For example:
+
+    # Check if acme.sh has installed a crontab.
+    0 0 * * * "/root/.acme.sh"/acme.sh --cron --home "/root/.acme.sh" > /dev/null
 
 ### Install other certificates
 
@@ -112,24 +72,13 @@ In your nginx config:
 
 ## Custom error page
 
-copy <error-pages.conf> map to `/etc/nginx/error-pages.conf`
+copy [error-pages.conf](.error-pages.conf) to `/etc/nginx/error-pages.conf`
 
 Use the include in your `server` directive.
 
     include /etc/nginx/error-pages.conf;
 
-Add a `location` directive for <error.html>, see comments in `error-pages.conf`.
-
-## Dynamic SSI Example
-
-For example incluce headers, menu of footers.
-
-<https://www.nginx.com/resources/wiki/start/topics/examples/dynamic_ssi/>
-
-## PageSpeed Module
-
-<cheatsheets/nginx/ngx_pagespeed.md>
-
+Add a `location` directive for [error.html](.error.html], see comments in `error-pages.conf`.
 
 ## Parse log files
 
@@ -141,6 +90,7 @@ Details (error example 302)
 
 ## Resources
 
+* [acme.sh](https://github.com/acmesh-official/acme.sh) | Wildcard certs
 * [How to optimize nginx configuration](https://www.digitalocean.com/community/tutorials/how-to-optimize-nginx-configuration)
 * [Migrate from an Apache Web Server to Nginx](https://www.digitalocean.com/community/articles/how-to-migrate-from-an-apache-web-server-to-nginx-on-an-ubuntu-vps)
 * [Setting Up PHP behind Nginx with FastCGI](http://www.sitepoint.com/setting-up-php-behind-nginx-with-fastcgi/)

@@ -10,6 +10,7 @@
     apt install nodejs
     apt install build-essential
 
+
 ## Git
 
     git clone https://github.com/some-repository
@@ -92,6 +93,26 @@ All rake tasks will then be available to you. Usage
 
 * [github.com/ludicast/yaml_db](https://github.com/ludicast/yaml_db)
 
+
+## Ruby on MacBook
+
+Homebrew installs the stuff you need that Apple (or your Linux system) didn’t.
+
+    brew -h
+    brew install bundler # Example
+
+* <https://brew.sh/>
+
+Do Not Use the MacOS System Ruby <https://mac.install.guide/faq/do-not-use-mac-system-ruby/>
+
+   ruby -v    # ruby 2.6.10p210
+   exec zsh
+   asdf install ruby 3.2.3
+   ruby -v    # ruby 3.2.3
+   gem install rails
+   cd dev && rails new weblog
+
+* <https://gorails.com/setup/macos/14-sonoma>
 
 ## Resources
 

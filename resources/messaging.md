@@ -47,7 +47,9 @@ The core Matrix team maintains bridges to Slack, IRC, XMPP and Gitter, and meanw
 ### Mail providers for end users
 
 * [ProtonMail](https://protonmail.com/) - Based in Switzerland
-* [Tutanota](https://tutanota.com/) - Werelds veiligste e-maildienst.
+* [Tuta](https://tuta.com/) - Werelds veiligste e-maildienst.
+* [Mailfence](https://mailfence.com/) - Beveiligde e-mail met volledige privacy.
+* [Startmail](https://startmail.com/) - Secure email that puts your privacy first.
 * [Zoho mail](https://www.zoho.eu/mail/) - Secure Business Email for your organization
 * [Rackspace](https://www.rackspace.com/en-nl/email-hosting/webmail)
 * [Greatmail](https://www.greatmail.com/)

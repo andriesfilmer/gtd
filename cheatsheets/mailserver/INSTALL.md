@@ -385,6 +385,9 @@ Create a new configuration file for Postfix logs in the logrotate `/etc/logrotat
         daily
         compress
         missingok
+        postrotate
+                /usr/lib/rsyslog/rsyslog-rotate
+        endscript
     }
 
 remove the mail.* config from `/etc/logrotate.d/rsyslog`
