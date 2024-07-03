@@ -23,24 +23,25 @@ Get an [ACME Shell script](https://github.com/acmesh-official/acme.sh)
 
 Use the automatic DNS API integration, for example: [Transip](https://github.com/acmesh-official/acme.sh/wiki/dnsapi2#dns_transip)
 
-Create a key pair - [Transip](https://www.transip.nl/cp/account/api/)
+Create a key pair - [Transip](https://www.transip.nl/cp/account/api/) and **add your ipnr to the whitelist**
 
     # These varialbes are stored in `/root/.acme.sh/account.conf` after running acme.sh
     export TRANSIP_Username="your_username"
     export TRANSIP_Key_File="/path/to/transip-private.key"
+    acme.sh --register-account -m my@example.com
     acme.sh --issue --dns dns_transip --dnssleep 100 -d domain.org -d *.domain.org
 
 Add the next lines to you nginx `server` config
 
     # Letsencrypt certificates
-    ssl_certificate /etc/letsencrypt/live/domain.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/domain.com/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/domain.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/domain.org/privkey.pem;
 
 Install certificate (
 
-    acme.sh --install-cert -d shiftplanner.org \
-    --key-file /etc/letsencrypt/live/shiftplanner.org/privkey.pem \
-    --fullchain-file /etc/letsencrypt/live/shiftplanner.org/fullchain.pem \
+    acme.sh --install-cert -d domain.org \
+    --key-file /etc/letsencrypt/live/domain.org/privkey.pem \
+    --fullchain-file /etc/letsencrypt/live/domain.org/fullchain.pem \
     --reloadcmd "service nginx force-reload"
 
 Also put a [crontab](https://crontab.guru/) to renew the certificattes each month. For example:
@@ -78,7 +79,7 @@ Use the include in your `server` directive.
 
     include /etc/nginx/error-pages.conf;
 
-Add a `location` directive for [error.html](error.html], see comments in `error-pages.conf`.
+Add a `location` directive for [error.html](error.html), see comments in `error-pages.conf`.
 
 ## Parse log files
 
