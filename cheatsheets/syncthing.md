@@ -11,7 +11,7 @@
 create a [systemd service](https://github.com/syncthing/syncthing/tree/main/etc)
 
     systemctl enable syncthing@username.service
-    systemctl start syncthing@username@andries
+    systemctl start syncthing@username.service
 
 open a browser on: http://127.0.0.1:8384/#
 
@@ -25,10 +25,12 @@ open a browser on: http://127.0.0.1:8384/#
 * <https://docs.syncthing.net/users/faq.html#how-do-i-run-syncthing-as-a-daemon-process-on-linux>
 
 
-## config
+## Set gui user and password
 
     syncthing generate --gui-user=andries --gui-password=some-user-password
 
+## config
+
 You can also see and change the config file
 
-    cat /root/.local/state/syncthing/config.xml
+    vi /home/syncthing/.local/state/syncthing/config.xml
