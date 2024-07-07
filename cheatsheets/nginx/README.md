@@ -37,7 +37,9 @@ Add the next lines to you nginx `server` config
     ssl_certificate /etc/letsencrypt/live/domain.org/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/domain.org/privkey.pem;
 
-Install certificate (
+Install certificate
+
+    mkdir /etc/letsencrypt/live/domain.org
 
     acme.sh --install-cert -d domain.org \
     --key-file /etc/letsencrypt/live/domain.org/privkey.pem \
