@@ -104,7 +104,7 @@ Create additional user-password pairs. Omit the -c flag because the file already
 
 ## Macbook config
 
-![Radicale-CardDav-Apple-Config](https://nextcloud.filmer.nl/data/andries/files/Public/github/gtd/Radicale-CardDav-Apple.png)
+![Radicale-CardDav-Apple-Config](https://shared.filmer.nl/public/github/gtd/Radicale-CardDav-Apple.png)
 
 
 ## Resources

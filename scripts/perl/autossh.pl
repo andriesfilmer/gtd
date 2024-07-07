@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# The servers are configured with PermitRootLogin = YES.
+# The servers are configured with PermitRootLogin = NO.
 # So that you first login as regular user and then su to root.
 ###############################################################################
 #
