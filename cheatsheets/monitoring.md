@@ -1,3 +1,27 @@
+- [Commandline system monitoring](#commandline-system-monitoring)
+  * [Part 1 (default system tools)](#part-1-default-system-tools)
+    + [ps - Print process on the server](#ps---print-process-on-the-server)
+    + [ss - Another utility to investigate sockets](#ss---another-utility-to-investigate-sockets)
+    + [lscpu - Info about CPU's](#lscpu---info-about-cpus)
+    + [top / htop - Displays the most CPU-intensive tasks](#top--htop---displays-the-most-cpu-intensive-tasks)
+    + [free - Displays Memory Usage](#free---displays-memory-usage)
+    + [vmstat - System Activity, Hardware and System Information](#vmstat---system-activity-hardware-and-system-information)
+    + [uptime - Tell How Long The System Has Been Running](#uptime---tell-how-long-the-system-has-been-running)
+    + [watch - Watch changeable data continuously](#watch---watch-changeable-data-continuously)
+  * [Part II (installed system tools)](#part-ii-installed-system-tools)
+    + [dstat - Versatile tool for generating system resource statistics](#dstat---versatile-tool-for-generating-system-resource-statistics)
+    + [ngrep](#ngrep)
+    + [atop - AT Computing's System & Process Monitor](#atop---at-computings-system--process-monitor)
+    + [nethogs - Tool grouping bandwidth per process](#nethogs---tool-grouping-bandwidth-per-process)
+    + [iostat - Average CPU Load, Disk Activity](#iostat---average-cpu-load-disk-activity)
+    + [bmon - Graphs/tracks network activity/bandwidth real time.](#bmon---graphstracks-network-activitybandwidth-real-time)
+    + [inotify, incron and authctl](#inotify-incron-and-authctl)
+    + [Stress](#stress)
+  * [Others](#others)
+  * [Resources](#resources)
+
+<!-- END TOC -->
+
 # Commandline system monitoring
 
 ## Part 1 (default system tools)

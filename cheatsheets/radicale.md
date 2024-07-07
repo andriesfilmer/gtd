@@ -1,3 +1,13 @@
+- [Radicale - CalDav & CardDav server](#radicale---caldav--carddav-server)
+  * [Security](#security)
+  * [Running as a service](#running-as-a-service)
+  * [Nginx config](#nginx-config)
+    + [htpasswd](#htpasswd)
+  * [Macbook config](#macbook-config)
+  * [Resources](#resources)
+
+<!-- END TOC -->
+
 # Radicale - CalDav & CardDav server
 
    To install Radicale system-wide
@@ -112,4 +122,3 @@ Create additional user-password pairs. Omit the -c flag because the file already
 * <https://radicale.org/>
 * [vCard properties](https://www.iana.org/assignments/vcard-elements/vcard-elements.xhtml)
 * [iCalendar properties](https://www.iana.org/assignments/icalendar/icalendar.xhtml)
-

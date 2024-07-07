@@ -1,3 +1,26 @@
+- [Mysql](#mysql)
+  * [Create table expample](#create-table-expample)
+  * [Grant privileges](#grant-privileges)
+  * [Revoke privileges](#revoke-privileges)
+  * [Drop and revoke](#drop-and-revoke)
+  * [Change password user](#change-password-user)
+  * [Start skip-grant-tables](#start-skip-grant-tables)
+  * [Search history](#search-history)
+  * [To create a FULLTEXT index](#to-create-a-fulltext-index)
+  * [Reset auto increment value](#reset-auto-increment-value)
+  * [Table give new id's](#table-give-new-ids)
+  * [Remove dubble rows](#remove-dubble-rows)
+  * [JSON](#json)
+  * [Een CSV file in een tabel zetten](#een-csv-file-in-een-tabel-zetten)
+  * [Table to CSV](#table-to-csv)
+  * [Score example](#score-example)
+  * [Convert utf8 to utf8mb4](#convert-utf8-to-utf8mb4)
+  * [Convert Antelope to Barracuda](#convert-antelope-to-barracuda)
+  * [MyTop](#mytop)
+  * [Resources](#resources)
+
+<!-- END TOC -->
+
 # Mysql
 
 ## Create table expample
@@ -60,7 +83,7 @@ In the mysql-client command
 
 or
 
-    sed "s/\\\040/ /g" < .mysql_history | grep 'search sql'
+    sed "s/\ / /g" < .mysql_history | grep 'search sql'
 
 ## To create a FULLTEXT index
 
@@ -111,17 +134,20 @@ or
 Other example with multiple lines in column 'notes'.
 
     LOAD DATA INFILE '/path/to/yourfile.csv' INTO TABLE your_table_name
-    FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n'
+    FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '
+'
     IGNORE 1 ROWS
     (title, description, tags, url, @notes, updated_at, created_at)
-    SET notes = REPLACE(@notes, '\\n', '\n');
+    SET notes = REPLACE(@notes, '\n', '
+');
 
 You may also have to call mysql with the --local-infile option.
 
 ## Table to CSV
 
     SELECT REPLACE(CONCAT(first_name,' ',IFNULL(infix,''),' ',last_name),'  ',' '),email FROM people
-    INTO OUTFILE 'inzetrooster/admins.csv' FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
+    INTO OUTFILE 'inzetrooster/admins.csv' FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '
+';
 
 ## Score example
 
