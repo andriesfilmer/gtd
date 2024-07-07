@@ -1,3 +1,16 @@
+- [Bash oneliners](#bash-oneliners)
+  * [Kill many processes](#kill-many-processes)
+  * [Remove many file in a directorie](#remove-many-file-in-a-directorie)
+    + [Zip a file and emails them to someone](#zip-a-file-and-emails-them-to-someone)
+  * [Testing the load/response on a website](#testing-the-loadresponse-on-a-website)
+  * [Find commands](#find-commands)
+    + [Find mixings](#find-mixings)
+  * [Rename files](#rename-files)
+  * [diff](#diff)
+  * [Mix](#mix)
+
+<!-- END TOC -->
+
 # Bash oneliners
 
 Nice resource: <https://www.commandlinefu.com/>
@@ -156,4 +169,3 @@ Randomize the numbers from a text file.
 SSH copy public key
 
     cat ~/.ssh/id_dsa.pub | ssh you@other-host 'cat >> ~/.ssh/authorized_keys'
-

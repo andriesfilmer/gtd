@@ -137,9 +137,7 @@ Other example with multiple lines in column 'notes'.
     FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '
 '
     IGNORE 1 ROWS
-    (title, description, tags, url, @notes, updated_at, created_at)
-    SET notes = REPLACE(@notes, '\n', '
-');
+    (title, description, tags, url, @notes, updated_at, created_at) SET notes = REPLACE(@notes, '\n', '');
 
 You may also have to call mysql with the --local-infile option.
 
