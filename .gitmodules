@@ -1,9 +1,0 @@
-[submodule "/home/andries/gtd/dotfiles/.vim/pack/bundle/start/vim-searchindex"]
-	path = /home/andries/gtd/dotfiles/.vim/pack/bundle/start/vim-searchindex
-	url = https://github.com/google/vim-searchindex.git
-[submodule "dotfiles/.vim/pack/bundle/start/nerdtree-git-plugin"]
-	path = dotfiles/.vim/pack/bundle/start/nerdtree-git-plugin
-	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
-[submodule "dotfiles/.vim/pack/bundle/start/vim-signify"]
-	path = dotfiles/.vim/pack/bundle/start/vim-signify
-	url = https://github.com/mhinz/vim-signify.git

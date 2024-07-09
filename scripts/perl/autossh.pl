@@ -11,11 +11,11 @@
 # It extracts 'servername, username and password from a rails app called pim.
 #
 # function autossh() {
-#   cd ~/path/to/pim-rails && ~/path/to/autossh.pl `rails ssh:login["$1"]`
+#   cd ~/path/to/pim && ~/path/to/autossh.pl `rails ssh:login["$1"]`
 # }
 #
-# Change the `pim-rails` to the pim rails app.
-# Change the path `ssh-server.pl` to this script.
+# Change the `pim` to the pim rails app.
+# Change the path `autossh.pl` to this script.
 #
 # usage in bash terminal: autossh servername
 #

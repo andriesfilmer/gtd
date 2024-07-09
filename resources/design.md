@@ -9,35 +9,26 @@
 
 ## Design principles
 
+* [Viewports.fyi](https://viewports.fyi/) | The ideal viewport doesn’t exist
+* [Utopia](https://utopia.fyi/) | Fluid responsive design | Type, Space, Grid, Clamp, Breakpoints
 * [Material Design](https://material.io/guidelines/)
 * [UsabilityHub](https://usabilityhub.com/) | A remote user research platform that takes the guesswork out of design decisions by validating them with real users.
 
 ## UI frameworks
 
-* [UIkit](https://getuikit.com/)
+* [CSS Starter](https://www.starterapp.style/)
 * [Bootstrap](https://getbootstrap.com/) | Build responsive, mobile-first projects
-* [Foundation](http://foundation.zurb.com/docs/) | [material version](https://github.com/mikolajdobrucki/material-foundation)
 * [Materialize Css](https://materializecss.com/) | A modern responsive front-end framework based on Material Design
 * [Tailwindcss](https://tailwindcss.com/ | )
 * [Bulma](https://bulma.io/documentation/)
 * [Primer CSS](https://primer.style/css/) | GitHub teams build and maintain Primer
-* [Formstone](https://formstone.it)
 * [Element](https://element.eleme.io/) | A Desktop UI Library for Vue, React, Angular
-* [Material design lite](https://getmdl.io/)
-* [VitalCss](https://vitalcss.com/) | A minimally invasive CSS framework
-* [PureCss](https://purecss.io) | A set of small, responsive CSS modules
-* [JuicedCss](http://juicedcss.com/) | a Flexbox CSS Framework
-* [BlazeUI](https://www.blazeui.com/)
-* [Vuetify](https://vuetifyjs.com/) | Material Component Framework for Vue
-* [Quasar](http://quasar-framework.org/) | For Vue
-* [Weex](https://weex-project.io/index.html) | For Vue
-* [Semantic](https://semantic-ui.com/) | For React, Meteor, Ember
-
-[Any even more Alternatives](https://classpert.com/blog/top-bootstrap-alternatives)
+* [UIkit](https://getuikit.com/)
 
 ## CSS
 
 ### Colors
+
 * [LCH Color picker & Converter](https://lch.oklch.com/)
 * [Colorffy](https://colorffy.com/dark-theme-generator) | The easiest CSS color gradient generators
 * [HSL Color picker](http://tools.filmer.nl/hslcolorpicker/)
@@ -48,6 +39,7 @@
 * [Color wheel](https://www.canva.com/colors/color-wheel/) | Want to know what colors look good together
 * [Color-palette-genator](https://www.canva.com/colors/color-palette-generator/) | Upload logo
 * [Color-calculator](https://www.sessions.edu/color-calculator/)
+* [Hex Color To CSS Filter Converter](https://isotropic.co/tool/hex-color-to-css-filter/)
 
 ### Preprocessors
 
@@ -58,6 +50,7 @@
 
 
 ### CSS Examples
+
 * [A guide to CSS animations using clip-path()](https://blog.logrocket.com/guide-to-css-animations-using-clip-path/)
 * [Gooey Menu -Codepen.id](https://codepen.io/lbebber/pen/LELBEo) - Using CSS and SVG Filters
 * [Intro to CSS 3D transforms](https://3dtransforms.desandro.com/)
@@ -76,8 +69,7 @@
 
 * [QuirksBlog](http://www.quirksmode.org/blog/archives/2010/04/a_pixel_is_not.html) | A pixel is not a pixel is not a pixel
 
-
-## Photos
+## Stock photos
 
 * [Adobe Stock](https://stock.adobe.com/)
 * [123rf stock](https://nl.123rf.com/)
@@ -92,6 +84,7 @@ Upscale your photos with [Magnific AI](https://magnific.ai) - Payed account but 
 * [Dribbble](https://dribbble.com/) | Discover the world’s top designers & creatives
 
 ### Icons
+
 * [Google fonts - Material Icons Guide](https://developers.google.com/fonts/docs/material_icons)
 * [Heroicons](https://heroicons.com/) | Beautiful hand-crafted SVG icons
 * [Foundation Icon Fonts 3](http://zurb.com/playground/foundation-icon-fonts-3)
@@ -134,8 +127,10 @@ Upscale your photos with [Magnific AI](https://magnific.ai) - Payed account but 
 * [Smart Mockups](https://smartmockups.com)
 
 ### SVG
+
 * [SVGcode](https://svgco.de/) Convert raster images to SVG vector graphics
 * [unDraw](https://undraw.co/illustrations) | Open-source illustrations for any idea
 
 ### Drawing
+
 * [Gaphor](https://gaphor.org/) - Gaphor is a UML, SysML, RAAML, and C4 modeling application
