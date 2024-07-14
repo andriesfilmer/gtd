@@ -1,8 +1,13 @@
 # Getting Things Done (gtd)
 
-## My .rc scripts
-
     git clone https://github.com/andriesfilmer/gtd.git
+
+## Dotfiles
+
+Take a look at my [dotfiles](/dotfiles)
+
+Example usage:
+
     ln -s ~/gtd/dotfiles/.bashrc ~/.bashrc
     ln -s ~/gtd/dotfiles/.vimrc ~/.vimrc
 
@@ -13,25 +18,26 @@ or
 
 ## CheatSheets
 
+The [cheatsheets](/cheatsheets) are made for myself, it might also be something for you.
+
+Shortcuts
+
 - [Vim](https://github.com/andriesfilmer/gtd/blob/master/cheatsheets/vim.md)
 - [Github](https://github.com/andriesfilmer/gtd/blob/master/cheatsheets/git.md)
 - [Ruby & Rails](https://github.com/andriesfilmer/gtd/blob/master/cheatsheets/ruby-rails.md)
-- [Perl](https://github.com/andriesfilmer/gtd/blob/master/cheatsheets/perl.md)
 
-## Handy
+## Resources
 
-- [Split mysqldump file into per-database dump files](https://github.com/andriesfilmer/gtd/blob/master/scripts/perl/splitmysqldump.pl) (perl)
-- [Get password from **Keepass** on the commandline](https://github.com/andriesfilmer/gtd/blob/master/scripts/sh/keepass.sh) (bash/expect)
-- [Speedtest](https://github.com/andriesfilmer/gtd/blob/master/scripts/python/speedtest-cli) (python)
-- [JSON Placeholder](https://jsonplaceholder.typicode.com/) for testing and prototyping
-- [Crontab Guru](https://crontab.guru/)
+The [Resources](/resources) are bookmarks for furher details.
+
+## Commonly used sites
+
 - [MX Toolbox](https://mxtoolbox.com/)
-
-## References
-
-- [Semantic versioning](https://semver.orghttps://cloud.google.com/apis/design/versioning/)
-- [Markdown reference](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+- [AbuseIpDb](https://www.abuseipdb.com/) | Check an ip address on abuse.
 - [Can I Use](http://caniuse.com/#feat=css-filters) - Compare browser support
+- [Markdown reference](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+- [Semantic versioning](https://semver.org/)
+- [Crontab Guru](https://crontab.guru/)
 
 ## Video's
 

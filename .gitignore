@@ -4,3 +4,6 @@ tags
 tmp
 bower_components/
 node_modules/
+dotfiles/.config/nvim/lazy-lock.json
+dotfiles/.vim/pack/*
+dotfiles/.vim/pack/bundle/start/nerdtree

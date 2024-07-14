@@ -49,7 +49,7 @@ Install certificate
 Also put a [crontab](https://crontab.guru/) to renew the certificattes each month. For example:
 
     # Check if acme.sh has installed a crontab.
-    0 0 * * * "/root/.acme.sh"/acme.sh --cron --home "/root/.acme.sh" > /dev/null
+    0 0 * * * /root/.acme.sh/acme.sh --cron --home /root/.acme.sh > /dev/null
 
 ### Install other certificates
 

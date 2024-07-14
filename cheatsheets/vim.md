@@ -42,6 +42,7 @@
 ## Moving around
 
     :buffers                           " Show buffers, alias :ls
+    :bd                                " Close buffer, alias :bdelete
     :vertical sb 3                     " Open buffer 3 in split window
     :marks                             " Show list of marks
     m{a-z}                             " Mark position as {a-z} E.g. ma
@@ -134,6 +135,7 @@ Press `:`
     :vs                                " split window vertical
     :vertical resize 50                " To resize the current window to exactly 50 characters wide.
     :set scrollbind cursorbind cursorline  " compare two files on same line with scroll in :vs
+    :h ctrl-w                          " options to resize windows
 
 ## Macros
 
@@ -217,3 +219,5 @@ Packages added in the `.vim/pack/bundle/opt` folder may be loaded using
 
     :packadd packagename
 
+## Videos
+* [We don't need a plugin manager](https://www.youtube.com/watch?v=X2_R3uxDN6g)

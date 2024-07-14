@@ -34,6 +34,7 @@ let g:closetag_filenames = '*.html,*.html.erb'     " Plugin closetag enabled for
 
 let NERDTreeShowHidden=1
 let NERDTreeWinSize=50
+let g:NERDTreeNodeDelimiter = "\u00a0"
 "let g:NERDTreeGitStatusConcealBrackets = 1
 
 

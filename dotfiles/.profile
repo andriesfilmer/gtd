@@ -25,4 +25,3 @@ fi
 setxkbmap -option caps:escape
 
 export PATH="$HOME/.local/bin":$PATH
-. "$HOME/.cargo/env"
