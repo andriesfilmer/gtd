@@ -128,6 +128,7 @@ Press `:`
 ## Indent
 
     =ap                                " Align and ident paragraph
+    gg=G                               " Align and ident hole file
 
 ## Windows
 

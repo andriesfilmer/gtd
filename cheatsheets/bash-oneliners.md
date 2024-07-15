@@ -105,6 +105,10 @@ Change all the ruby-files with the content 'someString' to 'some_string'
 
 ## Rename files
 
+Example rename `DSC00882_10296969896_o.jpg` and `DSC00883_10296969897_o.jpg` to: Italy_10296969896.jpg and Italy_10296969897.jpg?
+
+    for file in DSC*.jpg; do mv "$file" "$(echo Italy_${file#*_} | sed 's/_o\.jpg$/.jpg/')"; done
+
 Fix some files (matching 1.png, 2.png, ... 9.png) so that they have leading zeros for proper ordering.
 
     for i in [1-9].png ; do mv $i 0$i ; done
