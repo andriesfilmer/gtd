@@ -95,9 +95,13 @@ Check the scanner is now recognized:
 
 ## Keyboard layout
 
+Remapping the Most Useless Key on Linux (Caps Lock)
+
+    setxkbmap -option "caps:escape_shifted_capslock
+
     sudo dpkg-reconfigure keyboard-configuration
     gsettings reset org.gnome.desktop.input-sources xkb-options
-?
+
     sudo service keyboard-setup restart
     sudo setupcon
 

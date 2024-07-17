@@ -18,4 +18,8 @@ require('which-key').setup({
       desc = "Buffer Local Keymaps (which-key)",
     },
   },
+  icons = {
+    mappings = false,
+    rules = false,
+  },
 })

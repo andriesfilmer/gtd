@@ -1,69 +1,78 @@
-local opts = { noremap = true, silent = true }
-
-local term_opts = { silent = true }
-
 -- Shorten function name
-local keymap = vim.api.nvim_set_keymap
-
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
+local map = vim.keymap.set
 
 -- Normal --
 -- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+map("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
+map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
+map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
+map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
-
+map("n", "<C-Up>", ":resize -2<CR>", { desc = "Resize window up" })
+map("n", "<C-Down>", ":resize +2<CR>",{  desc = "Resize window down" })
+map("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Resize window left" })
+map("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Resize window right" })
 
 -- Naviagate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+map("n", "<S-l>", ":bnext<CR>", { desc = "Buffer next" })
+map("n", "<S-h>", ":bprevious<CR>", { desc = "Buffer previous" })
 
 -- Move text up and down
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+map("n", "<A-j>", "<Esc>:m .+1<CR>==gi", { desc = "Move text down" })
+map("n", "<A-k>", "<Esc>:m .-2<CR>==gi", {desc = "Move text up" })
+
+map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line number" })
+map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
+
+map('n', '<leader><F2>', ":e ~/gtd/dotfiles/.config/nvim/lua/core/keymaps.lua<CR>", { desc = "Open my keymaps" })
 
 -- Insert --
--- Press jk fast to enter escape to normal mode.
-keymap("i", "jk", "<ESC>", opts)
+map("i", "jk", "<ESC>", { desc = "jk to insert mode" })
 
 -- Visual --
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+map("v", "<", "<gv", { desc = "Indent left" })
+map("v", ">", ">gv", { desc = "Indent right" })
 
 -- Move text up and down
-keymap("v", "<A-j>", ":m .+1<CR>==", opts)
-keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+map("v", "<A-j>", ":m .+1<CR>==", { desc = "Visual move text down" })
+map("v", "<A-k>", ":m .-2<CR>==", { desc = "Visual move text up" })
 
 -- Visual Block --
 -- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+map("x", "J", ":move '>+1<CR>gv-gv", { desc = "Move text down" }) 
+map("x", "K", ":move '<-2<CR>gv-gv", { desc = "Move text up" })
+map("x", "<A-j>", ":move '>+1<CR>gv-gv", { desc = "Move text down" })
+map("x", "<A-k>", ":move '<-2<CR>gv-gv", { desc = "Move text down" })
 
 -- Terminal --
--- Better terminal navigation
-keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
-keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
-keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Command --
--- Menu navigation
-keymap("c", "<C-j>",  'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true } )
-keymap("c", "<C-k>",  'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true } )
+
+-- PLUGINS --
+-------------------------------------------------------------------------------
+-- nvim-tree
+map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
+map('n', '<c-t>', ':NvimTreeFindFile<CR>', { desc = "nvimtree find file" })
+map("n", "<c-n>", ":NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
+
+-- https://github.com/mbbill/undotree
+map('n', '<leader><F5>', vim.cmd.UndotreeToggle, { desc = "Open Undotree" })
+
+-- Comment
+-- map("n", "<leader>/", "gcc", { desc = "comment toggle", remap = true })
+-- map("v", "<leader>/", "gc", { desc = "comment toggle", remap = true })
+
+-- telescope
+map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Telescope find files" })
+map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { desc = "Telescope live grep" })
+map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Telescope find buffers" })
+map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "Telescope help page" })
+map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { desc = "Telescope find marks" })
+map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Telescope find oldfiles" })
+map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Telescope find in current buffer" })
+map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
+map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
+map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
 

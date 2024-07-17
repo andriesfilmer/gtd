@@ -7,6 +7,11 @@
 * [Vimcasts](http://vimcasts.org/)
 * [Let Vim Do the Typing - Video](https://www.youtube.com/watch?v=3TX3kV3TICU)
 
+## Open file
+
+    :e ..                              " With only enter you can browse to a file
+    :e <tab>                           " With tab you can complete directories and filename.
+
 ## Command mode
 
     dd                                 " cut and copy current line
@@ -14,7 +19,7 @@
     :19t33                             " copy line 19 to 33
     u                                  " undo
     Ctrl+r                             " redo
-    .                                  " repeat last
+    .                                  " repeat last writes
     *                                  " Goto next word under cursor
     #                                  " Goto previeus word under cursor
     ctrl-o                             " Jump to older position
@@ -28,37 +33,42 @@
 
 ## Visual mode
 
+    Shift+v                            " Select lines
+    Ctrl+v                             " Select column
     vip                                " Visual select column
     vat                                " Select outer tag block
     vit                                " Select inner tag block.
-    Shift+v                            " Select lines
-    Ctrl+v                             " Select column
     o                                  " In visual mode jump to other side of visual selection, with capital O jump visual block
     ~                                  " Switch case on selected, lower to upper or upper to lower case
     =                                  " Auto ident
-    Shift+>                            " Indent section
     zf                                 " Folding, nice in combination with `vat`
+
+## Buffers
+
+    :ls                                " Show buffers, alias :buffers
+    :b{0-9}                            " Open buffer {0-9}, after :ls
+    :bd                                " Close buffer, alias :bdeletejj
+    :vertical sb 3                     " Open buffer 3 in split window
 
 ## Moving around
 
-    :buffers                           " Show buffers, alias :ls
-    :bd                                " Close buffer, alias :bdelete
-    :vertical sb 3                     " Open buffer 3 in split window
     :marks                             " Show list of marks
     m{a-z}                             " Mark position as {a-z} E.g. ma
     '{a-z}                             " Move to mark position {a-z} E.g. 'a
     ''                                 " Move to mark previous position
     :jumps                             " Show list of postions you jumpeds, alias :ju
+    ctrl-^                             " Jump between last edit file line"
+    ctrl-o                             " Press twice and go to back last edit file and line(s)"
 
 ## Search in file
-
-Press `/` to start a search.
 
     /regexp                            " Searches forwards for regexp, ? reverses direction
     n                                  " Repeat search, N reverses direction
     *                                  " Searches forward for word under cursor, # reverses direction
 
 ## Find in files
+
+Tip: With neovim use plugin telescope to search in many ways easily.
 
     :vim foo **/*.js | cw              " Search for foo in every JavaScript file in the parent directories recursively.
     :vim foo app/**/*.rb | cw          " Search for foo in every Ruby file in the app directory recursively.
@@ -93,8 +103,6 @@ Press `:`
     "ay                                " Yank selected text in register 'a'
     "ap                                " Past selected text form register 'a'
     ctrl-ra                            " Past register a (in insert mode)
-    ctrl-^                             " Jump between last edit file line"
-    ctrl-o                             " Press twice and go to back last edit file and line(s)"
 
 ## Sessions
 
@@ -163,6 +171,8 @@ Now you can jump from file to file:
     ctrl-t                             " Jump back to previous (?)
 
 ## Spell
+
+    z=                                 " When on word show spelling.
 
 Download
 [nl.utf-8.spl](ftp://ftp.vim.org/pub/vim/runtime/spell/nl.utf-8.spl),
