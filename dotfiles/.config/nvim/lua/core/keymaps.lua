@@ -19,13 +19,14 @@ map("n", "<S-l>", ":bnext<CR>", { desc = "Buffer next" })
 map("n", "<S-h>", ":bprevious<CR>", { desc = "Buffer previous" })
 
 -- Move text up and down
-map("n", "<A-j>", "<Esc>:m .+1<CR>==gi", { desc = "Move text down" })
-map("n", "<A-k>", "<Esc>:m .-2<CR>==gi", {desc = "Move text up" })
+map("n", "<A-j>", "<Esc>:m .+1<CR>==g", { desc = "Move text down" })
+map("n", "<A-k>", "<Esc>:m .-2<CR>==g", {desc = "Move text up" })
 
-map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line number" })
-map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
+map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line numbers" })
+map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative numbers" })
 
 map('n', '<leader><F2>', ":e ~/gtd/dotfiles/.config/nvim/lua/core/keymaps.lua<CR>", { desc = "Open my keymaps" })
+map('n', '<leader><F4>', ":e ~/gtd/cheatsheets/vim.md<CR>", { desc = "Vim cheatsheet" })
 
 -- Insert --
 map("i", "jk", "<ESC>", { desc = "jk to insert mode" })
@@ -53,9 +54,9 @@ map("x", "<A-k>", ":move '<-2<CR>gv-gv", { desc = "Move text down" })
 -- PLUGINS --
 -------------------------------------------------------------------------------
 -- nvim-tree
-map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
-map('n', '<c-t>', ':NvimTreeFindFile<CR>', { desc = "nvimtree find file" })
-map("n", "<c-n>", ":NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
+--map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree explorer" })
+map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = "nvimtree toggle" })
+map('n', '<leader>n', '<cmd>NvimTreeFindFile<CR>', { desc = "nvimtree focus file" })
 
 -- https://github.com/mbbill/undotree
 map('n', '<leader><F5>', vim.cmd.UndotreeToggle, { desc = "Open Undotree" })
@@ -72,7 +73,8 @@ map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "Telescope help 
 map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { desc = "Telescope find marks" })
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Telescope find oldfiles" })
 map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Telescope find in current buffer" })
-map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
-map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
-map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
+map("n", "<leader>fc", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
+map("n", "<leader>fs", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
+map("n", "<leader>ft", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
+
 

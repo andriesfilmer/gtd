@@ -1,6 +1,8 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-vim.opt.mouse = '' 
+vim.opt.mouse = ''
+vim.opt.colorcolumn = '80'
+vim.opt.ignorecase = true
 --vim.opt.backspace = '2'
 --vim.opt.showcmd = true
 --vim.opt.laststatus = 2

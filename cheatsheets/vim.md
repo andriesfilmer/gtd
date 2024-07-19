@@ -1,19 +1,9 @@
 # vim (my) Cheatsheet
-
-* [Vim help files](https://vimhelp.org)
-* [Vim quickreferenc](https://vimhelp.org/quickref.txt.html)
-* [Vim command index](https://vimhelp.org/index.html)
-* [Learn Vim](https://learnvim.irian.to/)
-* [Vimcasts](http://vimcasts.org/)
-* [Let Vim Do the Typing - Video](https://www.youtube.com/watch?v=3TX3kV3TICU)
-
 ## Open file
-
     :e ..                              " With only enter you can browse to a file
     :e <tab>                           " With tab you can complete directories and filename.
 
 ## Command mode
-
     dd                                 " cut and copy current line
     :19y                               " copy line 19
     :19t33                             " copy line 19 to 33
@@ -32,7 +22,6 @@
     ci]                                " Change In-to ]
 
 ## Visual mode
-
     Shift+v                            " Select lines
     Ctrl+v                             " Select column
     vip                                " Visual select column
@@ -44,51 +33,53 @@
     zf                                 " Folding, nice in combination with `vat`
 
 ## Buffers
-
     :ls                                " Show buffers, alias :buffers
-    :b{0-9}                            " Open buffer {0-9}, after :ls
+    :b{0-9}                            " Open buffer {0-9}. Find number with :ls
     :bd                                " Close buffer, alias :bdeletejj
     :vertical sb 3                     " Open buffer 3 in split window
 
 ## Moving around
-
     :marks                             " Show list of marks
     m{a-z}                             " Mark position as {a-z} E.g. ma
     '{a-z}                             " Move to mark position {a-z} E.g. 'a
     ''                                 " Move to mark previous position
-    :jumps                             " Show list of postions you jumpeds, alias :ju
+    :ju                                " Show list of postions you jumpeds, alias for :jumps
     ctrl-^                             " Jump between last edit file line"
     ctrl-o                             " Press twice and go to back last edit file and line(s)"
 
-## Search in file
+## Windows
+    :sp                                " split window horizontal
+    :vs                                " split window vertical
+    :vertical resize 50                " To resize the current window to exactly 50 characters wide.
+    :set scrollbind cursorbind cursorline  " compare two files on same line with scroll in :vs
+    :h ctrl-w                          " options to resize windows
 
+## Registers
+    :reg                               " See registers
+    "ay                                " Yank selected text in register 'a'
+    "ap                                " Past selected text form register 'a'
+    ctrl-ra                            " Past register a (in insert mode)
+
+## Search in file
     /regexp                            " Searches forwards for regexp, ? reverses direction
     n                                  " Repeat search, N reverses direction
     *                                  " Searches forward for word under cursor, # reverses direction
 
 ## Find in files
-
-Tip: With neovim use plugin telescope to search in many ways easily.
-
     :vim foo **/*.js | cw              " Search for foo in every JavaScript file in the parent directories recursively.
     :vim foo app/**/*.rb | cw          " Search for foo in every Ruby file in the app directory recursively.
     /[^\x00-\x7F]                      " Find non-ascii characters
 
 ## Replace in file
-
-Press `:`
-
     :%s/foo/bar/gc                     " Search for 1 and replace with 2, options are: g = global (entire file), c = confirm change
     :%s/\s\+$//                        " Delete all trailing whitespace (at the end of each line) with
     :%s/^\s\+//                        " More rarely, you might want to delete whitespace at the beginning of each line
-    :g/sometext/d                      " Delete all lines containing `sometext`
     :g/^\(#\|$\)/d                     " Remove comment lines
     :g/^$/d                            " Delete all empty lines:
     :'<,'>s/foo/bar/g                  " Replace words in  visual mode.
     :%s/<Ctrl-V><Ctrl-M>/Ctrl-M/g      "Change file format Windows to Unix, where <Ctrl-V><Ctrl-M> means type Ctrl+V then Ctrl+M.
 
 ## Replace in files
-
     :arg **/*.js                           " Set all *.js files and below current directory in :arg
     :argdo %s/pattern/replace/gce | update " Confirm updates in recursieve files
 
@@ -96,13 +87,6 @@ Press `:`
     zz                                 " Set viewport in center
     zt                                 " Set viewport in top
     zb                                 " Set viewport in bottom
-
-## Registers
-
-    :reg                               " See registers
-    "ay                                " Yank selected text in register 'a'
-    "ap                                " Past selected text form register 'a'
-    ctrl-ra                            " Past register a (in insert mode)
 
 ## Sessions
 
@@ -112,7 +96,6 @@ Press `:`
     vim -S .session-lang.vim           " Start with your a session
 
 ## Completions (edit mode)
-
     Ctrl-p                             " Completion for all (back) words from this file, other open files and registers.
     Ctrl-n                             " Completion for all (forward) words from this file, other open files and registers.
     Ctrl-x + Ctr-]                     " Completion for tags
@@ -121,12 +104,10 @@ Press `:`
     Ctrl-x + Ctr-o                     " Completion for methods (omnifunction must be on)
 
 ## Changes
-
     :changes                           " Show the list of changes
     3g;                                " Go 3 changes back
 
 ## Folding
-
     zf                                 " Fold current selection
     zf}                                " Fold current paragraph
     zi                                 " Switch folding on or off
@@ -134,17 +115,8 @@ Press `:`
     zM                                 " Close all folds
 
 ## Indent
-
     =ap                                " Align and ident paragraph
     gg=G                               " Align and ident hole file
-
-## Windows
-
-    :sp                                " split window horizontal
-    :vs                                " split window vertical
-    :vertical resize 50                " To resize the current window to exactly 50 characters wide.
-    :set scrollbind cursorbind cursorline  " compare two files on same line with scroll in :vs
-    :h ctrl-w                          " options to resize windows
 
 ## Macros
 
@@ -202,19 +174,16 @@ A neat filtering trick using the 'nl' for adding linenumbers.
     :%retab!
 
 ## Printing
-
     :set printfont=Courier\ 10           " Font size 10
     :set printfont=courier:h10           " Height 10
     :set printoptions=left:2pc           " Left marigin (default 10pc)
     :ha(rdcopy)
 
 ## Colorscheme
-
     set colorscheme [tab]
     set background=light
 
 ## Plugins
-
 * [NerdTree](https://github.com/scrooloose/nerdtree) - NERDTreeToggle -> F8 mapping
 * [TagBar](https://github.com/majutsushi/tagbar) -  TagbarOpenAutoClose -> F9 mapping
 * [Vim-rails](https://github.com/tpope/vim-rails) - Easy navigation of the Rails directory structure -> `gf`
@@ -232,3 +201,12 @@ Packages added in the `.vim/pack/bundle/opt` folder may be loaded using
 
 ## Videos
 * [We don't need a plugin manager](https://www.youtube.com/watch?v=X2_R3uxDN6g)
+
+## Resources
+* [Vim help files](https://vimhelp.org)
+* [Vim quickreferenc](https://vimhelp.org/quickref.txt.html)
+* [Vim command index](https://vimhelp.org/index.html)
+* [Learn Vim](https://learnvim.irian.to/)
+* [Vimcasts](http://vimcasts.org/)
+* [Let Vim Do the Typing - Video](https://www.youtube.com/watch?v=3TX3kV3TICU)
+
