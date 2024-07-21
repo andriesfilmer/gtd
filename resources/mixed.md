@@ -1,5 +1,9 @@
 # Mixed resources
 
+## Ad blockers, Malware blockers
+* [Blocky](https://github.com/0xERR0R/blocky)
+* [Pi-Hole](https://pi-hole.net/)
+
 ## Presentations
 * [Reveal.Js](https://revealjs.com/) - The html presentation framework
 * [Draw.io](https://www.draw.io) - Provide free, high quality diagramming online

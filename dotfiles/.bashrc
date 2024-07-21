@@ -66,20 +66,20 @@ esac
 #fi
 
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    eval "`dircolors -b`"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# some more ls aliases
-alias ll='ls -l'
-alias la='ls -Al'
-alias l='ls -CF'
+#if [ -x /usr/bin/dircolors ]; then
+#    eval "`dircolors -b`"
+#    alias ls='ls --color=auto'
+#    alias dir='dir --color=auto'
+#    alias vdir='vdir --color=auto'
+#    alias grep='grep --color=auto'
+#    alias fgrep='fgrep --color=auto'
+#    alias egrep='egrep --color=auto'
+#fi
+#
+## some more ls aliases
+#alias ll='ls -l'
+#alias la='ls -Al'
+#alias l='ls -CF'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -90,33 +90,10 @@ fi
 
 # Added by Andries Filmer
 #########################
-bind '"\e[A"':history-search-backward
-bind '"\e[B"':history-search-forward
-
-# Filenames with space showing as 'file name' after upgrade to 18.04
-export QUOTING_STYLE=literal
-
-alias ...='cd ../../'
-alias dfx='df -h -x squashfs -x tmpfs -x devtmpfs'
-alias passAndries="gpg -r andries -d .gnupg/andries.gpg | grep -i "
-alias passwordAndries="gnome-gpg -r andries -d .gnupg/andries.gpg | grep -i "
-alias keepass="~/gtd/scripts/sh/keepass.sh"
-alias keepass-cli="~/gtd/scripts/sh/keepass-cli.sh"
-alias myserver="~/gtd/scripts/perl/my-servers.pl"
-#alias spotify="/usr/bin/spotify --force-device-scale-factor=1.5"
-alias gitlog="git log --branches --not --remotes"
-#alias gitdiff="git diff --branches --not --remotes"
-alias gitdiff="git difftool --tool=vimdiff"
-#alias adb="~/Android/Sdk/platform-tools/adb"
-
-# Open broot with uncommitted files for git. Open with F2
-alias brapp="cd ~/dev/inzetrooster-app/ && broot -gc :gs"
-alias railss="cd ~/dev/inzetrooster-app/ && rails s"
-
-# Automatic LS after change directory
-cdl () {
-  cd "$@" && ls -altr
-}
+#bind '"\e[A"':history-search-backward
+#bind '"\e[B"':history-search-forward
+bind '"\e[A"':history-substring-search-backward
+bind '"\e[B"':history-substring-search-forward
 
 backup () {
   cp "$@" "$@".backup-`date +'%Y-%m-%m_%H:%M'`;
@@ -128,6 +105,54 @@ genpasswd() {
   tr -dc [:alnum:] < /dev/urandom | head -c ${l} | xargs
 }
 
+autossh() {
+  cd ~/dev/pim && ~/gtd/scripts/perl/autossh.pl `rails ssh:login["$1"]`
+}
+
+getpasskey() {
+  cd ~/dev/pim && rails search:passkeys["$1"]
+}
+
+
+# sudo snap install lsd
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -la'
+alias lt='ls --tree'
+alias lta='ls -la --tree'
+
+# Filenames with space showing as 'file name' after upgrade to 18.04
+export QUOTING_STYLE=literal
+
+alias ...='cd ../../'
+alias dfx='df -h -x squashfs -x tmpfs -x devtmpfs'
+alias gitlog="git log --branches --not --remotes"
+#alias gitdiff="git diff --branches --not --remotes"
+alias gitdiff="git difftool --tool=vimdiff"
+#alias adb="~/Android/Sdk/platform-tools/adb"
+
+# Open broot with uncommitted files for git. Open with F2
+alias brapp="cd ~/dev/inzetrooster-app/ && broot -gc :gs"
+alias railss="cd ~/dev/inzetrooster-app/ && rails s"
+
+export EDITOR='vim'
+
+# nvim with myconfig, symbolic link to ~/gtd/dotfiles/.config/nvim -> nvim-myvim
+alias nv='NVIM_APPNAME=nvim-myvim nvim'
+alias nvchad='NVIM_APPNAME=nvim-nvchad nvim'
+
+# Versions Vim - Switching Configs in Neovim with `vv`
+# https://michaeluloth.com/neovim-switch-configs/
+vv() {
+  select config in myvim purenvim lazyvim kickstart nvchad lunarvim
+  do NVIM_APPNAME=nvim-$config nvim $@; break; done
+}
+
+# Automatic LS after change directory
+cdl () {
+  cd "$@" && ls -altr
+}
+
 #export ANDROID_HOME=/home/andries/Android/Sdk/
 #PATH=$PATH:/home/andries/Android/Sdk/
 #PATH=$PATH:/opt/android-studio/gradle/gradle-4.1/bin/
@@ -135,4 +160,3 @@ genpasswd() {
 #PATH=$PATH:$ANDROID_HOME/tools; PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export PATH
-export EDITOR='vim'

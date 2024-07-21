@@ -55,14 +55,15 @@ endif
 
 " Function keys
 "nmap :ww :w<CR>:ChromiumReload<CR>                 " Requires browser-reload-linux plugin
-nmap <F2> :tabnew<CR>:NERDTree<CR>                 " Requires NERDTree plugin
+nmap <F2> :tabnew<CR>:NERDTree<CR>                 " plugin NERDTree
 map! <F2> <nop>                                    " Do not print <F2> in write mode.
 nmap <F3> :set hlsearch!<CR>                       " Toggle highligt all searches.
 cmap <F3> <nop>                                    " Do not print <F3> in write mode.
-nmap <F4> :SignifyHunkDiff<CR>
-nmap <F7> :NERDTreeFind<CR>
-nmap <F8> :NERDTreeToggle<CR>
-nmap <F9> :TagbarToggle<CR>                        " Needs TagBar plugin.
+nmap <F4> :SignifyHunkDiff<CR>                     " Plugin Signify
+nmap <F5> :UndotreeToggle<CR>                      " Plugin undotree
+nmap <F7> :NERDTreeFind<CR>                        " Plugin NERDTree
+nmap <F8> :NERDTreeToggle<CR>                      " Plugin NERDTree
+nmap <F9> :TagbarToggle<CR>                        " Plugin TagBar
 
 " Arrow keys, Alt+leftarrow will go one window left, etc.
 nmap <silent> <A-Up> :wincmd k<CR>
