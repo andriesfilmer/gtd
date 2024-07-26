@@ -16,7 +16,7 @@ After download.
 
 ### Default Plugins
 
-* [NvChad/base46](https://github.com/NvChad/base46) | NvChad theme plugin 
+* [NvChad/base46](https://github.com/NvChad/base46) | NvChad theme plugin
 * [NvChad/ui](https://github.com/NvChad/ui) | Ui plugin handle: Statusline, Tabufline, NvDash, Term
 * [NvChad/nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) | Colors on css
 * [nvim-tree/nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) | Supports plugins icons
@@ -30,7 +30,7 @@ After download.
 * [neovim/nvim-lspconfig](neovim/nvim-lspconfig) | Installing language servers
 * [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) | A completion engine
 * [lukas-reineke/indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) | Adds indentation guides to Neovim
-  
+
 ### Extra Plugins
 
 * [mbbill/undotree](https://github.com/mbbill/undotree) | Visualizes undo history and browse between different undo branches.
@@ -39,9 +39,17 @@ After download.
 
 ### lua/options
 
-* vim.opt.mouse = ''
-* vim.opt.colorcolumn = '80'
-* vim.opt.ignorecase = true
+    vim.opt.mouse = ''
+    vim.opt.colorcolumn = '80'
+    vim.opt.ignorecase = true
+    vim.cmd[[ au InsertEnter * highlight St_InsertMode guifg=white guibg=red]] -- More contrast on Insert mode.
+
+
+### lua/mappings
+
+    map("n", "<leader>b", ":NvimTreeFocus<CR>:NvimTreeCollapse<CR>", { desc = "OpenCollapse tree" })
+    map({ "n", "i", "v" }, "<C-s>", "<cmd>w<cr>")
+    map('n', '<leader><F5>', vim.cmd.UndotreeToggle, { desc = "Open Undotree"})
 
 ## Plugins notes
 
@@ -53,4 +61,12 @@ After download.
 
     :Telescope find_files search_dirs=[".", "/config"]
     :Telescope live_grep search_dirs=["/config"]
+
+### Undotree
+
+    -- lua/plugins/init.lua
+    {
+      "mbbill/undotree",
+      lazy = false,
+    },
 

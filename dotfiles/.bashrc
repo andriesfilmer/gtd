@@ -90,10 +90,10 @@ fi
 
 # Added by Andries Filmer
 #########################
-#bind '"\e[A"':history-search-backward
-#bind '"\e[B"':history-search-forward
-bind '"\e[A"':history-substring-search-backward
-bind '"\e[B"':history-substring-search-forward
+bind '"\e[A"':history-search-backward
+bind '"\e[B"':history-search-forward
+#bind '"\e[A"':history-substring-search-backward
+#bind '"\e[B"':history-substring-search-forward
 
 backup () {
   cp "$@" "$@".backup-`date +'%Y-%m-%m_%H:%M'`;
@@ -113,9 +113,20 @@ getpasskey() {
   cd ~/dev/pim && rails search:passkeys["$1"]
 }
 
+# Versions nvim - Switching Configs with `vv`
+vv() {
+  select config in vim myvim lazyvim kickstart nvchad
+  do NVIM_APPNAME=$config nvim $@; break; done
+}
+
+# Automatic LS after change directory
+cdl () {
+  cd "$@" && ls -altr
+}
+
 
 # sudo snap install lsd
-alias ls='lsd'
+#alias ls='lsd'
 alias l='ls -l'
 alias la='ls -la'
 alias lt='ls --tree'
@@ -138,20 +149,8 @@ alias railss="cd ~/dev/inzetrooster-app/ && rails s"
 export EDITOR='vim'
 
 # nvim with myconfig, symbolic link to ~/gtd/dotfiles/.config/nvim -> nvim-myvim
-alias nv='NVIM_APPNAME=nvim-myvim nvim'
-alias nvchad='NVIM_APPNAME=nvim-nvchad nvim'
-
-# Versions Vim - Switching Configs in Neovim with `vv`
-# https://michaeluloth.com/neovim-switch-configs/
-vv() {
-  select config in myvim purenvim lazyvim kickstart nvchad lunarvim
-  do NVIM_APPNAME=nvim-$config nvim $@; break; done
-}
-
-# Automatic LS after change directory
-cdl () {
-  cd "$@" && ls -altr
-}
+alias nv='NVIM_APPNAME=myvim nvim'
+alias nvchad='NVIM_APPNAME=nvchad nvim'
 
 #export ANDROID_HOME=/home/andries/Android/Sdk/
 #PATH=$PATH:/home/andries/Android/Sdk/
