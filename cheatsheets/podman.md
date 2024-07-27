@@ -32,7 +32,8 @@ From a other terminal while running this container
 Stop and remove container
 
     podman stop [container-id]
-    podman rm --force [container-id]
+    podman rm --force [container-id] # Remove container
+    podman rmi [container-id] # Remove image
 
 ## Bundling with pods
 

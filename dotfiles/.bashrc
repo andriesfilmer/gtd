@@ -47,6 +47,11 @@ else
 fi
 unset color_prompt force_color_prompt
 
+# Set terminal title when using Distrobox
+if [ "$CONTAINER_ID" ]; then
+  PS1='$CONTAINER_ID@\h:\w\$ '
+fi
+
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
@@ -124,7 +129,6 @@ cdl () {
   cd "$@" && ls -altr
 }
 
-
 # sudo snap install lsd
 #alias ls='lsd'
 alias l='ls -l'
@@ -148,7 +152,7 @@ alias railss="cd ~/dev/inzetrooster-app/ && rails s"
 
 export EDITOR='vim'
 
-# nvim with myconfig, symbolic link to ~/gtd/dotfiles/.config/nvim -> nvim-myvim
+# nvim with myconfig, symbolic link to ~/gtd/dotfiles/.config/nvim
 alias nv='NVIM_APPNAME=myvim nvim'
 alias nvchad='NVIM_APPNAME=nvchad nvim'
 

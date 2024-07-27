@@ -6,6 +6,16 @@ Detect the model of your nvidia graphic card and the recommended driver.
 
     ubuntu-drivers devices
 
+## Keyboard layout
+
+    setxkbmap -option "caps:escape_shifted_capslock # Remapping the Most Useless Key on Linux (Caps Lock)
+
+    sudo dpkg-reconfigure keyboard-configuration
+    gsettings reset org.gnome.desktop.input-sources xkb-options
+
+    sudo service keyboard-setup restart
+    sudo setupcon
+
 ## Gnome
 
 ### Extentions
@@ -24,39 +34,12 @@ User-defined shortcuts does not work after upgrade
 
     sudo apt-get install gnome-tweak-tool
 
-#### dconf-editor
-
-ALT-TAB cycle through apps on current workspace only.
-    dconf-editor -> org/gnome/shell/app-switcher/
-
 #### gsetting
 
-    gsettings set org.gnome.shell.app-switcher current-workspace-only true
     gsettings set org.gnome.desktop.interface color-scheme [default | prefer-dark | prefer-light]
-
-### Scaling 4k monitors with wayland (2019)
-
-#### X11
-
-    gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
-
-#### Wayland
-
-    gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
-    gsettings reset org.gnome.mutter experimental-features
-
-## Davfs
-
-    sudo apt install davfs2
-    usermod -aG davfs2 `user`
-    mkdir ~/stack ~/.davfs2
-    chown `user`:`group` ~/.davfs2/secrets
-    chmod 600 ~/.davfs2/secrets
-    vi ~/.davfs/secrets
-        https://discnaam.stackstorage.com/remote.php/webdav/ Test1 test123
-    sudo vi /etc/fstab
-        https://discnaam.stackstorage.com/remote.php/webdav/ /home/<gebruiker>/stack davfs user,rw,noauto 0 0
-    mount ~/stack
+    gsettings set org.gnome.desktop.sound event-sounds false  # Sound off when tabbing in terminal
+    gsettings set org.gnome.shell.app-switcher current-workspace-only true # Alt-Tab cycle in current workspace
+    gsettings set org.gnome.shell.window-switcher current-workspace-only true # Alt-Tab cycle in current workspace
 
 
 ## How to reset lost root password (single usermode)
@@ -93,17 +76,6 @@ Check the scanner is now recognized:
 
     scanimage -L
 
-## Keyboard layout
-
-Remapping the Most Useless Key on Linux (Caps Lock)
-
-    setxkbmap -option "caps:escape_shifted_capslock
-
-    sudo dpkg-reconfigure keyboard-configuration
-    gsettings reset org.gnome.desktop.input-sources xkb-options
-
-    sudo service keyboard-setup restart
-    sudo setupcon
 
 ## Display scalling
 Via de algemene instellingen kan je het voor het hele systeem aanpassen via:

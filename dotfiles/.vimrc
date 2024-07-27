@@ -1,44 +1,34 @@
 filetype plugin indent on
-"syntax on
+syntax on
 
-set belloff=all                                    " Disable beep
-set cursorline                                     " highlight current line. Is slower :-(
+set nocompatible                                   " don't need to be compatible with old vim
+"set belloff=all                                    " Disable beep
+"set cursorline                                     " highlight current line. Is slower :-(
 "set cursorcolumn                                   " highlight column line. Is slower :-(
-"set foldmethod=syntax                              " Folds are defined by syntax highlighting
-"
+"set scrolloff=2                                    " minimum lines above/below cursor
+"set clipboard=unnamedplus                          " Copy to system clipboard (Only vim-gtk)
+set foldmethod=syntax                              " Folds are defined by syntax highlighting
 set encoding=utf-8
-set expandtab                                      " On pressing tab, insert 4 spaces
 set hlsearch                                       " highlight all search matches
 set ignorecase                                     " Set ignore case, Search case insensitive
-set incsearch                                      " Set increase search,	Search while you type
+set smartcase                                      " pay attention to case when caps are used
+set incsearch                                      " Set increase search, Search while you type
 set laststatus=2                                   " first, enable status line always
 set list                                           " See end of line's (i.o. see gray dot)
 set list listchars=tab:»·,trail:·                  " Make tabs visual: ».......
 set number                                         " Set line numbers, default commented out
-set nocompatible                                   " don't need to be compatible with old vim
 set omnifunc=syntaxcomplete#Complete               " Omni completion provides smart autocompletion for programs
-set pastetoggle=<F4>                               " Toggle paste mode (no autoindenting) with F4
-set scrolloff=2                                    " minimum lines above/below cursor
+set paste                                          " Distinguish between typed text and pasted text in terminal
 set showmatch                                      " show bracket matches
-set smartcase                                      " pay attention to case when caps are used
+set expandtab                                      " On pressing tab, insert spaces no tabs (»·)
 set shiftwidth=2                                   " when indenting with '>', use 2 spaces width
-set tabstop=4                                      " show existing tab with 4 spaces width
-set ts=2                                           " set tab indent to 2 spaces
-set wildmenu                                       " enable bash style tab completion
+set tabstop=4                                      " tab with 4 spaces width
+set wildmenu                                       " Show tab completions in statusline
 set wrap                                           " Wrapping on, default commented out
-set clipboard=unnamedplus                          " Copy to system clipboard (Only vim-gtk)
 set updatetime=1000                                " vim-gitgutter, vim-signify, default value is 4000
+set timeoutlen=300 ttimeoutlen=300                 " Prefent delay after pressing ESC (switching to normal mode)
 
-let g:snips_author="Andries Filmer"                " Assign a global variable for snippets
-let g:closetag_filenames = '*.html,*.html.erb'     " Plugin closetag enabled for html.erb'
-
-let NERDTreeShowHidden=1
-let NERDTreeWinSize=50
-let g:NERDTreeNodeDelimiter = "\u00a0"
-"let g:NERDTreeGitStatusConcealBrackets = 1
-
-
-" https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim
+" https://github.com/NLKNguyen/papercolor-theme/
 if !empty(glob("~/.vim/colors/PaperColor.vim"))
   colorscheme PaperColor
   set background=dark
@@ -51,19 +41,6 @@ endif
 
 " Mappings
 "------------------------------------------------------------------------------
-" In `.profile` remaps Caps Lock -> Esc `setxkbmap -option caps:escape`
-
-" Function keys
-"nmap :ww :w<CR>:ChromiumReload<CR>                 " Requires browser-reload-linux plugin
-nmap <F2> :tabnew<CR>:NERDTree<CR>                 " plugin NERDTree
-map! <F2> <nop>                                    " Do not print <F2> in write mode.
-nmap <F3> :set hlsearch!<CR>                       " Toggle highligt all searches.
-cmap <F3> <nop>                                    " Do not print <F3> in write mode.
-nmap <F4> :SignifyHunkDiff<CR>                     " Plugin Signify
-nmap <F5> :UndotreeToggle<CR>                      " Plugin undotree
-nmap <F7> :NERDTreeFind<CR>                        " Plugin NERDTree
-nmap <F8> :NERDTreeToggle<CR>                      " Plugin NERDTree
-nmap <F9> :TagbarToggle<CR>                        " Plugin TagBar
 
 " Arrow keys, Alt+leftarrow will go one window left, etc.
 nmap <silent> <A-Up> :wincmd k<CR>
@@ -71,38 +48,13 @@ nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
 
-" Ctrl keys
-nmap <C-Right> :tabn<CR><CR>                        " Go to next tab.
-nmap <C-Left> :tabp<CR><CR>                         " Go to previous tab.
-
-cmap w!! w !sudo tee % >/dev/null                  " Allow saving of files as sudo when I forgot to start vim using sudo.
-
-autocmd Filetype markdown setlocal syntax=OFF       " Bugfix: Prevent Markdown highlighting for underscores
-let vim_markdown_preview_hotkey='<C-m>'             " Remap becaus plugin ctrlp has also <C-p>
-
-" Close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-"autocmd VimEnter * NERDTree "Open NerdTree
-"autocmd VimEnter * wincmd p "Focus on window right
-
+inoremap <c-c> <c-o>:highlight statusline ctermfg=black ctermbg=red guifg=red guibg=black<cr><c-c>
 
 " Statusbar
 "------------------------------------------------------------------------------
-function! InsertStatuslineColor(mode)
-  if a:mode == 'i' " Insert mode
-    hi statusline guibg=Cyan ctermfg=6 guifg=Black ctermbg=0
-  elseif a:mode == 'r' " Replace mode
-    hi statusline guibg=Purple ctermfg=5 guifg=Black ctermbg=0
-  else
-    hi statusline guibg=DarkRed ctermfg=1 guifg=Black ctermbg=0
-  endif
-endfunction
-
-au InsertEnter * call InsertStatuslineColor(v:insertmode)
-au InsertLeave * hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15
-
-" default the statusline to green when entering Vim
-hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15
+hi statusline                  ctermfg=gray ctermbg=black
+au InsertLeave * hi statusline ctermfg=gray ctermbg=black
+au InsertEnter * hi statusline ctermfg=red  ctermbg=black
 
 " Formats the statusline
 set statusline=%f                                 " file name
@@ -130,11 +82,6 @@ if !empty(glob(".git"))
   "au BufWritePost *.ts silent! !eval 'ctags -R --languages=typescript --exclude=.git -o newtags; mv newtags tags;' &
 endif
 
-" Prefent delay after pressing ESC (switching to normal mode)
-"------------------------------------------------------------------------------
-" set timeoutlen=1000 ttimeoutlen=300
-autocmd InsertEnter * set timeoutlen=300
-autocmd InsertLeave * set timeoutlen=1000
 
 " Mixed
 "------------------------------------------------------------------------------
