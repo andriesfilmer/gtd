@@ -31,6 +31,7 @@ set history=1000                                   " The command-lines that you 
 "set cursorline                                     " highlight current line. Is slower :-(
 "set cursorcolumn                                   " highlight column line. Is slower :-(
 
+
 "------------------------------------------------------------------------------
 " Colors
 "------------------------------------------------------------------------------
@@ -39,6 +40,11 @@ if !empty(glob("~/.vim/colors/PaperColor.vim"))
   colorscheme PaperColor
   set background=dark
 endif
+
+highlight ExtraWhitespace ctermbg=1               " Highlight trailing spaces in annoying red
+highlight nonascii ctermbg=2
+highlight ColorColumn ctermbg=236
+
 
 "------------------------------------------------------------------------------
 " Mappings -> List maps :nmap, :vmap
@@ -71,6 +77,7 @@ noremap   <silent> cu      :s,^\(\s*\)# \s\@!,\1,e<CR>:nohls<CR>zvj
 nmap <leader><F2> :e $MYVIMRC<CR>
 nmap <leader><F4> :e ~/gtd/cheatsheets/vim.md<CR>
 
+
 "------------------------------------------------------------------------------
 " Statusbar
 "------------------------------------------------------------------------------
@@ -92,6 +99,20 @@ set statusline+=\ Col:%c                          " current column
 set statusline+=\ Buf:%n                          " Buffer number
 "set statusline+=\ [%b][0x%B]\                     " ASCII and byte code under cursor
 
+
+"------------------------------------------------------------------------------
+" Mixed
+"------------------------------------------------------------------------------
+" Jump to the last position when reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+match ExtraWhitespace /\s\+$/                      " Show white space, see colors for more info
+autocmd BufWritePre * %s/\s\+$//e                  " Removing trailing whitespace on write
+syntax match nonascii "[^\x00-\x7F]"               " Display non ascii chars
+
+
 "------------------------------------------------------------------------------
 " Exuberant-ctags`
 "------------------------------------------------------------------------------
@@ -103,21 +124,4 @@ if !empty(glob(".git"))
   " First fetch `wget https://github.com/andriesfilmer/gtd/tree/master/.vim/.ctags` for typescript!
   "au BufWritePost *.ts silent! !eval 'ctags -R --languages=typescript --exclude=.git -o newtags; mv newtags tags;' &
 endif
-
-"------------------------------------------------------------------------------
-" Mixed
-"------------------------------------------------------------------------------
-
-" Jump to the last position when reopening a file
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
-
-highlight ExtraWhitespace ctermbg=1 guibg=red      " Highlight trailing spaces in annoying red
-match ExtraWhitespace /\s\+$/
-autocmd BufWritePre * %s/\s\+$//e                  " Removing trailing whitespace on write
-
-syntax match nonascii "[^\x00-\x7F]"               " Display non ascii chars
-highlight nonascii guibg=Red ctermbg=2
-
 
