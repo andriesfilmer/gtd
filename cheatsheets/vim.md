@@ -60,6 +60,14 @@
     "ap                                " Past selected text form register 'a'
     ctrl-ra                            " Past register a (in insert mode)
 
+## Completions (insert mode)
+    Ctrl-p                             " Completion for all (back) words from this file, other open files and registers.
+    Ctrl-n                             " Completion for all (forward) words from this file, other open files and registers.
+    Ctrl-x + Ctr-]                     " Completion for tags
+    Ctrl-x + Ctr-f                     " Completion for filenames
+    Ctrl-x + Ctr-l                     " Completion for lines
+    Ctrl-x + Ctr-o                     " Completion for methods (omnifunction must be on)
+
 ## Search in file
     /regexp                            " Searches forwards for regexp, ? reverses direction
     n                                  " Repeat search, N reverses direction
@@ -80,8 +88,15 @@
     :%s/<Ctrl-V><Ctrl-M>/Ctrl-M/g      "Change file format Windows to Unix, where <Ctrl-V><Ctrl-M> means type Ctrl+V then Ctrl+M.
 
 ## Replace in files
+Option 1
+
     :arg **/*.js                           " Set all *.js files and below current directory in :arg
     :argdo %s/pattern/replace/gce | update " Confirm updates in recursieve files
+
+Option 2
+
+    :vimgrep /pattern/ `find . -type f`" Set all files in quickfix list. Use `copen` to see the matches.
+    :cdo %s/pattern/replace/gc         " Change all matches with a confirm.
 
 ## Moving Viewport
     zz                                 " Set viewport in center
@@ -95,22 +110,13 @@
     vim mks! .session-lang.vim         " Save session to `.session.lang.vim` file
     vim -S .session-lang.vim           " Start with your a session
 
-## Completions (edit mode)
-    Ctrl-p                             " Completion for all (back) words from this file, other open files and registers.
-    Ctrl-n                             " Completion for all (forward) words from this file, other open files and registers.
-    Ctrl-x + Ctr-]                     " Completion for tags
-    Ctrl-x + Ctr-f                     " Completion for filenames
-    Ctrl-x + Ctr-l                     " Completion for lines
-    Ctrl-x + Ctr-o                     " Completion for methods (omnifunction must be on)
-
 ## Changes
     :changes                           " Show the list of changes
     3g;                                " Go 3 changes back
 
 ## Folding
-    zf                                 " Fold current selection
-    zf}                                " Fold current paragraph
-    zi                                 " Switch folding on or off
+    zc                                 " Fold current selection/syntax
+    zo                                 " Open current fold
     zR                                 " Open all folds
     zM                                 " Close all folds
 
@@ -166,7 +172,7 @@ A neat filtering trick using the 'nl' for adding linenumbers.
 ## Tabs and Spaces
 
 1 - Convert tabs to spaces
-    :set expandtab
+    :set expandtab                       " On pressing tab, insert spaces no tabs. (Already in my .vimrc)
     :%retab!
 
 2 - Convert spaces to tabs

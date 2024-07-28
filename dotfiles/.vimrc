@@ -2,12 +2,8 @@ filetype plugin indent on
 syntax on
 
 set nocompatible                                   " don't need to be compatible with old vim
-"set belloff=all                                    " Disable beep
-"set cursorline                                     " highlight current line. Is slower :-(
-"set cursorcolumn                                   " highlight column line. Is slower :-(
-"set scrolloff=2                                    " minimum lines above/below cursor
-"set clipboard=unnamedplus                          " Copy to system clipboard (Only vim-gtk)
 set foldmethod=syntax                              " Folds are defined by syntax highlighting
+set nofoldenable                                   " Dont fold by default
 set encoding=utf-8
 set hlsearch                                       " highlight all search matches
 set ignorecase                                     " Set ignore case, Search case insensitive
@@ -27,29 +23,55 @@ set wildmenu                                       " Show tab completions in sta
 set wrap                                           " Wrapping on, default commented out
 set updatetime=1000                                " vim-gitgutter, vim-signify, default value is 4000
 set timeoutlen=300 ttimeoutlen=300                 " Prefent delay after pressing ESC (switching to normal mode)
+set colorcolumn=80                                 " Try to stay within 80 characters
+set history=1000                                   " The command-lines that you enter, default 50
 
+" Mostly not needed
+"set belloff=all                                    " Disable beep
+"set cursorline                                     " highlight current line. Is slower :-(
+"set cursorcolumn                                   " highlight column line. Is slower :-(
+
+"------------------------------------------------------------------------------
+" Colors
+"------------------------------------------------------------------------------
 " https://github.com/NLKNguyen/papercolor-theme/
 if !empty(glob("~/.vim/colors/PaperColor.vim"))
   colorscheme PaperColor
   set background=dark
 endif
 
-" Jump to the last position when reopening a file
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
-
-" Mappings
 "------------------------------------------------------------------------------
-
-" Arrow keys, Alt+leftarrow will go one window left, etc.
-nmap <silent> <A-Up> :wincmd k<CR>
+" Mappings -> List maps :nmap, :vmap
+"------------------------------------------------------------------------------
+nmap <silent> <A-Up> :wincmd k<CR>                " Arrow keys, Alt+leftarrow will go one window left, etc.
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
 
-inoremap <c-c> <c-o>:highlight statusline ctermfg=black ctermbg=red guifg=red guibg=black<cr><c-c>
+nmap <silent> <C-n> :Lex 30<CR>                   " Open netrw Directory Listing
 
+nmap <C-up> :resize -2<CR>                        " Resize with arrows
+nmap <C-down> :resize +2<CR>
+nmap <C-left> :vertical resize -2<CR>
+nmap <C-right> :vertical resize +2<CR>
+
+nnoremap <tab> :bnext<CR>                         " Cycle trough buffers
+nnoremap <S-tab> :bprevious<CR>
+
+let mapleader = "\<Space>"                        " Set leader to space
+
+nmap <leader>n :set number!<CR>                   " Toggle linenumbers
+nmap <leader>r :set relativenumber!<CR>           " Toggle relativenumbers
+nmap <leader>h :nohlsearch<CR>                    " Set hlsearch off
+
+"comment (cc) and uncomment (cu) code
+noremap   <silent> cc      :s,^\(\s*\)[^#]\@=,\1# ,e<CR>:nohls<CR>zvj
+noremap   <silent> cu      :s,^\(\s*\)# \s\@!,\1,e<CR>:nohls<CR>zvj
+
+nmap <leader><F2> :e $MYVIMRC<CR>
+nmap <leader><F4> :e ~/gtd/cheatsheets/vim.md<CR>
+
+"------------------------------------------------------------------------------
 " Statusbar
 "------------------------------------------------------------------------------
 hi statusline                  ctermfg=gray ctermbg=black
@@ -69,8 +91,8 @@ set statusline+=Line:%l/%L                        " line X of total lines
 set statusline+=\ Col:%c                          " current column
 set statusline+=\ Buf:%n                          " Buffer number
 "set statusline+=\ [%b][0x%B]\                     " ASCII and byte code under cursor
-"------------------------------------------------------------------------------
 
+"------------------------------------------------------------------------------
 " Exuberant-ctags`
 "------------------------------------------------------------------------------
 " First install `sudo apt install exuberant-ctags`
@@ -82,13 +104,20 @@ if !empty(glob(".git"))
   "au BufWritePost *.ts silent! !eval 'ctags -R --languages=typescript --exclude=.git -o newtags; mv newtags tags;' &
 endif
 
-
+"------------------------------------------------------------------------------
 " Mixed
 "------------------------------------------------------------------------------
+
+" Jump to the last position when reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
 highlight ExtraWhitespace ctermbg=1 guibg=red      " Highlight trailing spaces in annoying red
 match ExtraWhitespace /\s\+$/
 autocmd BufWritePre * %s/\s\+$//e                  " Removing trailing whitespace on write
 
 syntax match nonascii "[^\x00-\x7F]"               " Display non ascii chars
 highlight nonascii guibg=Red ctermbg=2
+
 

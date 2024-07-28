@@ -70,3 +70,8 @@ After download.
       lazy = false,
     },
 
+## Resources
+* [neovim user documentation](https://neovim.io/doc/user/)
+* [Nvchad introduction](https://docs.rockylinux.org/books/nvchad/)
+* [List of resources](https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources) | Plugins etc.
+* [Youtube - How I Setup Neovim To Make It AMAZING in 2024: The Ultimate Guide](https://www.youtube.com/watch?v=6pAG3BHurdM) - Josean Martinez

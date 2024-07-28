@@ -38,7 +38,7 @@ User-defined shortcuts does not work after upgrade
 
     gsettings set org.gnome.desktop.interface color-scheme [default | prefer-dark | prefer-light]
     gsettings set org.gnome.desktop.sound event-sounds false  # Sound off when tabbing in terminal
-    gsettings set org.gnome.shell.app-switcher current-workspace-only true # Alt-Tab cycle in current workspace
+    gsettings set org.gnome.shell.app-switcher current-workspace-only true # Alt-Tilde cycle in all workspaces
     gsettings set org.gnome.shell.window-switcher current-workspace-only true # Alt-Tab cycle in current workspace
 
 
