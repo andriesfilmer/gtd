@@ -4,5 +4,6 @@ tags
 tmp
 bower_components/
 dotfiles/.config/nvim/lazy-lock.json
+dotfiles/.config/nvchad/lazy-lock.json
 dotfiles/.vim/pack/*
 dotfiles/.vim/.netrwhist
