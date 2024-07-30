@@ -12,7 +12,12 @@ After download.
 
     ./install.sh IBMPlexMon## Neo Vim Plugins
 
-## [nvchad](https://nvchad.com/docs/)
+JetBrainsMono Nerd Font ?
+
+    ./install.sh ttf-jetbrains-mono-nerd-3.0.2-1
+
+
+## [nvchad](https://nvchad.com/docs/quickstart/install)
 
 ### Default Plugins
 
@@ -55,12 +60,36 @@ After download.
 
 ### nvim-treesitter
 
+Edit `lua/plugins/init.lua` -> `wnvim-treesitter/nvim-treesitte` -> `opts` -> `ensure_installed` -> `ruby` and run:
+
     :TSInstall ruby
 
-### nvim-telescope/telescope.nvim
+### Language Server Protocol
 
-    :Telescope find_files search_dirs=[".", "/config"]
-    :Telescope live_grep search_dirs=["/config"]
+Ruby
+
+    gem install solargraph     # A ruby lanuage server
+    gem install ruby-lsp       # Less functions then solargraph (2024-07-30)
+
+
+lua/configs/lspconfig.lua
+
+    local servers = { "html", "cssls", "solargraph" }
+
+lua/plugins/init.lua and setup `"neovim/nvim-lspconfig"` and `williamboman/mason.nvim`
+
+Run`:MasonInstallAll`
+
+These examples are available :-)
+
+    :lua vim.lsp.buf.rename()         -- Rename a variable in whole project
+    :lua vim.lsp.buf.definition()     -- Jump to defination in project, ctrl-t to go back
+    :lua vim.lsp.buf.references()     -- See references
+    :lua vim.lsp.buf.formatting()     -- Format buffer
+    :lua vim.diagnostic.open_float()  -- Show full message in floating window
+
+* <https://solargraph.org/guides/getting-started>
+* <https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#ruby_lsp>
 
 ### Undotree
 
@@ -69,6 +98,14 @@ After download.
       "mbbill/undotree",
       lazy = false,
     },
+
+### nvim-telescope/telescope.nvim
+
+Scope directories
+
+    :Telescope find_files search_dirs=[".", "/config"]
+    :Telescope live_grep search_dirs=["/config"]
+    :Telescope diagnostics -- Find errors
 
 ## Resources
 * [neovim user documentation](https://neovim.io/doc/user/)

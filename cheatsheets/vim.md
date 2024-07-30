@@ -214,5 +214,6 @@ Packages added in the `.vim/pack/bundle/opt` folder may be loaded using
 * [Vim command index](https://vimhelp.org/index.html)
 * [Learn Vim](https://learnvim.irian.to/)
 * [Vimcasts](http://vimcasts.org/)
+* [Vim Statusline Generator](https://www.tdaly.co.uk/projects/vim-statusline-generator/)
 * [Let Vim Do the Typing - Video](https://www.youtube.com/watch?v=3TX3kV3TICU)
 
