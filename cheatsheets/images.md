@@ -1,4 +1,4 @@
-# Video and Image tools
+# Image tools
 
 ## Compress images
 
@@ -37,37 +37,6 @@ or
 ### Online
 
 You can use also the [online compressor](https://compressor.io/)
-
-## ffmpeg
-
-Convert webm to mp4
-
-    ffmpeg -i video.webm -preset veryfast video.mp4
-    ffmpeg -fflags +genpts -i video.webm -r 24 video.mp4
-
-
-Capture right side of screen
-
-    ffmpeg -f alsa -ac 2 -i pulse -f x11grab -show_region 1 -r 30 -s 1280x720 -i :1.0+1280,244 -acodec pcm_s16le -vcodec libx264  /path/to/screencast.mkv
-
-
-* Allow your cpu use optimal number of threads: -threads 0
-* QuickTime compatibility:  -pix_fmt yuv420p.
-* Fast start: -movflags +faststart.
-
-When creating screencasts disable Flipping.
-
-    nvidia-settings --assign="AllowFlipping=0"
-
-### Rip a DVD to one file
-
- cat *.VOB > DVD.vob
- ffmpeg -i DVD.vob DVD1.mp4
-
-or
-
- ffmpeg -i "concat:VTS_01_1.VOB|VTS_01_2.VOB|VTS_01_3.VOB" -target pal-dvd -vcodec copy -acodec copy OUTPUT_DVD.mp4
-
 
 ## ImageMagic
 

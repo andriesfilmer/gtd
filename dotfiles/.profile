@@ -22,6 +22,6 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 #bash .scripts/dbus-monitor.sh
-setxkbmap -option caps:escape
+#setxkbmap -option caps:escape
 
 export PATH="$HOME/.local/bin":$PATH

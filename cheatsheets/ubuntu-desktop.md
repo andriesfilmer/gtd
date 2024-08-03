@@ -6,17 +6,44 @@ Detect the model of your nvidia graphic card and the recommended driver.
 
     ubuntu-drivers devices
 
-## Keyboard layout
+## Gnome
 
-    setxkbmap -option "caps:escape_shifted_capslock # Remapping the Most Useless Key on Linux (Caps Lock)
+### gsetting
 
-    sudo dpkg-reconfigure keyboard-configuration
+    # Simple theme settings dark and light
+    gsettings set org.gnome.desktop.interface color-scheme [default | prefer-dark | prefer-light]
+
+    # Sound off when tabbing in terminal
+    gsettings set org.gnome.desktop.sound event-sounds false
+
+    # Alt-Tilde cycle in all workspaces
+    gsettings set org.gnome.shell.app-switcher current-workspace-only true
+    # Alt-Tab cycle in current workspace
+    gsettings set org.gnome.shell.window-switcher current-workspace-only true
+
+    # Keyboard layout -> English (intl., with AltGr dead keys)
+    gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+altgr-intl')]"
+    # Restore keyboard settings if broken.
     gsettings reset org.gnome.desktop.input-sources xkb-options
 
-    sudo service keyboard-setup restart
-    sudo setupcon
+    # Remapping the Most Useless Key on Linux (Caps Lock) to Esc, Especially for vimmers.
+    #gsettings set org.gnome.desktop.input-sources xkb-options "['lv3:ralt_switch','caps:escape_shifted_capslock']"
+    gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape_shifted_capslock']"
 
-## Gnome
+    # Do we need this? Configure keyboard configuration -> Dell 101-key PC
+    sudo dpkg-reconfigure keyboard-configuration
+
+    # Set cursor size bigger from 24 -> 36 on large screen.
+    gsettings set org.gnome.desktop.interface cursor-size 36
+
+    # Set terminal cursor from 'block' -> 'ibeam'. First get your profile-id
+    gsettings get org.gnome.Terminal.ProfilesList list
+    # Replace <profile-id> with your profile ID from the previous command's output:
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/<profile-id>/ cursor-shape 'ibeam'
+
+### gnome-tweaks
+
+    sudo apt-get install gnome-tweak-tool
 
 ### Extentions
 
@@ -29,18 +56,6 @@ I like [gTile extention](https://extensions.gnome.org/extension/28/gtile/) adjus
 User-defined shortcuts does not work after upgrade
 
     dconf dump /org/gnome/shell/extensions/gtile/ | perl -p -e "s/(\d+):(\d+)/(\$1+1).':'.(\$2+1)/ge" | dconf load /org/gnome/shell/extensions/gtile/
-
-### gnome-tweaks
-
-    sudo apt-get install gnome-tweak-tool
-
-#### gsetting
-
-    gsettings set org.gnome.desktop.interface color-scheme [default | prefer-dark | prefer-light]
-    gsettings set org.gnome.desktop.sound event-sounds false  # Sound off when tabbing in terminal
-    gsettings set org.gnome.shell.app-switcher current-workspace-only true # Alt-Tilde cycle in all workspaces
-    gsettings set org.gnome.shell.window-switcher current-workspace-only true # Alt-Tab cycle in current workspace
-
 
 ## How to reset lost root password (single usermode)
 
@@ -77,7 +92,8 @@ Check the scanner is now recognized:
     scanimage -L
 
 
-## Display scalling
+## Display scalling (X)
+
 Via de algemene instellingen kan je het voor het hele systeem aanpassen via:
 
 Settings -> Display: Scale for menu and title bars: 1.25

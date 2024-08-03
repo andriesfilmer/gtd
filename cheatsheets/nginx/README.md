@@ -15,7 +15,7 @@
        deny all;
     }
 
-## Create a wildcard certificate
+## Create a wildcard certificate - Letsencrypt
 
 Get an [ACME Shell script](https://github.com/acmesh-official/acme.sh)
 

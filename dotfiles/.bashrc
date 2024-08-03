@@ -94,11 +94,12 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 # Added by Andries Filmer
-#########################
-bind '"\e[A"':history-search-backward
-bind '"\e[B"':history-search-forward
-#bind '"\e[A"':history-substring-search-backward
-#bind '"\e[B"':history-substring-search-forward
+###############################################################################
+bind '"\e[A"':history-search-backward   # search history starting with searchterm + and arrow up
+bind '"\e[B"':history-search-forward    # search history starting with searchterm + arrow down
+bind '"\e[1;5A"':history-substring-search-backward # search history with substring + ctrl + arrow up
+bind '"\e[1;5B"':history-substring-search-forward  # search history with substring + ctrl + arrow down
+
 
 backup () {
   cp "$@" "$@".backup-`date +'%Y-%m-%m_%H:%M'`;
@@ -132,12 +133,10 @@ cdl () {
 # sudo snap install lsd
 #alias ls='lsd'
 alias l='ls -l'
+alias ll='ls -l'
 alias la='ls -la'
 alias lt='ls --tree'
 alias lta='ls -la --tree'
-
-# Filenames with space showing as 'file name' after upgrade to 18.04
-export QUOTING_STYLE=literal
 
 alias ...='cd ../../'
 alias dfx='df -h -x squashfs -x tmpfs -x devtmpfs'
@@ -146,11 +145,9 @@ alias gitlog="git log --branches --not --remotes"
 alias gitdiff="git difftool --tool=vimdiff"
 #alias adb="~/Android/Sdk/platform-tools/adb"
 
-# Open broot with uncommitted files for git. Open with F2
-alias brapp="cd ~/dev/inzetrooster-app/ && broot -gc :gs"
+# Open inzetrooster project with nvchad
+alias cdnv="cd ~/dev/inzetrooster-app/ && nvchad"
 alias railss="cd ~/dev/inzetrooster-app/ && rails s"
-
-export EDITOR='vim'
 
 # nvim with myconfig, symbolic link to ~/gtd/dotfiles/.config/nvim
 alias nv='NVIM_APPNAME=myvim nvim'
@@ -161,5 +158,9 @@ alias nvchad='NVIM_APPNAME=nvchad nvim'
 #PATH=$PATH:/opt/android-studio/gradle/gradle-4.1/bin/
 #export ANDROID_HOME="$HOME/Android/Sdk"
 #PATH=$PATH:$ANDROID_HOME/tools; PATH=$PATH:$ANDROID_HOME/platform-tools
-
 export PATH
+
+# ls QUOTING_STYLE=literal showing filenames as is. QUOTING_STYLE=shell showing quoted 'file name'
+export QUOTING_STYLE=literal
+
+export EDITOR='vim'

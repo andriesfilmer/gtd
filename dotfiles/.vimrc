@@ -51,22 +51,22 @@ highlight ColorColumn ctermbg=236
 "------------------------------------------------------------------------------
 " Mappings -> List maps :nmap, :vmap
 "------------------------------------------------------------------------------
-nmap <silent> <A-Up> :wincmd k<CR>                " Arrow keys, Alt+leftarrow will go one window left, etc.
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
-nmap <silent> <A-Right> :wincmd l<CR>
+let mapleader = "\<Space>"                        " Set leader to space
 
-nmap <silent> <C-n> :Lex 30<CR>                   " Open netrw Directory Listing
+nmap <C-n> :Lex 30<CR>                            " Open netrw Directory Listing
 
-nmap <C-up> :resize -2<CR>                        " Resize with arrows
-nmap <C-down> :resize +2<CR>
-nmap <C-left> :vertical resize -2<CR>
-nmap <C-right> :vertical resize +2<CR>
+nmap <C-Up> :wincmd k<CR>                         " Arrow keys, Alt+leftarrow will go one window left, etc.
+nmap <C-Down> :wincmd j<CR>
+nmap <C-Left> :wincmd h<CR>
+nmap <C-Right> :wincmd l<CR>
+
+nmap <A-up> :resize -2<CR>                        " Resize windows with arrows
+nmap <A-down> :resize +2<CR>
+nmap <A-left> :vertical resize -2<CR>
+nmap <A-right> :vertical resize +2<CR>
 
 nnoremap <tab> :bnext<CR>                         " Cycle trough buffers
 nnoremap <S-tab> :bprevious<CR>
-
-let mapleader = "\<Space>"                        " Set leader to space
 
 nmap <leader>n :set number!<CR>                   " Toggle linenumbers
 nmap <leader>r :set relativenumber!<CR>           " Toggle relativenumbers
@@ -76,7 +76,7 @@ nmap <leader>h :nohlsearch<CR>                    " Set hlsearch off
 noremap   <silent> cc      :s,^\(\s*\)[^#]\@=,\1# ,e<CR>:nohls<CR>zvj
 noremap   <silent> cu      :s,^\(\s*\)# \s\@!,\1,e<CR>:nohls<CR>zvj
 
-nmap <leader><F2> :e $MYVIMRC<CR>
+nmap <leader><F3> :e $MYVIMRC<CR>
 nmap <leader><F4> :e ~/gtd/cheatsheets/vim.md<CR>
 
 
