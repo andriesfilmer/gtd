@@ -1,5 +1,12 @@
 # Image tools
 
+## Exif data
+
+    sudo apt install exiftool
+
+    exiftool /path/to/file                     # Get all data
+    exiftool -ProfileDateTime  /path/to/file   # Get Profile Date Time
+
 ## Compress images
 
 Nice tool to make your images smaller. <https://squoosh.app/>
