@@ -13,6 +13,7 @@ set laststatus=2                                   " first, enable status line a
 set list listchars=tab:»·,trail:·                  " Make tabs visual: ».......
 set nocompatible                                   " don't need to be compatible with old vim
 set nofoldenable                                   " Dont fold by default
+set nowrap                                         " Default is wrap
 set number                                         " Set line numbers, default commented out
 set omnifunc=syntaxcomplete#Complete               " Omni completion provides smart autocompletion for programs
 set paste                                          " Distinguish between typed text and pasted text in terminal
@@ -27,7 +28,7 @@ set wildmode=list:full                             " Command mode tab completion
 
 " Mostly not needed
 "set belloff=all                                    " Disable beep
-"set cursorline                                     " highlight current line. Is slower :-(
+set cursorline                                     " highlight current line. Is slower :-(
 "set cursorcolumn                                   " highlight column line. Is slower :-(
 "set directory=~/.tmp                               " Don't clutter my dirs with swp/tmp files
 "set backupdir=~/.vim/tmp                           " Don't clutter my dirs with swp/tmp files
@@ -53,6 +54,7 @@ highlight ColorColumn ctermbg=236
 "------------------------------------------------------------------------------
 let mapleader = "\<Space>"                        " Set leader to space
 
+nnoremap <CR> :noh<CR><CR>                        " unsets last search pattern hitting return
 nmap <C-n> :Lex 30<CR>                            " Open netrw Directory Listing
 
 nmap <C-Up> :wincmd k<CR>                         " Arrow keys, Alt+leftarrow will go one window left, etc.
@@ -68,21 +70,23 @@ nmap <A-right> :vertical resize +2<CR>
 nnoremap <tab> :bnext<CR>                         " Cycle trough buffers
 nnoremap <S-tab> :bprevious<CR>
 
-nmap <leader>n :set number!<CR>                   " Toggle linenumbers
-nmap <leader>r :set relativenumber!<CR>           " Toggle relativenumbers
+nmap <leader>n :set nu!<CR>                        " Toggle linenumbers
+nmap <leader>r :set rnu!<CR>                      " Toggle relativenumbers
 nmap <leader>h :nohlsearch<CR>                    " Set hlsearch off
 
-"comment (cc) and uncomment (cu) code
+"comment (cc) and  uncomment (cu) code
 noremap   <silent> cc      :s,^\(\s*\)[^#]\@=,\1# ,e<CR>:nohls<CR>zvj
 noremap   <silent> cu      :s,^\(\s*\)# \s\@!,\1,e<CR>:nohls<CR>zvj
 
 nmap <leader><F3> :e $MYVIMRC<CR>
 nmap <leader><F4> :e ~/gtd/cheatsheets/vim.md<CR>
 
+nmap <C-F9> :set background=light<CR>
+nmap <C-F10> :set background=dark<CR>
 
 "------------------------------------------------------------------------------
 " Statusbar
-"------------------------------------------------------------------------------
+"-------------------------------------------------- ---------------------------
 hi statusline                  ctermfg=gray ctermbg=black
 au InsertLeave * hi statusline ctermfg=gray ctermbg=black
 au InsertEnter * hi statusline ctermfg=red  ctermbg=black
