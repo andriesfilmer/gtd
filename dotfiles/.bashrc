@@ -121,7 +121,7 @@ getpasskey() {
 
 # Versions nvim - Switching Configs with `vv`
 vv() {
-  select config in vim myvim lazyvim kickstart nvchad
+  select config in nvim lazyvim kickstart nvchad
   do NVIM_APPNAME=$config nvim $@; break; done
 }
 
@@ -150,8 +150,7 @@ alias cdnv="cd ~/dev/inzetrooster-app/ && nvchad"
 alias railss="cd ~/dev/inzetrooster-app/ && rails s"
 
 # nvim with myconfig, symbolic link to ~/gtd/dotfiles/.config/nvim
-alias nv='NVIM_APPNAME=myvim nvim'
-alias nvchad='NVIM_APPNAME=nvchad nvim'
+alias nv='NVIM_APPNAME=nvim nvim'
 
 #export ANDROID_HOME=/home/andries/Android/Sdk/
 #PATH=$PATH:/home/andries/Android/Sdk/

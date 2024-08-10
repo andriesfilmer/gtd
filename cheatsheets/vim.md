@@ -24,13 +24,14 @@
 ## Visual mode
     Shift+v                            " Select lines
     Ctrl+v                             " Select column
-    vip                                " Visual select column
-    vat                                " Select outer tag block
+    vip                                " Select inner paragraph
+    vap                                " Select outer paragraph
     vit                                " Select inner tag block.
+    vat                                " Select outer tag block
+    zc                                 " Folding, nice in combination with `vat`
     o                                  " In visual mode jump to other side of visual selection, with capital O jump visual block
     ~                                  " Switch case on selected, lower to upper or upper to lower case
     =                                  " Auto ident
-    zf                                 " Folding, nice in combination with `vat`
 
 ## Buffers
     :ls                                " Show buffers, alias :buffers
