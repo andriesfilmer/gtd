@@ -121,7 +121,7 @@ getpasskey() {
 
 # Versions nvim - Switching Configs with `vv`
 vv() {
-  select config in nvim lazyvim kickstart nvchad
+  select config in nvim lazyvim kickstart nvchad josean
   do NVIM_APPNAME=$config nvim $@; break; done
 }
 
