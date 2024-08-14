@@ -33,7 +33,7 @@ return {
         "bash",
         "lua",
         "vim",
-        "dockerfile",
+        "ruby",
         "gitignore",
         "query",
         "vimdoc",
@@ -46,6 +46,10 @@ return {
           scope_incremental = false,
           node_decremental = "<bs>",
         },
+      },
+      filetype_to_parsername = {
+        html = "html",
+        erb = "html"
       },
     })
   end,

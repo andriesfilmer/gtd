@@ -81,7 +81,6 @@ nmap <leader><F4> :e ~/gtd/cheatsheets/vim.md<CR>
 nmap <C-F9> :set background=light<CR>
 nmap <C-F10> :set background=dark<CR>
 
-map gc :call Toggle()<CR>
 
 "------------------------------------------------------------------------------
 " Statusbar
@@ -118,49 +117,4 @@ match ExtraWhitespace /\s\+$/                    " Show white space, see colors 
 autocmd BufWritePre * %s/\s\+$//e                " Removing trailing whitespace on write
 syntax match nonascii "[^\x00-\x7F]"             " Display non ascii chars
 
-
-"------------------------------------------------------------------------------
-" Toggle functions
-"------------------------------------------------------------------------------
-function! Comment()
-  let ft = &filetype
-  if ft == 'ruby' || ft == 'sh' || ft == 'perl'
-    silent s/^/\#/
-  elseif ft == 'javascript'
-    silent s:^:\/\/:g
-  elseif ft == 'vim'
-    silent s:^:\":g
-  endif
-endfunction
-
-function! Uncomment()
-  let ft = &filetype
-  if ft == 'ruby' || ft == 'sh'
-    silent s/^\#//
-  elseif ft == 'javascript'
-    silent s:^\/\/::g
-  elseif ft == 'vim'
-    silent s:^\"::g
-  endif
-endfunction
-
-function! Toggle()
-  try
-    call Uncomment()
-  catch
-    call Comment()
-  endtry
-endfunction
-
-"------------------------------------------------------------------------------
-" Exuberant-ctags`
-"------------------------------------------------------------------------------
-" First install `sudo apt install exuberant-ctags`
-" Run ctags only if project (.git) exists
-if !empty(glob(".git"))
-  "au BufWritePost *.erb,*.rb silent! !eval 'ctags -R --languages=ruby --exclude=.git -o newtags; mv newt gs tags;' &
-  "au BufWritePost *.js silent! !eval 'ctags -R --languages=javascript --exclude=.git -o newtags; mv newtags tags;' &
-  " First fetch `wget https://github.com/andriesfilmer/gtd/tree/master/.vim/.ctags` for typescript!
-  "au BufWritePost *.ts silent! !eval 'ctags -R --languages=typescript --exclude=.git -o newtags; mv newtags tags;' &
-endif
 

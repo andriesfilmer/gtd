@@ -29,10 +29,13 @@ return {
       ensure_installed = {
         "html",
         "cssls",
-        "tailwindcss",
+        "tsserver",
+        "ruby_lsp",     -- Also attached to html.erb which give errors.
+        -- "solargraph",   -- Also too many errors for me
+        -- "sorbet",       -- https://sorbet.org/ - gem install sorbet 
+        -- "standardrb",   -- https://github.com/standardrb/standard - gem "standard"
+        -- "steep",        -- https://github.com/soutaro/steep - You need Steepfile to make it work
         "lua_ls",
-        "emmet_ls",
-        "pyright",
       },
     })
 
@@ -40,7 +43,6 @@ return {
       ensure_installed = {
         "prettier", -- prettier formatter
         "stylua", -- lua formatter
-        "eslint_d",
       },
     })
   end,
