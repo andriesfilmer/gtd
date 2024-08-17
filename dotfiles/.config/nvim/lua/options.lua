@@ -1,4 +1,4 @@
-vim.cmd.colorscheme("torte")                -- Other nice dark schemes: evening, murph, torte
+vim.cmd.colorscheme("default")                -- Other nice dark schemes: evening, murph, torte
                                               -- Other nice light schemes: delek, morning, shine
                                               -- Other nice plain scheme: quiet, 
 vim.g.mapleader = ' '
