@@ -169,7 +169,11 @@ Restart fail2ban
 
 ## Ban IP manually on the command line by jail-name (sshd)
 
-  fail2ban-client  set sshd banip 81.204.211.58
+    fail2ban-client  set sshd banip 81.204.211.58
+
+## Fail2ban unban IP
+
+    fail2ban-client set sshd unbanip 87.209.180.24
 
 ## External links
 

@@ -30,10 +30,10 @@ return {
         "html",
         "cssls",
         "tsserver",
-        "ruby_lsp",     -- Also attached to html.erb which give errors.
-        -- "rubocop",
+        "ruby_lsp", -- Also attached to html.erb which give errors.
+        "rubocop",
         -- "solargraph",   -- Also too many errors for me
-        -- "sorbet",       -- https://sorbet.org/ - gem install sorbet 
+        -- "sorbet",       -- https://sorbet.org/ - gem install sorbet
         -- "standardrb",   -- https://github.com/standardrb/standard - gem "standard"
         -- "steep",        -- https://github.com/soutaro/steep - You need Steepfile to make it work
         "lua_ls",
@@ -43,7 +43,7 @@ return {
     mason_tool_installer.setup({
       ensure_installed = {
         "prettier", -- prettier formatter
-        "stylua", -- lua formatter
+        "stylua",   -- lua formatter
       },
     })
   end,

@@ -1,28 +1,25 @@
-vim.cmd.colorscheme("default")                -- Other nice dark schemes: evening, murph, torte
-                                              -- Other nice light schemes: delek, morning, shine
-                                              -- Other nice plain scheme: quiet, 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.opt.mouse = ''                            -- Don't use mouse
-vim.opt.clipboard:append("unnamedplus")       -- use system clipboard as default register
-vim.opt.ignorecase = true                     -- Search: ignore case
-vim.opt.smartcase = true                      -- Search: ignore case, unless uppercase chars given
-vim.opt.autowrite = true                      -- Write the contents of the file, if it has been modified
-vim.opt.tabstop = 4                           -- tab with 4 spaces width
+vim.opt.mouse = ''                      -- Don't use mouse
+vim.opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+vim.opt.ignorecase = true               -- Search: ignore case
+vim.opt.smartcase = true                -- Search: ignore case, unless uppercase chars given
+vim.opt.autowrite = true                -- Write the contents of the file, if it has been modified
+vim.opt.tabstop = 4                     -- tab with 4 spaces width
 vim.opt.shiftwidth = 2
-vim.opt.shiftround = true                     -- Indentation: When at 3 spaces, >> takes to 4, not 5
-vim.opt.expandtab = true                      -- Use the appropriate number of spaces
-vim.opt.cursorline = true                     -- Highlight current line
-vim.opt.number = true                         -- Set line numbers, default commented out
-vim.opt.wrap = false                          -- Wrapping on, default commented out
-vim.opt.signcolumn = "yes"                    -- show sign column so that text doesn't shift
-vim.opt.splitbelow = true                     -- force all horizontal splits to go below current window
-vim.opt.splitright = true                     -- force all vertical splits to go to the right of current window
-vim.opt.swapfile = false                      -- turn off swapfile
+vim.opt.shiftround = true               -- Indentation: When at 3 spaces, >> takes to 4, not 5
+vim.opt.expandtab = true                -- Use the appropriate number of spaces
+vim.opt.cursorline = true               -- Highlight current line
+vim.opt.number = true                   -- Set line numbers, default commented out
+vim.opt.wrap = false                    -- Wrapping on, default commented out
+vim.opt.signcolumn = "yes"              -- show sign column so that text doesn't shift
+vim.opt.splitbelow = true               -- force all horizontal splits to go below current window
+vim.opt.splitright = true               -- force all vertical splits to go to the right of current window
+vim.opt.swapfile = false                -- turn off swapfile
 
 -- Optional
--- vim.opt.colorcolumn = { 80, 120 }          -- Show vertical bar to indicate 80/120 chars
+-- vim.opt.colorcolumn = { 80, 120 }      -- Show vertical bar to indicate 80/120 chars
 
 -- Persistent Cursor - jump to last position when reopening file
 vim.api.nvim_create_autocmd("BufReadPost", {
