@@ -20,18 +20,18 @@ JetBrainsMono Nerd Font ?
     ./install.sh ttf-jetbrains-mono-nerd-3.0.2-1
 
 
-## [nvchad](https://nvchad.com/docs/quickstart/install)
+## [my nvim](https://github.com/andriesfilmer/gtd/tree/master/dotfiles/.config/nvim)
 
 ### Nice Plugins
 
-* [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) | Highly extendable fuzzy finder
-* [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Basic functionality such as highlighting
 * [nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) |  File Explorer For Neovim
-* [stevearc/conform.nvim](https://github.com/stevearc/conform.nvim) | Powerful formatter from different sources
-* [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) | Git signs for added, removed, and changed lines
-* [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim) | Package manager for LSP servers, DAP servers, linters, and formatters
+* [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Basic functionality off current buffer
 * [neovim/nvim-lspconfig](neovim/nvim-lspconfig) | Installing language servers
+* [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim) | Package manager for LSP servers, DAP servers, linters, and formatters
+* [stevearc/conform.nvim](https://github.com/stevearc/conform.nvim) | Powerful formatter from different sources
+* [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) | Highly extendable fuzzy finder
 * [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) | A completion engine
+* [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) | Git signs for added, removed, and changed lines
 * [folke/which-key.nvim](https://github.com/folke/which-key.nvim) | Helps you remember your Neovim keymaps
 * [mbbill/undotree](https://github.com/mbbill/undotree) | Visualizes undo history and browse between different undo branches.
 
@@ -39,37 +39,23 @@ JetBrainsMono Nerd Font ?
 
 ### nvim-treesitter
 
-Edit `lua/plugins/init.lua` -> `wnvim-treesitter/nvim-treesitte` -> `opts` -> `ensure_installed` -> `ruby` and run:
-
     :TSInstall ruby
-
-### Language Server Protocol
-
-Ruby
-
-    gem install solargraph     # A ruby lanuage server
-    gem install ruby-lsp       # Less functions then solargraph (2024-07-30)
-    gem install rubocop        # The Ruby Linter/Formatter in combination with 'stevearc/confirm.nvim'
+    :InpectTree 
 
 
-lua/configs/lspconfig.lua
+### neovim/nvim-lspconfig
 
-    local servers = { "html", "cssls", "solargraph" }
+    :LspInfo
 
-lua/plugins/init.lua and setup `"neovim/nvim-lspconfig"` and `williamboman/mason.nvim`
+### williamboman/mason.nvim
 
-Run`:MasonInstallAll`
+    :Mason
 
-These examples are available :-)
+### stevearc/conform.nvim
 
-    :lua vim.lsp.buf.rename()         -- Rename a variable in whole project
-    :lua vim.lsp.buf.definition()     -- Jump to defination in project, ctrl-t to go back
-    :lua vim.lsp.buf.references()     -- See references
-    :lua vim.lsp.buf.formatting()     -- Format buffer
-    :lua vim.diagnostic.open_float()  -- Show full message in floating window
-
-* <https://solargraph.org/guides/getting-started>
-* <https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#ruby_lsp>
+    :ConfirmInfo
+    :FormatEnable                 -- created user command in confirm.lua
+    :FormatDisable                -- created user command in confirm.lua
 
 ### nvim-telescope/telescope.nvim
 
@@ -78,6 +64,15 @@ Scope your directories
     :Telescope find_files search_dirs=[".", "/config"]
     :Telescope live_grep search_dirs=["./config"]
     :Telescope diagnostics -- Find errors
+
+### Language Servers
+
+Ruby
+
+    gem install solargraph     # A ruby lanuage server
+    gem install ruby-lsp       # Less functions then solargraph (2024-07-30)
+    gem install rubocop        # The Ruby Linter/Formatter in combination with 'stevearc/confirm.nvim'
+
 
 ## Resources
 * [neovim user documentation](https://neovim.io/doc/user/)

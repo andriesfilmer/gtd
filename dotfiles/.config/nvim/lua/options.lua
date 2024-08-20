@@ -1,6 +1,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+
 vim.opt.mouse = ''                      -- Don't use mouse
 vim.opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 vim.opt.ignorecase = true               -- Search: ignore case
@@ -17,6 +18,8 @@ vim.opt.signcolumn = "yes"              -- show sign column so that text doesn't
 vim.opt.splitbelow = true               -- force all horizontal splits to go below current window
 vim.opt.splitright = true               -- force all vertical splits to go to the right of current window
 vim.opt.swapfile = false                -- turn off swapfile
+
+vim.b.disable_autoformat = true         -- Disable formatiing with confirm by default
 
 -- Optional
 -- vim.opt.colorcolumn = { 80, 120 }      -- Show vertical bar to indicate 80/120 chars

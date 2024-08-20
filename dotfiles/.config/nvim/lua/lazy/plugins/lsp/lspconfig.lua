@@ -4,7 +4,7 @@ return {
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
-    { "folke/neodev.nvim", opts = {} },
+    { "folke/neodev.nvim",                   opts = {} },
   },
   config = function()
     -- import lspconfig plugin
@@ -86,7 +86,7 @@ return {
         })
       end,
       ["html"] = function()
-        -- configure html language server
+        -- configure html with ruby (.erb) language server
         lspconfig["html"].setup({
           capabilities = capabilities,
           filetypes = { "html", "eruby" },
@@ -115,7 +115,7 @@ return {
               -- make the language server recognize "vim" global
               diagnostics = {
                 globals = { "vim" },
-                disable = {"missing-parameters", "missing-fields"}
+                disable = { "missing-parameters", "missing-fields" }
               },
               completion = {
                 callSnippet = "Replace",
@@ -127,4 +127,3 @@ return {
     })
   end,
 }
-

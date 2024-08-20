@@ -27,11 +27,11 @@ return {
     mason_lspconfig.setup({
       -- list of servers for mason to install
       ensure_installed = {
-        "html",
+        --"html",
         "cssls",
         "tsserver",
-        "ruby_lsp", -- Also attached to html.erb which give errors.
-        "rubocop",
+        "ruby_lsp",
+        -- "rubocop",
         -- "solargraph",   -- Also too many errors for me
         -- "sorbet",       -- https://sorbet.org/ - gem install sorbet
         -- "standardrb",   -- https://github.com/standardrb/standard - gem "standard"

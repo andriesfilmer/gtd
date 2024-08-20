@@ -11,8 +11,7 @@ return {
       -- install jsregexp (optional!).
       build = "make install_jsregexp",
     },
-    "saadparwaiz1/cmp_luasnip",     -- for autocompletion
-    "rafamadriz/friendly-snippets", -- useful snippets
+    "saadparwaiz1/cmp_luasnip", -- for autocompletion
   },
   config = function()
     local cmp = require("cmp")
@@ -20,7 +19,6 @@ return {
     local ls = require("luasnip")
 
     -- Load snippets from `snippets` directory or any other source
-    -- require("luasnip.loaders.from_vscode").lazy_load()
     require('snippets')
 
     vim.keymap.set({ "i" }, "<C-k>", function() ls.expand() end, { silent = true })
