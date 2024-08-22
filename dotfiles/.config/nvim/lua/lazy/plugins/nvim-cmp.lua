@@ -14,26 +14,18 @@ return {
     "saadparwaiz1/cmp_luasnip", -- for autocompletion
   },
   config = function()
-    local cmp = require("cmp")
-
     local ls = require("luasnip")
-
     -- Load snippets from `snippets` directory or any other source
     require('snippets')
-
-    vim.keymap.set({ "i" }, "<C-k>", function() ls.expand() end, { silent = true })
+    -- keymaps to jump in snippet
     vim.keymap.set({ "i", "s" }, "<C-l>", function() ls.jump(1) end, { silent = true })
     vim.keymap.set({ "i", "s" }, "<C-j>", function() ls.jump(-1) end, { silent = true })
-    vim.keymap.set({ "i", "s" }, "<C-e>", function()
-      if ls.choice_active() then
-        ls.change_choice(1)
-      end
-    end, { silent = true })
 
+    local cmp = require("cmp")
     cmp.setup({
-      completion = {
-        completeopt = "menu,menuone,preview,noselect",
-      },
+      -- completion = {
+      --   completeopt = "menu,preview",  -- is default help: completeopt
+      -- },
       snippet = { -- configure how nvim-cmp interacts with snippet engine
         expand = function(args)
           ls.lsp_expand(args.body)
@@ -44,14 +36,13 @@ return {
         ["<C-k>"] = cmp.mapping.select_prev_item(),         -- go suggestion up
         ["<C-j>"] = cmp.mapping.select_next_item(),         -- go suggestion down
         ["<C-y>"] = cmp.mapping.confirm({ select = true }), -- Except [y]es
-        ["<C-e>"] = cmp.mapping.abort(),                    -- [E]xit completion window
       }),
       -- sources for autocompletion
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
-        { name = "luasnip" }, -- snippets
-        { name = "buffer" },  -- text within current buffer
-        { name = "path" },    -- file system paths
+        { name = "luasnip" },                     -- snippets
+        { name = "buffer",  keyword_length = 3 }, -- text within current buffer
+        { name = "path" },                        -- file system paths
       }),
 
     })

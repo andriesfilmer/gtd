@@ -122,3 +122,8 @@ Example: Reset Thunderbird position on startup
 ## Webcam zoom
 
     v4l2-ctl -d /dev/video0 -c zoom_absolute=200
+
+
+## Nice applications to install
+* Foliate | e-book reader
+

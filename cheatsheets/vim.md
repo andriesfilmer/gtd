@@ -1,6 +1,6 @@
 # vim (my) Cheatsheet
 ## Open file
-    :e ..                              " With only enter you can browse to a file
+    :e ..                              " Browse to a file to open
     :e <tab>                           " With tab you can complete directories and filename.
 
 ## Command mode
@@ -26,8 +26,10 @@
     Ctrl+v                             " Select column
     vip                                " Select inner paragraph
     vap                                " Select outer paragraph
-    vit                                " Select inner tag block.
-    vat                                " Select outer tag block
+    vit                                " Select inner tag block, :can combinde with "]} etc.
+    vat                                " Select outer tag block, can combine with "]} etc.
+    :'<,'>norm A;                      " Append ; to visual block. i.o. Execute Normal mode commands
+    :'<,'>sort                         " Sort visual block. Can commbined with `uniq -c` etc.
     zc                                 " Folding, nice in combination with `vat`
     o                                  " In visual mode jump to other side of visual selection, with capital O jump visual block
     ~                                  " Switch case on selected, lower to upper or upper to lower case
@@ -36,8 +38,9 @@
 ## Buffers
     :ls                                " Show buffers, alias :buffers
     :b{0-9}                            " Open buffer {0-9}. Find number with :ls
-    :bd                                " Close buffer, alias :bdeletejj
     :vertical sb 3                     " Open buffer 3 in split window
+    :bd                                " Close buffer, alias :bdelete
+    :%bd|e#                            " Close all buffers (%db) except current buffer (e#)
 
 ## Moving around
     :marks                             " Show list of marks
@@ -51,9 +54,9 @@
 ## Windows
     :sp                                " split window horizontal
     :vs                                " split window vertical
-    :vertical resize 50                " To resize the current window to exactly 50 characters wide.
-    :set scrollbind cursorbind cursorline  " compare two files on same line with scroll in :vs
+    :set scb crb cul                   " scrollbind, cursorbind, cursorline to compare two files on same line with scroll in :vs
     :h ctrl-w                          " options to resize windows
+    :only                              " Keep only the current window
 
 ## Registers
     :reg                               " See registers
@@ -67,17 +70,12 @@
     Ctrl-x + Ctr-]                     " Completion for tags
     Ctrl-x + Ctr-f                     " Completion for filenames
     Ctrl-x + Ctr-l                     " Completion for lines
-    Ctrl-x + Ctr-o                     " Completion for methods (omnifunction must be on)
+    Ctrl-x + Ctr-o                     " Completion for methods with omnifunction (set omnifunc)
 
 ## Search in file
     /regexp                            " Searches forwards for regexp, ? reverses direction
     n                                  " Repeat search, N reverses direction
     *                                  " Searches forward for word under cursor, # reverses direction
-
-## Find in files
-    :vim foo **/*.js | cw              " Search for foo in every JavaScript file in the parent directories recursively.
-    :vim foo app/**/*.rb | cw          " Search for foo in every Ruby file in the app directory recursively.
-    /[^\x00-\x7F]                      " Find non-ascii characters
 
 ## Replace in file
     :%s/foo/bar/gc                     " Search for 1 and replace with 2, options are: g = global (entire file), c = confirm change
@@ -88,14 +86,17 @@
     :'<,'>s/foo/bar/g                  " Replace words in  visual mode.
     :%s/<Ctrl-V><Ctrl-M>/Ctrl-M/g      "Change file format Windows to Unix, where <Ctrl-V><Ctrl-M> means type Ctrl+V then Ctrl+M.
 
+## Find in files
+    :vim foo **/*.js | cw              " Search for foo in every JavaScript file in the parent directories recursively.
+    :vim foo app/**/*.rb | cw          " Search for foo in every Ruby file in the app directory recursively.
+    /[^\x00-\x7F]                      " Find non-ascii characters
+
 ## Replace in files
 Option 1
-
     :arg **/*.js                           " Set all *.js files and below current directory in :arg
     :argdo %s/pattern/replace/gce | update " Confirm updates in recursieve files
 
 Option 2
-
     :vimgrep /pattern/ `find . -type f`" Set all files in quickfix list. Use `copen` to see the matches.
     :cdo %s/pattern/replace/gc         " Change all matches with a confirm.
 
@@ -105,7 +106,6 @@ Option 2
     zb                                 " Set viewport in bottom
 
 ## Sessions
-
     :mks                               " Save your session in current dir (default: `session.vim`)
     vim -S                             " Start with your saved session in current dir
     vim mks! .session-lang.vim         " Save session to `.session.lang.vim` file
@@ -138,7 +138,6 @@ To save a macro: Use `qq` as normal, with the `qp` command you can paste the reg
 Now you can use this macro in normal mode: @q
 
 ## ctags
-
     ctags -R *
     ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
 
@@ -150,7 +149,6 @@ Now you can jump from file to file:
     ctrl-t                             " Jump back to previous (?)
 
 ## Spell
-
     z=                                 " When on word show spelling.
 
 Download

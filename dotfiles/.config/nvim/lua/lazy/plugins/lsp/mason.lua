@@ -31,7 +31,7 @@ return {
         "cssls",
         "tsserver",
         "ruby_lsp",
-        -- "rubocop",
+        "rubocop",
         -- "solargraph",   -- Also too many errors for me
         -- "sorbet",       -- https://sorbet.org/ - gem install sorbet
         -- "standardrb",   -- https://github.com/standardrb/standard - gem "standard"

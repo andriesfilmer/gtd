@@ -16,6 +16,7 @@ local rep = extras.rep
 ls.add_snippets(
   "ruby", {
     s("putsi", { t('puts "####### '), i(1), t(' #{'), rep(1), t('}"') }),
+    s("frozen", { t('# frozen_string_literal: true') }),
   }
 )
 

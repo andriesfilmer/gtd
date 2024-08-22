@@ -35,6 +35,13 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
+-- Show trailing spaces
+vim.cmd [[
+  highlight ExtraWhitespace ctermbg=red guibg=red
+  match ExtraWhitespace /\s\+$/
+]]
+
+
 -- Other options to investigate
 --
 --  backup = false,                           -- creates a backup file
