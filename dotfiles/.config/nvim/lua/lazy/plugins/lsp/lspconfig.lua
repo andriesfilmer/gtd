@@ -85,13 +85,13 @@ return {
           capabilities = capabilities,
         })
       end,
-      ["html"] = function()
-        -- configure html with ruby (.erb) language server
-        lspconfig["html"].setup({
-          capabilities = capabilities,
-          filetypes = { "html", "eruby" },
-        })
-      end,
+      -- ["html"] = function()
+      --   -- configure html with ruby (.erb) language server
+      --   lspconfig["html"].setup({
+      --     capabilities = capabilities,
+      --     filetypes = { "html", "eruby" },
+      --   })
+      -- end,
       ["ruby_lsp"] = function()
         -- configure ruby_lsp language server
         lspconfig["ruby_lsp"].setup({

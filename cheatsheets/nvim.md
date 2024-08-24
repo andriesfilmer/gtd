@@ -2,7 +2,7 @@
 
 Based on Vim. Look at the command [cheatsheet for vim](vim.md).
 
-It looks like there are multiple version of nvim like: 
+It looks like there are multiple version of nvim like:
 [kickstart](https://github.com/nvim-lua/kickstart.nvim),
 [lazyvim](https://www.lazyvim.org/),
 [NvChad](https://nvchad.com/) and many more.
@@ -40,8 +40,11 @@ JetBrainsMono Nerd Font ?
 ### nvim-treesitter
 
     :TSInstall ruby
-    :InpectTree 
+    :InpectTree
 
+Nice keymap for increment selection to named node.
+
+    <C-space>
 
 ### neovim/nvim-lspconfig
 

@@ -16,7 +16,7 @@ map("n", "<S-tab>", ":bprevious<CR>", { desc = "Buffer previous" })
 map("n", "<C-w>", ":bdelete<CR>", { desc = "Buffer delete" })
 map("n", "<space>x", ":%bd|e#|bd#<CR>", { desc = " Close all buffers except current" })
 
-map("n", "<space>nh", "<cmd>set nohlsearch<CR>", { desc = " No highlite search" })
+map("n", "<space>nh", "<cmd>set hlsearch!<CR>", { desc = " No highlite search" })
 map("n", "<space>ns", "<cmd>set signcolumn=no<CR>", { desc = " Signcolumn off" }) -- hide git signs
 map("n", "<space>ny", "<cmd>set signcolumn=yes<CR>", { desc = " Signcolumn on" }) -- show git signs
 

@@ -12,7 +12,7 @@ vim.opt.shiftwidth = 2
 vim.opt.shiftround = true               -- Indentation: When at 3 spaces, >> takes to 4, not 5
 vim.opt.expandtab = true                -- Use the appropriate number of spaces
 vim.opt.cursorline = true               -- Highlight current line
-vim.opt.number = true                   -- Set line numbers, default commented out
+vim.opt.relativenumber = true           -- Set line numbers, default commented out
 vim.opt.wrap = false                    -- Wrapping on, default commented out
 vim.opt.signcolumn = "yes"              -- show sign column so that text doesn't shift
 vim.opt.splitbelow = true               -- force all horizontal splits to go below current window
@@ -40,6 +40,12 @@ vim.cmd [[
   highlight ExtraWhitespace ctermbg=red guibg=red
   match ExtraWhitespace /\s\+$/
 ]]
+
+-- Remove trailing spaces on save buffer
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  command = ":%s/\\s\\+$//e",
+})
 
 
 -- Other options to investigate

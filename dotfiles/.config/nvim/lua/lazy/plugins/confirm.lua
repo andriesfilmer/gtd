@@ -11,7 +11,7 @@ return {
       end,
       formatters_by_ft = {
         ruby = { 'rubocop' },
-        html = { 'htmlbeautifier' },
+        eruby = { 'htmlbeautifier' },
       },
     })
   end,

@@ -31,7 +31,7 @@
     :'<,'>norm A;                      " Append ; to visual block. i.o. Execute Normal mode commands
     :'<,'>sort                         " Sort visual block. Can commbined with `uniq -c` etc.
     zc                                 " Folding, nice in combination with `vat`
-    o                                  " In visual mode jump to other side of visual selection, with capital O jump visual block
+    o                                  " In visual mode jump to other side of visual selection, nice to narrow your selection
     ~                                  " Switch case on selected, lower to upper or upper to lower case
     =                                  " Auto ident
 
