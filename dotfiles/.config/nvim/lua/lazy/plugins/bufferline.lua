@@ -4,12 +4,20 @@ return {
   version = "*",
   opts = {
     options = {
-      numbers = 'buffer_id',
-      indicator = {
-        style = 'underline',
-      },
+      -- max_name_length = 18,
+      -- max_prefix_length = 15,
+      truncate_names = false,
       buffer_close_icon = false,
-      modified_icon = '!'
+      modified_icon = '!',
+      offsets = {
+        {
+          filetype = "NvimTree",
+          text = "File Explorer",
+          highlight = "Directory",
+          separator = true,
+          text_align = "left",
+        },
+      },
     },
   },
 }

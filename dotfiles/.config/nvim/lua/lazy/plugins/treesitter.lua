@@ -1,6 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  -- enabled = false, -- temporarily disabled
+  -- enabled = false,
   event = { "BufReadPre", "BufNewFile" },
   build = ":TSUpdate",
   dependencies = {

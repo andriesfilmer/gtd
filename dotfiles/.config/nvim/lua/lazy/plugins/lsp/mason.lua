@@ -32,7 +32,7 @@ return {
         "tsserver",
         "ruby_lsp",
         "rubocop",
-        -- "solargraph",   -- Also too many errors for me
+        -- "solargraph",   -- Too many errors for me
         -- "sorbet",       -- https://sorbet.org/ - gem install sorbet
         -- "standardrb",   -- https://github.com/standardrb/standard - gem "standard"
         -- "steep",        -- https://github.com/soutaro/steep - You need Steepfile to make it work

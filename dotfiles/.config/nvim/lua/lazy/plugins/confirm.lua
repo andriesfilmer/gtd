@@ -1,5 +1,7 @@
 return {
   'stevearc/conform.nvim',
+  -- enabled = false,
+  event = { "BufReadPre", "BufNewFile" },
   config = function()
     require("conform").setup({
       format_on_save = function(bufnr)
@@ -10,8 +12,10 @@ return {
         return { timeout_ms = 5000, lsp_fallback = true }
       end,
       formatters_by_ft = {
+        javascript = { 'prettier' },
         ruby = { 'rubocop' },
         eruby = { 'htmlbeautifier' },
+        lua = { 'stylua' },
       },
     })
   end,

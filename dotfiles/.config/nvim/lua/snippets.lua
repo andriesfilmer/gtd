@@ -22,6 +22,6 @@ ls.add_snippets(
 
 ls.add_snippets(
   "javascript", {
-    s("consl", { t('console.log("'), i(1), t('")') }),
+    s("consl", { t('console.log("##### '), i(1), t(': " + '), rep(1), t(');') }),
   }
 )

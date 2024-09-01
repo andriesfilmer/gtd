@@ -27,7 +27,8 @@ return {
         custom = { ".DS_Store" },
       },
       git = {
-        ignore = false,
+        show_on_dirs = false,
+        show_on_open_dirs = true, -- show on files
       },
     })
 

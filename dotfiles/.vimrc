@@ -1,7 +1,6 @@
 filetype plugin indent on
 syntax on
 
-set colorcolumn=80,120                    " Show vertical bar to indicate 80/120 chars
 set encoding=utf-8
 set expandtab                             " On pressing tab, insert spaces no tabs (»·)
 set foldmethod=syntax                     " Folds are defined by syntax highlighting
@@ -22,12 +21,12 @@ set shiftround                                 " Indentation: When at 3 spaces, 
 set shiftwidth=2                               " when indenting with '>', use 2 spaces width
 set showmatch                                  " show bracket matches
 set tabstop=4                                  " tab with 4 spaces width
-set timeoutlen=300 ttimeoutlen=300             " Prefent delay after pressing ESC (switching to normal mode)
 set updatetime=1000                            " vim-gitgutter, vim-signify, default value is 4000
 set wildmenu                                   " Show tab completions in statusline
 set wildmode=list:full                         " Command mode tab completion - complete upto ambiguity
 
 " Mostly not needed
+"set colorcolumn=80,120                         " Show vertical bar to indicate 80/120 chars
 "set belloff=all                                " Disable beep
 "set cursorcolumn                               " highlight column line. Is slower :-(
 "set directory=~/.tmp                           " Don't clutter my dirs with swp/tmp files
@@ -55,7 +54,7 @@ highlight ColorColumn ctermbg=236
 let mapleader = "\<Space>"                      " Set leader to space
 
 nnoremap <CR> :noh<CR><CR>                      " unsets last search pattern hitting return
-nmap <C-n> :Lex 30<CR>                          " Open netrw Directory Listing
+nmap <leader>ee :Lex 30<CR>                     " Toggle netrw Directory Listing
 
 nmap <C-Up> :wincmd k<CR>                       " Arrow keys, Alt+leftarrow will go one window left, etc.
 nmap <C-Down> :wincmd j<CR>
@@ -69,7 +68,7 @@ nmap <A-right> :vertical resize +2<CR>
 
 nmap <tab> :bnext<CR>                           " Cycle trough buffers
 nmap <S-tab> :bprevious<CR>
-nmap <C-w> :bd<CR>                              " Close buffer
+nmap <A-w> :bdelete<CR>                         " Close buffer
 
 nmap <leader>n :set nu!<CR>                     " Toggle linenumbers
 nmap <leader>r :set rnu!<CR>                    " Toggle relativenumbers
