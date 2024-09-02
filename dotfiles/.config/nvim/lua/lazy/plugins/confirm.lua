@@ -1,8 +1,12 @@
 return {
   'stevearc/conform.nvim',
-  -- enabled = false,
+  enabled = false,
   event = { "BufReadPre", "BufNewFile" },
   config = function()
+
+    -- Disable formatiing with confirm by default
+    vim.g.disable_autoformat = true
+
     require("conform").setup({
       format_on_save = function(bufnr)
         -- Disable with a global or buffer-local variable

@@ -61,8 +61,8 @@
 ## Registers
     :reg                               " See registers
     "ay                                " Yank selected text in register 'a'
-    "ap                                " Past selected text form register 'a'
-    ctrl-ra                            " Past register a (in insert mode)
+    "ap                                " Past selected text from register 'a'
+    ctrl-r a                           " Past register a (in insert mode)
 
 ## Completions (insert mode)
     Ctrl-p                             " Completion for all (back) words from this file, other open files and registers.

@@ -22,34 +22,34 @@ map("n", "<space><Left>", ":tabnext<cr>", { desc = "Tab next" })
 map("n", "<space><Right>", ":tabprevious<cr>", { desc = "Tab previous" })
 
 -- Formats
-map("n", "<space>fb", "gg=G<cr>", { desc = "[f]ormat [b]uffer" })
+map("n", "<space>fb", "gg=G<cr>", { desc = "[f]ormat [b]uffer vim style" })
 map("n", "<space>fp", "=ap<cr>", { desc = "[f]ormat [p]aragraph" })
+map("n", "<space>fc", ":lua vim.lsp.buf.format()<cr>", { desc = "[f]ormat [c]onfirm plugin" })
 
 -- Show/hide columns
 map("n", "<space>nh", ":set hlsearch!<cr>", { desc = "[n]o [h]ighlite search" })
-map('n', '<space>nn', ":set number!<cr>", { desc = "[n]o [n]umbers" })
-map('n', '<space>nr', ":set relativenumber!<cr>", { desc = "[n] [r]elativenumbers" })
-map('n', '<space>ns', ':lua ToggleSignColumn()<cr>', { noremap = true, silent = true, desc = " [n]o [s]igncolumn" })
+map("n", "<space>nn", ":set number!<cr>", { desc = "[n]o [n]umbers" })
+map("n", "<space>nr", ":set relativenumber!<cr>", { desc = "[n] [r]elativenumbers" })
+map("n", "<space>ns", ":lua ToggleSignColumn()<cr>", { noremap = true, silent = true, desc = " [n]o [s]igncolumn" })
 
 -- Sessions
 map("n", "<space>sr", ":source Session.vim<cr>", { desc = "[s]ession [r]estore for cwd" })
-map("n", "<space>ss", ":NvimTreeClose<cr>mksession!<cr>", { desc = "[s]ession [s]ave for cwd" })
+map("n", "<space>ss", ":NvimTreeClose<cr>:mksession!<cr>", { desc = "[s]ession [s]ave for cwd" })
 
 -- Vim config an cheatsheet
-map('n', '<space>vc', ":e ~/gtd/cheatsheets/vim.md<cr>", { desc = "[v]im [c]heatsheet" })
-map('n', '<space>vf', ":e $MYVIMRC<cr>:NvimTreeFindFile!<cr>", { desc = "n[v]im [f]iles" })
+map("n", "<space>vc", ":e ~/gtd/cheatsheets/vim.md<cr>", { desc = "[v]im [c]heatsheet" })
+map("n", "<space>vf", ":e $MYVIMRC<cr>:NvimTreeFindFile!<cr>", { desc = "n[v]im [f]iles" })
 
 -- Application related
 map("n", "<space>o", ":!xdg-open %&<cr>", { desc = "[o]pen buffer in default application" })
 
-
 -- Toggle signcolumn.
 function ToggleSignColumn()
   if vim.b.signcolumn_on == nil or vim.b.signcolumn_on == 1 then
-    vim.wo.signcolumn = 'no'
+    vim.wo.signcolumn = "no"
     vim.b.signcolumn_on = 0
   else
-    vim.wo.signcolumn = 'yes'
+    vim.wo.signcolumn = "yes"
     vim.b.signcolumn_on = 1
   end
 end

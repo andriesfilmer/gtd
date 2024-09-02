@@ -12,18 +12,16 @@ vim.opt.shiftwidth = 2
 vim.opt.shiftround = true               -- Indentation: When at 3 spaces, >> takes to 4, not 5
 vim.opt.expandtab = true                -- Use the appropriate number of spaces
 vim.opt.cursorline = true               -- Highlight current line
-vim.opt.number = true                   -- Set line numbers
 vim.opt.relativenumber = true           -- Set relative line numbers
+vim.opt.number = true                   -- Set line numbers
 vim.opt.wrap = false                    -- Wrapping on, default commented out
 vim.opt.signcolumn = "yes"              -- show sign column so that text doesn't shift
 vim.opt.splitbelow = true               -- force all horizontal splits to go below current window
 vim.opt.splitright = true               -- force all vertical splits to go to the right of current window
 vim.opt.swapfile = false                -- turn off swapfile
 
-vim.b.disable_autoformat = true         -- Disable formatiing with confirm by default
-
 -- Optional
--- vim.opt.colorcolumn = { 80, 120 }      -- Show vertical bar to indicate 80/120 chars
+-- vim.opt.colorcolumn = { 80, 120 }      -- Show vertical bars to indicate 80/120 chars
 
 -- Persistent Cursor - jump to last position when reopening file
 vim.api.nvim_create_autocmd("BufReadPost", {
