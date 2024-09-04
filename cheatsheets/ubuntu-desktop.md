@@ -2,14 +2,21 @@
 
 ## Basics
 
-    sudo apt install vim
+    sudo apt install vim nvim
     sudo apt install dconf-editor
     sudo apt install gnome-tweak-tool
 
-### gsetting
+### personal gsetting
 
-    # Simple theme settings dark and light
-    gsettings set org.gnome.desktop.interface color-scheme [default | prefer-dark | prefer-light]
+    # prefer-light theme shortcut
+    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name "'Light theme'"
+    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding "'F9'"
+    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command "'gsettings set org.gnome.desktop.interface color-scheme prefer-light'"
+
+    # prefer-dark theme shortcuts
+    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ name "'Dark theme'"
+    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ command "'gsettings set org.gnome.desktop.interface color-scheme prefer-dark'"
+    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ binding "'F10'"
 
     # Sound off when tabbing in terminal
     gsettings set org.gnome.desktop.sound event-sounds false
@@ -33,12 +40,6 @@
 
     # Set cursor size bigger from 24 -> 36 on large screen.
     gsettings set org.gnome.desktop.interface cursor-size 36
-
-    # Set terminal cursor from 'block' -> 'ibeam'. First get your profile-id
-    gsettings get org.gnome.Terminal.ProfilesList list
-    # Replace <profile-id> with your profile ID from the previous command's output:
-    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/<profile-id>/ cursor-shape 'ibeam'
-
 
 
 ### Extentions

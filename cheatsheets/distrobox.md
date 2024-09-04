@@ -53,3 +53,10 @@
     gnome-terminal --window-with-profile=Distrobox
 
 * <https://github.com/89luca89/distrobox/blob/main/docs/useful_tips.md>
+
+Or use gsettings
+
+    # replace custom4 to whatever custom keybindings you already have.
+    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/ name "'Distrobox terminal'"
+    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/ binding "'<Super>t'"
+    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/ command "'gnome-terminal --window-with-profile=Distrobox'"

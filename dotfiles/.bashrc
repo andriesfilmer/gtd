@@ -102,7 +102,7 @@ bind '"\e[1;5B"':history-substring-search-forward  # search history with substri
 
 
 backup () {
-  cp "$@" "$@".backup-`date +'%Y-%m-%m_%H:%M'`;
+  cp "$@" "$@".backup-`date +'%Y-%m-%m_%H%M'`;
 }
 
 genpasswd() {
@@ -119,7 +119,7 @@ getpasskey() {
   cd ~/dev/pim && rails search:passkeys["$1"]
 }
 
-# Versions nvim - Switching Configs with `vv`
+# Experiment with nvim configs
 vv() {
   select config in nvim lazyvim kickstart nvchad josean
   do NVIM_APPNAME=$config nvim $@; break; done
@@ -151,6 +151,10 @@ alias railss="cd ~/dev/inzetrooster-app/ && rails s"
 
 # nvim with myconfig, symbolic link to ~/gtd/dotfiles/.config/nvim
 alias nv='NVIM_APPNAME=nvim nvim'
+
+# Open projects
+alias pim='cd ~/dev/pim/ && gnome-terminal --title="Rails server" --geometry=190x225+3600+0 -- rails s && gnome-terminal --title=Neovim --geometry=190x225+1700+0 -- nvim && exit'
+alias inzetrooster='cd ~/dev/inzetrooster-app/ && gnome-terminal --title="Rails server" --geometry=190x225+3600+0 -- rails s && gnome-terminal --title=Neovim --geometry=190x225+1700+0 -- nvim && exit'
 
 #export ANDROID_HOME=/home/andries/Android/Sdk/
 #PATH=$PATH:/home/andries/Android/Sdk/
