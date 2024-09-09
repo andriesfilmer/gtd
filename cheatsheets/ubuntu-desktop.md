@@ -6,7 +6,13 @@
     sudo apt install dconf-editor
     sudo apt install gnome-tweak-tool
 
-### personal gsetting
+## Nice applications to install
+* [Qownnotes](https://snapcraft.io/qownnotes) | Markdown editer and viewer
+* [Foliate](https://snapcraft.io/foliate) | E-book reader
+* [SweetHome3D](https://snapcraft.io/install/sweethome3d-homedesign/ubuntu) | Draw house plans
+
+
+## Personal gsetting
 
     # prefer-light theme shortcut
     gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name "'Light theme'"
@@ -42,7 +48,7 @@
     gsettings set org.gnome.desktop.interface cursor-size 36
 
 
-### Extentions
+## Gnome Extentions
 
 I like [gTile extention](https://extensions.gnome.org/extension/28/gtile/) adjusted the  `Resize presets` for `Super+Alt+[KP_1..KP_9]` for my monitor with 5120x1440 resolution.
 
@@ -53,6 +59,13 @@ I like [gTile extention](https://extensions.gnome.org/extension/28/gtile/) adjus
 User-defined shortcuts does not work after upgrade
 
     dconf dump /org/gnome/shell/extensions/gtile/ | perl -p -e "s/(\d+):(\d+)/(\$1+1).':'.(\$2+1)/ge" | dconf load /org/gnome/shell/extensions/gtile/
+
+## Nvidia drivers
+
+Detect the model of your nvidia graphic card and the recommended driver.
+
+    ubuntu-drivers devices
+
 
 ## How to reset lost root password (single usermode)
 
@@ -68,53 +81,9 @@ On Ubuntu 18.04 Bionic Beaver Linux
 * Reboot your system: `exec /sbin/init`
 
 
-## Scanner not found
+## Some know-abouts
 
-LAN-based scanners - The scanner is connected directly to the network without any intermediary computer.
-
-HP All-in-One devices
-
-    sudo apt-get install hplip
-
-Run the hp-setup wizard which installs printer, scanner, and any other features.
-
-    sudo hp-setup
-
-For Connection Type choose "Network/Ethernet..."
-
-If the device is not detected, click "Show advanced options", tick "Manual discovery" and supply the scanner's IP address.
-
-Check the scanner is now recognized:
-
-    scanimage -L
-
-
-## Nvidia drivers
-
-Detect the model of your nvidia graphic card and the recommended driver.
-
-    ubuntu-drivers devices
-
-
-## Display scalling (X)
-
-Via de algemene instellingen kan je het voor het hele systeem aanpassen via:
-
-Settings -> Display: Scale for menu and title bars: 1.25
-
-### Firefox
-
-For firefox type in the address `about:config`.
-
-    set layout.css.devPixelsPerPx: 1.25
-
-### Thunderbird
-
-For Thunderbird go to: Prefrences -> Advanced -> Config Editor:
-
-    set layout.css.devPixelsPerPx: 1.25
-
-### Opening applications on startup
+### Opening applications on position on startup
 
 Example: Reset Thunderbird position on startup
 
@@ -123,8 +92,4 @@ Example: Reset Thunderbird position on startup
 ## Webcam zoom
 
     v4l2-ctl -d /dev/video0 -c zoom_absolute=200
-
-
-## Nice applications to install
-* Foliate | e-book reader
 

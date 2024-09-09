@@ -97,8 +97,8 @@ Option 1
     :argdo %s/pattern/replace/gce | update " Confirm updates in recursieve files
 
 Option 2
-    :vimgrep /pattern/ `find . -type f`" Set all files in quickfix list. Use `copen` to see the matches.
-    :cdo %s/pattern/replace/gc         " Change all matches with a confirm.
+    :vimgrep pattern `find path -type f`   " Set all files in quickfix list. Use `copen` to see the matches.
+    :cdo %s/pattern/replace/gc             " Change all matches with a confirm.
 
 ## Moving Viewport
     zz                                 " Set viewport in center

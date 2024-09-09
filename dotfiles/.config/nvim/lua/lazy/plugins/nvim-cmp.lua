@@ -33,13 +33,14 @@ return {
         end,
       },
       mapping = cmp.mapping.preset.insert({
-        ["<C-Space>"] = cmp.mapping.complete(),             -- show completion suggestions
+        ["<C-leader>"] = cmp.mapping.complete(),             -- show completion suggestions
         ["<C-k>"] = cmp.mapping.select_prev_item(),         -- go suggestion up
         ["<C-j>"] = cmp.mapping.select_next_item(),         -- go suggestion down
         ["<C-y>"] = cmp.mapping.confirm({ select = true }), -- Except [y]es
       }),
       -- sources for autocompletion
       sources = cmp.config.sources({
+        { name = "vim-dadbod-completion" },
         { name = "nvim_lsp" },
         { name = "luasnip" },                     -- snippets
         { name = "buffer",  keyword_length = 3 }, -- text within current buffer
@@ -49,3 +50,4 @@ return {
     })
   end,
 }
+

@@ -47,6 +47,16 @@ Default Ruby Web Server
 
 * [Puma systemd](https://github.com/puma/puma/blob/master/docs/systemd.md)
 
+## Rubocop
+
+    gem install rubocop
+
+rubocop.yml
+
+    * <https://docs.rubocop.org/rubocop/cops.html>
+    * <https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/>
+
+
 ## Mail testing
 
 Non delevery to real mailaddresses:

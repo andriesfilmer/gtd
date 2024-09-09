@@ -1,6 +1,3 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 
 vim.opt.mouse = ''                      -- Don't use mouse
 vim.opt.clipboard:append("unnamedplus") -- use system clipboard as default register

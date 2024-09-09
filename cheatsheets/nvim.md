@@ -22,18 +22,20 @@ JetBrainsMono Nerd Font ?
 
 ## [my nvim](https://github.com/andriesfilmer/gtd/tree/master/dotfiles/.config/nvim)
 
-### Nice Plugins
+### My Plugins
 
 * [nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) |  File Explorer For Neovim
 * [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Basic functionality off current buffer
 * [neovim/nvim-lspconfig](neovim/nvim-lspconfig) | Installing language servers
 * [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim) | Package manager for LSP servers, DAP servers, linters, and formatters
-* [stevearc/conform.nvim](https://github.com/stevearc/conform.nvim) | Powerful formatter from different sources
 * [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) | Highly extendable fuzzy finder
 * [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) | A completion engine
-* [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) | Git signs for added, removed, and changed lines
 * [folke/which-key.nvim](https://github.com/folke/which-key.nvim) | Helps you remember your Neovim keymaps
+* [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) | Git signs for added, removed, and changed lines
+* [stevearc/conform.nvim](https://github.com/stevearc/conform.nvim) | Powerful formatter from different sources
 * [mbbill/undotree](https://github.com/mbbill/undotree) | Visualizes undo history and browse between different undo branches.
+* [tpope/vim-dadbod](https://github.com/tpope/vim-dadbod) | Plugin for interacting with databases
+* [tpope/vim-rails](https://github.com/tpope/vim-rails) | Plugin for editing Ruby on Rails applications.
 
 ## Plugins notes
 
@@ -57,6 +59,7 @@ Nice keymap for increment selection to named node.
 ### stevearc/conform.nvim
 
     :ConfirmInfo
+    :Format                       -- created user command in confirm.lua
     :FormatEnable                 -- created user command in confirm.lua
     :FormatDisable                -- created user command in confirm.lua
 
@@ -67,6 +70,18 @@ Scope your directories
     :Telescope find_files search_dirs=[".", "/config"]
     :Telescope live_grep search_dirs=["./config"]
     :Telescope diagnostics -- Find errors
+
+### tpope/vim-dadbod
+
+Sql plugin. Example connection:
+
+    mysql://root:my_password%3F@localhost/database_name
+
+
+In combination with `kristijanhusak/vim-dadbod-ui` to save connections and queries for later use.
+
+    :DBUI  " Press ? for help. For example go to the right pane and  save the currently opend file as saved queries with `<Leader>W`
+
 
 ### Language Servers
 

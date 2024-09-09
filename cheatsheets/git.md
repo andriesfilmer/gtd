@@ -1,10 +1,3 @@
-## Learn Github
-
-* [Github bootcamp](https://help.github.com/categories/54/articles)
-* [Got 15 minutes and want to learn Git?](http://try.github.io/levels/1/challenges/1) Very good!
-* [Git in 5 minutes](http://classic.scottr.org/presentations/git-in-5-minutes)
-* [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
-* [How to undo almost anything with git](https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/)
 
 ## Create a new repository on the command line
 Create a new repository online: [https://github.com/andriesfilmer](https://github.com/andriesfilmer) -> Repositories -> New
@@ -26,42 +19,34 @@ Clone or copy a repository (which already exists).
     git pull orgin master
 
 ## Branches
-
     git branch           # Show branches
     git branch issue53   # Create branch 'issue53'
     git checkout issue53 # Work with branch 'issue53'
 
 Fix issue53 and commit the fix.
-
     git commit -am 'Fixed issue53'
     git push -u origin issue53 # Push to remote
 
 Back to master branch
-
     git checkout master  # Switched to branch 'master'
 
 Diff between branches
-
     git diff HEAD..origin/master [path]
 
 Merge a branch
-
     git checkout master
     git merge issue53
 
 Remove branch
-
     git branch --delete issue53        # Remove local branch
     git push origin --delete issue49   # Delete old (stale) branch on remote.
 
 Get rid of remote branches that no longer exist on the remote
-
     git fetch --prune
 
 ## Stash
 
 Stash (save current state) a working branch (issue54)
-
     git stash                  # Saved workingbranchi (issue54) with state WIP, use option -u for untracked files.
     git checkout issue53       # Work in otherbranch and commit you changes.
     git checkout issue54
@@ -72,10 +57,9 @@ Stash (save current state) a working branch (issue54)
 ## Tips
 
 See recent changes of a specific file.
-
-   git blame /path/to/file
-   git reflog /path/to/file
-   git log /path/to/file
+    git blame /path/to/file
+    git reflog /path/to/file
+    git log /path/to/file
 
 Check with find
 
@@ -103,19 +87,29 @@ To reset a specific file to the last-committed state (to discard uncommitted cha
 
     git checkout thefiletoreset.txt
 
-To reset last commit. This leaves your working tree (the state of your files on disk) unchanged and you'll need to add them again before committing.
+To reset to last commit state. Run multiple times to go back further back in time.
 
     git reset HEAD~
+
+Run `git reflog` to jump back and forwards in time, for example:
+
+    get reset dfd69a56
 
 Delete all files in the working copy (but not the .git/ folder!) which leaves it with only committed files.
 
     git reset --hard
 
-Remove untracked files, including directories (-d) and files ignored by git (-x). Replace the -f argument with -n to perform a dry-run and it will tell you what will be removed.
+Remove untracked files, including directories (-d) and files ignored by git (-x).
+Replace the -f argument with -n to perform a dry-run and it will tell you what will be removed.
 
+    git clean -d -x -n     # dry-run
     git clean -d -x -f
 
 More tips: <https://stackoverflow.com/questions/927358/how-do-i-undo-the-last-commits-in-git>
+
+## Git revert vs. reset
+
+When you git revert a commit, only the changes associated with that commit are undone.
 
 ## Ignoring files
 
@@ -144,3 +138,11 @@ git submodule add -f https://github.com/google/vim-searchindex.git ~/gtd/dotfile
 
 ## Live preview from github
 * [htmlpreview.github.io](http://htmlpreview.github.io/)
+
+## Learn Github
+
+* [Github bootcamp](https://help.github.com/categories/54/articles)
+* [Got 15 minutes and want to learn Git?](http://try.github.io/levels/1/challenges/1) Very good!
+* [Git in 5 minutes](http://classic.scottr.org/presentations/git-in-5-minutes)
+* [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
+* [How to undo almost anything with git](https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/)
