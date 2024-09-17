@@ -52,11 +52,19 @@
 
 I like [gTile extention](https://extensions.gnome.org/extension/28/gtile/) adjusted the  `Resize presets` for `Super+Alt+[KP_1..KP_9]` for my monitor with 5120x1440 resolution.
 
-* Preset resize 4: `3x1 0:0 0:0,0:0 1:0`
-* Preset resize 5: `3x1 1:0 1:0,0:0 2:0`
-* Preset resize 6: `3x1 2:0 2:0,1:0 2:0`
+Presets have a format of "[grid size] [top left coordinate]:[bottom right coordinate]".
 
-User-defined shortcuts does not work after upgrade
+* Preset resize 1: `3x2 1:2 1:2, 1:2 2:2`
+* Preset resize 2: `3x2 2:2 2:2, 1:2 3:2`
+* Preset resize 3: `3x2 3:2 3:2, 2:2 3:3`
+* Preset resize 4: `3x1 1:1 1:1,1:1 2:1`
+* Preset resize 5: `3x1 2:1 2:1,1:1 3:1`
+* Preset resize 6: `3x1 3:1 3:1,2:1 3:1`
+* Preset resize 7: `3x2 1:1 1:1, 1:1 2:1`
+* Preset resize 8: `3x2 2:1 2:1, 1:1 3:1`
+* Preset resize 9: `3x2 3:1 3:1 2:1 3:1`
+
+Testing for importing shortcuts after upgrade, i.o. update 1:1 -> 2:2
 
     dconf dump /org/gnome/shell/extensions/gtile/ | perl -p -e "s/(\d+):(\d+)/(\$1+1).':'.(\$2+1)/ge" | dconf load /org/gnome/shell/extensions/gtile/
 

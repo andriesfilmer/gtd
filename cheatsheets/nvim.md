@@ -32,10 +32,14 @@ JetBrainsMono Nerd Font ?
 * [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) | A completion engine
 * [folke/which-key.nvim](https://github.com/folke/which-key.nvim) | Helps you remember your Neovim keymaps
 * [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) | Git signs for added, removed, and changed lines
+* [NeogitOrg/neogit](https://github.com/NeogitOrg/neogit) | A git interface inspired by Magit.
 * [stevearc/conform.nvim](https://github.com/stevearc/conform.nvim) | Powerful formatter from different sources
 * [mbbill/undotree](https://github.com/mbbill/undotree) | Visualizes undo history and browse between different undo branches.
 * [tpope/vim-dadbod](https://github.com/tpope/vim-dadbod) | Plugin for interacting with databases
-* [tpope/vim-rails](https://github.com/tpope/vim-rails) | Plugin for editing Ruby on Rails applications.
+
+## Plugins to try
+* [tpope/vim-rails](https://github.com/tpope/vim-rails) | Plugin for editing Ruby on Rails applications (if lsp disabled)
+* [ggandor/leap.nvim](https://github.com/ggandor/leap.nvim) | general-purpose motion plugin
 
 ## Plugins notes
 
@@ -69,7 +73,15 @@ Scope your directories
 
     :Telescope find_files search_dirs=[".", "/config"]
     :Telescope live_grep search_dirs=["./config"]
-    :Telescope diagnostics -- Find errors
+    :Telescope git_bcommits      -- commits for this buffer
+    :Telescope git_commits       -- commits for this repository
+    :Telescope diagnostics       -- Find errors
+
+### NeogitOrg/neogit
+
+    :Neogit
+    c                          -- commit
+    ?                          -- For available options
 
 ### tpope/vim-dadbod
 
@@ -82,14 +94,13 @@ In combination with `kristijanhusak/vim-dadbod-ui` to save connections and queri
 
     :DBUI  " Press ? for help. For example go to the right pane and  save the currently opend file as saved queries with `<Leader>W`
 
-
 ### Language Servers
 
 Ruby
 
-    gem install solargraph     # A ruby lanuage server
-    gem install ruby-lsp       # Less functions then solargraph (2024-07-30)
-    gem install rubocop        # The Ruby Linter/Formatter in combination with 'stevearc/confirm.nvim'
+    gem install solargraph     -- A ruby lanuage server
+    gem install ruby-lsp       -- Less functions then solargraph (2024-07-30)
+    gem install rubocop        -- The Ruby Linter/Formatter in combination with 'stevearc/confirm.nvim'
 
 
 ## Resources
@@ -98,3 +109,5 @@ Ruby
 * [List of resources](https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources) | Plugins etc.
 * [Youtube - How I Setup Neovim To Make It AMAZING in 2024: The Ultimate Guide](https://www.youtube.com/watch?v=6pAG3BHurdM) - Josean Martinez
 * [Youtube - Kickstart - Get Started with Neovim](https://www.youtube.com/watch?v=m8C0Cq9Uv9o) - TJ de Vries
+* [The Holy Grail of Neovim Git Integrations](https://www.youtube.com/watch?v=K-FKqXj8BAQ)
+
