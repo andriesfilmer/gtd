@@ -29,7 +29,6 @@ return {
       ensure_installed = {
         --"html",
         "cssls",
-        "tsserver",
         "ruby_lsp",
         "rubocop",
         -- "solargraph",   -- Too many errors for me

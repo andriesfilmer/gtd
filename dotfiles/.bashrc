@@ -154,7 +154,8 @@ alias nv='NVIM_APPNAME=nvim nvim'
 
 # Open projects
 alias pim='cd ~/dev/pim/ && gnome-terminal --title="Rails server" --geometry=190x225+3600+0 -- rails s && gnome-terminal --title=Neovim --geometry=190x225+1700+0 -- nvim && exit'
-alias inzetrooster='cd ~/dev/inzetrooster-app/ && gnome-terminal --title="Rails server" --geometry=190x225+3600+0 -- rails s && gnome-terminal --title=Neovim --geometry=190x225+1700+0 -- nvim && exit'
+#alias inzetrooster='cd ~/dev/inzetrooster-app/ && gnome-terminal --title="Rails server" --geometry=190x225+3600+0 -- rails s && gnome-terminal --title=Neovim --geometry=190x225+1700+0 -- nvim && exit'
+alias inzetrooster='cd ~/dev/inzetrooster-app/ && gnome-terminal --title="Rails server" --geometry=190x225+3600+0 -- rails s && gnome-terminal --title=Neovim --geometry=190x225+1700+0 -- nvim'
 
 #export ANDROID_HOME=/home/andries/Android/Sdk/
 #PATH=$PATH:/home/andries/Android/Sdk/

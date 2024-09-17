@@ -1,5 +1,6 @@
 return {
   "hrsh7th/nvim-cmp",
+  -- enabled = false,
   event = "InsertEnter",
   dependencies = {
     "hrsh7th/cmp-buffer",   -- source for text in buffer
@@ -40,11 +41,11 @@ return {
       }),
       -- sources for autocompletion
       sources = cmp.config.sources({
-        { name = "vim-dadbod-completion" },
         { name = "nvim_lsp" },
         { name = "luasnip" },                     -- snippets
         { name = "buffer",  keyword_length = 3 }, -- text within current buffer
         { name = "path" },                        -- file system paths
+        { name = "vim-dadbod-completion" },
       }),
 
     })
