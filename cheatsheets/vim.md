@@ -12,9 +12,6 @@
     .                                  " repeat last writes
     *                                  " Goto next word under cursor
     #                                  " Goto previeus word under cursor
-    ctrl-o                             " Jump to older position
-    ctrl-i                             " Jump to newer position
-    ctr]                               " Goto tag in buffers (ctr-o) to go back.
     %                                  " Commands such as %, [(, [{, ][, and [] navigation between brackets.
     cit                                " Change In-to tag
     ci"                                " Change In-to "
@@ -47,13 +44,16 @@
     m{a-z}                             " Mark position as {a-z} E.g. ma
     '{a-z}                             " Move to mark position {a-z} E.g. 'a
     ''                                 " Move to mark previous position
-    :ju                                " Show list of postions you jumpeds, alias for :jumps
     ctrl-^                             " Jump between last edit file line"
     ctrl-o                             " Press twice and go to back last edit file and line(s)"
+    ctrl-i                             " jump to newer position
+    ctr]                               " goto tag in buffers (ctr-o) to go back.
+    :ju                                " show list of postions you :jumps, `5 ctrl-o` to jump to jump nr  gg g     2  gg g     2 5.
 
 ## Windows
     :sp                                " split window horizontal
     :vs                                " split window vertical
+    :q
     :set scb crb cul                   " scrollbind, cursorbind, cursorline to compare two files on same line with scroll in :vs
     :h ctrl-w                          " options to resize windows
     :only                              " Keep only the current window

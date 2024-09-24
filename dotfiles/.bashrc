@@ -145,17 +145,10 @@ alias gitlog="git log --branches --not --remotes"
 alias gitdiff="git difftool --tool=vimdiff"
 #alias adb="~/Android/Sdk/platform-tools/adb"
 
-# Open inzetrooster project with nvchad
-alias cdnv="cd ~/dev/inzetrooster-app/ && nvchad"
-alias railss="cd ~/dev/inzetrooster-app/ && rails s"
-
-# nvim with myconfig, symbolic link to ~/gtd/dotfiles/.config/nvim
-alias nv='NVIM_APPNAME=nvim nvim'
-
 # Open projects
-alias pim='cd ~/dev/pim/ && gnome-terminal --title="Rails server" --geometry=190x225+3600+0 -- rails s && gnome-terminal --title=Neovim --geometry=190x225+1700+0 -- nvim && exit'
-#alias inzetrooster='cd ~/dev/inzetrooster-app/ && gnome-terminal --title="Rails server" --geometry=190x225+3600+0 -- rails s && gnome-terminal --title=Neovim --geometry=190x225+1700+0 -- nvim && exit'
-alias inzetrooster='cd ~/dev/inzetrooster-app/ && gnome-terminal --title="Rails server" --geometry=190x225+3600+0 -- rails s && gnome-terminal --title=Neovim --geometry=190x225+1700+0 -- nvim'
+alias pim='cd ~/dev/pim/ && xdotool key Super_L+ctrl+KP_4 && gnome-terminal --title="PIM server" --geometry=190x225+3600+0 -- rails s && gnome-terminal --title=Neovim --geometry=190x225+1700+0 -- nvim'
+#alias inzetrooster='cd ~/dev/inzetrooster-app/ && xdotool key Super_L+ctrl+KP_4 && gnome-terminal --title="Rails server" -- rails s && xdotool key Super_L+ctrl+KP_6 && gnome-terminal --title=Neovim -- nvim && xdotool key Super_L+ctrl+KP_5'
+alias inzetrooster='cd ~/dev/inzetrooster-app/ && xdotool key Super_L+ctrl+KP_4 && gnome-terminal --title="Rails server" --geometry=185x230+3635+0 -- rails s && gnome-terminal --title=Neovim --geometry=185x227+1750+0 -- nvim'
 
 #export ANDROID_HOME=/home/andries/Android/Sdk/
 #PATH=$PATH:/home/andries/Android/Sdk/

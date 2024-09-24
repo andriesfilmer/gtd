@@ -8,6 +8,7 @@ return {
       -- max_prefix_length = 15,
       truncate_names = false,
       buffer_close_icon = false,
+      show_buffer_icons = false,
       modified_icon = '!',
       offsets = {
         {
