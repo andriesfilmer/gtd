@@ -146,7 +146,7 @@ alias gitdiff="git difftool --tool=vimdiff"
 #alias adb="~/Android/Sdk/platform-tools/adb"
 
 # Open projects
-alias pim='cd ~/dev/pim/ && xdotool key Super_L+ctrl+KP_4 && gnome-terminal --title="PIM server" --geometry=190x225+3600+0 -- rails s && gnome-terminal --title=Neovim --geometry=190x225+1700+0 -- nvim'
+alias pim='cd ~/dev/pim/ && xdotool key Super_L+ctrl+KP_4 && gnome-terminal --title="PIM server" --geometry=185x230+3635+0 -- rails s && gnome-terminal --title=Neovim --geometry=185x227+1750+0 -- nvim'
 #alias inzetrooster='cd ~/dev/inzetrooster-app/ && xdotool key Super_L+ctrl+KP_4 && gnome-terminal --title="Rails server" -- rails s && xdotool key Super_L+ctrl+KP_6 && gnome-terminal --title=Neovim -- nvim && xdotool key Super_L+ctrl+KP_5'
 alias inzetrooster='cd ~/dev/inzetrooster-app/ && xdotool key Super_L+ctrl+KP_4 && gnome-terminal --title="Rails server" --geometry=185x230+3635+0 -- rails s && gnome-terminal --title=Neovim --geometry=185x227+1750+0 -- nvim'
 

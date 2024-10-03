@@ -106,10 +106,11 @@ Option 2
     zb                                 " Set viewport in bottom
 
 ## Sessions
-    :mks                               " Save your session in current dir (default: `session.vim`)
+    :mks                               " Save your session in current dir (default: `Session.vim`)
     vim -S                             " Start with your saved session in current dir
     vim mks! .session-lang.vim         " Save session to `.session.lang.vim` file
     vim -S .session-lang.vim           " Start with your a session
+    :source Session.vim                " Load stored session if vim already open.
 
 ## Changes
     :changes                           " Show the list of changes

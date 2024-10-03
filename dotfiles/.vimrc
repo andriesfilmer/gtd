@@ -66,6 +66,8 @@ nmap <A-down> :resize +2<CR>
 nmap <A-left> :vertical resize -2<CR>
 nmap <A-right> :vertical resize +2<CR>
 
+" Buffers
+nmap <leader>b :buffers<cr>
 nmap <tab> :bnext<CR>                           " Cycle trough buffers
 nmap <S-tab> :bprevious<CR>
 nmap <A-w> :bdelete<CR>                         " Close buffer
@@ -73,13 +75,18 @@ nmap <A-w> :bdelete<CR>                         " Close buffer
 nmap <leader>n :set nu!<CR>                     " Toggle linenumbers
 nmap <leader>r :set rnu!<CR>                    " Toggle relativenumbers
 
+" Save and restore session
+nmap <leader>ss :mksession!<cr>
+nmap <leader>sr :source Session.vim<cr>         "[s]ession [r]estore for cwd
 
-nmap <leader><F3> :e $MYVIMRC<CR>
-nmap <leader><F4> :e ~/gtd/cheatsheets/vim.md<CR>
+" Vim custom mappings
+nmap <leader>vf :e $MYVIMRC<CR>
+nmap <leader>vc :e ~/gtd/cheatsheets/vim.md<CR>
+
+nmap <leader>vg :vimgrep /pattern/g app/**/*
 
 nmap <C-F9> :set background=light<CR>
 nmap <C-F10> :set background=dark<CR>
-
 
 "------------------------------------------------------------------------------
 " Statusbar
