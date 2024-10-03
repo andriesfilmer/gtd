@@ -20,14 +20,14 @@ return {
 
     local config = require("which-key")
     config.add({
-      { "<leader>b", group = " [b]ufferline" },
-      { "<leader>e", group = " [e]xplorer" },
-      { "<leader>f", group = " [f]ormat keys" },
-      { "<leader>n", group = " [n]umber & sign column keys" },
-      { "<leader>s", group = " [s]ession keys" },
-      { "<leader>g", group = " [g]it keys" },
-      { "<leader>t", group = " [t]elescope keys" },
-      { "<leader>v", group = " n[v]im config keys" },
+      -- { "<leader>b", group = " [b]ufferline" },
+      { "<leader>e", group = "[e]xplorer" },
+      { "<leader>f", group = "[f]ormat keys" },
+      { "<leader>n", group = "[n]umber & sign column keys" },
+      -- { "<leader>s", group = "[s]ession keys" },
+      { "<leader>g", group = "[g]it keys" },
+      { "<leader>t", group = "[t]elescope keys" },
+      { "<leader>v", group = "n[v]im config keys" },
     })
   end,
 }

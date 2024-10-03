@@ -17,6 +17,7 @@ map("n", "<A-Left>", ":vertical resize -2<cr>", { desc = "Resize window left" })
 map("n", "<A-Right>", ":vertical resize +2<cr>", { desc = "Resize window right" })
 
 -- Buffers and tabs
+map("n", "<leader>b", ":buffers<cr>", { desc = "Buffers" })
 map("n", "<Tab>", ":bnext<cr>", { desc = "Buffer next" })
 map("n", "<S-Tab>", ":bprevious<cr>", { desc = "Buffer previous" })
 map("n", "<A-w>", ":NvimTreeClose<cr>:bdelete<cr>", { desc = "Buffer delete" })

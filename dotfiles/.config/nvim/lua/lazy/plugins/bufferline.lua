@@ -1,26 +1,29 @@
 return {
   {
     'akinsho/bufferline.nvim',
+    enabled = false,
     version = 'v4.*',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('bufferline').setup {
         options = {
+          separator_style = 'thin',
           truncate_names = false,
+          -- tab_size = 8,
           mode = 'buffers',
           numbers = "none",
           diagnostics = 'nvim_lsp',
-          show_buffer_icons = true,
+          show_buffer_icons = false,
           show_buffer_close_icons = false,
           show_close_icon = false,
           always_show_bufferline = true,
-          enforce_regular_tabs = true,
+          -- enforce_regular_tabs = true,
           offsets = {
             {
               filetype = "NvimTree",
               text = "File Explorer",
               highlight = "Directory",
-              text_align = "left"
+              text_align = "left",
             }
           },
           groups = {
@@ -39,6 +42,7 @@ return {
               {
                 name = "Ruby",
                 highlight = { sp = "DarkMagenta" },
+                icon = '',
                 matcher = function(buf)
                   return buf.name:match('%.rb') or buf.name:match('%.rake')
                 end,
@@ -59,7 +63,29 @@ return {
               },
             },
           },
-        }
+        },
+        highlights = {
+          buffer_selected = {
+            fg = 'White',
+            bg = 'Green',
+          },
+          modified = {
+            fg = 'Red',
+            bg = 'Black',
+          },
+          modified_visible = {
+            fg = 'Red',
+            bg = 'LightGrey',
+          },
+          modified_selected = {
+            fg = 'Red',
+            bg = 'Green',
+          },
+          separator = {
+            fg = "LightGrey",
+            bg = "Black",
+          },
+        },
       }
       local map = vim.api.nvim_set_keymap
       map('n', '<leader>bt', ':BufferLineGroupToggle', { desc = 'Toggle group'})
