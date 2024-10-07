@@ -1,0 +1,63 @@
+matches:
+  # Simple text replacement
+  - trigger: "Als je verder "
+    replace: "Als je verder nog vragen hebt dan hoor ik het graag."
+
+  - trigger: "Ik hoop "
+    replace: "Ik hoop dat het duidelijk is anders hoor ik het graag."
+
+  - trigger: "Mocht je "
+    replace: "Mocht je nog vragen hebben dan hoor ik het graag."
+
+  # Print the current date
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%Y-%d-%m"
+
+  # Print the output of a shell command
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+  - trigger: ":quote"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: choice
+        params:
+          values:
+            - "Every moment is a fresh beginning."
+            - "Everything you can imagine is real."
+            - "Whatever you do, do it well."
+
+#  - trigger: ":a"
+#    replace: "<a href='{{clipb}}' />$|$</a>"
+#    vars:
+#      - name: "clipb"
+#        type: "clipboard"
+#
+#  - trigger: ":file"
+#    replace: "{{form1.file}}"
+#    vars:
+#      - name: files
+#        type: shell
+#        params:
+#          cmd: "find ~/Syncthing/Andries/Documents/ -maxdepth 1"
+#      - name: form1
+#        type: form
+#        params:
+#          layout: |
+#            Select file:
+#            [[file]]
+#          fields:
+#            file:
+#              type: list
+#              values: "{{files}}"
