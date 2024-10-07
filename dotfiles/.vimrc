@@ -13,7 +13,7 @@ set list listchars=tab:»·,trail:·              " Make tabs visual: ».......
 set nocompatible                               " don't need to be compatible with old vim
 set nofoldenable                               " Dont fold by default
 set nowrap                                     " Default is wrap
-set number                                     " Set line numbers, default commented out
+set relativenumber                             " Set relative line numbers
 set cursorline                                 " highlight current line. Is slower :-(
 set omnifunc=syntaxcomplete#Complete           " Omni completion provides smart autocompletion for programs
 set paste                                      " Distinguish between typed text and pasted text in terminal
@@ -80,9 +80,9 @@ nmap <leader>ss :mksession!<cr>
 nmap <leader>sr :source Session.vim<cr>         "[s]ession [r]estore for cwd
 
 " Vim custom mappings
-nmap <leader>vf :e $MYVIMRC<CR>
+nmap <leader>vr :e $MYVIMRC<CR>
 nmap <leader>vc :e ~/gtd/cheatsheets/vim.md<CR>
-
+nmap <leader>es :e ~/gtd/dotfiles/.config/espanso/<CR>
 nmap <leader>vg :vimgrep /pattern/g app/**/*
 
 nmap <C-F9> :set background=light<CR>
