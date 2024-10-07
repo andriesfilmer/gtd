@@ -18,5 +18,6 @@
 * [VIA Usage Guide for NuPhy Keyboards](https://nuphy.com/pages/via-usage-guide-for-nuphy-keyboards)
 * [Use Via App](https://usevia.app/) | Autohorize device in browser
 * [JSON file for your keyboard](https://nuphy.com/pages/json-files-for-nuphy-keyboards)
-* [Quantum Mechanical Keyboard Firmware](https://docs.qmk.fm/keycodes_basic) | Keycodes
+* [Quantum Mechanical Keyboard Firmware](https://docs.qmk.fm/keycodes_basic) | QMK Fimware - Keycodes
 * [Setting up homerow mods with VIA - for Muphy Air v2](https://www.youtube.com/watch?v=CLiZ5rAEx3A)
+* [Guide to keyboard layouts and form factors](https://wooting.io/post/the-ultimate-guide-to-keyboard-layouts-and-form-factors)

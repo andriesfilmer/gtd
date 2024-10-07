@@ -90,6 +90,8 @@ To reset a specific file to the last-committed state (to discard uncommitted cha
 To reset to last commit state. Run multiple times to go back further back in time.
 
     git reset HEAD~
+    git status
+    git checkout thefiletoreset.txt
 
 Run `git reflog` to jump back and forwards in time, for example:
 
@@ -105,7 +107,7 @@ Replace the -f argument with -n to perform a dry-run and it will tell you what w
     git clean -d -x -n     # dry-run
     git clean -d -x -f
 
-More tips: <https://stackoverflow.com/questions/927358/how-do-i-undo-the-last-commits-in-git>
+Nice overview: [Resetting, checking out & reverting](https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting) | Atlassian
 
 ## Git revert vs. reset
 

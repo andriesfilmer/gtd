@@ -126,9 +126,11 @@ Do Not Use the MacOS System Ruby <https://mac.install.guide/faq/do-not-use-mac-s
 
 ## Resources
 
-* [ruby](http://www.ruby-lang.org/en/) language
+* [Ruby](http://www.ruby-lang.org/en/) language
 * [Ruby on Rails Guides](http://guides.rubyonrails.org/)
- * [Active Support Core Extensions](https://guides.rubyonrails.org/active_support_core_extensions.html) - Extensions, utilities, and other transversal stuff
+* [Active Support Core Extensions](https://guides.rubyonrails.org/active_support_core_extensions.html) | Extensions, utilities, and other transversal stuff
+* [Upgrading Rails](https://guides.rubyonrails.org/upgrading_ruby_on_rails.html)
+* [Configuring Rails applications](https://guides.rubyonrails.org/configuring.html) | Versioned Default Values
 * [API - Welcome to Rails](http://api.rubyonrails.org)
 * [Help and documentation for the Ruby programming language](http://www.ruby-doc.org)
 * [bundle](http://gembundler.com/)

@@ -6,13 +6,9 @@
     sudo apt install dconf-editor
     sudo apt install gnome-tweak-tool
 
-## Nice applications to install
-* [Qownnotes](https://snapcraft.io/qownnotes) | Markdown editer and viewer
-* [Foliate](https://snapcraft.io/foliate) | E-book reader
-* [SweetHome3D](https://snapcraft.io/install/sweethome3d-homedesign/ubuntu) | Draw house plans
-
-
 ## Personal gsetting
+
+Use `dconf-editor` to change it manual.
 
     # prefer-light theme shortcut
     gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name "'Light theme'"
@@ -52,28 +48,20 @@
 
 I like [gTile extention](https://extensions.gnome.org/extension/28/gtile/) adjusted the  `Resize presets` for `Super+Alt+[KP_1..KP_9]` for my monitor with 5120x1440 resolution.
 
-Presets have a format of "[grid size] [top left coordinate]:[bottom right coordinate]".
+    cat ~/gtd/scripts/gnome/gTile.conf | dconf load /org/gnome/shell/extensions/gtile/
 
-* Preset resize 1: `3x2 1:2 1:2, 1:2 2:2`
-* Preset resize 2: `3x2 2:2 2:2, 1:2 3:2`
-* Preset resize 3: `3x2 3:2 3:2, 2:2 3:3`
-* Preset resize 4: `3x1 1:1 1:1,1:1 2:1`
-* Preset resize 5: `3x1 2:1 2:1,1:1 3:1`
-* Preset resize 6: `3x1 3:1 3:1,2:1 3:1`
-* Preset resize 7: `3x2 1:1 1:1, 1:1 2:1`
-* Preset resize 8: `3x2 2:1 2:1, 1:1 3:1`
-* Preset resize 9: `3x2 3:1 3:1 2:1 3:1`
+## Nice applications to install
+* [Espanso Autokey](https://espanso.org/docs/) | Supercharge your typing experience
+* [Qownnotes](https://snapcraft.io/qownnotes) | Markdown editer and viewer
+* [Foliate](https://snapcraft.io/foliate) | E-book reader
+* [SweetHome3D](https://snapcraft.io/install/sweethome3d-homedesign/ubuntu) | Draw house plans
 
-Testing for importing shortcuts after upgrade, i.o. update 1:1 -> 2:2
-
-    dconf dump /org/gnome/shell/extensions/gtile/ | perl -p -e "s/(\d+):(\d+)/(\$1+1).':'.(\$2+1)/ge" | dconf load /org/gnome/shell/extensions/gtile/
 
 ## Nvidia drivers
 
 Detect the model of your nvidia graphic card and the recommended driver.
 
     ubuntu-drivers devices
-
 
 ## How to reset lost root password (single usermode)
 
