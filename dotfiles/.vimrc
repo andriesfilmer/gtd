@@ -6,14 +6,15 @@ set expandtab                             " On pressing tab, insert spaces no ta
 set foldmethod=syntax                     " Folds are defined by syntax highlighting
 set history=1000                          " The command-lines that you enter, default 50
 set hlsearch                              " highlight all search matches
-set ignorecase smartcase                  " Search: ignore case, unless uppercase chars given
+set hidden                                " Switch between buffers if the buffer is changed. Think twice when using :q!
+set smartcase                             " Search: ignore case, unless uppercase chars given
 set incsearch                             " Set increase search, Search while you type
 set laststatus=2                               " first, enable status line always
 set list listchars=tab:»·,trail:·              " Make tabs visual: ».......
 set nocompatible                               " don't need to be compatible with old vim
 set nofoldenable                               " Dont fold by default
 set nowrap                                     " Default is wrap
-set relativenumber                             " Set relative line numbers
+set number relativenumber                   " Set relative line numbers
 set cursorline                                 " highlight current line. Is slower :-(
 set omnifunc=syntaxcomplete#Complete           " Omni completion provides smart autocompletion for programs
 set paste                                      " Distinguish between typed text and pasted text in terminal
@@ -67,10 +68,12 @@ nmap <A-left> :vertical resize -2<CR>
 nmap <A-right> :vertical resize +2<CR>
 
 " Buffers
-nmap <leader>b :buffers<cr>
-nmap <tab> :bnext<CR>                           " Cycle trough buffers
-nmap <S-tab> :bprevious<CR>
-nmap <A-w> :bdelete<CR>                         " Close buffer
+nmap <leader>b :buffers<cr>                     " Show open buffers
+nmap <leader>o :browse oldfiles<cr>             " Old buffers
+nmap <tab> :bnext<CR>                           " Next buffer
+nmap <S-tab> :bprevious<CR>                     " Previous buffer
+nmap <leader>w :bdelete<CR>                     " Delete buffer
+nmap <leader>W :bufdo bd<CR>                    " Delete buffers
 
 nmap <leader>n :set nu!<CR>                     " Toggle linenumbers
 nmap <leader>r :set rnu!<CR>                    " Toggle relativenumbers

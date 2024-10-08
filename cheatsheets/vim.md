@@ -1,30 +1,32 @@
 # vim (my) Cheatsheet
 ## Open file
-    :e ..                              " Browse to a file to open
+    :e .                               " Browse to a file to open
     :e <tab>                           " With tab you can complete directories and filename.
+    :browse oldfiles                   " Scroll to end and pick a file number (must exists in root)
 
-## Command mode
+## Normal (command) mode
     dd                                 " cut and copy current line
     :19y                               " copy line 19
-    :19t33                             " copy line 19 to 33
     u                                  " undo
     Ctrl+r                             " redo
     .                                  " repeat last writes
     *                                  " Goto next word under cursor
     #                                  " Goto previeus word under cursor
     %                                  " Commands such as %, [(, [{, ][, and [] navigation between brackets.
+
     cit                                " Change In-to tag
     ci"                                " Change In-to "
     ci)                                " Change In-to )
     ci]                                " Change In-to ]
 
 ## Visual mode
-    Shift+v                            " Select lines
-    Ctrl+v                             " Select column
     vip                                " Select inner paragraph
     vap                                " Select outer paragraph
     vit                                " Select inner tag block, :can combinde with "]} etc.
     vat                                " Select outer tag block, can combine with "]} etc.
+
+    Shift+v                            " Select lines
+    Ctrl+v                             " Select column
     :'<,'>norm A;                      " Append ; to visual block. i.o. Execute Normal mode commands
     :'<,'>sort                         " Sort visual block. Can commbined with `uniq -c` etc.
     zc                                 " Folding, nice in combination with `vat`
@@ -39,24 +41,24 @@
     :bd                                " Close buffer, alias :bdelete
     :%bd|e#                            " Close all buffers (%db) except current buffer (e#)
 
+## Windows
+    :sp                                " split window horizontal
+    :vs                                " split window vertical
+    :set scb crb cul                   " scrollbind, cursorbind, cursorline to compare two files on same line with scroll in :vs
+    :only                              " Keep only the current window
+
 ## Moving around
-    :marks                             " Show list of marks
-    m{a-z}                             " Mark position as {a-z} E.g. ma
-    '{a-z}                             " Move to mark position {a-z} E.g. 'a
-    ''                                 " Move to mark previous position
     ctrl-^                             " Jump between last edit file line"
     ctrl-o                             " Press twice and go to back last edit file and line(s)"
     ctrl-i                             " jump to newer position
     ctr]                               " goto tag in buffers (ctr-o) to go back.
-    :ju                                " show list of postions you :jumps, `5 ctrl-o` to jump to jump nr  gg g     2  gg g     2 5.
+    :ju                                " show list of postions you :jumps, `5 ctrl-o` to jump to jump nr 5
 
-## Windows
-    :sp                                " split window horizontal
-    :vs                                " split window vertical
-    :q
-    :set scb crb cul                   " scrollbind, cursorbind, cursorline to compare two files on same line with scroll in :vs
-    :h ctrl-w                          " options to resize windows
-    :only                              " Keep only the current window
+## Marks
+    :marks                             " Show list of marks
+    m{a-z}                             " Mark position as {a-z} E.g. ma
+    '{a-z}                             " Move to mark position {a-z} E.g. 'a
+    ''                                 " Move to mark previous position
 
 ## Registers
     :reg                               " See registers
@@ -92,13 +94,17 @@
     /[^\x00-\x7F]                      " Find non-ascii characters
 
 ## Replace in files
-Option 1
-    :arg **/*.js                           " Set all *.js files and below current directory in :arg
-    :argdo %s/pattern/replace/gce | update " Confirm updates in recursieve files
 
-Option 2
-    :vimgrep pattern `find path -type f`   " Set all files in quickfix list. Use `copen` to see the matches.
-    :cdo %s/pattern/replace/gc             " Change all matches with a confirm.
+`cdo` is generally a good option when you're working with files that are part of a grep or search result.
+It applies the command to each file in the quickfix list. You can see and skip the changes.
+
+    :vimgrep /search_pattern/ **/*.rb
+    :cdo %s/old_string/new_string/gc
+
+`argsdo` works on all files in the argument list. Use it if you've loaded files into your argument list and want to apply a command to each of them.
+
+    :args **/*.rb
+    :argsdo %s/old_string/new_string/gc | update
 
 ## Moving Viewport
     zz                                 " Set viewport in center
