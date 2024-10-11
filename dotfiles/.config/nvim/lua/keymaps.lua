@@ -20,10 +20,15 @@ map("n", "<A-Right>", ":vertical resize +2<cr>", { desc = "Resize window right" 
 map("n", "<leader>b", ":buffers<cr>", { desc = "Buffers" })
 map("n", "<Tab>", ":bnext<cr>", { desc = "Buffer next" })
 map("n", "<S-Tab>", ":bprevious<cr>", { desc = "Buffer previous" })
-map("n", "<A-w>", ":NvimTreeClose<cr>:bdelete<cr>", { desc = "Buffer delete" })
-map("n", "<leader><Up>", ":%bd|e#|bd#<cr>", { desc = "Close bufs/tabs except current" })
+map("n", "<leader>w", ":NvimTreeClose<cr>:bdelete<cr>", { desc = "Delete buffer" })
+map("n", "<leader>W", ":%bd|e#|bd#<cr>", { desc = "Close buffers except current" })
 map("n", "<leader><Left>", ":tabnext<cr>", { desc = "Tab next" })
 map("n", "<leader><Right>", ":tabprevious<cr>", { desc = "Tab previous" })
+
+-- Open buffers
+map("n", "<leader>oh", ":browse oldfiles<cr>", { desc = "[o]pen [h]istory buffers" })
+map("n", "<leader>om", ":!mdview %&<cr>", { desc = "[o]pen buffer [m]arkdown in mdview" })
+map("n", "<leader>od", ":!xdg-open %&<cr>", { desc = "[o]pen buffer in [d]default application" })
 
 -- Formats
 map("n", "<leader>fb", "gg=G<cr>", { desc = "[f]ormat [b]uffer vim style" })
@@ -43,10 +48,6 @@ map("n", "<leader>ss", ":NvimTreeClose<cr>:mksession!<cr>", { desc = "[s]ession 
 -- Vim config an cheatsheet
 map("n", "<leader>vc", ":e ~/gtd/cheatsheets/vim.md<cr>", { desc = "[v]im [c]heatsheet" })
 map("n", "<leader>vf", ":e $MYVIMRC<cr>:NvimTreeFindFile!<cr>", { desc = "n[v]im [f]iles" })
-
--- Application related
-map("n", "<leader>m", ":!qownnotes %&<cr>", { desc = "[o]pen buffer [m]arkdown in qownnotes" })
-map("n", "<leader>o", ":!xdg-open %&<cr>", { desc = "[o]pen buffer in default application" })
 
 -- Toggle signcolumn.
 function ToggleSignColumn()

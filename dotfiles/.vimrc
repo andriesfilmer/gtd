@@ -69,11 +69,15 @@ nmap <A-right> :vertical resize +2<CR>
 
 " Buffers
 nmap <leader>b :buffers<cr>                     " Show open buffers
-nmap <leader>o :browse oldfiles<cr>             " Old buffers
 nmap <tab> :bnext<CR>                           " Next buffer
 nmap <S-tab> :bprevious<CR>                     " Previous buffer
 nmap <leader>w :bdelete<CR>                     " Delete buffer
-nmap <leader>W :bufdo bd<CR>                    " Delete buffers
+nmap <leader>W :%bd\|e#\|bd#<CR>                " Delete buffers except current
+
+" Open buffers
+nmap <leader>oh :browse oldfiles<cr>            " History buffers
+nmap <silent><leader>om :!mdview %&<cr>         " [o]pen buffer in [m]arkdown application
+nmap <leader>od :!xdg-open %&<cr>               " [o]pen buffer in [d]efault application
 
 nmap <leader>n :set nu!<CR>                     " Toggle linenumbers
 nmap <leader>r :set rnu!<CR>                    " Toggle relativenumbers
