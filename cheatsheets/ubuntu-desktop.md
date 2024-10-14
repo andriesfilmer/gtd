@@ -2,14 +2,23 @@
 
 ## Basics
 
-    sudo apt install vim nvim
-    sudo apt install dconf-editor
     sudo apt install gnome-tweak-tool
+    sudo apt install gnome-shell-extensions
+    sudo apt install build-essential
+    sudo apt install vim
+    sudo apt install dconf-editor
+    sudo apt install aspell-nl
+    sudo apt install imagemagick
+
+## Locale
+
+After installing dutch language via settings it did not work. I had to run the next command first en reboot.
+
+   sudo locale-gen
 
 ## Personal gsetting
 
-Use `dconf-editor` to change it manual.
-
+    # Settings -> Keyboard -> Keyboard Shortcuts -> Custom Shortcuts -> +
     # prefer-light theme shortcut
     gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name "'Light theme'"
     gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding "'F9'"
@@ -20,35 +29,37 @@ Use `dconf-editor` to change it manual.
     gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ command "'gsettings set org.gnome.desktop.interface color-scheme prefer-dark'"
     gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ binding "'F10'"
 
-    # Sound off when tabbing in terminal
+    # Sound off when working in terminal
     gsettings set org.gnome.desktop.sound event-sounds false
 
     # Alt-Tilde cycle in all workspaces
-    gsettings set org.gnome.shell.app-switcher current-workspace-only true
+    gsettings set org.gnome.shell.app-switcher current-workspace-only false
     # Alt-Tab cycle in current workspace
-    gsettings set org.gnome.shell.window-switcher current-workspace-only true
+    gsettings set org.gnome.shell.window-switcher current-workspace-only false
+    # Show icons with dots in dock on all workspaces
+    gsettings set org.gnome.shell.extensions.dash-to-dock isolate-workspaces false
+    # Fix the workspaces to 4
+    gsettings set org.gnome.desktop.wm.preferences num-workspaces 4
+    gsettings set org.gnome.mutter dynamic-workspaces false
 
-    # Keyboard layout -> English (intl., with AltGr dead keys)
-    gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+altgr-intl')]"
-    # Restore keyboard settings if broken.
-    gsettings reset org.gnome.desktop.input-sources xkb-options
-
-    # Remapping the Most Useless Key on Linux (Caps Lock) to Esc, Especially for vimmers.
-    #gsettings set org.gnome.desktop.input-sources xkb-options "['lv3:ralt_switch','caps:escape_shifted_capslock']"
-    gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape_shifted_capslock']"
-
-    # Do we need this? Configure keyboard configuration -> Dell 101-key PC
-    sudo dpkg-reconfigure keyboard-configuration
+    # Disable user list, user needs to type username
+    gsettings org.gnome.login-screen.disable-user-list true
+    gsettings org.gnome.login-screen.disable-user-list true
 
     # Set cursor size bigger from 24 -> 36 on large screen.
     gsettings set org.gnome.desktop.interface cursor-size 36
 
+Use `dconf-editor` to change it manual.
 
 ## Gnome Extentions
 
-I like [gTile extention](https://extensions.gnome.org/extension/28/gtile/) adjusted the  `Resize presets` for `Super+Alt+[KP_1..KP_9]` for my monitor with 5120x1440 resolution.
+[gTile extention](https://extensions.gnome.org/extension/28/gtile/) adjusted the  `Resize presets` for `Super+Alt+[KP_1..KP_9]` for my monitor with 5120x1440 resolution.
 
     cat ~/gtd/scripts/gnome/gTile.conf | dconf load /org/gnome/shell/extensions/gtile/
+
+[Smart-auto-move](https://extensions.gnome.org/extension/4736/smart-auto-move/) Learns the position,
+size, and workspace of your application windows and restores them on subsequent launches. Supports Wayland.
+
 
 ## Nice applications to install
 * [Espanso Autokey](https://espanso.org/docs/) | Supercharge your typing experience
@@ -56,6 +67,9 @@ I like [gTile extention](https://extensions.gnome.org/extension/28/gtile/) adjus
 * [Foliate](https://snapcraft.io/foliate) | E-book reader
 * [SweetHome3D](https://snapcraft.io/install/sweethome3d-homedesign/ubuntu) | Draw house plans
 
+## Thunderbird
+
+Compose font size: Edit -> Settings -> Font & Colors -> Advanced -> Fonts for: Other writing systems, and set monospace: Size 20.
 
 ## Nvidia drivers
 

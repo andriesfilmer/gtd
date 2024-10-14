@@ -24,9 +24,11 @@ return {
         },
       },
       filters = {
-        custom = { ".DS_Store" },
+        custom = {},
       },
       git = {
+        dotfiles = false,
+        ignore = false,
         show_on_dirs = false,
         show_on_open_dirs = true, -- show on files
       },

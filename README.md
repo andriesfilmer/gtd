@@ -6,15 +6,8 @@
 
 Take a look at my [dotfiles](/dotfiles)
 
-Example usage:
-
-    ln -s ~/gtd/dotfiles/.bashrc ~/.bashrc
-    ln -s ~/gtd/dotfiles/.vimrc ~/.vimrc
-
-or
-
-    cp ~/.bashrc ~/.bashrc.bak && wget https://raw.githubusercontent.com/andriesfilmer/gtd/master/dotfiles/.bashrc
-    cp ~/.vimrc ~/.vimrc.bak && wget https://raw.githubusercontent.com/andriesfilmer/gtd/master/dotfiles/.vimrc
+    mv ~/.bashrc ~/.bashrc.bak && ln -s ~/gtd/dotfiles/.bashrc ~/.bashrc
+    mv ~/.vimrc ~/.vimrc.bak && ln -s ~/gtd/dotfiles/.vimrc ~/.vimrc
 
 ## CheatSheets
 
@@ -24,11 +17,6 @@ Shortcuts
 
 - [Vim](https://github.com/andriesfilmer/gtd/blob/master/cheatsheets/vim.md)
 - [Github](https://github.com/andriesfilmer/gtd/blob/master/cheatsheets/git.md)
-- [Ruby & Rails](https://github.com/andriesfilmer/gtd/blob/master/cheatsheets/ruby-rails.md)
-
-## Resources
-
-The [Resources](/resources) are bookmarks for furher details.
 
 ## Commonly used sites
 
@@ -39,6 +27,7 @@ The [Resources](/resources) are bookmarks for furher details.
 - [Semantic versioning](https://semver.org/)
 - [Crontab Guru](https://crontab.guru/)
 
-## Video's
+## Resources
 
-* [Amazing Developers On YouTube](https://github.com/ErikCH/DevYouTubeList)
+The [Resources](/resources) are bookmarks for furher details.
+

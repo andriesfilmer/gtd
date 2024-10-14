@@ -68,7 +68,7 @@ nmap <A-left> :vertical resize -2<CR>
 nmap <A-right> :vertical resize +2<CR>
 
 " Buffers
-nmap <leader>b :buffers<cr>                     " Show open buffers
+nmap <leader>b :buffers<cr>
 nmap <tab> :bnext<CR>                           " Next buffer
 nmap <S-tab> :bprevious<CR>                     " Previous buffer
 nmap <leader>w :bdelete<CR>                     " Delete buffer

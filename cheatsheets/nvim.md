@@ -1,5 +1,24 @@
 # [Neovim](https://neovim.io/)
 
+# Install
+
+[Download pre-built archive](https://github.com/neovim/neovim/releases)
+
+    mkdir ~/.local/bin
+    cd ~/Download/ && gunzip nvim-linux64.tar.gz
+    mv nvim-linux64 ~/.local/bin
+    cd ~/.config && ln -s ~/gtd/dotfiles/.config/nvim nvim
+
+Then add this to your shell config (~/.bashrc, ~/.zshrc, ...):
+
+    export PATH="$PATH:.local/bin/nvim-linux64/bin"
+
+# Dependencies
+
+    sudo apt install ripgrep
+
+# Neovim branches
+
 Based on Vim. Look at the command [cheatsheet for vim](vim.md).
 
 It looks like there are multiple version of nvim like:
@@ -9,15 +28,14 @@ It looks like there are multiple version of nvim like:
 But they are only different because of there configuration and plugins.
 
 ## Nerd Fonts
-If you like nice icons in your nvim IDE [Install Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
 
-After download.
+If you like nice icons in your nvim IDE [Install Nerd Fonts](https://www.nerdfonts.com/font-downloads)
 
-    ./install.sh IBMPlexMon## Neo Vim Plugins
-
-JetBrainsMono Nerd Font ?
-
-    ./install.sh ttf-jetbrains-mono-nerd-3.0.2-1
+    wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip \
+    && cd ~/.local/share/fonts \
+    && unzip JetBrainsMono.zip \
+    && rm JetBrainsMono.zip \
+    && fc-cache -fv
 
 
 ## [my nvim](https://github.com/andriesfilmer/gtd/tree/master/dotfiles/.config/nvim)

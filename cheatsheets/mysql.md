@@ -1,38 +1,10 @@
-- [Mysql](#mysql)
-  * [Create table expample](#create-table-expample)
-  * [Grant privileges](#grant-privileges)
-  * [Revoke privileges](#revoke-privileges)
-  * [Drop and revoke](#drop-and-revoke)
-  * [Change password user](#change-password-user)
-  * [Start skip-grant-tables](#start-skip-grant-tables)
-  * [Search history](#search-history)
-  * [To create a FULLTEXT index](#to-create-a-fulltext-index)
-  * [Reset auto increment value](#reset-auto-increment-value)
-  * [Table give new id's](#table-give-new-ids)
-  * [Remove dubble rows](#remove-dubble-rows)
-  * [JSON](#json)
-  * [Een CSV file in een tabel zetten](#een-csv-file-in-een-tabel-zetten)
-  * [Table to CSV](#table-to-csv)
-  * [Score example](#score-example)
-  * [Convert utf8 to utf8mb4](#convert-utf8-to-utf8mb4)
-  * [Convert Antelope to Barracuda](#convert-antelope-to-barracuda)
-  * [MyTop](#mytop)
-  * [Resources](#resources)
+# MariaDb
 
-<!-- END TOC -->
+    sudo apt install mariadb-server
+    sudo mysql_secure_installation # in production
+    sudo mariadb
 
 # Mysql
-
-## Create table expample
-
-````
-CREATE TABLE MyGuests (
-  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(30) NOT NULL,
-  email VARCHAR(50),
-  reg_date TIMESTAMP
-)
-````
 
 ## Grant privileges
 
@@ -61,29 +33,30 @@ If user can't make databases
 
     update user set password=PASSWORD("NEW-PASSWORD-HERE") where User='tom'
 
-## Start skip-grant-tables
-Edit my.cnf file using.
+## Example my.cnf
 
-    sudo vi /etc/my.cnf
+````
+[client]
+#default-character-set = latin1
+default-character-set = utf8mb4
+user=root
+password=mypassword
 
-Add line to mysqld block.*
+[mysql]
+default-character-set = utf8mb4
 
-    skip-grant-tables
+[mysqld]
+#character-set-client-handshake = FALSE
+#character-set-server = latin1
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci
 
-Restart MySQL service.
+# Add start skip-grant-tables if password lost.
+# And restart MySQL service.
+#
+#skip-grant-tables
 
-    service mysqld restart
-
-
-## Search history
-
-In the mysql-client command
-
-    ctr-r
-
-or
-
-    sed "s/\ / /g" < .mysql_history | grep 'search sql'
+````
 
 ## To create a FULLTEXT index
 
@@ -193,10 +166,19 @@ Check you configuration
     USE INFORMATION_SCHEMA;
     SELECT CONCAT("ALTER TABLE `", TABLE_SCHEMA,"`.`", TABLE_NAME, "` ROW_FORMAT=DYNAMIC;") AS MySQLCMD FROM TABLES WHERE ENGINE='innodb' AND ROW_FORMAT != 'DYNAMIC' AND ROW_FORMAT !='COMPRESSED';
 
-## MyTop
+# Tips
 
-[How To Use Mytop to Monitor MySQL Performance](https://www.digitalocean.com/community/tutorials/how-to-use-mytop-to-monitor-mysql-performance)
+## Search history
 
-## Resources
+In the mysql-client command
+
+    ctr-r
+
+or
+
+    sed "s/\ / /g" < .mysql_history | grep 'search sql'
+
+# Resources
 
 * [Mysql docs](http://dev.mysql.com/doc/).
+* [How To Use Mytop to Monitor MySQL Performance](https://www.digitalocean.com/community/tutorials/how-to-use-mytop-to-monitor-mysql-performance)
