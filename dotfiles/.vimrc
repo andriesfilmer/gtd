@@ -17,7 +17,6 @@ set nowrap                                     " Default is wrap
 set number relativenumber                   " Set relative line numbers
 set cursorline                                 " highlight current line. Is slower :-(
 set omnifunc=syntaxcomplete#Complete           " Omni completion provides smart autocompletion for programs
-set paste                                      " Distinguish between typed text and pasted text in terminal
 set shiftround                                 " Indentation: When at 3 spaces, >> takes to 4, not 5
 set shiftwidth=2                               " when indenting with '>', use 2 spaces width
 set showmatch                                  " show bracket matches
@@ -25,6 +24,7 @@ set tabstop=4                                  " tab with 4 spaces width
 set updatetime=1000                            " vim-gitgutter, vim-signify, default value is 4000
 set wildmenu                                   " Show tab completions in statusline
 set wildmode=list:full                         " Command mode tab completion - complete upto ambiguity
+set path+=**                                   " Enable `:find` and `:b` without a full path, i.o. `find *_controller.rb` +tab
 
 " Mostly not needed
 "set colorcolumn=80,120                         " Show vertical bar to indicate 80/120 chars
@@ -33,7 +33,7 @@ set wildmode=list:full                         " Command mode tab completion - c
 "set directory=~/.tmp                           " Don't clutter my dirs with swp/tmp files
 "set backupdir=~/.vim/tmp                       " Don't clutter my dirs with swp/tmp files
 "set wrap                                       " Wrapping on, default commented out
-
+"set paste                                      " Distinguish between typed text and pasted text in terminal
 
 "------------------------------------------------------------------------------
 " Colors
@@ -95,6 +95,9 @@ nmap <leader>vg :vimgrep /pattern/g app/**/*
 nmap <C-F9> :set background=light<CR>
 nmap <C-F10> :set background=dark<CR>
 
+nnoremap <F2> :set paste!<CR>
+
+
 "------------------------------------------------------------------------------
 " Statusbar
 "-------------------------------------------------- ---------------------------
@@ -126,8 +129,25 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-match ExtraWhitespace /\s\+$/                    " Show white space, see colors for more info
+"match ExtraWhitespace /\s\+$/                    " Show white space, see colors for more info
 autocmd BufWritePre * %s/\s\+$//e                " Removing trailing whitespace on write
 syntax match nonascii "[^\x00-\x7F]"             " Display non ascii chars
 
+
+" Exuberant-ctags`
+"------------------------------------------------------------------------------
+" First install `sudo apt install exuberant-ctags`
+" Run ctags only if project (.git) exists
+if !empty(glob(".git"))
+  au BufWritePost *.erb,*.rb silent! !eval 'ctags -R --languages=ruby --exclude=.git -o newtags; mv newtags tags;' &
+  au BufWritePost *.js silent! !eval 'ctags -R --languages=javascript --exclude=.git --exclude=*.min.js -o newtags; mv newtags tags;' &
+endif
+" Or run manually
+command! MakeTags !ctags -R .
+
+
+" Snippets
+"------------------------------------------------------------------------------
+iabbr consl console.log("TEST: " + );<esc>2hi
+iabbr putsi puts "TEST: " #{}"<esc>1hi
 

@@ -1,3 +1,26 @@
+- [MariaDb](#mariadb)
+- [Mysql](#mysql)
+  * [Grant privileges](#grant-privileges)
+  * [Revoke privileges](#revoke-privileges)
+  * [Drop and revoke](#drop-and-revoke)
+  * [Change password user](#change-password-user)
+  * [Example my.cnf](#example-mycnf)
+  * [To create a FULLTEXT index](#to-create-a-fulltext-index)
+  * [Reset auto increment value](#reset-auto-increment-value)
+  * [Table give new id's](#table-give-new-ids)
+  * [Remove dubble rows](#remove-dubble-rows)
+  * [JSON](#json)
+  * [Een CSV file in een tabel zetten](#een-csv-file-in-een-tabel-zetten)
+  * [Table to CSV](#table-to-csv)
+  * [Score example](#score-example)
+  * [Convert utf8 to utf8mb4](#convert-utf8-to-utf8mb4)
+  * [Convert Antelope to Barracuda](#convert-antelope-to-barracuda)
+- [Tips](#tips)
+  * [Search history](#search-history)
+- [Resources](#resources)
+
+<!-- END TOC -->
+
 # MariaDb
 
     sudo apt install mariadb-server
@@ -107,8 +130,7 @@ collation-server = utf8mb4_unicode_ci
 Other example with multiple lines in column 'notes'.
 
     LOAD DATA INFILE '/path/to/yourfile.csv' INTO TABLE your_table_name
-    FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '
-'
+    FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY ''
     IGNORE 1 ROWS
     (title, description, tags, url, @notes, updated_at, created_at) SET notes = REPLACE(@notes, '\n', '');
 

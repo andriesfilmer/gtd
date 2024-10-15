@@ -132,11 +132,8 @@ cdl () {
 
 # sudo snap install lsd
 #alias ls='lsd'
-alias l='ls -l'
-alias ll='ls -l'
-alias la='ls -la'
-alias lt='ls --tree'
-alias lta='ls -la --tree'
+alias ll='ls -l --classify --color=auto'
+alias la='ls -lA --classify --color=auto'
 
 alias ...='cd ../../'
 alias dfx='df -h -x squashfs -x tmpfs -x devtmpfs'
@@ -151,15 +148,12 @@ alias pim='cd ~/dev/pim/ && gnome-terminal --title="PIM server" -- rails s && gn
 #alias inzetrooster='cd ~/dev/inzetrooster-app/ && xdotool key Super_L+ctrl+KP_4 && gnome-terminal --title="Rails server" --geometry=185x230+3635+0 -- rails s && gnome-terminal --title=Neovim --geometry=185x227+1750+0 -- nvim'
 alias inzetrooster='cd ~/dev/inzetrooster-app/ && gnome-terminal --title="Rails server" -- rails s && gnome-terminal --title=Neovim -- nvim'
 
-# Neovim
-#export PATH="$PATH:~/.local/bin/nvim-linux64/bin/"
-
 #export ANDROID_HOME=/home/andries/Android/Sdk/
 #PATH=$PATH:/home/andries/Android/Sdk/
 #PATH=$PATH:/opt/android-studio/gradle/gradle-4.1/bin/
 #export ANDROID_HOME="$HOME/Android/Sdk"
 #PATH=$PATH:$ANDROID_HOME/tools; PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH
+#export PATH
 
 # ls QUOTING_STYLE=literal showing filenames as is. QUOTING_STYLE=shell showing quoted 'file name'
 export QUOTING_STYLE=literal

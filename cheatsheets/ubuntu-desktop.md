@@ -1,3 +1,18 @@
+- [Ubuntu desktop](#ubuntu-desktop)
+  * [Basics](#basics)
+  * [Locale](#locale)
+  * [Personal gsetting](#personal-gsetting)
+  * [Gnome Extentions](#gnome-extentions)
+  * [Nice applications to install](#nice-applications-to-install)
+  * [Thunderbird](#thunderbird)
+  * [Nvidia drivers](#nvidia-drivers)
+  * [How to reset lost root password (single usermode)](#how-to-reset-lost-root-password-single-usermode)
+  * [Some know-abouts](#some-know-abouts)
+    + [Opening applications on position on startup](#opening-applications-on-position-on-startup)
+  * [Webcam zoom](#webcam-zoom)
+
+<!-- END TOC -->
+
 # Ubuntu desktop
 
 ## Basics
@@ -60,6 +75,8 @@ Use `dconf-editor` to change it manual.
 [Smart-auto-move](https://extensions.gnome.org/extension/4736/smart-auto-move/) Learns the position,
 size, and workspace of your application windows and restores them on subsequent launches. Supports Wayland.
 
+[Clipboard History](https://extensions.gnome.org/extension/4839/clipboard-history/)
+
 
 ## Nice applications to install
 * [Espanso Autokey](https://espanso.org/docs/) | Supercharge your typing experience
@@ -102,4 +119,3 @@ Example: Reset Thunderbird position on startup
 ## Webcam zoom
 
     v4l2-ctl -d /dev/video0 -c zoom_absolute=200
-

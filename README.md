@@ -1,6 +1,6 @@
 # Getting Things Done (gtd)
 
-    git clone https://github.com/andriesfilmer/gtd.git
+    cd ~ && git clone https://github.com/andriesfilmer/gtd.git
 
 ## Dotfiles
 
