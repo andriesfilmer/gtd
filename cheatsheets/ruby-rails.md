@@ -57,6 +57,27 @@ rubocop.yml
     * <https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/>
 
 
+## Config
+
+Print environment variables in console.
+
+    ENV.each { |key, value| puts "#{key}: #{value}" }
+
+Print database config in console.
+
+    ActiveRecord::Base.configurations
+
+Print any config
+
+    Rails.application.config.`your_config`
+
+For example:
+
+    Rails.application.config.active_record
+    Rails.application.config.action_dispatch
+
+* More config <https://guides.rubyonrails.org/configuring.html>
+
 ## Mail testing
 
 Non delevery to real mailaddresses:

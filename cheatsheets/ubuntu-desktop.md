@@ -24,6 +24,7 @@
     sudo apt install dconf-editor
     sudo apt install aspell-nl
     sudo apt install imagemagick
+    sudo apt install vlc
 
 ## Locale
 
