@@ -17,6 +17,18 @@ Show schema of all tables
     sqlite> .schema
     sqlite> .schema PRODUCTS
 
+# .sqliterc
+
+````
+.headers on
+.mode column
+````
+
+# Statistics
+
+Run statistics regular
+
+    PRAMA optimize;
 
 # Export - Import
 
@@ -49,6 +61,6 @@ If you want to reinsert into a different SQLite database then:
 
 ## Resources
 
+* [Sqlite cli](https://sqlite.org/cli.html)
 * [Sqlite docs](https://www.sqlite.org/docs.html)
-* [Sqlite tutorial](http://souptonuts.sourceforge.net/readme_sqlite_tutorial.html)
-* [SQLite Optimizations for Ultra High-Performance](https://www.powersync.com/blog/sqlite-optimizations-for-ultra-high-performance)
+

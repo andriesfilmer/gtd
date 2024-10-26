@@ -129,8 +129,8 @@ It applies the command to each file in the quickfix list. You can see and skip t
     zM                                 " Close all folds
 
 ## Indent
-    =ap                                " Align and ident paragraph
-    gg=G                               " Align and ident hole file
+    =ap                                " Format and align and ident paragraph
+    gg=G                               " Format and align and ident hole file
 
 ## Macros
 
@@ -195,31 +195,15 @@ A neat filtering trick using the 'nl' for adding linenumbers.
     set colorscheme [tab]
     set background=light
 
-## Plugins
-* [NerdTree](https://github.com/scrooloose/nerdtree) - NERDTreeToggle -> F8 mapping
-* [TagBar](https://github.com/majutsushi/tagbar) -  TagbarOpenAutoClose -> F9 mapping
-* [Vim-rails](https://github.com/tpope/vim-rails) - Easy navigation of the Rails directory structure -> `gf`
-* [Vim-signify](https://github.com/mhinz/vim-signify) - Indicate added, modified and removed lines (Tip: SignifyHunkDiff)
-* [vim-searchindex](https://github.com/google/vim-searchindex) - This simple plugin shows how many times a search pattern occurs in the current buffer.
-* [gnupg.vim](http://www.vim.org/scripts/script.php?script_id=661) - Add in  .bashrc `export GPG_TTY=tty`
-* [Ctrlp](https://github.com/kien/ctrlp.vim) - Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
-* [Markdown](https://github.com/JamshedVesuna/vim-markdown-preview) - markdown-preview -> Ctrl-p
-* [Emmet tutorial](https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL)
-* **vim-addon-mw-utils** is a Vim plugin that provides various utility functions and scripts to enhance your Vim experience. It doesn't provide any specific features on its own but serves as a foundation for other Vim plugins.
-
-Packages added in the `.vim/pack/bundle/opt` folder may be loaded using
-
-    :packadd packagename
-
 ## Videos
 * [We don't need a plugin manager](https://www.youtube.com/watch?v=X2_R3uxDN6g)
 
 ## Resources
-* [Vim help files](https://vimhelp.org)
+* [Learn Vim](https://learnvim.irian.to/) | Very nice to read, Specially the Vim Grammar page.
+* [Vim help files](https://vimhelp.org) | Help in the browser instead of :help
 * [Vim quickreferenc](https://vimhelp.org/quickref.txt.html)
 * [Vim command index](https://vimhelp.org/index.html)
-* [Learn Vim](https://learnvim.irian.to/)
-* [Vimcasts](http://vimcasts.org/)
+* [Vimcasts](http://vimcasts.org/) | Sometimes its nice to view how it works.
 * [Vim Statusline Generator](https://www.tdaly.co.uk/projects/vim-statusline-generator/)
 * [Let Vim Do the Typing - Video](https://www.youtube.com/watch?v=3TX3kV3TICU)
 

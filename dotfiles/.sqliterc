@@ -1,3 +1,9 @@
+#.explain on
+#.excel
+.headers on
+#.timer on
+#
+#.mode column
 #.mode line
-.explain on
-#.headers on
+#.mode box
+.mode table

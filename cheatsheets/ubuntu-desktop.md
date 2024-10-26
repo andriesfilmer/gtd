@@ -25,6 +25,8 @@
     sudo apt install aspell-nl
     sudo apt install imagemagick
     sudo apt install vlc
+    sudo apt install pngquant
+    sudo apt install libreoffice
 
 ## Locale
 
@@ -78,6 +80,7 @@ size, and workspace of your application windows and restores them on subsequent 
 
 [Clipboard History](https://extensions.gnome.org/extension/4839/clipboard-history/)
 
+[Dim background windows](https://extensions.gnome.org/extension/6313/dim-background-windows/)
 
 ## Nice applications to install
 * [Espanso Autokey](https://espanso.org/docs/) | Supercharge your typing experience

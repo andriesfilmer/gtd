@@ -168,6 +168,7 @@ collation-server = utf8mb4_unicode_ci
 #skip-grant-tables
 
 
+## Server conf
 On server (production)
 
 ````
@@ -251,7 +252,7 @@ Look how these values change over a minute
 
 In the mysql-client command
 
-    ctr-r
+    ctrl-r
 
 or
 

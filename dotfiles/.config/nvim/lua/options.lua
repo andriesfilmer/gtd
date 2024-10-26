@@ -11,11 +11,42 @@ vim.opt.expandtab = true                -- Use the appropriate number of spaces
 vim.opt.cursorline = true               -- Highlight current line
 vim.opt.relativenumber = true           -- Set relative line numbers
 vim.opt.number = true                   -- Set line numbers
-vim.opt.wrap = false                    -- Wrapping on, default commented out
+vim.opt.wrap = false                    -- Wrapping on, default on
 vim.opt.signcolumn = "yes"              -- show sign column so that text doesn't shift
 vim.opt.splitbelow = true               -- force all horizontal splits to go below current window
 vim.opt.splitright = true               -- force all vertical splits to go to the right of current window
 vim.opt.swapfile = false                -- turn off swapfile
+vim.opt.pumheight = 10			       	-- number of items in popup menu
+vim.opt.scrolloff = 8			        -- scroll page when cursor is 8 lines from top/bottom
+vim.opt.sidescrolloff = 8		      	-- scroll page when cursor is 8 spaces from left/right
+
+--statusline
+vim.cmd "highlight StatusType guibg=#b16286 guifg=#1d2021"
+vim.cmd "highlight StatusFile guibg=#fabd2f guifg=#1d2021"
+vim.cmd "highlight StatusModified guibg=#1d2021 guifg=#d3869b"
+vim.cmd "highlight StatusBuffer guibg=#98971a guifg=#1d2021"
+vim.cmd "highlight StatusLocation guibg=#458588 guifg=#1d2021"
+vim.cmd "highlight StatusPercent guibg=#1d2021 guifg=#ebdbb2"
+vim.cmd "highlight StatusNorm guibg=none guifg=white"
+vim.o.statusline = " "
+				.. "  %#StatusType# "
+				.. " %Y "
+				.. "   "
+				.. " %#StatusFile# "
+				.. " %F"
+				.. " %#StatusModified# "
+				.. " %m"
+				.. " %#StatusNorm# "
+				.. " %="
+				.. " %#StatusBuffer# "
+				.. " 󰽘 "
+				.. " %n "
+				.. " %#StatusLocation# "
+				.. "  "
+				.. " %l,%c "
+				.. " %#StatusPercent# "
+				.. " %p%%  "
+
 
 -- Optional
 -- vim.opt.colorcolumn = { 80, 120 }      -- Show vertical bars to indicate 80/120 chars
@@ -44,16 +75,3 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 
--- Other options to investigate
---
---  backup = false,                           -- creates a backup file
---  cmdheight = 2,                            -- more space in the neovim command line for displaying messages
---  completeopt = { "menuone", "noselect" },  -- mostly just for cmp
---  conceallevel = 0,                         -- so that `` is visible in markdown files
---  fileencoding = "utf-8",                   -- the encoding written to a file
---  hidden = true,                            -- required to keep multiple buffers and open multiple buffers
---  pumheight = 10,                           -- pop up menu height
---  showmode = false,                         -- we don't need to see things like -- INSERT -- anymore
---  showtabline = 2,                          -- always show tabs
---  smartindent = true,                       -- make indenting smarter again
---  guifont = "monospace:h17",                -- the font used in graphical neovim applications

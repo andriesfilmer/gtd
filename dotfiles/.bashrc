@@ -112,11 +112,11 @@ genpasswd() {
 }
 
 autossh() {
-  cd ~/dev/pim-cli && ~/gtd/scripts/perl/autossh.pl `rails ssh:login["$1"]`
+  cd ~/dev/pim-cli && ~/gtd/scripts/perl/autossh.pl `rails ssh:login["$1"]` && cd -
 }
 
 getpasskey() {
-  cd ~/dev/pim-cli && rails search:passkeys["$1"]
+  cd ~/dev/pim-cli && rails search:passkeys["$1"] && cd -
 }
 
 # Experiment with nvim configs
@@ -144,7 +144,7 @@ alias gitdiff="git difftool --tool=vimdiff"
 
 # Open projects
 #alias pim='cd ~/dev/pim/ && xdotool key Super_L+ctrl+KP_Left && gnome-terminal --title="PIM server" --geometry=185x230+3635+0 -- rails s && gnome-terminal --title=Neovim --geometry=185x227+1750+0 -- nvim'
-alias pim='cd ~/dev/pim/ && gnome-terminal --title="PIM server" -- rails s && gnome-terminal --title=Neovim -- nvim'
+alias pim='cd ~/dev/pim/ && gnome-terminal --title=Neovim -- nvim && gnome-terminal --title="PIM server" -- rails s'
 #alias inzetrooster='cd ~/dev/inzetrooster-app/ && xdotool key Super_L+ctrl+KP_4 && gnome-terminal --title="Rails server" --geometry=185x230+3635+0 -- rails s && gnome-terminal --title=Neovim --geometry=185x227+1750+0 -- nvim'
 alias inzetrooster='cd ~/dev/inzetrooster-app/ && gnome-terminal --title="Rails server" -- rails s && gnome-terminal --title=Neovim -- nvim'
 

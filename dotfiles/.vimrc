@@ -24,7 +24,7 @@ set tabstop=4                                  " tab with 4 spaces width
 set updatetime=1000                            " vim-gitgutter, vim-signify, default value is 4000
 set wildmenu                                   " Show tab completions in statusline
 set wildmode=list:full                         " Command mode tab completion - complete upto ambiguity
-set path+=**                                   " Enable `:find` and `:b` without a full path, i.o. `find *_controller.rb` +tab
+set path+=$PWD/**                              " Enable `:find` and `:b` without a full path, i.o. `find *_controller.rb` +tab
 
 " Mostly not needed
 "set colorcolumn=80,120                         " Show vertical bar to indicate 80/120 chars
@@ -76,8 +76,7 @@ nmap <leader>W :%bd\|e#\|bd#<CR>                " Delete buffers except current
 
 " Open buffers
 nmap <leader>oh :browse oldfiles<cr>            " History buffers
-nmap <silent><leader>om :!mdview %&<cr>         " [o]pen buffer in [m]arkdown application
-nmap <leader>od :!xdg-open %&<cr>               " [o]pen buffer in [d]efault application
+nmap <silent><leader>od :!xdg-open %& 2> /dev/null<cr>       " [o]pen buffer in [d]efault application
 
 nmap <leader>n :set nu!<CR>                     " Toggle linenumbers
 nmap <leader>r :set rnu!<CR>                    " Toggle relativenumbers
@@ -97,6 +96,8 @@ nmap <C-F10> :set background=dark<CR>
 
 nnoremap <F2> :set paste!<CR>
 
+" Use a shortcut to avoid writing the vimgrep command by hand in my projects.
+command -nargs=1 ProjectSearch vimgrep /<args>/gj app/**/* && :copen
 
 "------------------------------------------------------------------------------
 " Statusbar
@@ -124,12 +125,18 @@ set statusline+=\ Buf:%n                          " Buffer number
 "------------------------------------------------------------------------------
 " Mixed
 "------------------------------------------------------------------------------
-" Jump to the last position when reopening a file
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
+":h restore-cursor last-position-jump
+augroup RestoreCursor
+  autocmd!
+  autocmd BufReadPost *
+    \ let line = line("'\"")
+    \ | if line >= 1 && line <= line("$") && &filetype !~# 'commit'
+    \      && index(['xxd', 'gitrebase'], &filetype) == -1
+    \ |   execute "normal! g`\""
+    \ | endif
+augroup END
 
-"match ExtraWhitespace /\s\+$/                    " Show white space, see colors for more info
+match ExtraWhitespace /\s\+$/                    " Show white space, see colors for more info
 autocmd BufWritePre * %s/\s\+$//e                " Removing trailing whitespace on write
 syntax match nonascii "[^\x00-\x7F]"             " Display non ascii chars
 
