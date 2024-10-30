@@ -3,12 +3,12 @@
 ## Ruby Install
 
     apt install ruby ruby-dev
-    apt install bundler # or ruby-bundler?
-    apt install libyaml-dev # Needed for gem psych
-    apt install default-libmysqlclient-dev # Needed for gem mysql2
-    apt install mariadb-client
+    apt install bundler
     apt install nodejs
+    apt install mariadb-client
     apt install build-essential
+    apt install libyaml-dev # Needed for gem psych
+    apt install libssl-dev # Needed for gem trilogy
 
 
 ## Git
@@ -40,18 +40,20 @@ Precompile assets
 
 ## Puma
 
+Default Ruby Web Server
+
     adduser puma
     chown -R puma:www-data /path/to/workdir
-
-Default Ruby Web Server
 
 * [Puma systemd](https://github.com/puma/puma/blob/master/docs/systemd.md)
 
 ## Rubocop
 
+Ruby static code analyzer
+
     gem install rubocop
 
-rubocop.yml
+`.rubocop.yml`
 
     * <https://docs.rubocop.org/rubocop/cops.html>
     * <https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/>

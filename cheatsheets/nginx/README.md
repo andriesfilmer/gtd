@@ -19,15 +19,21 @@
 
 Get an [ACME Shell script](https://github.com/acmesh-official/acme.sh)
 
-    curl https://get.acme.sh | sh # reload your shell so the alias `acme.sh` is available.
+    wget -O -  https://get.acme.sh | sh -s email=andries@filmer.nl  # reload your shell so the alias `acme.sh` is available.
 
 Use the automatic DNS API integration, for example: [Transip](https://github.com/acmesh-official/acme.sh/wiki/dnsapi2#dns_transip)
 
 Create a key pair - [Transip](https://www.transip.nl/cp/account/api/) and **add your ipnr to the whitelist**
 
-    # These varialbes are stored in `/root/.acme.sh/account.conf` after running acme.sh
-    export TRANSIP_Username="your_username"
-    export TRANSIP_Key_File="/path/to/transip-private.key"
+Default variables are stored in `/root/.acme.sh/account.conf` after running acme.sh
+Add the next for transip.
+
+````
+SAVED_TRANSIP_Username='andriesf'
+SAVED_TRANSIP_Key_File='/etc/ssl/private/transip-private.key'
+SAVED_TRANSIP_Token_Global_Key=''
+````
+
     acme.sh --register-account -m my@example.com
     acme.sh --issue --dns dns_transip --dnssleep 100 -d domain.org -d *.domain.org
 
@@ -39,7 +45,7 @@ Add the next lines to you nginx `server` config
 
 Install certificate
 
-    mkdir /etc/letsencrypt/live/domain.org
+    mkdir -p /etc/letsencrypt/live/domain.org
 
     acme.sh --install-cert -d domain.org \
     --key-file /etc/letsencrypt/live/domain.org/privkey.pem \
@@ -49,7 +55,7 @@ Install certificate
 Also put a [crontab](https://crontab.guru/) to renew the certificattes each month. For example:
 
     # Check if acme.sh has installed a crontab.
-    0 0 * * * /root/.acme.sh/acme.sh --cron --home /root/.acme.sh > /dev/null
+    0 0 1 * * /root/.acme.sh/acme.sh --cron --home /root/.acme.sh > /dev/null
 
 ### Install other certificates
 

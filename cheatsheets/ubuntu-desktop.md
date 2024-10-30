@@ -27,6 +27,7 @@
     sudo apt install vlc
     sudo apt install pngquant
     sudo apt install libreoffice
+    sudo apt install nautilus-image-converter
 
 ## Locale
 
