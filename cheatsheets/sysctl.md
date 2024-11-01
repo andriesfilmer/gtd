@@ -1,4 +1,19 @@
-### Excerpt from resources:
+## Sysctl
+
+View sysctl variables
+
+    sysctl -a
+    sysctl -a | grep redirects
+
+Set variables
+
+    sysctl -w net.ipv4.conf.all.send_redirects = 0
+
+Reload config without reboot
+
+    sysctl --system
+
+### Below is a excerpt from resources:
 * https://gist.github.com/ThisIsMissEm/83ffaafbdcd0e1280c8b
 * https://jivoi.github.io/2015/07/22/ubuntu-security-hardening/
 

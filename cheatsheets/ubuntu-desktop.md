@@ -54,7 +54,7 @@ After installing dutch language via settings it did not work. I had to run the n
     # Alt-Tilde cycle in all workspaces
     gsettings set org.gnome.shell.app-switcher current-workspace-only false
     # Alt-Tab cycle in current workspace
-    gsettings set org.gnome.shell.window-switcher current-workspace-only false
+    gsettings set org.gnome.shell.window-switcher current-workspace-only true
     # Show icons with dots in dock on all workspaces
     gsettings set org.gnome.shell.extensions.dash-to-dock isolate-workspaces false
     # Fix the workspaces to 4
