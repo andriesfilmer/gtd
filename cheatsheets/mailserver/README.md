@@ -1,10 +1,6 @@
 # Other files
-* [My mailserver install](./INSTALL.md)
-* [Traditional testing](./debug.md)
-
-## Handy checks
-* Blacklist check <https://mxtoolbox.com/blacklists.aspx>
-* Test the Spammyness of your emails <https://www.mail-tester.com/>
+* [INSTALL](./INSTALL.md)
+* [DEBUG](./DEBUG.md)
 
 ## Check postfix configuration
 
@@ -42,4 +38,8 @@ Pflogsumm is a great tool to create a summary of Postfix logs. Install it on Ubu
     sudo pflogsumm -d today /var/log/mail.log
     sudo pflogsumm -d yesterday /var/log/mail.log
     sudo pflogsumm /var/log/mail.log # Report for this week.
+
+## Check sites
+* Blacklist check <https://mxtoolbox.com/blacklists.aspx>
+* Test the Spammyness of your emails <https://www.mail-tester.com/>
 
