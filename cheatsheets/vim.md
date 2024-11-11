@@ -46,6 +46,8 @@
     :vs                                " split window vertical
     :set scb crb cul                   " scrollbind, cursorbind, cursorline to compare two files on same line with scroll in :vs
     :only                              " Keep only the current window
+    Ctrl-w                             " Jump between windows in normal mode.
+                                       " With a terminal in a tab, it makes the command prompt available i.o. :tabnext
 
 ## Moving around
     ctrl-^                             " Jump between last edit file line"

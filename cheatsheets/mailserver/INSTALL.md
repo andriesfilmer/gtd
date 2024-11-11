@@ -394,7 +394,7 @@ remove the mail.* config from `/etc/logrotate.d/rsyslog`
 
 Test and execute logrotate on Postfix manually:
 
-    logrotate /etc/logrotate.d/postfix
+    logrotate -f /etc/logrotate.d/postfix
     logrotate -v -d /etc/logrotate.conf   # Turn on debug mode, which means that no changes are made
     logrotate -v -f /etc/logrotate.conf   # Tells logrotate to force the rotation, even if it doesn't think this is necessary
 

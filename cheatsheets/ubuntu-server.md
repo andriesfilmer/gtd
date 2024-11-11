@@ -12,8 +12,8 @@
 
 ````
 [DEFAULT]
-#          localhost   home-ip        server01        server02       server03     server06       server08
-ignoreip = 127.0.0.1/8 87.209.180.24  178.128.254.144 159.223.11.178 95.85.60.187 198.199.127.67 159.65.199.31
+#          localhost   home-ip        server01        server02       server04        server08
+ignoreip = 127.0.0.1/8 87.209.180.24  178.128.254.144 159.223.11.178 146.190.236.166 159.65.199.31
 ````
 
 Checkstatus
@@ -40,14 +40,15 @@ content hosts.allow
 # 84.241.192.0/19  Odido Netherlands
 # 87.210.0.0/16    Odido WBA Services
 #-------------------------------
+# 178.128.254.144 server01
+# 159.223.11.178  server02
 # 95.85.60.187    server03
-# 206.189.108.222 server05
-# 198.199.127.67  server06
+# 146.190.236.166 server04
 # 159.65.199.31   server08
 # 87.209.180.24   Home - Glas
 #-------------------------------
 
-sshd: 81.204.0.0/14 84.104.0.0/14 217.62.16.0/20 94.211.144.0/21 212.204.160.0/19 84.241.192.0/19 95.85.60.187 206.189.108.222 198.199.127.67 159.65.199.31 87.209.180.24
+sshd: 81.204.0.0/14 84.104.0.0/14 217.62.16.0/20 94.211.144.0/21 212.204.160.0/19 84.241.192.0/19 178.128.254.144 146.190.236.166 159.65.199.31 87.209.180.24
 ````
 ## hosts.deny
 
@@ -141,42 +142,6 @@ Test with the following command:
     echo test | mail -s "test message" root
 
 
-## Syslog
-
-Set log preferences `vi /etc/rsyslog.d/50-default.conf`
-
-The next line means log every facility at every level to /var/log/syslog, with authpriv being the only exception.
-Obviously this includes mail, so #comment/disable this line. Adjust some other preferences.
-
-    #*.*;auth,authpriv.none         -/var/log/syslog
-    cron.*                          /var/log/cron.log
-    daemon.*                        -/var/log/daemon.log
-    kern.*                          -/var/log/kern.log
-    #lpr.*                          -/var/log/lpr.log
-    mail.*                          -/var/log/mail.log
-    user.*                          -/var/log/user.log
-
-Set log rotate mail daily instead of weekly.
-
-    vi /etc/logrotate.d/mail
-
-````
-/var/log/mail.log {
-    daily
-    rotate 7
-    missingok
-    notifempty
-    compress
-    delaycompress
-    postrotate
-        /usr/lib/rsyslog/rsyslog-rotate
-    endscript
-}
-````
-Test logrotate
-
-    logrotate -f /etc/logrotate.d/mail
-
 
 ### Journal
 
@@ -190,15 +155,7 @@ Set max file size `vi /etc/systemd/journald.conf`
 
 ## Automatic Updates
 
-Create a `/etc/apt/apt.conf.d/20auto-upgrades` file with:
-
     dpkg-reconfigure -plow unattended-upgrades
-
-Looks like
-
-    APT::Periodic::Update-Package-Lists "1";
-    APT::Periodic::Unattended-Upgrade "1";
-    APT::Periodic::AutocleanInterval "7";
 
 Configure unattended-upgrades, edit `/etc/apt/apt.conf.d/50unattended-upgrades` and fit your needs:
 
@@ -238,6 +195,16 @@ Tunning
 
 More info: <https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-22-04>
 
+## Add cronjobs
+
+You can make a crontab, when the file system is >80% full we'd like to receive a mail.
+
+    0 9 * * * if [ "`df -l |grep '[8|9][0-9]\%'`" ]; then `df -h|/usr/bin/mail -s 'File system > 80\% full' root` ; fi
+
+Cleanup journal logfile upto 2G
+
+    2 2 2 * * /usr/bin/journalctl --vacuum-size=2G
+
 ## Running services
 
 To find out all services that have been run at startup:
@@ -252,16 +219,6 @@ You can change the setting, see examples: `cheatsheets/sysctl-example.md`
 Edit `/etc/sysctl.conf` and run following command to load changes to sysctl.
 
     sysctl -p
-
-## Add cronjobs
-
-You can make a crontab, when the file system is >80% full we'd like to receive a mail.
-
-    0 9 * * * if [ "`df -l |grep '[8|9][0-9]\%'`" ]; then `df -h|/usr/bin/mail -s 'File system > 80\% full' root` ; fi
-
-Cleanup journal logfile upto 2G
-
-    2 2 2 * * /usr/bin/journalctl --vacuum-size=2G
 
 ## AIDE (Advanced Intrusion Detection Environment)
 
