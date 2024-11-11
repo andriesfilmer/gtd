@@ -20,7 +20,21 @@ vim.opt.pumheight = 10			       	-- number of items in popup menu
 vim.opt.scrolloff = 8			        -- scroll page when cursor is 8 lines from top/bottom
 vim.opt.sidescrolloff = 8		      	-- scroll page when cursor is 8 spaces from left/right
 
---statusline
+
+-------------------- Begin statusline ----------------------
+
+-- Function to show how many buffers are open in the status line.
+function BufferCount()
+  local buffers = vim.api.nvim_list_bufs()
+  local count = 0
+  for _, buf in ipairs(buffers) do
+    if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buflisted then
+      count = count + 1
+    end
+  end
+  return count
+end
+
 vim.cmd "highlight StatusType guibg=#b16286 guifg=#1d2021"
 vim.cmd "highlight StatusFile guibg=#fabd2f guifg=#1d2021"
 vim.cmd "highlight StatusModified guibg=#1d2021 guifg=#d3869b"
@@ -40,13 +54,14 @@ vim.o.statusline = " "
 				.. " %="
 				.. " %#StatusBuffer# "
 				.. " 󰽘 "
-				.. " %n "
+				.. " %{v:lua.BufferCount()}/%n"
 				.. " %#StatusLocation# "
 				.. "  "
 				.. " %l,%c "
 				.. " %#StatusPercent# "
 				.. " %p%%  "
 
+-------------------- End statusline ------------------------
 
 -- Optional
 -- vim.opt.colorcolumn = { 80, 120 }      -- Show vertical bars to indicate 80/120 chars

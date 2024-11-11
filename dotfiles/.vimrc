@@ -81,6 +81,10 @@ nmap <silent><leader>od :!xdg-open %& 2> /dev/null<cr>       " [o]pen buffer in 
 nmap <leader>n :set nu!<CR>                     " Toggle linenumbers
 nmap <leader>r :set rnu!<CR>                    " Toggle relativenumbers
 
+" vim-powered terminal in new tab
+map <Leader>T :tab term ++close<cr>
+tmap <Leader>T <c-w>:tab term ++close<cr>
+
 " Save and restore session
 nmap <leader>ss :mksession!<cr>
 nmap <leader>sr :source Session.vim<cr>         "[s]ession [r]estore for cwd
@@ -88,7 +92,6 @@ nmap <leader>sr :source Session.vim<cr>         "[s]ession [r]estore for cwd
 " Vim custom mappings
 nmap <leader>vr :e $MYVIMRC<CR>
 nmap <leader>vc :e ~/gtd/cheatsheets/vim.md<CR>
-nmap <leader>es :e ~/gtd/dotfiles/.config/espanso/<CR>
 nmap <leader>vg :vimgrep /pattern/g app/**/*
 
 nmap <C-F9> :set background=light<CR>
