@@ -17,26 +17,45 @@
     cd some-repository
     sudo gem update
 
-## Bundler
-
-    sudo bundle install
-    sudo bundle update --bundler
-    sudo bundle update
-
-Find where the gems are stored.
-
-    gem enviroment
-    bundle env
-
-## Rails
+## Rails new
 
 Minimal install
 
     rails new app-with-trilogy --database=trilogy --api --minimal --skip-test --skip-system-test --skip-javascript
 
-Precompile assets
+## Gems vs Bundle
 
-    RAILS_ENV=production rails assets:precompile
+- **`gem install <gem>`**:
+  Installs a specific gem globally or locally.
+
+- **`bundle install`**:
+  Installs all the gems listed in the `Gemfile`, respecting the exact versions specified in the `Gemfile.lock` if present.
+
+### Bundler
+
+    sudo bundle install
+    sudo bundle update --bundler
+    sudo bundle update
+
+### Gem
+
+    gem update
+
+Update ruby gems itself
+
+`rubygems-update` is installed by default. So, it's the matter of running just:
+
+    gem update --system.
+
+Otherwise
+
+    gem install rubygems-update
+    update_rubygems
+
+Find where the gems are stored.
+
+    gem enviroment
+    bundle env
 
 ## Puma
 
