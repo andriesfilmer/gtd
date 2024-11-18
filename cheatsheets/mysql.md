@@ -151,9 +151,9 @@ collation-server = utf8mb4_unicode_ci
 character-set-server = utf8mb4
 
 # Log slow queries
-slow_query_log = 1
-slow_query_log_file = /var/log/mysql/mysql-slow.log
-long_query_time = 3
+#slow_query_log = 1
+#slow_query_log_file = /var/log/mysql/mysql-slow.log
+#long_query_time = 3
 
 log_error = /var/log/mysql/error.log
 
@@ -162,16 +162,16 @@ log_error = /var/log/mysql/error.log
 max_connections = 500                # default 151
 
 # Query Cache Configuration
-innodb_buffer_pool_size = 512M       # default 128M
-innodb_buffer_pool_chunk_size = 128M # default 2M
-
-query_cache_size = 32M               # default 1M
+innodb_buffer_pool_size = 1G         # default 128M
+innodb_buffer_pool_chunk_size = 256M # default 2M
+innodb_log_file_size = 750M          # default 98M
+innodb_io_capacity = 1000            # default 200
+query_cache_size = 64M               # default 1M
 join_buffer_size = 2M                # default 262144 -> 0.26M
 tmp_table_size = 128M                # default 16777216 -> 1.6M
 max_heap_table_size = 128M           # default 16777216 -> 1.6M
 
 optimizer_prune_level = 1            # default 2
-
 ````
 
 # Variables
@@ -261,3 +261,4 @@ Check you configuration
 * [Mysql docs](http://dev.mysql.com/doc/).
 * [MariaDb full options list](https://mariadb.com/kb/en/mariadbd-options/)
 * [MariaDb full InnoDb system variables list](https://mariadb.com/kb/en/innodb-system-variables/)
+* [MariaDb thread pool system and status variables](https://mariadb.com/kb/en/thread-pool-system-status-variables/#thread_pool_size)
