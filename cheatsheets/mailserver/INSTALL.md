@@ -10,7 +10,7 @@ Below the mailserver configuration on:
 ## Postfix
 Install [Postfix](http://www.postfix.org)
 
-    apt-get install postfix
+    apt install postfix
 
 Check my config files:
 * My [/etc/postfix/main.cf](./main.cf) file.
@@ -155,7 +155,20 @@ We also want to use [DKIM](http://www.dkim.org/), so we need to install dkim-fil
 
     apt install opendkim opendkim-tools
 
-Opendkim configuration [/etc/opendkim.conf](./opendkim.conf) file.
+Opendkim configuration [/etc/opendkim.conf](./opendkim.conf) and enable socket.
+
+````
+Syslog                  yes
+UMask                   007
+Selector                mail
+Socket                  local:/run/opendkim/opendkim.sock
+PidFile                 /run/opendkim/opendkim.pid
+OversignHeaders         From
+TrustAnchorFile         /usr/share/dns/root.key
+UserID                  opendkim
+KeyTable                file:/etc/postfix/dkim/keytable
+SigningTable            file:/etc/postfix/dkim/signingtable
+InternalHosts           file:/etc/postfix/dkim/trustedhosts
 
 Open `/etc/default/opendkim` and add the next line (postfix runs chroot):
 
@@ -166,11 +179,10 @@ Open `/etc/default/opendkim` and add the next line (postfix runs chroot):
     PIDFILE=$RUNDIR/$NAME.pid
     EXTRAAFTER=
 
-
     mkdir -p /var/spool/postfix/run/opendkim
     chown -R opendkim:postfix /var/spool/postfix/run
 
-Open `/etc/systemd/system/multi-user.target.wants/opendkim.service` and add next lines to [service]
+Open `/etc/systemd/system/multi-user.target.wants/opendkim.service` and add next lines to **[service]**
 
     User=opendkim
     Group=postfix
@@ -182,38 +194,46 @@ Your changes won't be applied it you just reload your systemd-configuration file
 
 Key generation for each domain and setup with DNS.
 
+    mkdir -p /etc/opendkim/keys
+
     opendkim-genkey -D /etc/opendkim/keys/filmer.net -b 2048 -d filmer.net -s default
     opendkim-genkey -D /etc/opendkim/keys/filmer.nl -b 2048 -d filmer.nl -s default
     ...
 
+**Or copy keys from other mailserver if already configured in DNS**
 
-KeyTable            file:/etc/opendkim/key.table
+
+KeyTable `/etc/opendkim/key.table`
 
     default._domainkey.filmer.net filmer.net:default:/etc/opendkim/keys/filmer.net/default.private
     default._domainkey.filmer.nl filmer.nl:default:/etc/opendkim/keys/filmer.nl/default.private
     ...
 
-SigningTable        file:/etc/opendkim/signing.table
+SigningTable `/etc/opendkim/signing.table`
 
     filmer.net default._domainkey.filmer.net
     filmer.nl  default._domainkey.filmer.nl
     ...
 
-InternalHosts       file:/etc/opendkim/trusted.hosts
+InternalHosts `/etc/opendkim/trusted.hosts`
 
     127.0.0.1
     ::1
     localhost
-    # Ip thuis
-    94.211.146.214
     # Server03
     95.85.60.187
+    # Server04
+    146.190.236.166
+    # Server05
+    146.185.159.154
+    # Ip home
+    87.209.180.24
     *.igroupware.org
     *.inzetrooster.nl
     *.filmer.nl
 
 
-Create a DNS record. Copy `/etc/opendkim/keys/filmer.net/default.txt`.
+Create a DNS record from: `/etc/opendkim/keys/filmer.net/default.txt`.
 
     default._domainkey      IN      TXT     "v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxYE/Zu4JbLDqC+AzSjoGNGQthLfsewdLPWE9Sf7WiaG9HYtanKclEpbgeJWeDT55jrEnJpSZZdIXPZFOTuSJCNZaZ/Na4iwBRffZFTlA2AGP7wQnZCvhOsCqWCYryLHMFW5/B68WsgR/x5Omzd54TZRJONckIgCD0AbeejX38aMvk3OCP6yA77iWczvjvvmtHBZ4LtC4gHghLoLJllcnm7Bzj/6CzYaFQFMU1McRh1vASR/tj+0S71QG5fwUcVoA20yhIF1UVseZXjrIjGeoeuyBlYjbOPg8eVRTDWFb3rxkacPjXeQepzm+Sc8PI/6llPuNlgiDHU8HYu2nm13IhwIDAQAB"
 

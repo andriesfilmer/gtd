@@ -200,6 +200,17 @@ A neat filtering trick using the 'nl' for adding linenumbers.
 ## Videos
 * [We don't need a plugin manager](https://www.youtube.com/watch?v=X2_R3uxDN6g)
 
+## Plugins
+* [vim-signify](https://github.com/mhinz/vim-signify)
+
+### Install
+Example without plugin manager
+````
+mkdir -p ~/.vim/pack/signify/start
+cd ~/.vim/pack/signify/start
+git clone https://github.com/mhinz/vim-signify.git
+````
+
 ## Resources
 * [Learn Vim](https://learnvim.irian.to/) | Very nice to read, Specially the Vim Grammar page.
 * [Vim help files](https://vimhelp.org) | Help in the browser instead of :help

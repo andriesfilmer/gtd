@@ -44,7 +44,7 @@ if !empty(glob("~/.vim/colors/PaperColor.vim"))
   set background=dark
 endif
 
-highlight ExtraWhitespace ctermbg=1          " Highlight trailing spaces in annoying red
+highlight ExtraWhitespace ctermbg=1             " Highlight trailing spaces in annoying red
 highlight nonascii ctermbg=2
 highlight ColorColumn ctermbg=236
 
@@ -99,6 +99,11 @@ nmap <C-F10> :set background=dark<CR>
 
 nnoremap <F2> :set paste!<CR>
 
+"-------------------------------------
+" Some mappings if plugin is available
+"-------------------------------------
+nmap <leader>gh :SignifyHunkDiff<CR>             " vim-signify
+
 " Use a shortcut to avoid writing the vimgrep command by hand in my projects.
 command -nargs=1 ProjectSearch vimgrep /<args>/gj app/**/* && :copen
 
@@ -143,6 +148,8 @@ match ExtraWhitespace /\s\+$/                    " Show white space, see colors 
 autocmd BufWritePre * %s/\s\+$//e                " Removing trailing whitespace on write
 syntax match nonascii "[^\x00-\x7F]"             " Display non ascii chars
 
+"highlight link markdownError Normal             " New error pattern without the red underscore highligted
+autocmd BufNewFile,BufRead,BufEnter *.md syn match markdownIgnore "\w\@<=\w\@="
 
 " Exuberant-ctags`
 "------------------------------------------------------------------------------

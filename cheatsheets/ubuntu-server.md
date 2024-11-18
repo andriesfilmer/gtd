@@ -12,8 +12,8 @@
 
 ````
 [DEFAULT]
-#          localhost   home-ip        server01        server02       server04        server08
-ignoreip = 127.0.0.1/8 87.209.180.24  178.128.254.144 159.223.11.178 146.190.236.166 159.65.199.31
+#          localhost   home-ip        server01        server02       server04        server05        server08
+ignoreip = 127.0.0.1/8 87.209.180.24  178.128.254.144 159.223.11.178 146.190.236.166 146.185.159.154 159.65.199.31
 ````
 
 Checkstatus
@@ -44,17 +44,25 @@ content hosts.allow
 # 159.223.11.178  server02
 # 95.85.60.187    server03
 # 146.190.236.166 server04
+# 146.185.159.154 server05
 # 159.65.199.31   server08
 # 87.209.180.24   Home - Glas
 #-------------------------------
 
-sshd: 81.204.0.0/14 84.104.0.0/14 217.62.16.0/20 94.211.144.0/21 212.204.160.0/19 84.241.192.0/19 178.128.254.144 146.190.236.166 159.65.199.31 87.209.180.24
+sshd: 81.204.0.0/14 84.104.0.0/14 217.62.16.0/20 94.211.144.0/21 212.204.160.0/19 84.241.192.0/19 178.128.254.144 146.190.236.166 146.185.159.154 159.65.199.31 87.209.180.24
 ````
 ## hosts.deny
 
 And disable access from all others in `/etc/hosts.deny`
 
     sshd: ALL
+
+## .bashrc
+
+I like to add these lines to `/root/.bashrc` now :-)
+
+    bind '"\e[A"':history-search-backward
+    bind '"\e[B"':history-search-forward
 
 ## Configure [iptables](https://help.ubuntu.com/community/IptablesHowTo)
 
@@ -93,8 +101,6 @@ Or enable new rules with fontend [ufw](https://help.ubuntu.com/community/UFW) fo
     apt update
     apt upgrade
 
-    update-alternatives --config editor
-
 ## sshd no root login
 
 change `vi /etc/ssh/sshd_config`
@@ -103,15 +109,8 @@ change `vi /etc/ssh/sshd_config`
 
 ## Add a new user (your self)
 
-    adduser yourname
-    usermod -aG sudo yourname
-
-## .bashrc
-
-I like to add these lines to `/root/.bashrc` first :-)
-
-    bind '"\e[A"':history-search-backward
-    bind '"\e[B"':history-search-forward
+    adduser andries
+    usermod -aG sudo andries
 
 ## Mail
 
@@ -157,7 +156,9 @@ Set max file size `vi /etc/systemd/journald.conf`
 
     dpkg-reconfigure -plow unattended-upgrades
 
-Configure unattended-upgrades, edit `/etc/apt/apt.conf.d/50unattended-upgrades` and fit your needs:
+Configure unattended-upgrades, edit and fit your needs:
+
+    vi /etc/apt/apt.conf.d/50unattended-upgrades
 
 * `${distro_id}:${distro_codename}-updates;`
 * `Unattended-Upgrade::Mail "mail@domain;`

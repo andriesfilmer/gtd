@@ -40,6 +40,7 @@ Pflogsumm is a great tool to create a summary of Postfix logs. Install it on Ubu
     sudo pflogsumm /var/log/mail.log # Report for this week.
 
 ## Check sites
+* Easy DMARC <https://easydmarc.com/tools/dkim-lookup?domain=inzetrooster.nl> dmarc, spf, dkim
 * Blacklist check <https://mxtoolbox.com/blacklists.aspx>
 * Test the Spammyness of your emails <https://www.mail-tester.com/>
 
