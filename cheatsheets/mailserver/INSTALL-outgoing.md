@@ -1,3 +1,4 @@
+# Only outging mailserver
 
 Below the mailserver configuration on:
 - Ubuntu-server 24.04 LTS
@@ -25,11 +26,62 @@ milter_default_action = accept
 milter_protocol = 6
 non_smtpd_milters = unix:/run/opendkim/opendkim.sock
 smtpd_milters = unix:/run/opendkim/opendkim.sock
+
+# Limit outgoing mail throttling
+smtp_destination_concurrency_limit = 2
+smtp_destination_rate_delay = 6s
+smtp_extra_recipient_limit = 10
+
+# Limit by domain
+#----------------
+transport_maps = hash:/etc/postfix/transport
+#
+# Polite policy
+polite_destination_concurrency_limit = 3
+polite_destination_rate_delay = 10s
+polite_destination_recipient_limit = 5
+
+# Turtle policy
+turtle_destination_concurrency_limit = 2
+turtle_destination_rate_delay = 30s
+turtle_destination_recipient_limit = 2
+
 ````
 
-Edit `/etc/postfix/master.cf` and uncomment submission port 387.
+Edit `/etc/postfix/master.cf`
+
+Uncomment submission port 387 for testing local, because port 25 is not available from home ip.
 
     submission inet n       -       y       -       -       smtpd
+
+Limit outgoing mail throttling
+
+    polite    unix  -       -       n       -       -       smtp
+    turtle    unix  -       -       n       -       -       smtp
+
+Create a transport file `/etc/postfix/transport`
+
+````
+# Polite
+hotmail.com polite:
+outlook.com polite:
+gmail.com polite:
+
+# Turtle
+icloud.com turtle:
+me.com turtle:
+ziggo.nl turtle:
+casema.nl turtle:
+quicknet.nl turtle:
+
+# Other examples
+#postmaster@filmer.nl smtp:[server08.igroupware.org]
+#
+# Typo's
+#mellolizwaan@outlouk.com        error:5.1.2 Bad destination system address
+````
+
+    postmap /etc/postfix/transport
 
 ## Sender Policy Framework (SPF)
 
@@ -86,8 +138,8 @@ Key generation for each domain and setup with DNS.
 
     mkdir -p /etc/postfix/dkim/keys
 
-    opendkim-genkey -D /etc/opendkim/keys/filmer.net -b 2048 -d filmer.net -s default
-    opendkim-genkey -D /etc/opendkim/keys/filmer.nl -b 2048 -d filmer.nl -s default
+    opendkim-genkey -D /etc/postfix/dkim/keys/filmer.net -b 2048 -d filmer.net -s default
+    opendkim-genkey -D /etc/postfix/dkim/keys/filmer.nl -b 2048 -d filmer.nl -s default
     ...
 
 KeyTable `/etc/postfix/dkim/key.table`
@@ -122,8 +174,6 @@ InternalHosts `/etc/postfix/dkim/trusted.hosts`
 Opendkim needs permissions but postfix complains about **warning: group or other writable:**?!
 
     chown -R  opendkim:postfix /etc/postfix/dkim
-    find /etc/postfix/dkim/ -type f -exec chmod 664 {} \;
-    find /etc/postfix/dkim/ -type d -exec chmod 775 {} \;
 
 Create a DNS record for each domain from: `/etc/opendkim/keys/filmer.nl/default.txt`.
 
@@ -136,7 +186,7 @@ Test dkim key:
     postfix reload
     opendkim-testkey -d filmer.nl -s default -vvv
 
-Debug check persmissions
+Debug check persmissions on socket.
 
     srwxrwx--- 1 opendkim postfix /var/spool/postfix/run/opendkim/opendkim.sock=
 
