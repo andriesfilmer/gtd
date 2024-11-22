@@ -5,7 +5,7 @@
 
 Install dependencies
 
-    sudo apt-get install build-essential zlib1g-dev libpcre3 libpcre3-dev unzip uuid-dev
+    sudo apt install build-essential zlib1g-dev libpcre3 libpcre3-dev unzip uuid-dev
 
 ### Download & prepare ngx_pagespeed module
 

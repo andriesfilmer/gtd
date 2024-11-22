@@ -59,7 +59,7 @@ I use this in crontab en mount the disk just voor the night during backup for my
 
 ## cryptsetup
 
- `sudo apt-get install cryptsetup`
+ `sudo apt install cryptsetup`
 
 First create a partition with `fdisk`. In this example we use `sda1`.
 You can also use the GUI disk utility to create a -> 'luks + ext4') partition or better:

@@ -4,6 +4,10 @@
     sudo apt update
     sudo apt install syncthing
 
+### Macbook
+
+    brew install syncthing
+
 ## Auto start
 
 ### Run as user
@@ -72,3 +76,14 @@ server {
 
 }
 ````
+
+### Macbook
+
+To start syncthing now and restart at login:
+
+    brew services start syncthing
+
+Or, if you don't want/need a background service you can just run:
+
+    /usr/local/opt/syncthing/bin/syncthing -no-browser -no-restart
+

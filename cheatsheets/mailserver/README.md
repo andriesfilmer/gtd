@@ -12,7 +12,7 @@ To see all of your configs, type postconf. To see how you differ from the defaul
 
 ## Swaks - SMTP transaction tester
 
-    sudo apt-get install swaks
+    sudo apt install swaks
 
 Simple test
 

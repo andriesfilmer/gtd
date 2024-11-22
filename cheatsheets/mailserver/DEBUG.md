@@ -10,7 +10,7 @@ Test the Spammyness of your emails <https://www.mail-tester.com/>
 
 ## Swaks - SMTP transaction tester
 
-    sudo apt-get install swaks
+    sudo apt install swaks
 
 Simple test
 

@@ -1,7 +1,7 @@
 
 ## LDAP modules install
 
-    sudo apt-get install libpam-ldap libnss-ldap nscd
+    sudo apt install libpam-ldap libnss-ldap nscd
 
 Volg de instructies:
 

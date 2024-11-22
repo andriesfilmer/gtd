@@ -6,7 +6,7 @@ After system update, install Node.js 14 on Ubuntu 22.04 by first installing the 
 
 Once the repository is added, you can begin the installation of Node.js 14 on Ubuntu Linux:
 
-    sudo apt-get install -y nodejs
+    sudo apt install -y nodejs
 
 
 ## Development API testing

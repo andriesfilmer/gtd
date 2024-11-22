@@ -11,7 +11,7 @@ between two imap servers, one way, and without duplicates.
 
 This command installs standard Ubuntu packages:
 
-    sudo apt-get install  \
+    sudo apt install  \
     libauthen-ntlm-perl     \
     libclass-load-perl      \
     libcrypt-ssleay-perl    \

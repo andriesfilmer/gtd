@@ -5,7 +5,7 @@ Fail2ban scans log files like `/var/log/mail.log` and bans any IP address that m
 
 ## Installation
 
-    apt-get install fail2ban
+    apt install fail2ban
 
 ## Configuration
 

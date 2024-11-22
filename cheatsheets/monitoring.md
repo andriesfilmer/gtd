@@ -73,7 +73,7 @@
 
 ### dstat - Versatile tool for generating system resource statistics
 
-    apt-get install dstat
+    apt install dstat
 
 [dag.wieers.com/home-made/dstat/](http://dag.wieers.com/home-made/dstat/)
 
@@ -95,7 +95,7 @@ Look only at tcp packets with either source or dest port 21, look for anything r
 
 ### atop - AT Computing's System & Process Monitor
 
-    apt-get install atop
+    apt install atop
 
 The program atop is an interactive monitor to view the load on a Linux system. It shows the occupation of the most critical hardware resources (from a performance point of view) on system level, i.e. cpu, memory, disk and network.
 
@@ -117,19 +117,19 @@ Useful website: [no link tekst](http://www.atoptool.nl) for patch and more info.
 
 Instead of breaking the traffic down per protocol or per subnet, like most tools do, it groups bandwidth by process. If there's suddenly a lot of network traffic, you can fire up NetHogs and immediately see which PID is causing this.
 
-    apt-get install nethogs
+    apt install nethogs
 
 More info: [Nethogs on github](https://github.com/raboof/nethogs#readme)
 
 ###  iostat - Average CPU Load, Disk Activity
 
-    apt-get install iostat
+    apt install iostat
 
     iostat
 
 ### bmon - Graphs/tracks network activity/bandwidth real time.
 
-    apt-get install bmon
+    apt install bmon
 
 Just type bmon to see your network activity/bandwith in real time ;)
 
@@ -144,7 +144,7 @@ Very usefull if you want to know what files are created or modified.
 
 Check the system onder (heavy) load.
 
-    apt-get install stress
+    apt install stress
 
     stress -c 20 -i 4 --verbose --timeout 1h
 

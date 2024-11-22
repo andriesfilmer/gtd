@@ -52,7 +52,7 @@ In our setup all virtual mailboxes are owned by a fixed uid and gid 5000.
 ## Dovecot
 Install [Dovecot](http://www.dovecot.org)
 
-    apt-get install dovecot-imapd
+    apt install dovecot-imapd
 
     touch /var/log/dovecot.log
     touch /var/log/dovecot-info.log
@@ -74,7 +74,7 @@ My [/etc/dovecot/dovecot.conf](./dovecot.conf) (single config) file.
 ## Spamassassin
 Install [Spamassassin](http://packages.ubuntu.com/trusty/spamass-milter)
 
-    apt-get install spamass-milter
+    apt install spamass-milter
 
 Edit `/etc/default/spamass-milter`
 
@@ -112,7 +112,7 @@ The email should be blocked.
 ## Clamav
 Postfix now supports Sendmail 8 Milter protocol.
 
-    apt-get install clamav-milter
+    apt install clamav-milter
 
 We need to tell it to let postfix have write access to it's socket.
 Edit `/etc/default/clamav-milter` and uncomment the last line:
@@ -141,7 +141,7 @@ Create a [SPF](http://www.openspf.org/) record for each domain who we are sendin
 
 ### Postfix/SPF
 
-    sudo apt-get install postfix-policyd-spf-python
+    sudo apt install postfix-policyd-spf-python
 
 Change the line in `/etc/postfix-policyd-spf-python/policyd-spf.conf` to:
 
@@ -312,7 +312,7 @@ Feedback must be something like:
 
 Install [Sieve plugin](https://doc.dovecot.org/configuration_manual/sieve/)
 
-    apt-get install dovecot-managesieved dovecot-sieve
+    apt install dovecot-managesieved dovecot-sieve
 
 With the installed Sieve plugin for vacation message and we want to move ''Spam'' to the spambox.
 We have configured `/etc/dovecot/dovecot.conf` to use managesieve (see [dovecot.conf](./dovecot.conf)).
@@ -362,7 +362,7 @@ Add this to the crontab (run every first day of month at 4:30pm)
 
 ## Configure Bind as Caching or Forwarding DNS server
 
-    sudo apt-get install bind9 bind9utils bind9-doc
+    sudo apt install bind9 bind9utils bind9-doc
 
 Set `/etc/bind/named.conf.options` file:
 

@@ -19,5 +19,5 @@ The Citrix client complains about some missing certificates.
 
 ## x86 client - requires OpenMotif
 
-    sudo apt-get install libmotif3
+    sudo apt install libmotif3
 

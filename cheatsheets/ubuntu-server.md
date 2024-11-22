@@ -206,6 +206,18 @@ Cleanup journal logfile upto 2G
 
     2 2 2 * * /usr/bin/journalctl --vacuum-size=2G
 
+## ssh banner
+
+     vi /etc/ssh/welcome.txt
+
+Add text to show what server you are logged into. Use Figlet for some asciiart ;-)
+
+    figlet outgoing mailserver
+
+Edit `/etc/ssh/sshd_config` and enable the banner.
+
+    Banner /etc/ssh/welcome.txt
+
 ## Running services
 
 To find out all services that have been run at startup:

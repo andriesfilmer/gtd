@@ -1,0 +1,32 @@
+failure_template = <<EOF
+Charset: us-ascii
+From: postmaster@inzetrooster.nl (Mailserver Inzetrooster - Shiftplanner)
+Subject: Onbezorgde mail retour - Undelivered Mail Returned
+Postmaster-Subject: Postmaster Copy: Undelivered Mail
+
+Dit is de mailserver van Inzetrooster.
+
+Het spijt me te melden dat het bericht niet kon niet kon worden
+afgeleverd bij een of meer ontvangers. Het is hieronder bijgevoegd.
+
+Neem de nodige actie om te voorkomen dat het nogmaals gebeurt.
+
+Stuur voor verdere hulp een e-mail naar contact@inzetrooster.nl.
+Voeg daarbij dit probleemrapport. Zie de details hieronder.
+
+--
+
+This is the mail system at ShiftPlanner.
+
+I'm sorry to have to inform you that the message could not
+be delivered to one or more recipients. It's attached below.
+
+Take the necessary action to prevent it from happening next time.
+
+For further assistance, please send mail to contact@shiftplanner.org
+If you do so, please include this problem report. See details below.
+
+--
+
+EOF
+

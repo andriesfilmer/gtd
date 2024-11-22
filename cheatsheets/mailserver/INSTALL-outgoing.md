@@ -21,6 +21,12 @@ Edit `/etc/postfix/main.cf` and change/add.
 # Home ip: 87.209.180.24
 mynetworks = 127.0.0.0/8, 178.128.254.144, 159.223.11.178, 95.85.60.187, 146.190.236.166, 146.185.159.154, 87.209.180.24
 
+# 20MB
+message_size_limit = 20480000
+maximal_queue_lifetime = 3d
+bounce_queue_lifetime = 2d
+bounce_template_file = /etc/postfix/bounce.cf
+
 # DKIM
 milter_default_action = accept
 milter_protocol = 6

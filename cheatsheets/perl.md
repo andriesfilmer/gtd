@@ -26,8 +26,8 @@ If this happens enter the CPAN shell and give the command there
 
 ## Install DBI
 
-    apt-get install build-essential
-    apt-get install libdbd-mysql-perl
+    apt install build-essential
+    apt install libdbd-mysql-perl
     perl -MCPAN -e 'install DBD::mysql'
 
 ## Check if the syntax of a perl script is ok.

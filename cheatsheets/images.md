@@ -49,7 +49,7 @@ You can use also the [online compressor](https://compressor.io/)
 
 ### Resize Images on the commandline
 
-    sudo apt-get install imagemagick
+    sudo apt install imagemagick
     mogrify -resize 1280x853 *.jpg
 
 Resize all photo as rectangle with the max width/height off the photo.
@@ -103,7 +103,7 @@ Fancy album
 
 We can also use Nautilus extention which uses ImageMagick.
 
-    sudo apt-get install nautilus-image-converter
+    sudo apt install nautilus-image-converter
 
 Login out/in (or killall nautilus) to get the new options when right-click on a image in Nautilus
 Now you can resize or scale images with a mouse ;)

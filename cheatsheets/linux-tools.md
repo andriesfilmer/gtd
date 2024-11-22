@@ -29,11 +29,11 @@ Which directories are using space
 
 ### Find duplicated files on a file system
 
-    sudo apt-get install fdupes
+    sudo apt install fdupes
 
 ### Mount iso files
 
-    sudo apt-get install fuseiso
+    sudo apt install fuseiso
     sudo mkdir /media/fuseiso
     sudo fuseiso myisofile.iso /media/fuseiso
 
@@ -54,7 +54,7 @@ Unison is a file-synchronization tool for Unix and Windows. It allows two replic
 
 Just found a new tool called regexxer, im sure it has been around for a while but I just discovered it. regexxer is a nifty GUI search/replace tool featuring Perl-style regular expressions. If you need project-wide substitution and youre tired of hacking sed command lines together, then you should definitely give it a try.
 
-    sudo apt-get install regexxer
+    sudo apt install regexxer
 
 * Or online [rubular](http://rubular.com/) ruby regex
 
@@ -66,6 +66,6 @@ Colorpicker and colorschemes designed with [Colorscheme](http://home.gna.org/col
 
 FIGlet - display large characters made up of ordinary screen characters
 
-    sudo apt-get install figlet
+    sudo apt install figlet
 
 Very handy to make a plaintext signature.

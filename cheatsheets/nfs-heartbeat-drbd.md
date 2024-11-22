@@ -6,7 +6,7 @@ This document describes how DRBD, heartbeat and NFS were installed on olifant an
 
 Create one partition bigger than 128 MB on each server, and one big data partition. (note: the >128 MB meta disk is not needed anymore for newer versions of DRBD!)
 
-    apt-get install parted
+    apt install parted
 
     parted /dev/sdb
     (parted) mklabel gpt
@@ -22,7 +22,7 @@ Test
 
 ## On both servers
 
-    apt-get install linux-headers-2.6.18-5-amd64 drbd0.7-module-source drbd0.7-utils
+    apt install linux-headers-2.6.18-5-amd64 drbd0.7-module-source drbd0.7-utils
 
     cd /usr/src/
     tar xvfz drbd0.7.tar.gz
@@ -81,11 +81,11 @@ Edit /etc/drbd.conf
 
 ## On both servers
 
-    apt-get install nfs-kernel-server nfs-common
+    apt install nfs-kernel-server nfs-common
     update-rc.d -f nfs-kernel-server remove
     update-rc.d -f nfs-common remove
 
-    apt-get install heartbeat
+    apt install heartbeat
 
 in /etc/default/nfs-common:
 

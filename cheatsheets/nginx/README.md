@@ -1,5 +1,5 @@
 ## nginx install
-    sudo apt-get install nginx
+    sudo apt install nginx
 
 ## Deny access
 

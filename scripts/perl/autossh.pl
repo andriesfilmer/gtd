@@ -5,7 +5,7 @@
 ###############################################################################
 #
 # Install libexpect-perl before using this script.
-# sudo apt-get install libexpect-perl
+# sudo apt install libexpect-perl
 #
 # Place this bash function in ~/.bashrc and source ~/.bashrc
 # It extracts 'servername, username and password from a rails app called pim.
