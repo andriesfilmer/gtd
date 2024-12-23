@@ -12,21 +12,10 @@ See running firewall (list, numeric, verbose)
 ## Set a Safety Net
 
 Ensure that you don't lock yourself out on a remote server reset iptables rules in case something goes wrong.
+Before flushing all the chains, ensure all chains have a policy of ACCEPT!
 
+    iptables -P INPUT ACCEPT
     echo "iptables -F" | at now + 10 minutes
-
-## Modules
-
-Conntrack supersedes state, but in modern kernels there is now no difference between the two.
-State is currently aliased and translated to conntrack in iptables if the kernel has it,
-so the syntax -m state --state is actually translated into -m conntrack --ctstate and handled by the same module.
-
-
-## Allowing Incoming SSH from specifiek ip address
-
-    iptables -A INPUT -p tcp -s 203.0.113.0/24 --dport 22 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
-    iptables -A OUTPUT -p tcp --sport 22 -m conntrack --ctstate ESTABLISHED -j ACCEPT
-
 
 ### Blocking termporarly
 
@@ -38,11 +27,13 @@ so the syntax -m state --state is actually translated into -m conntrack --ctstat
 To update persistent iptables with new rules simply use iptables command to include new rules into your system.
 To make changes permanent after reboot run iptables-save command:
 
-    sudo iptables-save > /etc/iptables/rules.v4
+    iptables-save > /etc/iptables/rules.v4
+    ip6tables-save > /etc/iptables/rules.v6
 
-OR
+## Restoring rules
 
-    sudo ip6tables-save > /etc/iptables/rules.v6
+    iptables-restore < /etc/iptables/rules.v4
+    ip666666tables-restore < /etc/iptables/rules.v6
 
 # iptables example
 
@@ -106,6 +97,13 @@ OR
 
 # ALLOW ESTABLISHED CONNECTIONS
 -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+###############################################################################
+# OTHER CUSTOM RULES
+###############################################################################
+
+# No incomming mail on this server.
+-A INPUT -p tcp --destination-port 25 -j DROP
 
 COMMIT
 ````

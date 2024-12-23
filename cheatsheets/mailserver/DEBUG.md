@@ -199,5 +199,6 @@ See rfc1893 and rfc2034 for information about enhanced status codes
     552   Requested mail action aborted: exceeded storage allocation
     553   Requested action not taken: mailbox name not allowed
     554   Transaction failed
+    577   You don't have permission to send to the recipient
 
 

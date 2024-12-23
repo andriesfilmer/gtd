@@ -63,4 +63,5 @@ If you want to reinsert into a different SQLite database then:
 
 * [Sqlite cli](https://sqlite.org/cli.html)
 * [Sqlite docs](https://www.sqlite.org/docs.html)
+* [Litestream](https://litestream.io/) Fully-replicated sqlite database with no pain and little cost.
 
