@@ -43,7 +43,7 @@ Add the next lines to you nginx `server` config
     ssl_certificate /etc/letsencrypt/live/domain.org/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/domain.org/privkey.pem;
 
-Install certificate
+Install wildcard certificate
 
     mkdir -p /etc/letsencrypt/live/domain.org
 

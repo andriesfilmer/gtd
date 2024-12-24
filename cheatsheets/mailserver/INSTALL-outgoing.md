@@ -11,7 +11,40 @@ Install [Postfix](http://www.postfix.org) and choose Internet site.
 
 Edit `/etc/postfix/main.cf` and change/add.
 
+
 ````
+smtpd_banner = $myhostname ESMTP $mail_name (ShiftPlanner)
+biff = no
+append_dot_mydomain = no
+readme_directory = no
+compatibility_level = 3.6
+
+# TLS parameters
+smtp_use_tls = yes
+smtp_tls_CApath=/etc/ssl/certs
+smtp_tls_security_level=may
+smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+
+smtpd_use_tls = yes
+smtpd_tls_CAfile = /etc/letsencrypt/live/server05.igroupware.org/fullchain.pem
+smtpd_tls_key_file = /etc/letsencrypt/live/server05.igroupware.org/privkey.pem
+smtpd_tls_cert_file = /etc/letsencrypt/live/server05.igroupware.org/cert.pem
+
+smtpd_tls_received_header = yes
+smtpd_tls_mandatory_protocols = TLSv1.2, TLSv1.3
+smtpd_tls_mandatory_ciphers = medium
+smtpd_tls_auth_only = yes
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+smtpd_tls_security_level=may
+
+smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
+myhostname = server05.igroupware.org
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+myorigin = /etc/mailname
+mydestination = $myhostname, server05.igroupware.org, localhost.igroupware.org, , localhost
+relayhost =
+
 # Trusted network
 # server01.filmer.nl 178.128.254.144
 # server02.igroupware.org 159.223.11.178
@@ -51,7 +84,6 @@ polite_destination_recipient_limit = 5
 turtle_destination_concurrency_limit = 2
 turtle_destination_rate_delay = 30s
 turtle_destination_recipient_limit = 2
-
 ````
 
 Edit `/etc/postfix/master.cf`
@@ -88,6 +120,17 @@ quicknet.nl turtle:
 ````
 
     postmap /etc/postfix/transport
+
+## TLS certificate
+
+Read more on installing `acme.sh` on nginx/README.md.
+
+    mkdir -p /etc/letsencrypt/live/server05.igroupware.org
+
+    acme.sh --install-cert -d server05.igroupware.org \
+      --fullchain-file /etc/letsencrypt/live/server05.igroupware.org/fullchain.pem \
+      --key-file /etc/letsencrypt/live/server05.igroupware.org/privkey.pem \
+      --cert-file /etc/letsencrypt/live/server05.igroupware.org/cert.pem
 
 ## Sender Policy Framework (SPF)
 
@@ -165,6 +208,8 @@ InternalHosts `/etc/postfix/dkim/trusted.hosts`
     127.0.0.1
     ::1
     localhost
+    # Server02
+    159.223.11.178
     # Server03
     95.85.60.187
     # Server04
@@ -195,6 +240,22 @@ Test dkim key:
 Debug check persmissions on socket.
 
     srwxrwx--- 1 opendkim postfix /var/spool/postfix/run/opendkim/opendkim.sock=
+
+## iptables
+
+````
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -s 95.85.60.187/32 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
+-A INPUT -s 159.223.11.178 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
+-A INPUT -s 198.199.127.67/32 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
+-A INPUT -s 87.209.180.24 -i eth0 -p tcp -m tcp --dport 587 -j ACCEPT
+-A INPUT -i eth0 -p tcp -m tcp --dport 587 -j DROP
+-A INPUT -i eth0 -p tcp -m tcp --dport 25 -j DROP
+COMMIT
+````
 
 ## DMARC
 

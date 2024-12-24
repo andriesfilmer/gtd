@@ -76,7 +76,7 @@ nmap <leader>W :%bd\|e#\|bd#<CR>                " Delete buffers except current
 
 " Open buffers
 nmap <leader>oh :browse oldfiles<cr>            " History buffers
-nmap <silent><leader>od :!xdg-open %& 2> /dev/null<cr>       " [o]pen buffer in [d]efault application
+nmap <silent><leader>od :!xdg-open %&<cr>       " [o]pen buffer in [d]efault application
 
 nmap <leader>n :set nu!<CR>                     " Toggle linenumbers
 nmap <leader>r :set rnu!<CR>                    " Toggle relativenumbers
