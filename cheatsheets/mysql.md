@@ -116,8 +116,7 @@ Other example with multiple lines in column 'notes'.
     LOAD DATA INFILE '/path/to/yourfile.csv' INTO TABLE your_table_name
     FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY ''
     IGNORE 1 ROWS
-    (title, description, tags, url, @notes, updated_at, created_at) SET notes = REPLACE(@notes, '
-', '');
+    (title, description, tags, url, @notes, updated_at, created_at) SET notes = REPLACE(@notes, '', '');
 
 You may also have to call mysql with the --local-infile option.
 

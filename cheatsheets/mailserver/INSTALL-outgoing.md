@@ -5,7 +5,11 @@ Below the mailserver configuration on:
 - Postfix version 3.8.6
 
 ## Postfix
-Install [Postfix](http://www.postfix.org) and choose Internet site.
+If already installed, choose Internet site.
+
+    dpkg-reconfigure postfix
+
+If not installed [Postfix](http://www.postfix.org), choose Internet site.
 
     apt install postfix
 
@@ -51,13 +55,16 @@ relayhost =
 # server03.filmer.net: 95.85.60.187
 # server04.igroupware.org 146.190.236.166
 # server05.igroupware.org 146.185.159.154
+# server07.igroupware.org 159.69.245.21
 # Home ip: 87.209.180.24
-mynetworks = 127.0.0.0/8, 178.128.254.144, 159.223.11.178, 95.85.60.187, 146.190.236.166, 146.185.159.154, 87.209.180.24
+mynetworks = 127.0.0.0/8, 178.128.254.144, 159.223.11.178, 95.85.60.187, 146.190.236.166, 146.185.159.154, 159.69.245.21, 87.209.180.24
 
 # 20MB
 message_size_limit = 20480000
-maximal_queue_lifetime = 3d
-bounce_queue_lifetime = 2d
+# Unsuccessful delivery attempt
+maximal_queue_lifetime = 2d
+# MAILERD-DAEMON
+bounce_queue_lifetime = 1d
 bounce_template_file = /etc/postfix/bounce.cf
 
 # DKIM
@@ -216,6 +223,8 @@ InternalHosts `/etc/postfix/dkim/trusted.hosts`
     146.190.236.166
     # Server05
     146.185.159.154
+    # Server07
+    159.69.245.21
     # Ip home
     87.209.180.24
     *.igroupware.org
@@ -251,6 +260,7 @@ Debug check persmissions on socket.
 -A INPUT -s 95.85.60.187/32 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
 -A INPUT -s 159.223.11.178 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
 -A INPUT -s 198.199.127.67/32 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
+-A INPUT -s 159.69.245.21/32 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
 -A INPUT -s 87.209.180.24 -i eth0 -p tcp -m tcp --dport 587 -j ACCEPT
 -A INPUT -i eth0 -p tcp -m tcp --dport 587 -j DROP
 -A INPUT -i eth0 -p tcp -m tcp --dport 25 -j DROP
@@ -261,7 +271,7 @@ COMMIT
 
 Greate a [dmarc](https://dmarc.org/) record for each domain for who we are sending mail.
 
-    _dmarc    TXT   "v=DMARC1; p=quarantine; rua=mailto:postmaster@domain.nl;"
+    _dmarc    TXT   "v=DMARC1; p=quarantine; rua=mailto:postmaster@domain.com;"
 
 * [Control you DMARC process with dmarcian](https://dmarcian.com/)
 
@@ -295,6 +305,16 @@ Test and execute logrotate on Postfix manually:
     logrotate -f /etc/logrotate.d/postfix
     logrotate -v -d /etc/logrotate.conf   # Turn on debug mode, which means that no changes are made
     logrotate -v -f /etc/logrotate.conf   # Tells logrotate to force the rotation, even if it doesn't think this is necessary
+
+## crontab
+
+    apt install mailutils
+
+````
+53 1 * * * "/root/.acme.sh"/acme.sh --cron --home "/root/.acme.sh" > /dev/null
+58 23 * * * /usr/local/sbin/bounces-inzetrooster.pl
+59 23 * * * /usr/bin/cat /var/log/mail.log | grep -o -P 'from=<(.+?)>' | sort | uniq -c | sort -nr | head -n20 | /usr/bin/mail -s "Mail server08 top 20" postmaster@domain.com
+````
 
 ## Checking
 

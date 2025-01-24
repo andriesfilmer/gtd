@@ -12,8 +12,8 @@
 
 ````
 [DEFAULT]
-#          localhost   home-ip        server01        server02       server04        server05        server08
-ignoreip = 127.0.0.1/8 87.209.180.24  178.128.254.144 159.223.11.178 146.190.236.166 146.185.159.154 159.65.199.31
+#          localhost   home-ip        server01        server02       server04        server05        server07      server08
+ignoreip = 127.0.0.1/8 87.209.180.24  178.128.254.144 159.223.11.178 146.190.236.166 146.185.159.154 159.69.245.21 159.65.199.31
 ````
 
 Checkstatus
@@ -32,24 +32,24 @@ content hosts.allow
 ````
 # CIDR ranges with ssh access
 #------------------------------
-# 81.204.0.0/14    KPN
-# 84.104.0.0/14    VODAFONE_ZIGGO
-# 217.62.16.0/20   ZIGGO-CM
-# 94.211.144.0/21  ZIGGO-CM
-# 212.204.160.0/19 ZIGGO-CM
-# 84.241.192.0/19  Odido Netherlands
-# 87.210.0.0/16    Odido WBA Services
+# 81.204.0.0/14     KPN
+# 84.241.192.0/19   Odido Netherlands
+# 87.210.0.0/16     Odido WBA Services
+# 87.209.180.24     Home - Glas
 #-------------------------------
-# 178.128.254.144 server01
-# 159.223.11.178  server02
-# 95.85.60.187    server03
-# 146.190.236.166 server04
-# 146.185.159.154 server05
-# 159.65.199.31   server08
-# 87.209.180.24   Home - Glas
+# 178.128.254.144   server01
+# 159.223.11.178    server02
+# 95.85.60.187      server03
+# 146.190.236.166   server04
+# 146.185.159.154   server05
+# 159.69.245.21     server07
+# 159.65.199.31     server08
+#-------------------------------
+# Add some Proton vpn profile addresses
 #-------------------------------
 
-sshd: 81.204.0.0/14 84.104.0.0/14 217.62.16.0/20 94.211.144.0/21 212.204.160.0/19 84.241.192.0/19 178.128.254.144 146.190.236.166 146.185.159.154 159.65.199.31 87.209.180.24
+sshd: 81.204.0.0/14 84.241.192.0/19 87.210.0.0/16 87.209.180.24 \
+      178.128.254.144 159.223.11.178 95.85.60.187 146.190.236.166 146.185.159.154 159.69.245.21 159.65.199.31 \
 ````
 ## hosts.deny
 
@@ -101,23 +101,22 @@ Or enable new rules with fontend [ufw](https://help.ubuntu.com/community/UFW) fo
     apt update
     apt upgrade
 
+## Add a new user (your self)
+
+    adduser andries
+    usermod -aG sudo andries
+
 ## sshd no root login
 
 change `vi /etc/ssh/sshd_config`
 
     PermitRootLogin no
 
-## Add a new user (your self)
-
-    adduser andries
-    usermod -aG sudo andries
-
 ## Mail
 
-    apt install postfix
-    apt install mailutils
+    apt install postfix mailutils
 
-Configure as smarthost for delivering mail via mailserver
+Configure postfix as `smarthost` for delivering mail via mailserver
 
 Reconfigure postfix?
 

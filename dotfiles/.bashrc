@@ -102,7 +102,7 @@ bind '"\e[1;5B"':history-substring-search-forward  # search history with substri
 
 
 backup () {
-  cp "$@" "$@".backup-`date +'%Y-%m-%m_%H%M'`;
+  cp "$@" "$@".backup-`date +'%Y-%m-%d_%H%M'`;
 }
 
 genpasswd() {

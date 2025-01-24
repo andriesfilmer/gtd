@@ -52,6 +52,7 @@ $spawn->raw_pty(1);
 print "\033]0;$servernam\007";
 
 $spawn=Expect->spawn("ssh $username\@$servername");
+sleep(1);
 $spawn->slave->clone_winsize_from(\*STDIN);
 $SIG{WINCH} = \&winch;
 
