@@ -74,6 +74,10 @@ Delete files using xargs:
 
     find . -name "*.old" -print0 | xargs -0 rm
 
+Find and sort result by file sizes
+
+    ls -lSR | sort -k 5 -n
+
 Find files between dates (and times)
 
     find public/uploads/sites/ -type f -newermt "2023-03-01 10:17:00" ! -newermt "2023-04-02 10:53:00"
@@ -105,9 +109,9 @@ Change all the ruby-files with the content 'someString' to 'some_string'
 
 ## Rename files
 
-Example rename `DSC00882_10296969896_o.jpg` and `DSC00883_10296969897_o.jpg` to: Italy_10296969896.jpg and Italy_10296969897.jpg?
+Rename files and replace spaces to hivens.
 
-    for file in DSC*.jpg; do mv "$file" "$(echo Italy_${file#*_} | sed 's/_o\.jpg$/.jpg/')"; done
+    for file in *.jpg; do mv "$file" "$(echo "$file" | sed 's/ /-/g')"; done
 
 Fix some files (matching 1.png, 2.png, ... 9.png) so that they have leading zeros for proper ordering.
 

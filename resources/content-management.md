@@ -39,6 +39,9 @@
 
 * [LimeSurvey](https://www.limesurvey.org/) Turn questions into answers.
 
+## Calendar
+* [Calendly](https://calendly.com) | Share your booking page
+
 ## Data visualization
 
 * [Apache Superset data exploration and visualization platform](https://superset.apache.org/)

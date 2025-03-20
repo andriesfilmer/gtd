@@ -131,7 +131,7 @@ You may also have to call mysql with the --local-infile option.
 
 Main Configuration Files:
 
-* Global defaults: /etc/my.cnf or /etc/mysql/my.cnf
+* Global defaults: /etc/my.cnf, /etc/mysql/my.cnf or /etc/mysql/mariadb.conf.d/z-custom-mariadb.cnf
 * Additional configuration files: /etc/my.cnf.d/ or /etc/mysql/conf.d/
 
 Add these config setting add the end of `/etc/mysql/my.cnf`.

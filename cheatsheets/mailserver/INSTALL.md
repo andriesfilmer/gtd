@@ -435,6 +435,10 @@ We want to refresh ClamAV database, set the correct time on a daily basis and re
 
     postfix check for open relay
 
+List non default configuration
+
+    postconf -n
+
 Example postfix and opendkim services
 
     journalctl --follow --unit postfix.service --unit opendkim.service

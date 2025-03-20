@@ -9,31 +9,31 @@ set hlsearch                              " highlight all search matches
 set hidden                                " Switch between buffers if the buffer is changed. Think twice when using :q!
 set smartcase                             " Search: ignore case, unless uppercase chars given
 set incsearch                             " Set increase search, Search while you type
-set laststatus=2                               " first, enable status line always
-set list listchars=tab:»·,trail:·              " Make tabs visual: ».......
-set nocompatible                               " don't need to be compatible with old vim
-set nofoldenable                               " Dont fold by default
-set nowrap                                     " Default is wrap
-set number relativenumber                   " Set relative line numbers
-set cursorline                                 " highlight current line. Is slower :-(
-set omnifunc=syntaxcomplete#Complete           " Omni completion provides smart autocompletion for programs
-set shiftround                                 " Indentation: When at 3 spaces, >> takes to 4, not 5
-set shiftwidth=2                               " when indenting with '>', use 2 spaces width
-set showmatch                                  " show bracket matches
-set tabstop=4                                  " tab with 4 spaces width
-set updatetime=1000                            " vim-gitgutter, vim-signify, default value is 4000
-set wildmenu                                   " Show tab completions in statusline
-set wildmode=list:full                         " Command mode tab completion - complete upto ambiguity
-set path+=$PWD/**                              " Enable `:find` and `:b` without a full path, i.o. `find *_controller.rb` +tab
+set laststatus=2                          " first, enable status line always
+set list listchars=tab:»·,trail:·         " Make tabs visual: ».......
+set nocompatible                          " don't need to be compatible with old vim
+set nofoldenable                          " Dont fold by default
+set nowrap                                " Default is wrap
+set number " relativenumber               " Set line numbers, optional with relativenumbers
+set cursorline                            " highlight current line. Is slower :-(
+set omnifunc=syntaxcomplete#Complete      " Omni completion provides smart autocompletion for programs
+set shiftround                            " Indentation: When at 3 spaces, >> takes to 4, not 5
+set shiftwidth=2                          " when indenting with '>', use 2 spaces width
+set showmatch                             " show bracket matches
+set tabstop=4                             " tab with 4 spaces width
+set updatetime=1000                       " vim-gitgutter, vim-signify, default value is 4000
+set wildmenu                              " Show tab completions in statusline
+set wildmode=list:full                    " Command mode tab completion - complete upto ambiguity
+set path+=$PWD/**                         " Enable `:find` and `:b` without a full path, i.o. `find *_controller.rb` +tab
 
 " Mostly not needed
-"set colorcolumn=80,120                         " Show vertical bar to indicate 80/120 chars
-"set belloff=all                                " Disable beep
-"set cursorcolumn                               " highlight column line. Is slower :-(
-"set directory=~/.tmp                           " Don't clutter my dirs with swp/tmp files
-"set backupdir=~/.vim/tmp                       " Don't clutter my dirs with swp/tmp files
-"set wrap                                       " Wrapping on, default commented out
-"set paste                                      " Distinguish between typed text and pasted text in terminal
+"set colorcolumn=80,120                    " Show vertical bar to indicate 80/120 chars
+"set belloff=all                           " Disable beep
+"set cursorcolumn                          " highlight column line. Is slower :-(
+"set directory=~/.tmp                      " Don't clutter my dirs with swp/tmp files
+"set backupdir=~/.vim/tmp                  " Don't clutter my dirs with swp/tmp files
+"set wrap                                  " Wrapping on, default commented out
+"set paste                                 " Distinguish between typed text and pasted text in terminal
 
 "------------------------------------------------------------------------------
 " Colors
@@ -55,7 +55,8 @@ highlight ColorColumn ctermbg=236
 let mapleader = "\<Space>"                      " Set leader to space
 
 nnoremap <CR> :noh<CR><CR>                      " unsets last search pattern hitting return
-nmap <leader>ee :Lex 30<CR>                     " Toggle netrw Directory Listing
+nmap <leader>ee :Lex 30<CR>                     " Toggle netrw Directory root directory
+nmap <leader>ef :Vex 30<CR>                     " Toggle netrw Directory working directory
 
 nmap <C-Up> :wincmd k<CR>                       " Arrow keys, Alt+leftarrow will go one window left, etc.
 nmap <C-Down> :wincmd j<CR>
@@ -90,7 +91,7 @@ nmap <leader>ss :mksession!<cr>
 nmap <leader>sr :source Session.vim<cr>         "[s]ession [r]estore for cwd
 
 " Vim custom mappings
-nmap <leader>vr :e $MYVIMRC<CR>
+nmap <leader>vf :e $MYVIMRC<CR>
 nmap <leader>vc :e ~/gtd/cheatsheets/vim.md<CR>
 nmap <leader>vg :vimgrep /pattern/g app/**/*
 

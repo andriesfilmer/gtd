@@ -201,4 +201,8 @@ See rfc1893 and rfc2034 for information about enhanced status codes
     554   Transaction failed
     577   You don't have permission to send to the recipient
 
+## Config
 
+List non default configuration
+
+    postconf -n

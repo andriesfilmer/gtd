@@ -320,6 +320,10 @@ Test and execute logrotate on Postfix manually:
 
     postfix check for open relay
 
+List non default configuration
+
+    postconf -n
+
 Example postfix and opendkim services
 
     journalctl --follow --unit postfix.service --unit opendkim.service
