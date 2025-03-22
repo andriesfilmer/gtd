@@ -13,13 +13,14 @@ If not installed [Postfix](http://www.postfix.org), choose Internet site.
 
     apt install postfix
 
+### Main
+
 Edit `/etc/postfix/main.cf` and change/add.
 
 
 ````
 smtpd_banner = $myhostname ESMTP $mail_name (ShiftPlanner)
 biff = no
-append_dot_mydomain = no
 readme_directory = no
 compatibility_level = 3.6
 
@@ -49,15 +50,16 @@ myorigin = /etc/mailname
 mydestination = $myhostname, server05.igroupware.org, localhost.igroupware.org, , localhost
 relayhost =
 
-# Trusted network
+# mynetworks - Trusted network
 # server01.filmer.nl 178.128.254.144
 # server02.igroupware.org 159.223.11.178
 # server03.filmer.net: 95.85.60.187
 # server04.igroupware.org 146.190.236.166
 # server05.igroupware.org 146.185.159.154
 # server07.igroupware.org 159.69.245.21
+# server08.igroupware.org 159.65.199.31
 # Home ip: 87.209.180.24
-mynetworks = 127.0.0.0/8, 178.128.254.144, 159.223.11.178, 95.85.60.187, 146.190.236.166, 146.185.159.154, 159.69.245.21, 87.209.180.24
+mynetworks = 127.0.0.0/8, 178.128.254.144, 159.223.11.178, 95.85.60.187, 146.190.236.166, 146.185.159.154, 159.69.245.21, 159.65.199.31, 87.209.180.24
 
 # 20MB
 message_size_limit = 20480000
@@ -93,6 +95,10 @@ turtle_destination_rate_delay = 30s
 turtle_destination_recipient_limit = 2
 ````
 
+Add a copy of `/etc/postfix/bounce.cf`
+
+### Master
+
 Edit `/etc/postfix/master.cf`
 
 Uncomment submission port 387 for testing local, because port 25 is not available from home ip.
@@ -103,6 +109,8 @@ Limit outgoing mail throttling
 
     polite    unix  -       -       n       -       -       smtp
     turtle    unix  -       -       n       -       -       smtp
+
+### Transport
 
 Create a transport file `/etc/postfix/transport`
 
@@ -123,7 +131,7 @@ quicknet.nl turtle:
 #postmaster@filmer.nl smtp:[server08.igroupware.org]
 #
 # Typo's
-#mellolizwaan@outlouk.com        error:5.1.2 Bad destination system address
+#jaanfilmer@outlouk.com        error:5.1.2 Bad destination system address
 ````
 
     postmap /etc/postfix/transport
@@ -150,7 +158,7 @@ Or
 
     @         TXT           "v=spf1 include:spf.igroupware.org -all"
 
-## DomainKey Identification Mail (DKIM)
+### DomainKey Identification Mail (DKIM)
 
     apt install opendkim opendkim-tools
 
@@ -250,7 +258,7 @@ Debug check persmissions on socket.
 
     srwxrwx--- 1 opendkim postfix /var/spool/postfix/run/opendkim/opendkim.sock=
 
-## iptables
+### iptables
 
 ````
 *filter
@@ -267,7 +275,7 @@ Debug check persmissions on socket.
 COMMIT
 ````
 
-## DMARC
+### DMARC
 
 Greate a [dmarc](https://dmarc.org/) record for each domain for who we are sending mail.
 
@@ -275,11 +283,12 @@ Greate a [dmarc](https://dmarc.org/) record for each domain for who we are sendi
 
 * [Control you DMARC process with dmarcian](https://dmarcian.com/)
 
-## DNS Whitelist
+### DNS Whitelist
 
-[DNSWL.org](http://www.dnswl.org) provides a Whitelist of known legitimate email servers to reduce the chances of false positives while spam filtering. We have the entry ''postscreen_dnsbl_= siteslist.dnswl.org*-5'' [main.cf](/pub/scripts/mailserver/main.cf) to do the job.
+Add your ip to [DNSWL.org](http://www.dnswl.org) which provides a Whitelist of known legitimate
+email servers to reduce the chances of false positives while spam filtering.
 
-## Logrotate
+### Logrotate
 
 Create a new configuration file for Postfix logs in the logrotate `/etc/logrotate.d/postfix`
 
@@ -306,9 +315,9 @@ Test and execute logrotate on Postfix manually:
     logrotate -v -d /etc/logrotate.conf   # Turn on debug mode, which means that no changes are made
     logrotate -v -f /etc/logrotate.conf   # Tells logrotate to force the rotation, even if it doesn't think this is necessary
 
-## crontab
+### crontab
 
-    apt install mailutils
+Install perl DBI for `bounces-inzetrooster.pl` script (see cheatsheet perl for more info).
 
 ````
 53 1 * * * "/root/.acme.sh"/acme.sh --cron --home "/root/.acme.sh" > /dev/null
@@ -316,7 +325,7 @@ Test and execute logrotate on Postfix manually:
 59 23 * * * /usr/bin/cat /var/log/mail.log | grep -o -P 'from=<(.+?)>' | sort | uniq -c | sort -nr | head -n20 | /usr/bin/mail -s "Mail server08 top 20" postmaster@domain.com
 ````
 
-## Checking
+### Checking
 
     postfix check for open relay
 
@@ -333,6 +342,9 @@ Check if all services are running:
     ss --tcp --listening --processes --numeric --ipv4
     ss -tlpn4
 
+Always nice to have
+
+    apt install mailutils
 
 ### Mail-tester
 

@@ -38,6 +38,10 @@ After installing dutch language via settings it did not work. I had to run the n
 ## Personal gsetting
 
     # Settings -> Keyboard -> Keyboard Shortcuts -> Custom Shortcuts -> +
+
+    # Remap the Capslock key to Esc but Shift + Caps Lock behaves like regular Caps Lock
+    gsettings set org.gnome.desktop.input-sources xkb-options \[\'caps:escape_shifted_capslock\'\]
+
     # prefer-light theme shortcut
     gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name "'Light theme'"
     gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding "'F9'"

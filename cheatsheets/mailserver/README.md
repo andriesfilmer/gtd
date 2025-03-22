@@ -1,27 +1,25 @@
 # Other files
 * [INSTALL](./INSTALL.md)
+* [INSTALL-outgoing](./INSTALL-outgoing.md)
 * [DEBUG](./DEBUG.md)
 
 ## Check postfix configuration
 
     postfix check
 
-To see all of your configs, type postconf. To see how you differ from the defaults, try postconf -n
+## Mail utils
 
-    postconf -n
-
-## Swaks - SMTP transaction tester
-
-    sudo apt install swaks
-
-Simple test
-
-    swaks --from andries@inzetrooster.nl --to=andries.filmer@gmail.com --server=server03.filmer.net
-    swaks -t andries.filmer@gmail.com -f andries@filmer.nl -a -tls -au andries@filmer.nl -ap "mypasswd" -s mail.filmer.nl
+    apt install mailutils
 
 ## Postfix
 
     postfix check for open relay
+
+## Config
+
+To see all of your configs, type postconf. To see how you differ from the defaults, try postconf -n
+
+    postconf -n
 
 ## Dovecot
 
