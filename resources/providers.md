@@ -1,19 +1,18 @@
-## Synchronisation
+# Providers
 
+[EU-based cloud provider](https://www.eucloud.tech/)
+
+## Cloud hosting
+* [Hetzner](https://hetzner.cloud) | Since 1997 - Germany
+* [TransIp](https://transip.nl) | Since 2003 - Netherlands
+
+## Synchronisation
 * [Syncthing](https://docs.syncthing.net/) | Relaces Dropbox or other cloud services with something opensource.
 
 ## Managing your images and videos
-
 * [Cloudinary](https://cloudinary.com/) | Image and Video Management in the Cloud
 
-## Storage backend
-
-* Amazon S3
-* Windows Azure Blob Storage
-* [BackBlaze](https://help.backblaze.com/hc/en-us/articles/115001518354-How-to-configure-Backblaze-B2-with-Duplicity-on-Linux) | Backblaze B2 with Duplicity on Linux
-
 ## Personal storage integrated with UI
-
 * Dropbox
 * [Box](http://www.box.com/)
 * [Sugarsync](https://www.sugarsync.com/sync_comparison.html)
@@ -37,7 +36,11 @@
 * OpenStack Swift Storage
 
 
-# Database platforms
+## Database platforms
 * [Baserow](https://baserow.io/) The open platform to create scalable databases and applications—without coding.
 * [Supabase](https://supabase.com/) The opensource Firebase alternative
 * [PlanetScale - MySQL](https://planetscale.com/) Serverless MySQL platform
+
+## Payment providers
+* [Mollie](https;//mollie.com) | Netherlands
+* [Stripe](https://stripe.com/en-nl)

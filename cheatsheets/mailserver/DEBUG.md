@@ -1,12 +1,28 @@
-## Testing SMTP servers
+## Mail utils
 
-## Links
+    apt install mailutils
+
+## Check postfix configuration
+
+    postfix check
+
+List non default configuration
+
+    postconf -n
+
+## Dovecot
+
+As a general tip for debug the config if dovecot is not starting
+
+    dovecot -F
+
+## mxtoolbox
 
 * [BLACKLIST CHECK](https://mxtoolbox.com/blacklists.aspx)
 
 ## Mail tester
 
-Test the Spammyness of your emails <https://www.mail-tester.com/>
+Test the Spammyness of your emails <https://www.mail-tester.com/> DKIM, SPF and more checker
 
 ## Swaks - SMTP transaction tester
 
@@ -18,9 +34,20 @@ Simple test
     swaks -t andries.filmer@gmail.com -f andries@filmer.nl -a -tls -au andries@filmer.nl -ap "mypasswd" -s mail.filmer.nl:587
 
 
+## Examine logfiles
+
+    journalctl --follow --unit postfix.service --unit opendkim.service
+
+
+## Check all services are running:
+
+    ss --tcp --listening --processes --numeric --ipv4
+    ss -tlpn4
+
+
 ## Traditional mail debug
-\> client input
-< server response
+* \> client input
+* < server response
 
 ### Debug smtp
 
@@ -116,8 +143,6 @@ Without auth login
     > quit
 
 ### Debug pop3
-\> client input
-< server response
 
     telnet localhost 110
 
@@ -162,12 +187,6 @@ Without auth login
 
 * [IMAP protocol version 4 - rfc](https://tools.ietf.org/html/rfc1730)
 
-## Dovecot
-
-As a general tip for debug the config if dovecot is not starting
-
-    dovecot -F
-
 
 ##  SMTP reply codes
 
@@ -202,8 +221,3 @@ See rfc1893 and rfc2034 for information about enhanced status codes
     554   Transaction failed
     577   You don't have permission to send to the recipient
 
-## Config
-
-List non default configuration
-
-    postconf -n

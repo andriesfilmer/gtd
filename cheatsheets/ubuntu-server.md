@@ -14,6 +14,11 @@
 [DEFAULT]
 #          localhost   home-ip        server01        server02       server04        server05        server07      server08
 ignoreip = 127.0.0.1/8 87.209.180.24  178.128.254.144 159.223.11.178 146.190.236.166 146.185.159.154 159.69.245.21 159.65.199.31
+
+banaction = iptables
+
+[sshd]
+enabled=true
 ````
 
 Checkstatus

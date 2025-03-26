@@ -1,0 +1,9 @@
+#/etc/postfix/client_checks
+# Search the specified access database for the client hostname or IP address.
+#
+example.com               REJECT No spammers
+.example.com              REJECT No spammers, from your subdomain
+#123.456.789.123           REJECT Your IP is spammer
+#123.456.789.0/24          REJECT Your IP range is spammer
+2.173.146.36              REJECT No spammers # 2024-07-30 Keukenmessen
+

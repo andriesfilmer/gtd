@@ -1,31 +1,8 @@
 # Other files
 * [INSTALL](./INSTALL.md)
 * [INSTALL-outgoing](./INSTALL-outgoing.md)
+* [INSTALL-incomming](./INSTALL-incomming.md)
 * [DEBUG](./DEBUG.md)
-
-## Check postfix configuration
-
-    postfix check
-
-## Mail utils
-
-    apt install mailutils
-
-## Postfix
-
-    postfix check for open relay
-
-## Config
-
-To see all of your configs, type postconf. To see how you differ from the defaults, try postconf -n
-
-    postconf -n
-
-## Dovecot
-
-As a general tip for debug the config if dovecot is not starting
-
-    dovecot -F
 
 
 ## Postfix Log Report

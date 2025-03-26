@@ -1,0 +1,9 @@
+#/etc/postfix/sender_checks
+# Search the specified access(5) database for the MAIL FROM address, and execute the corresponding action.
+#
+#example.com              REJECT env. from addr any@example.com rejected
+#.example.com             REJECT env. from addr any@sub.example.com rejected
+#user@example.com         REJECT We don't want your email
+test@live.com            REJECT We don't want your email
+#filmer.nl                OK
+
