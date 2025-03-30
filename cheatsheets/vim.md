@@ -83,12 +83,14 @@
 
 ## Replace in file
     :%s/foo/bar/gc                     " Search for 1 and replace with 2, options are: g = global (entire file), c = confirm change
+    :s/,/,^M/g                         " Split one line (comma separated) to multiple lines, for ^M character, type Ctrl+V+Enter
+    :%j                                " Merge multiple lines into one line
     :%s/\s\+$//                        " Delete all trailing whitespace (at the end of each line) with
     :%s/^\s\+//                        " More rarely, you might want to delete whitespace at the beginning of each line
     :g/^\(#\|$\)/d                     " Remove comment lines
     :g/^$/d                            " Delete all empty lines:
     :'<,'>s/foo/bar/g                  " Replace words in  visual mode.
-    :%s/<Ctrl-V><Ctrl-M>/Ctrl-M/g      "Change file format Windows to Unix, where <Ctrl-V><Ctrl-M> means type Ctrl+V then Ctrl+M.
+    :%s/<Ctrl-V><Ctrl-M>/Ctrl-M/g      " Change file format Windows to Unix, where <Ctrl-V><Ctrl-M> means type Ctrl+v+enter  then Ctrl+m+enter .
 
 ## Find in files
     :vim foo **/*.js | cw              " Search for foo in every JavaScript file in the parent directories recursively.

@@ -2,12 +2,16 @@
 #
 # location /var/vmail/domain/user/.dovecot.sieve
 #
-require ["fileinto", "variables"];
+require ["fileinto","imap4flags", "vnd.dovecot.execute"];
 
-# Move spam to spam folder
 if header :contains "X-Spam-Flag" "YES" {
   fileinto "Spam";
+  addflag "\\Seen";
   # Stop here so that we do not reply on spams
   stop;
+}
+
+if address :is "to" "admin@linuxcomputers.nl" {
+  execute :pipe "signup-handler.sh";
 }
 

@@ -80,6 +80,12 @@ Hash these file after every change
     postmap /etc/postfix/vmailboxes
     postmap /etc/postfix/valiases
 
+### Client & Sender checks
+
+Create [/etc/postfix/client_checks](./client_checks) and [/etc/postfix/sender_checks](./sender_checks)
+
+    postmap /etc/postfix/client_checks
+    postmap /etc/postfix/sender_checks
 
 ### Postfix/SPF
 
@@ -95,6 +101,50 @@ Add these lines to `/etc/postfix/master.conf`
 policy-spf  unix  -       n       n       -       -       spawn
      user=nobody argv=/usr/bin/policyd-spf
 ````
+
+## Greylisting
+
+   apt install postgrey
+
+Enable this service in `/etc/postfix/main.cf`
+
+    smtpd_recipient_restrictions = permit_mynetworks,
+                                   permit_sasl_authenticated,
+                                   reject_unauth_destination,
+                                   check_policy_service inet:127.0.0.1:10023
+                                   ....
+
+Change delay to one minuut instead of 5 minutes in `/etc/default/postgrey`
+
+    POSTGREY_OPTS="--inet=127.0.0.1:10023 --delay=60"
+
+## iptables
+Change iptables so it accepts incomming mail, imap and submission
+
+````
+-A INPUT -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
+-A INPUT -i eth0 -p tcp -m tcp --dport 143 -j ACCEPT
+-A INPUT -i eth0 -p tcp -m tcp --dport 587 -j ACCEPT
+````
+
+## unbound caching nameserver DNS
+
+    apt-get install unbound
+
+Edit `/etc/systemd/resolved.conf` and add/change:
+
+    [Resolve]
+    DNS=127.0.0.1
+    FallbackDNS=9.9.9.9 149.112.112.112 208.67.222.222
+    DNSStubListener=no
+
+Generate new `/etc/resolve.conf` file.
+
+    systemctl restart systemd-resolved
+    resolvectl status
+
+You should see: `Current DNS Server: 127.0.0.1`
+
 ## Sieve
 
     apt install dovecot-sieve dovecot-managesieved
@@ -110,6 +160,11 @@ Create a crontab for example
 Append this line in `/etc/postfix/main.conf` to smtpd_milters (comma separated)
 
     smtpd_milters = unix:/spamass/spamass.sock
+
+Edit `/etc/default/spamd`
+
+    #OPTIONS="--create-prefs --max-children 5 --helper-home-dir"
+    OPTIONS="--create-prefs --max-children 5 --helper-home-dir -u spamd -g spamd"
 
 ### Testing the spam filter
 
@@ -140,8 +195,22 @@ Edit `/etc/clamav/clamav-milter.conf`
 Append this line in `/etc/postfix/main.conf` to smtpd_milters (comma separated)
 
     smtpd_milters = unix:/run/clamav/clamav-milter.ctl
+    smtpd_milters = unix:/var/spool/postfix/run/clamav/clamav-milter.ctl
 
 Check if the services are running
 
     systemctl status clamav*
+
+Testing clamav
+
+    echo 'X5O!P%@AP[4\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*' > eicar.com
+    clamscan eicar.com
+
+
+## fail2ban
+
+Edit `/etc/fail2ban/jail.local` and add:
+
+    [dovecot]
+    enabled = true
 

@@ -265,13 +265,28 @@ Debug check persmissions on socket.
 :INPUT ACCEPT [0:0]
 :FORWARD ACCEPT [0:0]
 :OUTPUT ACCEPT [0:0]
--A INPUT -s 95.85.60.187/32 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
--A INPUT -s 159.223.11.178 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
--A INPUT -s 198.199.127.67/32 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
--A INPUT -s 159.69.245.21/32 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
+
+# ip home odido
 -A INPUT -s 87.209.180.24 -i eth0 -p tcp -m tcp --dport 587 -j ACCEPT
--A INPUT -i eth0 -p tcp -m tcp --dport 587 -j DROP
+
+# server03.filmer.net
+-A INPUT -s 95.85.60.187/32 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
+
+# server02.igroupware.org
+-A INPUT -s 159.223.11.178 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
+
+# server05.igroupware.org
+-A INPUT -s 146.185.159.154 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
+
+# server07.igroupware.org
+-A INPUT -s 159.69.245.21 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
+
+# server08.igroupware.org
+-A INPUT -s 159.65.199.31 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
+
+# Drop smtp for the rest
 -A INPUT -i eth0 -p tcp -m tcp --dport 25 -j DROP
+
 COMMIT
 ````
 
