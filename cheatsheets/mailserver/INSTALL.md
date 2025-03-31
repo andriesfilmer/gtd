@@ -20,8 +20,7 @@ Create `/etc/apt/sources.list.d/dovecot.list` and add:
 
 Install dovecot
 
-    apt install dovecot-imapd
-    apt install dovecot-lmtpd
+    apt install dovecot-imapd dovecot-lmtpd
 
 ### Create a virtual Mailbox owner
 
@@ -131,8 +130,16 @@ Change iptables so it accepts incomming mail, imap and submission
 
 `/etc/iptables/rules.v6`
 ````
--I FORWARD -o eth0 -j REJECT
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A FORWARD -o eth0 -j REJECT --reject-with icmp6-port-unreachable
+COMMIT
 ````
+
+    iptables-restore < /etc/iptables/rules.v4
+    ip6tables-restore < /etc/iptables/rules.v6
 
 ## unbound caching nameserver DNS
 
@@ -196,30 +203,29 @@ The email should be blocked.
 Postfix now supports Sendmail 8 Milter protocol.
 
     apt install clamav-milter
+    mkdir /var/spool/postfix/clamav
+    chown clamav:postfix /var/spool/postfix/clamav
+
+Edit `/usr/lib/systemd/system/clamav-daemon.socket`
+
+    ListenStream=/var/spool/postfix/clamav/clamd.ctl
+
+Run daemon-reload
+
+    systemctl daemon-reload
 
 Edit `/etc/clamav/clamav-milter.conf`
 
-    MilterSocket /var/spool/postfix/run/clamav/clamav-milter.ctl
+    MilterSocket /var/spool/postfix/clamav/clamav-milter.ctl
     ClamdSocket unix:/var/spool/postfix/clamav/clamd.ctl
-    MilterSocketGroup postfix
-    Chroot /var/spool/postfix
 
 Append this line in `/etc/postfix/main.conf` to smtpd_milters (comma separated)
 
-    smtpd_milters = unix:/run/clamav/clamav-milter.ctl
-    smtpd_milters = unix:/var/spool/postfix/run/clamav/clamav-milter.ctl
-
-do we need to change de socket in /etc/systemd/system/sockets.target.wants/clamav-daemon.socket
+    smtpd_milters = unix:/clamav/clamav-milter.ctl
 
 Check if the services are running
 
-    systemctl status clamav*
-
-Testing clamav
-
-    echo 'X5O!P%@AP[4\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*' > eicar.com
-    clamscan eicar.com
-
+    systemctl status clamav-*
 
 ## fail2ban
 
