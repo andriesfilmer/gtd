@@ -48,16 +48,16 @@ Or
 Edit `/etc/opendkim.conf` and change/add to:
 
 ````
-Socket           local:/var/spool/postfix/run/opendkim/opendkim.sock
+Socket           local:/var/spool/postfix/opendkim/opendkim.sock
 
-KeyTable         file:/etc/postfix/dkim/key.table
-SigningTable     file:/etc/postfix/dkim/signing.table
-InternalHosts    file:/etc/postfix/dkim/trusted.hosts
+KeyTable         file:/etc/dkimkeys/key.table
+SigningTable     file:/etc/dkimkeys/signing.table
+InternalHosts    file:/etc/dkimkeys/trusted.hosts
 ````
 
 Open `/etc/default/opendkim` and change RUNDIR (postfix runs chroot):
 
-    RUNDIR=/var/spool/postfix/run/opendkim
+    RUNDIR=/var/spool/postfix/opendkim
     SOCKET=local:$RUNDIR/opendkim.sock
     USER=opendkim
     GROUP=postfix
@@ -66,8 +66,8 @@ Open `/etc/default/opendkim` and change RUNDIR (postfix runs chroot):
 
 Create rundir in chroot
 
-    mkdir -p /var/spool/postfix/run/opendkim
-    chown -R opendkim:postfix /var/spool/postfix/run
+    mkdir -p /var/spool/postfix/opendkim
+    chown -R opendkim:postfix /var/spool/postfix/opendkim
 
 Open `/etc/systemd/system/multi-user.target.wants/opendkim.service` and add next lines to **[service]**
 
@@ -85,23 +85,23 @@ Key generation for each domain and setup with DNS.
 
     mkdir -p /etc/postfix/dkim/keys
 
-    opendkim-genkey -D /etc/postfix/dkim/keys/filmer.net -b 2048 -d filmer.net -s default
-    opendkim-genkey -D /etc/postfix/dkim/keys/filmer.nl -b 2048 -d filmer.nl -s default
+    opendkim-genkey -D /etc/dkimkeys/filmer.net -b 2048 -d filmer.net -s default
+    opendkim-genkey -D /etc/dkimkeys/filmer.nl -b 2048 -d filmer.nl -s default
     ...
 
-KeyTable `/etc/postfix/dkim/key.table`
+KeyTable `/etc/dkimkeys/key.table`
 
-    default._domainkey.filmer.net filmer.net:default:/etc/postfix/dkim/keys/filmer.net/default.private
-    default._domainkey.filmer.nl filmer.nl:default:/etc/postfix/dkim/keys/filmer.nl/default.private
+    default._domainkey.filmer.net filmer.net:default:/etc/dkimkeys/keys/filmer.net/default.private
+    default._domainkey.filmer.nl filmer.nl:default:/etc/dkimkeys/keys/filmer.nl/default.private
     ...
 
-SigningTable `/etc/postfix/dkim/signing.table`
+SigningTable `/etc/dkimkeys/signing.table`
 
     filmer.net default._domainkey.filmer.net
     filmer.nl  default._domainkey.filmer.nl
     ...
 
-InternalHosts `/etc/postfix/dkim/trusted.hosts`
+InternalHosts `/etc/dkimkeys/trusted.hosts`
 
     127.0.0.1
     ::1
@@ -122,11 +122,15 @@ InternalHosts `/etc/postfix/dkim/trusted.hosts`
     *.inzetrooster.nl
     *.filmer.nl
 
-Opendkim needs permissions but postfix complains about **warning: group or other writable:**?!
+Set permissions
 
-    chown -R  opendkim:postfix /etc/postfix/dkim
+    chown -R  opendkim:opendkim /etc/dkimkeys/
 
-Create a DNS record for each domain from: `/etc/opendkim/keys/filmer.nl/default.txt`.
+You may need to add user "postfix" to group "opendkim".
+
+    adduser postfix opendkim
+
+    Create a DNS record for each domain from: `/etc/dkimkeys/keys/filmer.nl/default.txt`.
 
 Or check/test you DKIM on several sites, for example: [dkimcore.org](http://dkimcore.org/tools/keycheck.html)
 
@@ -139,7 +143,7 @@ Test dkim key:
 
 Debug check persmissions on socket.
 
-    srwxrwx--- 1 opendkim postfix /var/spool/postfix/run/opendkim/opendkim.sock=
+    srwxrwx--- 1 opendkim postfix /var/spool/postfix/opendkim/opendkim.sock=
 
 ### iptables
 

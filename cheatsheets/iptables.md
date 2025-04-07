@@ -22,6 +22,11 @@ Before flushing all the chains, ensure all chains have a policy of ACCEPT!
     iptables -A INPUT -s 203.0.113.51 -j DROP
     iptables -A INPUT -i eth0 -s 203.0.113.51 -j DROP
 
+To unblock (take the exact rule and replace -A with -D.
+
+    iptables -D INPUT -s 203.0.113.51 -j DROP
+    iptables -D INPUT -i eth0 -s 203.0.113.51 -j DROP
+
 ## Saving rules
 
 To update persistent iptables with new rules simply use iptables command to include new rules into your system.

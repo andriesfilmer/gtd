@@ -1,0 +1,6 @@
+# Compile with postmap -F hash:/etc/postfix/vmail_ssl.map when updating
+# One host per line
+server07.igroupware.org /etc/letsencrypt/live/server07.igroupware.org/privkey.pem /etc/letsencrypt/live/server07.igroupware.org/fullchain.pem
+mail.igroupware.org /etc/letsencrypt/live/mail.igroupware.org/privkey.pem /etc/letsencrypt/live/mail.igroupware.org/fullchain.pem
+mail.filmer.nl /etc/letsencrypt/live/mail.filmer.nl/privkey.pem /etc/letsencrypt/live/mail.filmer.nl/fullchain.pem
+

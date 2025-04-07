@@ -51,6 +51,13 @@ Change password file `/etc/dovecot/passwd` to your needs.
 
 My [/etc/dovecot/dovecot.conf](./dovecot.conf) (single config) file.
 
+### Certs
+
+Check if mail clients can get the cerfificates
+
+    openssl s_client -connect mail.igroupware.org:993 -showcerts
+    openssl s_client -connect mail.filmer.nl:587 -showcerts
+
 ## Postfix
 * First configurations are in [INSTAll-outgoing.md](./INSTALL-outgoing.md) file.
 
@@ -114,9 +121,11 @@ Enable this service in `/etc/postfix/main.cf`
                                    check_policy_service inet:127.0.0.1:10023
                                    ....
 
-Change delay to one minuut instead of 5 minutes in `/etc/default/postgrey`
+Change delay to one minuut instead of 5 minutes in `/etc/default/postgrey`. Use TCP or file socket
 
-    POSTGREY_OPTS="--inet=127.0.0.1:10023 --delay=60"
+    POSTGREY_OPTS="--unix=/var/spool/postfix/private/postgrey --delay=60"
+    #POSTGREY_OPTS="--inet=127.0.0.1:10023 --delay=60"
+
 
 ## iptables
 Change iptables so it accepts incomming mail, imap and submission
@@ -143,6 +152,8 @@ COMMIT
 
 ## unbound caching nameserver DNS
 
+For blocklist resolving ipnrs we need a local caching dns server.
+
     apt install unbound
 
 Edit `/etc/unbound/unbound.conf`, see [example file](./unbound.conf)
@@ -151,15 +162,28 @@ Edit `/etc/systemd/resolved.conf` and add/change:
 
     [Resolve]
     DNS=127.0.0.1
-    FallbackDNS=9.9.9.9 149.112.112.112 208.67.222.222
+    # Allowed dns for blocklists
+    # Quad9: 9.9.9.9 149.112.112.112
+    # Opendns 208.67.222.222
+    #FallbackDNS=9.9.9.9 149.112.112.112 208.67.222.222
+    FallbackDNS=
     DNSStubListener=no
 
-Generate new `/etc/resolve.conf` file.
+Remove current `resolve.conf` file.
 
+     /etc/resolv.conf -> ../run/systemd/resolve/stub-resolv.conf
+
+Create a new `/etc/resolve.conf` file.
+
+    echo "nameserver 127.0.0.1" | sudo tee /etc/resolv.conf
+
+Testing
+
+    dig @127.0.0.1 somedomainname.comm
     systemctl restart systemd-resolved
     resolvectl status
 
-You should see: `Current DNS Server: 127.0.0.1`
+You should see: `DNS Server: 127.0.0.1`
 
 ## Sieve
 
@@ -179,8 +203,7 @@ Append this line in `/etc/postfix/main.conf` to smtpd_milters (comma separated)
 
 Edit `/etc/default/spamd`
 
-    #OPTIONS="--create-prefs --max-children 5 --helper-home-dir"
-    OPTIONS="--create-prefs --max-children 5 --helper-home-dir -u spamd -g spamd"
+    OPTIONS="--create-prefs --max-children 5 --helper-home-dir --nouser-config -u spamass-milter -g spamass-milter"
 
 Disable rbl checking in `/etc/spamassassin/local.cf`
 
@@ -219,6 +242,10 @@ Edit `/etc/clamav/clamav-milter.conf`
     MilterSocket /var/spool/postfix/clamav/clamav-milter.ctl
     ClamdSocket unix:/var/spool/postfix/clamav/clamd.ctl
 
+Edit `/etc/clamav/clamd.conf`
+
+    LocalSocket /var/spool/postfix/clamav/clamd.ctl
+
 Append this line in `/etc/postfix/main.conf` to smtpd_milters (comma separated)
 
     smtpd_milters = unix:/clamav/clamav-milter.ctl
@@ -226,6 +253,16 @@ Append this line in `/etc/postfix/main.conf` to smtpd_milters (comma separated)
 Check if the services are running
 
     systemctl status clamav-*
+
+We want to refresh ClamAV database on a daly basis, for example.
+
+Edit `/usr/lib/systemd/system/clamav-freshclam.service` and add:
+
+    User=clamav
+
+Do we need a crontab if freshclam is running as a service?
+
+    25 5 * * * /usr/bin/freshclam --quiet
 
 ## fail2ban
 
@@ -236,13 +273,15 @@ Edit `/etc/fail2ban/jail.local` and add:
 #          localhost   home-ip        server01        server02       server04        server05        server08
 ignoreip = 127.0.0.1/8 87.209.180.24  178.128.254.144 159.223.11.178 146.190.236.166 146.185.159.154 159.65.199.31
 
+banaction = iptables
+
 [postfix-flood-attack]
 enabled  = true
 bantime  = 1h
 filter   = postfix-flood-attack
+journalmatch = _SYSTEMD_UNIT=postfix.service
 action   = iptables-multiport[name=postfix, port="http,https,smtp,submission,imap,imaps,sieve", protocol=tcp]
 logpath  = /var/log/mail.log
-ignoreip = <snip> 127.0.0.1/8
 maxretry = 3
 
 [postfix]
@@ -251,13 +290,20 @@ maxretry = 3
 bantime = 1h
 filter = postfix[mode=aggressive]
 logpath = /var/log/mail.log
-ignoreip = <snip> 127.0.0.1/8
 
 [dovecot]
 enabled = true
-port = pop3,pop3s,imap,imaps
+port = imap,imaps
 filter = dovecot
 logpath = /var/log/dovecot.log
 maxretry  = 3
-ignoreip = <snip> 127.0.01/8
 ````
+
+Create a defination `/etc/fail2ban/filter.d/postfix-flood-attack.conf`
+
+````
+[Definition]
+failregex = lost connection after AUTH from (.*)\[<HOST>\]
+ignoreregex =
+````
+

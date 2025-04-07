@@ -1,33 +1,52 @@
 # /etc/postfix/main.cf
 
 smtpd_banner = $myhostname ESMTP $mail_name (ShiftPlanner)
+
+# biff service sends "new mail" notifications to users who have requested new mail notification
 biff = no
 append_dot_mydomain = yes
 readme_directory = no
 compatibility_level = 3.6
 
-# TLS parameters
-smtp_use_tls = yes
-smtp_tls_CApath=/etc/ssl/certs
-smtp_tls_security_level=may
-smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+# TLS
+################################################################################
+# smtp_* = settings for sending emails to other mail servers
+# smtpd_* = settings for receiving emails from other mail servers or clients
 
 smtpd_use_tls = yes
-smtpd_tls_CAfile = /etc/letsencrypt/live/server07.igroupware.org/fullchain.pem
-smtpd_tls_key_file = /etc/letsencrypt/live/server07.igroupware.org/privkey.pem
-smtpd_tls_cert_file = /etc/letsencrypt/live/server07.igroupware.org/cert.pem
+smtp_use_tls = yes
+
+smtp_tls_CApath = /etc/ssl/certs
+smtp_tls_security_level = may
+smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+smtp_tls_loglevel = 1
+
+# We use multiple keys for separate domain via: `smtpd_tls_chain_files`
+#smtpd_tls_CAfile = /etc/letsencrypt/live/server07.igroupware.org/fullchain.pem
+#smtpd_tls_key_file = /etc/letsencrypt/live/server07.igroupware.org/privkey.pem
+#smtpd_tls_cert_file = /etc/letsencrypt/live/server07.igroupware.org/cert.pem
+
+# Provide the primary certificate for the server, to be used for outgoing connections
+smtpd_tls_chain_files =
+  /etc/letsencrypt/live/server07.igroupware.org/privkey.pem
+  /etc/letsencrypt/live/server07.igroupware.org/fullchain.pem
+
+# Provide the map to be used when SNI support is enabled
+# `postmap -F hash:/etc/postfix/vmail_ssl.map` after changes.
+tls_server_sni_maps = hash:/etc/postfix/vmail_ssl.map
 
 smtpd_tls_received_header = yes
-smtpd_tls_mandatory_protocols = TLSv1.2, TLSv1.3
-smtpd_tls_mandatory_ciphers = medium
-smtpd_tls_auth_only = yes
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
-smtpd_tls_security_level=may
+smtpd_tls_security_level = may
+smtpd_tls_auth_only = yes
+################################################################################
 
 myhostname = server07.igroupware.org
 myorigin = /etc/mailname
 mydestination = $myhostname, server07.igroupware.org, igroupware.org, localhost
 relayhost =
+alias_maps = hash:/etc/aliases
+#alias_database = hash:/etc/aliases
 
 # Trusted networks
 # server01.filmer.nl 178.128.254.144
@@ -37,17 +56,17 @@ relayhost =
 # server05.igroupware.org 146.185.159.154
 # server07.igroupware.org 159.69.245.21
 # Home ip: 87.209.180.24
-networks = 127.0.0.0/8,
-           178.128.254.144,
-           159.223.11.178,
-           95.85.60.187,
-           146.190.236.166,
-           146.185.159.154,
-           159.69.245.21,
-           87.209.180.24
+mynetworks = 127.0.0.0/8,
+             178.128.254.144,
+             159.223.11.178,
+             95.85.60.187,
+             146.190.236.166,
+             146.185.159.154,
+             159.69.245.21,
+             87.209.180.24
 
-# 20MB
 disable_vrfy_command = yes
+# Limit incomming mail 20MB
 message_size_limit = 20480000
 maximal_queue_lifetime = 2d
 bounce_queue_lifetime = 1d
@@ -62,7 +81,7 @@ smtpd_sasl_security_options = noanonymous
 # Milter for DKIM, Clamav and Spamassassin
 milter_default_action = accept
 milter_protocol = 6
-smtpd_milters = unix:/run/opendkim/opendkim.sock, unix:/spamass/spamass.sock, unix:/clamav/clamav-milter.ctl
+smtpd_milters = unix:/opendkim/opendkim.sock, unix:/spamass/spamass.sock, unix:/clamav/clamav-milter.ctl
 non_smtpd_milters = $smtpd_milters
 
 # Limit outgoing mail throttling
@@ -89,7 +108,7 @@ virtual_transport = lmtp:unix:private/dovecot-lmtp
 virtual_mailbox_base = /var/vmail/
 virtual_mailbox_domains = hash:/etc/postfix/vdomains
 virtual_mailbox_maps = hash:/etc/postfix/vmailboxes
-virtual_alias_maps = hash:/etc/postfix/valiases
+virtual_alias_maps = hash:/etc/dovecot/sieve/valiases-inzetrooster
 #recipient_bcc_maps = hash:/etc/postfix/valiases-admin
 #sender_canonical_classes = envelope_sender, header_sender
 #sender_canonical_maps = hash:/etc/postfix/canonical
@@ -176,7 +195,7 @@ smtpd_recipient_restrictions = permit_mynetworks,
 
 smtpd_relay_restrictions = permit_mynetworks,
                            permit_sasl_authenticated,
-                           defer_unauth_destination
+                           reject_unauth_destination
 
 # Block clients that speak too early.
 smtpd_data_restrictions = reject_unauth_pipelining
@@ -191,3 +210,4 @@ smtpd_client_connection_rate_limit = 50
 anvil_rate_time_unit = 60s
 
 ####################################################
+

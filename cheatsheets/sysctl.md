@@ -5,7 +5,7 @@ View sysctl variables
     sysctl -a
     sysctl -a | grep redirects
 
-Set variables
+Set variable
 
     sysctl -w net.ipv4.conf.all.send_redirects = 0
 
@@ -13,12 +13,16 @@ Reload config without reboot
 
     sysctl --system
 
+Apply the changes by running
+
+    sysctl -p
+
 ### Below is a excerpt from resources:
 * https://gist.github.com/ThisIsMissEm/83ffaafbdcd0e1280c8b
 * https://jivoi.github.io/2015/07/22/ubuntu-security-hardening/
 
 ### Digital ocean recommende settings memory
-```
+````
 net.core.wmem_max=12582912
 net.core.rmem_max=12582912
 net.ipv4.tcp_rmem= 10240 87380 12582912
@@ -131,3 +135,11 @@ net.ipv4.udp_rmem_min = 16384
 net.ipv4.tcp_max_tw_buckets = 1440000
 net.ipv4.tcp_tw_reuse = 1
 ````
+
+### Disable ipv6
+````
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+````
+
