@@ -51,7 +51,7 @@ alias_maps = hash:/etc/aliases
 # Trusted networks
 # server01.filmer.nl 178.128.254.144
 # server02.igroupware.org 159.223.11.178
-# server03.filmer.net: 95.85.60.187
+# server03.igroupware.org 91.99.94.83
 # server04.igroupware.org 146.190.236.166
 # server05.igroupware.org 146.185.159.154
 # server07.igroupware.org 159.69.245.21

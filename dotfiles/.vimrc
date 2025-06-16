@@ -100,6 +100,10 @@ nmap <C-F10> :set background=dark<CR>
 
 nnoremap <F2> :set paste!<CR>
 
+" use wayland copy instead off `apt install vim-gtk`
+vmap y y:call system('wl-copy', @")<CR>
+vmap d d:call system('wl-copy', @")<CR>
+
 "-------------------------------------
 " Some mappings if plugin is available
 "-------------------------------------

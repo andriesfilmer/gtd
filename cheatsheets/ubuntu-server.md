@@ -44,7 +44,7 @@ content hosts.allow
 #-------------------------------
 # 178.128.254.144   server01
 # 159.223.11.178    server02
-# 95.85.60.187      server03
+# 91.99.94.83       server03
 # 146.190.236.166   server04
 # 146.185.159.154   server05
 # 159.69.245.21     server07
@@ -54,7 +54,7 @@ content hosts.allow
 #-------------------------------
 
 sshd: 81.204.0.0/14 84.241.192.0/19 87.210.0.0/16 87.209.180.24 \
-      178.128.254.144 159.223.11.178 95.85.60.187 146.190.236.166 146.185.159.154 159.69.245.21 159.65.199.31 \
+      178.128.254.144 159.223.11.178 91.99.94.83 146.190.236.166 146.185.159.154 159.69.245.21 159.65.199.31
 ````
 ## hosts.deny
 
@@ -84,7 +84,7 @@ Add some custom rules before `COMMIT` in `/etc/iptables/rules.v4`
 ````
 *filter
 # MySql/Mariadb
--A INPUT -s 95.85.60.187 -i eth0 -p tcp -m tcp --dport 3306 -j ACCEPT
+-A INPUT -s server07.igroupware.org -i eth0 -p tcp -m tcp --dport 3306 -j ACCEPT
 -A INPUT -i eth0 -p tcp -m tcp --dport 3306 -j DROP
 # Mail
 -A INPUT -i eth0 -p tcp -m tcp --dport 25 -j DROP
@@ -205,10 +205,6 @@ More info: <https://www.digitalocean.com/community/tutorials/how-to-add-swap-spa
 You can make a crontab, when the file system is >80% full we'd like to receive a mail.
 
     0 9 * * * if [ "`df -l |grep '[8|9][0-9]\%'`" ]; then `df -h|/usr/bin/mail -s 'File system > 80\% full' root` ; fi
-
-Cleanup journal logfile upto 2G
-
-    2 2 2 * * /usr/bin/journalctl --vacuum-size=2G
 
 ## ssh banner
 

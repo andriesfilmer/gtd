@@ -1,5 +1,12 @@
 # Content Management Systems
 
+## Self Storage
+* [Immich](https://immich.app/) | Self-hosted photo and video management solution
+* [Paperless Ngx](https://docs.paperless-ngx.com/) | A open-source document management system that transforms your physical documents into a searchable online archive.
+* [Syncthing](https://docs.syncthing.net/) | Relaces Dropbox or other cloud services with something opensource.
+* [Dawarich](https://dawarich.app/) | Visualize your location history, track your movements, and analyze your travel patterns with complete privacy and control.
+
+
 ## SSD (Static site generators)
 * [Pelican](https://getpelican.com/) - a static site generator that requires no database or server-side logic.
 

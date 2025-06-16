@@ -41,3 +41,6 @@
 
 ## Online convertions
 * [ZamZar](https://www.zamzar.com/) File conversion made easy
+
+## Charts, maps & tables
+* [DataWrapper](https://www.datawrapper.de/) It's free & nosubscription is required |Enrich your stories with charts,maps, and tables

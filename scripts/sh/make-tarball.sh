@@ -29,11 +29,6 @@ C_COMMAND="| gzip";
 C_OPTIONS=">";
 EXT=".tar.gz";
 
-# ???
-#CORES=$(( $(lscpu | awk '/^Socket/{ print $2 }') * $(lscpu | awk '/^Core/{ print $4 }') ));
-
-
-
 ####
 # Check
 ####

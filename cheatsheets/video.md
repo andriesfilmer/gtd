@@ -35,19 +35,20 @@ or
  ffmpeg -i "concat:VTS_01_1.VOB|VTS_01_2.VOB|VTS_01_3.VOB" -target pal-dvd -vcodec copy -acodec copy OUTPUT_DVD.mp4
 
 
-
-# Webcam with background
-
 ## OBS studio
+
+Webcam with background
 
     sudo apt install obs-studio
     sudo apt install ffmpeg
 
 Resourses: <https://obsproject.com/wiki/install-instructions#ubuntu-installation>
 
-## Video download
+## Shutter encoder
 
-Youtube download
+[Shutterencoder](https://www.shutterencoder.com/) | A converter designed by video editors
+
+## Youtube download
 
 <https://github.com/rg3/youtube-dl>
 

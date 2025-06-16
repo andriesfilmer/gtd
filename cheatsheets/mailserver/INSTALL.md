@@ -169,11 +169,11 @@ Edit `/etc/systemd/resolved.conf` and add/change:
     FallbackDNS=
     DNSStubListener=no
 
-Remove current `resolve.conf` file.
+Remove current `resolv.conf` file.
 
      /etc/resolv.conf -> ../run/systemd/resolve/stub-resolv.conf
 
-Create a new `/etc/resolve.conf` file.
+Create a new `/etc/resolv.conf` file.
 
     echo "nameserver 127.0.0.1" | sudo tee /etc/resolv.conf
 
@@ -188,6 +188,15 @@ You should see: `DNS Server: 127.0.0.1`
 ## Sieve
 
     apt install dovecot-sieve dovecot-managesieved
+
+Let sieve scripts do there work. Edit `/etc/systemd/system/multi-user.target.wants/dovecot.service` and add:
+
+    ReadWritePaths=/etc/dovecot/sieve/
+
+Reload the units with:
+
+    systemctl daemon-reload
+    systemctl restart dovecot
 
 ## Spamassassin
 
@@ -277,19 +286,20 @@ banaction = iptables
 
 [postfix-flood-attack]
 enabled  = true
-bantime  = 1h
 filter   = postfix-flood-attack
 journalmatch = _SYSTEMD_UNIT=postfix.service
+backend = auto
 action   = iptables-multiport[name=postfix, port="http,https,smtp,submission,imap,imaps,sieve", protocol=tcp]
 logpath  = /var/log/mail.log
 maxretry = 3
+bantime  = 1h
 
 [postfix]
 enabled = true
-maxretry = 3
-bantime = 1h
 filter = postfix[mode=aggressive]
 logpath = /var/log/mail.log
+maxretry = 3
+bantime = 1h
 
 [dovecot]
 enabled = true

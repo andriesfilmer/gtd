@@ -21,7 +21,7 @@ If not installed [Postfix](http://www.postfix.org), choose Internet site.
 
 ## TLS certificate
 
-Read more on installing `acme.sh` on nginx/README.md.
+Read more on installing certificates with `acme.sh` on nginx/README.md.
 
     mkdir -p /etc/letsencrypt/live/server05.igroupware.org
 
@@ -79,13 +79,14 @@ Your changes won't be applied it you just reload your systemd-configuration file
     bash /lib/opendkim/opendkim.service.generate
     systemctl daemon-reload
 
-Key generation for each domain and setup with DNS.
+### Key generation for each domain and setup with DNS.
 
 **Or copy keys from other mailserver if already configured in DNS**
 
-    mkdir -p /etc/postfix/dkim/keys
+    mkdir /etc/postfix/dkimkeys
 
-    opendkim-genkey -D /etc/dkimkeys/filmer.net -b 2048 -d filmer.net -s default
+    opendkim-genkey -D /etc/dkimkeys/igroupware.org -b 2048 -d igroupware.org -s default
+    opendkim-genkey -D /etc/dkimkeys/inzetrooster.nl -b 2048 -d inzetrooster.nl -s default
     opendkim-genkey -D /etc/dkimkeys/filmer.nl -b 2048 -d filmer.nl -s default
     ...
 
@@ -138,7 +139,7 @@ Or check/test you DKIM on several sites, for example: [dkimcore.org](http://dkim
 
 Test dkim key:
 
-    postfix reload
+    systemctl restart postfix opendkim
     opendkim-testkey -d filmer.nl -s default -vvv
 
 Debug check persmissions on socket.
@@ -222,9 +223,9 @@ Test and execute logrotate on Postfix manually:
 Install perl DBI for `bounces-inzetrooster.pl` script (see cheatsheet perl for more info).
 
 ````
-53 1 * * * "/root/.acme.sh"/acme.sh --cron --home "/root/.acme.sh" > /dev/null
+53 1 * * * "/root/.acme.sh/acme.sh --cron --home /root/.acme.sh" > /dev/null
 58 23 * * * /usr/local/sbin/bounces-inzetrooster.pl
-59 23 * * * /usr/bin/cat /var/log/mail.log | grep -o -P 'from=<(.+?)>' | sort | uniq -c | sort -nr | head -n20 | /usr/bin/mail -s "Mail server08 top 20" postmaster@domain.com
+59 23 * * * /usr/local/sbin/mail-report.sh | /usr/bin/mail -s "Mail report server05" postmaster@inzetrooster.nl
 ````
 
 ### Checking
@@ -243,10 +244,6 @@ Check if all services are running:
 
     ss --tcp --listening --processes --numeric --ipv4
     ss -tlpn4
-
-Always nice to have
-
-    apt install mailutils
 
 ### Mail-tester
 

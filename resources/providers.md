@@ -6,9 +6,6 @@
 * [Hetzner](https://hetzner.cloud) | Since 1997 - Germany
 * [TransIp](https://transip.nl) | Since 2003 - Netherlands
 
-## Synchronisation
-* [Syncthing](https://docs.syncthing.net/) | Relaces Dropbox or other cloud services with something opensource.
-
 ## Managing your images and videos
 * [Cloudinary](https://cloudinary.com/) | Image and Video Management in the Cloud
 

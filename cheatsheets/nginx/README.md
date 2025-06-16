@@ -25,6 +25,8 @@ Use the automatic DNS API integration, for example: [Transip](https://github.com
 
 Create a key pair - [Transip](https://www.transip.nl/cp/account/api/) and **add your ipnr to the whitelist**
 
+Save the private key in `/etc/ssl/private/transip-private.key`
+
 Default variables are stored in `/root/.acme.sh/account.conf` after running acme.sh
 Add the next for transip.
 
@@ -34,8 +36,8 @@ SAVED_TRANSIP_Key_File='/etc/ssl/private/transip-private.key'
 SAVED_TRANSIP_Token_Global_Key=''
 ````
 
-    acme.sh --register-account -m my@example.com
-    acme.sh --issue --dns dns_transip --dnssleep 100 -d domain.org -d *.domain.org
+    .acme.sh/acme.sh --register-account -m my@example.com
+    .acme.sh/acme.sh --issue --dns dns_transip --dnssleep 100 -d domain.org -d *.domain.org
 
 Add the next lines to you nginx `server` config
 
@@ -47,7 +49,7 @@ Install wildcard certificate
 
     mkdir -p /etc/letsencrypt/live/domain.org
 
-    acme.sh --install-cert -d domain.org \
+    acme.sh/.acme.sh --install-cert -d domain.org \
     --key-file /etc/letsencrypt/live/domain.org/privkey.pem \
     --fullchain-file /etc/letsencrypt/live/domain.org/fullchain.pem \
     --reloadcmd "service nginx force-reload"
