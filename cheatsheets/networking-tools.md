@@ -1,5 +1,9 @@
 # Linux networking tools
 
+## nmcli
+
+A command-line tool for controlling NetworkManager and reporting network status.
+
 ## netplan
 
 Returns brief and readable output

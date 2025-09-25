@@ -249,7 +249,8 @@ Run daemon-reload
 Edit `/etc/clamav/clamav-milter.conf`
 
     MilterSocket /var/spool/postfix/clamav/clamav-milter.ctl
-    ClamdSocket unix:/var/spool/postfix/clamav/clamd.ctl
+    #ClamdSocket unix:/var/spool/postfix/clamav/clamd.ctl
+    ClamdSocket unix:/run/clamav/clamd.ctl
 
 Edit `/etc/clamav/clamd.conf`
 

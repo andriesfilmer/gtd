@@ -15,10 +15,17 @@
     ifup eth0
     ifup --force eth0  # If these command fail or the interface may be in an UNKNOWN state
 
-## dns
+## dns - resolve
+
+See which nameservers you're using.
+
+    resolvectl
+
+Check if nameserver is working.
 
     ping 8.8.8.8
     ping google.com
+
 
 ### Alternative DNS servers
 
