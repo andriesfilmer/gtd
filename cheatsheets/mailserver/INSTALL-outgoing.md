@@ -36,7 +36,7 @@ Read more on installing certificates with `acme.sh` on nginx/README.md.
 
 Create a [SPF](http://www.openspf.org/) record for each domain who we are sending mail, some examples:
 
-    @         TXT           "v=spf1 ip4:95.85.60.187 ip4:159.65.199.31 ip4:146.185.159.154 -all"
+    @         TXT           "v=spf1 ip4:91.99.94.83 ip4:159.65.199.31 ip4:146.185.159.154 -all"
 Or
 
     @         TXT           "v=spf1 include:spf.igroupware.org -all"
@@ -110,7 +110,7 @@ InternalHosts `/etc/dkimkeys/trusted.hosts`
     # Server02
     159.223.11.178
     # Server03
-    95.85.60.187
+    91.99.94.83
     # Server04
     146.190.236.166
     # Server05
@@ -155,10 +155,10 @@ Debug check persmissions on socket.
 :OUTPUT ACCEPT [0:0]
 
 # ip home odido
--A INPUT -s 87.209.180.24 -i eth0 -p tcp -m tcp --dport 587 -j ACCEPT
+-A INPUT -s 62.166.142.79 -i eth0 -p tcp -m tcp --dport 587 -j ACCEPT
 
-# server03.filmer.net
--A INPUT -s 95.85.60.187/32 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
+# server03.igroupware.org
+-A INPUT -s 91.99.94.83 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
 
 # server02.igroupware.org
 -A INPUT -s 159.223.11.178 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT

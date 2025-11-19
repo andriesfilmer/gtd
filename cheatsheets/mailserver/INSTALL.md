@@ -218,6 +218,11 @@ Disable rbl checking in `/etc/spamassassin/local.cf`
 
     skip_rbl_checks 1
 
+Allow mail from trusted servers
+
+    trusted_networks 127.0.0.0/8 178.128.254.144 159.223.11.178 91.99.94.83 146.190.236.166 146.185.159.154 159.69.245.21 87.209.180.24
+    whitelist_from *@igroupware.org
+
 ### Testing the spam filter
 
 On a other computer/server: download a text file with the GTUBE signature line and use it as the body of a test email:

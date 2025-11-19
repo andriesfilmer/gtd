@@ -137,7 +137,7 @@ Create a [SPF](http://www.openspf.org/) record for each domain who we are sendin
 
     @         TXT           "v=spf1 ip4:82.201.119.0/24 -all"
     @         TXT           "v=spf1 mx mx:filmer.nl ~all"
-    @         TXT           "v=spf1 mx ptr ip4:95.85.60.187 ip6:fe80::601:18ff:fe1b:8e01/64 mx:mail.filmer.nl ~all"
+    @         TXT           "v=spf1 mx ptr ip4:91.99.94.83 ip6:fe80::601:18ff:fe1b:8e01/64 mx:mail.filmer.nl ~all"
 
 ### Postfix/SPF
 
@@ -221,7 +221,7 @@ InternalHosts `/etc/opendkim/trusted.hosts`
     ::1
     localhost
     # Server03
-    95.85.60.187
+    91.99.94.83
     # Server04
     146.190.236.166
     # Server05
@@ -367,7 +367,7 @@ Add this to the crontab (run every first day of month at 4:30pm)
 Set `/etc/bind/named.conf.options` file:
 
     acl goodclients {
-        95.85.60.187;
+        91.99.94.83;
         localhost;
         localnets;
     };
