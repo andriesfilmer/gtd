@@ -5,13 +5,12 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim",                   opts = {} },
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
   },
   config = function()
     -- import lspconfig plugin
     local lspconfig = require("lspconfig")
-
-    -- import mason_lspconfig plugin
-    local mason_lspconfig = require("mason-lspconfig")
 
     -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -78,52 +77,7 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
-    mason_lspconfig.setup_handlers({
-      -- default handler for installed servers
-      function(server_name)
-        lspconfig[server_name].setup({
-          capabilities = capabilities,
-        })
-      end,
-      -- ["html"] = function()
-      --   -- configure html with ruby (.erb) language server
-      --   lspconfig["html"].setup({
-      --     capabilities = capabilities,
-      --     filetypes = { "html", "eruby" },
-      --   })
-      -- end,
-      ["ruby_lsp"] = function()
-        -- configure ruby_lsp language server
-        lspconfig["ruby_lsp"].setup({
-          capabilities = capabilities,
-          filetypes = { "ruby", "rake" },
-        })
-      end,
-      ["emmet_ls"] = function()
-        -- configure emmet language server
-        lspconfig["emmet_ls"].setup({
-          capabilities = capabilities,
-          filetypes = { "html", "javascriptreact", "css", "sass", "scss", "less" },
-        })
-      end,
-      ["lua_ls"] = function()
-        -- configure lua server (with special settings)
-        lspconfig["lua_ls"].setup({
-          capabilities = capabilities,
-          settings = {
-            Lua = {
-              -- make the language server recognize "vim" global
-              diagnostics = {
-                globals = { "vim" },
-                disable = { "missing-parameters", "missing-fields" }
-              },
-              completion = {
-                callSnippet = "Replace",
-              },
-            },
-          },
-        })
-      end,
-    })
+    -- Note: LSP server setup via setup_handlers has been moved to mason.lua
+    -- This file now only handles keybindings and diagnostic UI
   end,
 }

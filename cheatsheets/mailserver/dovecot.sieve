@@ -15,3 +15,7 @@ if address :is "to" "admin@linuxcomputers.nl" {
   execute :pipe "signup-handler.sh";
 }
 
+if address :is "to" "list-unsubscribe@inzetrooster.nl" {
+  fileinto "list-unsubscribe";
+}
+

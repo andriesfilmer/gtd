@@ -45,14 +45,27 @@ Get rid of remote branches that no longer exist on the remote
     git fetch --prune
 
 ## Stash
+Save some work for later
 
-Stash (save current state) a working branch (issue54)
-    git stash                  # Saved workingbranchi (issue54) with state WIP, use option -u for untracked files.
-    git checkout issue53       # Work in otherbranch and commit you changes.
-    git checkout issue54
-    git stash pop              # Load previous work from branch issue54
+    git stash push -m "my_temp_changes"
+    git stash apply stash@{0}  # Apply the most recent stash
 
-* More info about git stash: <https://www.atlassian.com/git/tutorials/saving-changes/git-stash>
+**Revert to master**
+Make sure your working directory is clean (no uncommitted changes), then:
+
+    git checkout master
+    git pull origin master  # Optional: update your local master
+
+Now you’re on master with no trace of your previous changes.
+
+Reapply Your Saved Changes Later
+
+    git stash list  # See all your stashes
+    git stash apply stash@{0}  # Apply the most recent stash
+
+Or, if you want to remove the stash after applying:
+
+    git stash pop stash@{0}
 
 ## Tips
 
