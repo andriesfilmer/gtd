@@ -191,6 +191,8 @@ Greate a [dmarc](https://dmarc.org/) record for each domain for who we are sendi
 Add your ip to [DNSWL.org](http://www.dnswl.org) which provides a Whitelist of known legitimate
 email servers to reduce the chances of false positives while spam filtering.
 
+Whitelist Barracudacentral <https://www.barracudacentral.org/rbl/removal-request/>
+
 ### Logrotate
 
 Create a new configuration file for Postfix logs in the logrotate `/etc/logrotate.d/postfix`

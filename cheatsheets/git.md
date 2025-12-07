@@ -94,19 +94,17 @@ Check with find
 
     git ls-files --deleted -- lib/foo | xargs git add
 
+## Git revert vs. reset
+
+Use revert if you already pushed, other wise use reset or checkout.
+
 ## Git undo
 
 To reset a specific file to the last-committed state (to discard uncommitted changes in a specific file):
 
     git checkout thefiletoreset.txt
 
-To reset to last commit state. Run multiple times to go back further back in time.
-
-    git reset HEAD~
-    git status
-    git checkout thefiletoreset.txt
-
-Run `git reflog` to jump back and forwards in time, for example:
+To reset to a commit state. Run `git reflog` to jump back and forwards in time, for example:
 
     get reset dfd69a56
 
@@ -121,10 +119,6 @@ Replace the -f argument with -n to perform a dry-run and it will tell you what w
     git clean -d -x -f
 
 Nice overview: [Resetting, checking out & reverting](https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting) | Atlassian
-
-## Git revert vs. reset
-
-When you git revert a commit, only the changes associated with that commit are undone.
 
 ## Ignoring files
 
