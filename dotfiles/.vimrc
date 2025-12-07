@@ -48,7 +48,6 @@ highlight ExtraWhitespace ctermbg=1             " Highlight trailing spaces in a
 highlight nonascii ctermbg=2
 highlight ColorColumn ctermbg=236
 
-
 "------------------------------------------------------------------------------
 " Mappings -> List maps :nmap, :vmap
 "------------------------------------------------------------------------------
@@ -104,13 +103,21 @@ nnoremap <F2> :set paste!<CR>
 vmap y y:call system('wl-copy', @")<CR>
 vmap d d:call system('wl-copy', @")<CR>
 
-"-------------------------------------
+"------------------------------------------------------------------------------
 " Some mappings if plugin is available
-"-------------------------------------
+"------------------------------------------------------------------------------
 nmap <leader>gh :SignifyHunkDiff<CR>             " vim-signify
 
-" Use a shortcut to avoid writing the vimgrep command by hand in my projects.
-command -nargs=1 ProjectSearch vimgrep /<args>/gj app/**/* && :copen
+"------------------------------------------------------------------------------
+" Search command
+"------------------------------------------------------------------------------
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --smart-case\ --hidden
+  set grepformat=%f:%l:%c:%m
+endif
+" The grep! (with !) prevents automatically jumping to the first match.
+command! -nargs=1 Search execute 'silent grep! ' . shellescape(<q-args>) . ' .' | vertical botright copen 50 | redraw!
+command! -nargs=1 Search execute 'silent grep! ' . shellescape(<q-args>) . ' .' | botright copen | redraw!
 
 "------------------------------------------------------------------------------
 " Statusbar
@@ -156,6 +163,7 @@ syntax match nonascii "[^\x00-\x7F]"             " Display non ascii chars
 "highlight link markdownError Normal             " New error pattern without the red underscore highligted
 autocmd BufNewFile,BufRead,BufEnter *.md syn match markdownIgnore "\w\@<=\w\@="
 
+"------------------------------------------------------------------------------
 " Exuberant-ctags`
 "------------------------------------------------------------------------------
 " First install `sudo apt install exuberant-ctags`
@@ -168,6 +176,7 @@ endif
 command! MakeTags !ctags -R .
 
 
+"------------------------------------------------------------------------------
 " Snippets
 "------------------------------------------------------------------------------
 iabbr consl console.log("TEST: " + );<esc>2hi
