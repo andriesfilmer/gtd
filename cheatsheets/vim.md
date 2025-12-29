@@ -204,6 +204,7 @@ A neat filtering trick using the 'nl' for adding linenumbers.
 
 ## Plugins
 * [vim-signify](https://github.com/mhinz/vim-signify)
+* [SnipMate](https://github.com/garbas/vim-snipmate) - for ~/.vim/snippets
 
 ### Install
 Example without plugin manager

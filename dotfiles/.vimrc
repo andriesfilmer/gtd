@@ -25,8 +25,9 @@ set updatetime=1000                       " vim-gitgutter, vim-signify, default 
 set wildmenu                              " Show tab completions in statusline
 set wildmode=list:full                    " Command mode tab completion - complete upto ambiguity
 set path+=$PWD/**                         " Enable `:find` and `:b` without a full path, i.o. `find *_controller.rb` +tab
+set viminfo='80                           " Reduce the length of oldfiles.
 
-" Mostly not needed
+" Nice but mostly not needed
 "set colorcolumn=80,120                    " Show vertical bar to indicate 80/120 chars
 "set belloff=all                           " Disable beep
 "set cursorcolumn                          " highlight column line. Is slower :-(
@@ -36,26 +37,13 @@ set path+=$PWD/**                         " Enable `:find` and `:b` without a fu
 "set paste                                 " Distinguish between typed text and pasted text in terminal
 
 "------------------------------------------------------------------------------
-" Colors
-"------------------------------------------------------------------------------
-" https://github.com/NLKNguyen/papercolor-theme/
-if !empty(glob("~/.vim/colors/PaperColor.vim"))
-  colorscheme PaperColor
-  set background=dark
-endif
-
-highlight ExtraWhitespace ctermbg=1             " Highlight trailing spaces in annoying red
-highlight nonascii ctermbg=2
-highlight ColorColumn ctermbg=236
-
-"------------------------------------------------------------------------------
 " Mappings -> List maps :nmap, :vmap
 "------------------------------------------------------------------------------
 let mapleader = "\<Space>"                      " Set leader to space
 
 nnoremap <CR> :noh<CR><CR>                      " unsets last search pattern hitting return
 nmap <leader>ee :Lex 30<CR>                     " Toggle netrw Directory root directory
-nmap <leader>ef :Vex 30<CR>                     " Toggle netrw Directory working directory
+nmap <leader>ef :Vex 30<CR>                     " Open netrw Directory working directory
 
 nmap <C-Up> :wincmd k<CR>                       " Arrow keys, Alt+leftarrow will go one window left, etc.
 nmap <C-Down> :wincmd j<CR>
@@ -68,7 +56,9 @@ nmap <A-left> :vertical resize -2<CR>
 nmap <A-right> :vertical resize +2<CR>
 
 " Buffers
-nmap <leader>b :buffers<cr>
+"nmap <leader>b :buffers<CR>
+nmap <Leader>b :call ShowBuffersInQuickfix()<CR>
+nmap <leader>c :ccl<CR>                         " cclose the quickfix window
 nmap <tab> :bnext<CR>                           " Next buffer
 nmap <S-tab> :bprevious<CR>                     " Previous buffer
 nmap <leader>w :bdelete<CR>                     " Delete buffer
@@ -77,6 +67,7 @@ nmap <leader>W :%bd\|e#\|bd#<CR>                " Delete buffers except current
 " Open buffers
 nmap <leader>oh :browse oldfiles<cr>            " History buffers
 nmap <silent><leader>od :!xdg-open %&<cr>       " [o]pen buffer in [d]efault application
+nnoremap <leader>s :Search<Space>
 
 nmap <leader>n :set nu!<CR>                     " Toggle linenumbers
 nmap <leader>r :set rnu!<CR>                    " Toggle relativenumbers
@@ -97,7 +88,7 @@ nmap <leader>vg :vimgrep /pattern/g app/**/*
 nmap <C-F9> :set background=light<CR>
 nmap <C-F10> :set background=dark<CR>
 
-nnoremap <F2> :set paste!<CR>
+noremap <F2> :set paste!<CR>
 
 " use wayland copy instead off `apt install vim-gtk`
 vmap y y:call system('wl-copy', @")<CR>
@@ -109,6 +100,19 @@ vmap d d:call system('wl-copy', @")<CR>
 nmap <leader>gh :SignifyHunkDiff<CR>             " vim-signify
 
 "------------------------------------------------------------------------------
+" Colors
+"------------------------------------------------------------------------------
+" https://github.com/NLKNguyen/papercolor-theme/
+if !empty(glob("~/.vim/colors/PaperColor.vim"))
+  colorscheme PaperColor
+  set background=dark
+endif
+
+highlight ExtraWhitespace ctermbg=1             " Highlight trailing spaces in annoying red
+highlight nonascii ctermbg=2
+highlight ColorColumn ctermbg=236
+
+"------------------------------------------------------------------------------
 " Search command
 "------------------------------------------------------------------------------
 if executable('rg')
@@ -116,8 +120,9 @@ if executable('rg')
   set grepformat=%f:%l:%c:%m
 endif
 " The grep! (with !) prevents automatically jumping to the first match.
-command! -nargs=1 Search execute 'silent grep! ' . shellescape(<q-args>) . ' .' | vertical botright copen 50 | redraw!
-command! -nargs=1 Search execute 'silent grep! ' . shellescape(<q-args>) . ' .' | botright copen | redraw!
+" command! -nargs=1 Search execute 'silent grep! ' . shellescape(<q-args>) . ' .' | botright copen | redraw!
+command! -nargs=1 Search silent grep! <q-args> . | copen | resize 999 | redraw!
+autocmd BufEnter * if &buftype == '' | resize 999 | endif
 
 "------------------------------------------------------------------------------
 " Statusbar
@@ -179,6 +184,40 @@ command! MakeTags !ctags -R .
 "------------------------------------------------------------------------------
 " Snippets
 "------------------------------------------------------------------------------
-iabbr consl console.log("TEST: " + );<esc>2hi
-iabbr putsi puts "TEST: " #{}"<esc>1hi
+"iabbr consl console.log("TEST: " + );<esc>2hi
+"iabbr putsi puts "TEST: #{}"<esc>1hi
+
+"------------------------------------------------------------------------------
+" Functions
+"------------------------------------------------------------------------------
+
+" Function for showing all buffers in the quickfix list
+function! ShowBuffersInQuickfix()
+    " Clear the quickfix list
+    call setqflist([], 'r')
+
+    " Create a list to hold quickfix entries
+    let qfentries = []
+
+    " Populate the list with buffer names and numbers
+    for i in range(1, bufnr('$'))
+        if buflisted(i)
+            let bufname = bufname(i)
+            let line = printf('%d: %s', i, bufname == '' ? '[No Name]' : bufname)
+            call add(qfentries, {
+                \ 'filename': bufname,
+                \ 'lnum': 1,
+                \ 'col': 1,
+                \ 'text': line,
+                \ 'bufnr': i
+                \ })
+        endif
+    endfor
+
+    " Set the quickfix list
+    call setqflist(qfentries, 'r')
+
+    " Open the quickfix window
+    copen
+endfunction
 
