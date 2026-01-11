@@ -25,7 +25,7 @@ set updatetime=1000                       " vim-gitgutter, vim-signify, default 
 set wildmenu                              " Show tab completions in statusline
 set wildmode=list:full                    " Command mode tab completion - complete upto ambiguity
 set path+=$PWD/**                         " Enable `:find` and `:b` without a full path, i.o. `find *_controller.rb` +tab
-set viminfo='80                           " Reduce the length of oldfiles.
+set viminfo='70,<50,s10,h                 " Reduce the length of oldfiles.
 
 " Nice but mostly not needed
 "set colorcolumn=80,120                    " Show vertical bar to indicate 80/120 chars
@@ -67,7 +67,11 @@ nmap <leader>W :%bd\|e#\|bd#<CR>                " Delete buffers except current
 " Open buffers
 nmap <leader>oh :browse oldfiles<cr>            " History buffers
 nmap <silent><leader>od :!xdg-open %&<cr>       " [o]pen buffer in [d]efault application
-nnoremap <leader>s :Search<Space>
+nnoremap <leader>os :Search<Space>
+
+" FZF mappings (using system fzf)
+nmap <leader>f :call FZF()<CR>
+nmap <leader>F :call FZFGrep()<CR>
 
 nmap <leader>n :set nu!<CR>                     " Toggle linenumbers
 nmap <leader>r :set rnu!<CR>                    " Toggle relativenumbers
@@ -190,6 +194,40 @@ command! MakeTags !ctags -R .
 "------------------------------------------------------------------------------
 " Functions
 "------------------------------------------------------------------------------
+
+" FZF function - open selected file
+function! FZF() abort
+  let l:tempname = tempname()
+  execute 'silent !fzf --multi > ' . fnameescape(l:tempname)
+  try
+    if filereadable(l:tempname)
+      for line in readfile(l:tempname)
+        execute 'edit ' . fnameescape(line)
+      endfor
+    endif
+  finally
+    call delete(l:tempname)
+  endtry
+  redraw!
+endfunction
+
+" FZF with ripgrep search
+function! FZFGrep() abort
+  let l:tempname = tempname()
+  execute 'silent !rg --line-number --no-heading --color=always "" | fzf --ansi --delimiter ":" --preview "batcat --color=always {1} --highlight-line {2}" --preview-window "+{2}/2" > ' . fnameescape(l:tempname)
+  try
+    if filereadable(l:tempname)
+      let l:result = readfile(l:tempname)[0]
+      let l:parts = split(l:result, ':')
+      if len(l:parts) >= 2
+        execute 'edit +' . l:parts[1] . ' ' . fnameescape(l:parts[0])
+      endif
+    endif
+  finally
+    call delete(l:tempname)
+  endtry
+  redraw!
+endfunction
 
 " Function for showing all buffers in the quickfix list
 function! ShowBuffersInQuickfix()
