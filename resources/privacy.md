@@ -15,3 +15,6 @@
 # Date leaks
 * [Have i been pwned](https://haveibeenpwned.com/) Check if your email address is in a data breach
 * [DataBreach](https://databreach.com/) powered by U.S.-based Atlas Privacy
+
+# Virus, Spam & Blocklists
+* [Virustotal](https://www.virustotal.com/gui/home/upload) | Analyse suspicious files, domains, IPs and URLs to detect malware

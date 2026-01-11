@@ -1,5 +1,8 @@
 # /etc/postfix/main.cf
 
+# smtp_* = settings for sending emails to other mail servers
+# smtpd_* = settings for receiving emails from other mail servers or clients
+
 smtpd_banner = $myhostname ESMTP $mail_name (ShiftPlanner)
 
 # biff service sends "new mail" notifications to users who have requested new mail notification
@@ -10,9 +13,6 @@ compatibility_level = 3.6
 
 # TLS
 ################################################################################
-# smtp_* = settings for sending emails to other mail servers
-# smtpd_* = settings for receiving emails from other mail servers or clients
-
 smtpd_use_tls = yes
 smtp_use_tls = yes
 
@@ -28,7 +28,7 @@ smtp_tls_loglevel = 1
 
 # Provide the primary certificate for the server, to be used for outgoing connections
 smtpd_tls_chain_files =
-  /etc/letsencrypt/live/server07.igroupware.org/privkey.pem
+  /etc/letsencrypt/live/server07.igroupware.org/privkey.pem,
   /etc/letsencrypt/live/server07.igroupware.org/fullchain.pem
 
 # Provide the map to be used when SNI support is enabled
@@ -36,6 +36,7 @@ smtpd_tls_chain_files =
 tls_server_sni_maps = hash:/etc/postfix/vmail_ssl.map
 
 smtpd_tls_received_header = yes
+smtpd_tls_mandatory_protocols = TLSv1.2, TLSv1.3
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 smtpd_tls_security_level = may
 smtpd_tls_auth_only = yes
@@ -46,7 +47,6 @@ myorigin = /etc/mailname
 mydestination = $myhostname, server07.igroupware.org, igroupware.org, localhost
 relayhost =
 alias_maps = hash:/etc/aliases
-#alias_database = hash:/etc/aliases
 
 # Trusted networks
 # server01.filmer.nl 178.128.254.144
@@ -71,6 +71,16 @@ message_size_limit = 20480000
 maximal_queue_lifetime = 2d
 bounce_queue_lifetime = 1d
 bounce_template_file = /etc/postfix/bounce.cf
+notify_classes = resource, software
+bounce_notice_recipient = postmaster@inzetrooster.nl
+
+# Drop double-bounces silently
+2bounce_notice_recipient = /dev/null
+
+# Request that the Postfix SMTP server rejects mail from unknown sender addresses.
+# We have /etc/postfix/sender_checks_users, /etc/postfix/sender_checks_regexp and
+# /etc/dovecot/sieve/valiases-inzetrooster configured (custom and auto generated).
+smtpd_reject_unlisted_sender = yes
 
 # SASL
 smtpd_sasl_auth_enable = yes
@@ -108,11 +118,12 @@ virtual_transport = lmtp:unix:private/dovecot-lmtp
 virtual_mailbox_base = /var/vmail/
 virtual_mailbox_domains = hash:/etc/postfix/vdomains
 virtual_mailbox_maps = hash:/etc/postfix/vmailboxes
+
+# This file is created by signup-handler through sieve (admin@inzetrooster.nl)
 virtual_alias_maps = hash:/etc/dovecot/sieve/valiases-inzetrooster
-#recipient_bcc_maps = hash:/etc/postfix/valiases-admin
-#sender_canonical_classes = envelope_sender, header_sender
-#sender_canonical_maps = hash:/etc/postfix/canonical
-#header_checks = regexp:/etc/postfix/header_checks
+
+# This is a custom sender_checks file (REJECT, OK)
+sender_canonical_maps = hash:/etc/postfix/sender_canonical
 
 ####################################################
 # Only needed for incomming mail
@@ -165,19 +176,24 @@ smtpd_sender_restrictions = permit_mynetworks,
                             reject_authenticated_sender_login_mismatch,
 
 # Spam control: exclude local clients and authenticated clients from DNSBL lookups.
+#
+# check_sender_access regexp:/etc/postfix/sender_checks_regexp is a custom file
+# check_sender_access hash:/etc/postfix/sender_checks_users s a generate crontab file.
 smtpd_recipient_restrictions = permit_mynetworks,
                                permit_sasl_authenticated,
                                permit_dnswl_client list.dnswl.org,
                                check_policy_service unix:private/policy-spf,
                                check_policy_service unix:private/postgrey,
                                check_client_access hash:/etc/postfix/client_checks,
-                               check_sender_access hash:/etc/postfix/sender_checks,
+                               check_sender_access regexp:/etc/postfix/sender_checks_regexp,
+                               check_sender_access hash:/etc/postfix/sender_checks_users,
                                reject_unknown_sender_domain,
                                reject_unknown_recipient_domain,
                                reject_unverified_recipient,
                                reject_invalid_hostname,
                                reject_unauth_pipelining,
-                               reject_unauth_destination reject_non_fqdn_hostname,
+                               reject_unauth_destination,
+                               reject_non_fqdn_hostname,
                                reject_non_fqdn_sender,
                                reject_non_fqdn_recipient,
                                reject_unlisted_recipient,
@@ -210,4 +226,3 @@ smtpd_client_connection_rate_limit = 50
 anvil_rate_time_unit = 60s
 
 ####################################################
-

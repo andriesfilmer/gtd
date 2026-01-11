@@ -25,6 +25,7 @@ smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_una
 myhostname = server05.igroupware.org
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
+sender_canonical_maps = hash:/etc/postfix/sender_canonical
 myorigin = /etc/mailname
 mydestination = $myhostname, server05.igroupware.org, localhost
 relayhost =
