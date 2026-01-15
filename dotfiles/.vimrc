@@ -122,6 +122,9 @@ highlight ColorColumn ctermbg=236
 if executable('rg')
   set grepprg=rg\ --vimgrep\ --smart-case\ --hidden
   set grepformat=%f:%l:%c:%m
+else
+  set grepprg=grep\ -rn\ $*
+  set grepformat=%f:%l:%m
 endif
 " The grep! (with !) prevents automatically jumping to the first match.
 " command! -nargs=1 Search execute 'silent grep! ' . shellescape(<q-args>) . ' .' | botright copen | redraw!

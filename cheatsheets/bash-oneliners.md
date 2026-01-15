@@ -1,27 +1,17 @@
-- [Bash oneliners](#bash-oneliners)
-  * [Kill many processes](#kill-many-processes)
-  * [Remove many file in a directorie](#remove-many-file-in-a-directorie)
-    + [Zip a file and emails them to someone](#zip-a-file-and-emails-them-to-someone)
-  * [Testing the load/response on a website](#testing-the-loadresponse-on-a-website)
-  * [Find commands](#find-commands)
-    + [Find mixings](#find-mixings)
-  * [Rename files](#rename-files)
-  * [diff](#diff)
-  * [Mix](#mix)
-
-<!-- END TOC -->
-
 # Bash oneliners
 
-Nice resource: <https://www.commandlinefu.com/>
+## Column
+
+Format a file for easy reading.
+
+    mount | column -t
+    cat /etc/passwd | column -t -s :
 
 ## Kill many processes
 
-One's I started hylafax with deamontools and it started many procceses. `killall hfaxd` did't work.
+Kill proccesse by name (with wildcard)
 
-To kill all processes use the command
-
-    ps -acx | grep hfaxd | awk '{print $1}' | xargs kill
+    pkill -f "sass.*--watch"
 
 ## Remove many file in a directorie
 

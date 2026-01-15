@@ -100,6 +100,8 @@ bind '"\e[B"':history-search-forward    # search history starting with searchter
 bind '"\e[1;5A"':history-substring-search-backward # search history with substring + ctrl + arrow up
 bind '"\e[1;5B"':history-substring-search-forward  # search history with substring + ctrl + arrow down
 
+# Show date time in front of command in history
+export HISTTIMEFORMAT="%Y-%m-%d %T "
 
 backup () {
   cp "$@" "$@".backup-`date +'%Y-%m-%d_%H%M'`;

@@ -30,7 +30,7 @@ Test the Spammyness of your emails <https://www.mail-tester.com/> DKIM, SPF and 
 
 Simple test
 
-    swaks --from andries@inzetrooster.nl --to=andries.filmer@gmail.com --server=server03.filmer.net
+    swaks --from team@inzetrooster.nl --to=andries@inzetrooster.nl --body='Is mail working?' --server=server03.igroupware.org
     swaks -t andries.filmer@gmail.com -f andries@filmer.nl -a -tls -au andries@filmer.nl -ap "mypasswd" -s mail.filmer.nl:587
 
 

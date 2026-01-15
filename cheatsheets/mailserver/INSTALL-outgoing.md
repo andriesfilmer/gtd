@@ -69,14 +69,18 @@ Create rundir in chroot
     mkdir -p /var/spool/postfix/opendkim
     chown -R opendkim:postfix /var/spool/postfix/opendkim
 
-Open `/etc/systemd/system/multi-user.target.wants/opendkim.service` and add next lines to **[service]**
+Open /etc/systemd/system/multi-user.target.wants/opendkim.service and add next lines to [service]
 
     User=opendkim
     Group=postfix
 
+Check `/etc/systemd/system/opendkim.service.d/override.conf` with:
+
+    systemctl cat opendkim.service
+
 Your changes won't be applied it you just reload your systemd-configuration files by:
 
-    bash /lib/opendkim/opendkim.service.generate
+    bash /lib/opendkim/opendkim.service.generate # Do we need this?
     systemctl daemon-reload
 
 ### Key generation for each domain and setup with DNS.
@@ -155,22 +159,22 @@ Debug check persmissions on socket.
 :OUTPUT ACCEPT [0:0]
 
 # ip home odido
--A INPUT -s 62.166.142.79 -i eth0 -p tcp -m tcp --dport 587 -j ACCEPT
-
-# server03.igroupware.org
--A INPUT -s 91.99.94.83 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
+-A INPUT -s 62.166.166.129 -i eth0 -p tcp -m tcp --dport 587 -j ACCEPT
 
 # server02.igroupware.org
 -A INPUT -s 159.223.11.178 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
 
+# server03.igroupware.org
+-A INPUT -s 91.99.94.83 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
+
 # server05.igroupware.org
 -A INPUT -s 146.185.159.154 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
 
+# server06.igroupware.org
+-A INPUT -s 46.224.216.201 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
+
 # server07.igroupware.org
 -A INPUT -s 159.69.245.21 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
-
-# server08.igroupware.org
--A INPUT -s 159.65.199.31 -i eth0 -p tcp -m tcp --dport 25 -j ACCEPT
 
 # Drop smtp for the rest
 -A INPUT -i eth0 -p tcp -m tcp --dport 25 -j DROP

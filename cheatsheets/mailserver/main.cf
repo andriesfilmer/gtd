@@ -105,7 +105,7 @@ transport_maps = hash:/etc/postfix/transport
 #
 # Polite policy
 polite_destination_concurrency_limit = 3
-polite_destination_rate_delay = 10s
+polite_destination_rate_delay = 3s
 polite_destination_recipient_limit = 5
 
 # Turtle policy

@@ -25,7 +25,6 @@ smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_una
 myhostname = server05.igroupware.org
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
-sender_canonical_maps = hash:/etc/postfix/sender_canonical
 myorigin = /etc/mailname
 mydestination = $myhostname, server05.igroupware.org, localhost
 relayhost =
@@ -36,8 +35,19 @@ relayhost =
 # server03.igroupware.org 91.99.94.83
 # server04.igroupware.org 146.190.236.166
 # server05.igroupware.org 146.185.159.154
-# Home ip: 87.209.180.24
-mynetworks = 127.0.0.0/8, 178.128.254.144, 159.223.11.178, 91.99.94.83, 146.190.236.166, 146.185.159.154, 87.209.180.24
+# server06.igroupware.org 46.224.216.201
+# server07.igroupware.org 159.69.245.21
+# Home ip: 62.166.166.129
+mynetworks = 127.0.0.0/8,
+ 178.128.254.144,
+ 159.223.11.178,
+ 91.99.94.83,
+ 146.190.236.166,
+ 146.185.159.154,
+ 46.224.216.201,
+ 159.69.245.21,
+ 62.166.166.129
+
 
 # 20MB
 message_size_limit = 20480000
@@ -65,7 +75,7 @@ transport_maps = hash:/etc/postfix/transport
 #
 # Polite policy
 polite_destination_concurrency_limit = 3
-polite_destination_rate_delay = 10s
+polite_destination_rate_delay = 3s
 polite_destination_recipient_limit = 5
 
 # Turtle policy

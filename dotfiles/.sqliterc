@@ -7,3 +7,4 @@
 #.mode line
 #.mode box
 .mode table
+.changes on

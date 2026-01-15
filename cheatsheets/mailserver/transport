@@ -1,0 +1,17 @@
+# Turtle
+ziggo.nl turtle:
+casema.nl turtle:
+quicknet.nl turtle:
+
+# Polite
+hotmail.com polite:
+outlook.com polite:
+gmail.com polite:
+
+# 2024-11-07 Message rejected due to local policy.
+#icloud.com smtp:[server03.igroupware.org]
+#me.com smtp:[server03.igroupware.org]
+
+# Typo's
+mellolizwaan@outlouk.com        error:5.1.2 Bad destination system address
+

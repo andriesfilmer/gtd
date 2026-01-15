@@ -85,6 +85,7 @@ Upscale your photos with [Magnific AI](https://magnific.ai) - Payed account but 
 
 ### Icons
 
+* [Symbol.io](https://symbol.so/) Search symbols, unicode, HTML codes, etc.
 * [Google fonts - Material Icons Guide](https://developers.google.com/fonts/docs/material_icons)
 * [Heroicons](https://heroicons.com/) | Beautiful hand-crafted SVG icons
 * [Foundation Icon Fonts 3](http://zurb.com/playground/foundation-icon-fonts-3)
