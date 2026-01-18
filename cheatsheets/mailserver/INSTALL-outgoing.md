@@ -25,6 +25,9 @@ Read more on installing certificates with `acme.sh` on nginx/README.md.
 
     mkdir -p /etc/letsencrypt/live/server05.igroupware.org
 
+    acme.sh --issue --dns dns_transip --dnssleep 100 -d server05.igroupware.org
+
+
     acme.sh --install-cert -d server05.igroupware.org \
       --fullchain-file /etc/letsencrypt/live/server05.igroupware.org/fullchain.pem \
       --key-file /etc/letsencrypt/live/server05.igroupware.org/privkey.pem \
@@ -74,14 +77,15 @@ Open /etc/systemd/system/multi-user.target.wants/opendkim.service and add next l
     User=opendkim
     Group=postfix
 
-Check `/etc/systemd/system/opendkim.service.d/override.conf` with:
 
-    systemctl cat opendkim.service
+Create a `/etc/systemd/system/opendkim.service.d/override.conf` file with:
+
+    bash /lib/opendkim/opendkim.service.generate
 
 Your changes won't be applied it you just reload your systemd-configuration files by:
 
-    bash /lib/opendkim/opendkim.service.generate # Do we need this?
     systemctl daemon-reload
+    systemctl cat opendkim.service
 
 ### Key generation for each domain and setup with DNS.
 
@@ -96,13 +100,13 @@ Your changes won't be applied it you just reload your systemd-configuration file
 
 KeyTable `/etc/dkimkeys/key.table`
 
-    default._domainkey.filmer.net filmer.net:default:/etc/dkimkeys/keys/filmer.net/default.private
+    default._domainkey.igroupware.org igroupware.org:default:/etc/dkimkeys/keys/igroupware.org/default.private
     default._domainkey.filmer.nl filmer.nl:default:/etc/dkimkeys/keys/filmer.nl/default.private
     ...
 
 SigningTable `/etc/dkimkeys/signing.table`
 
-    filmer.net default._domainkey.filmer.net
+    igroupware.org default._domainkey.igroupware.org
     filmer.nl  default._domainkey.filmer.nl
     ...
 
@@ -188,8 +192,6 @@ Greate a [dmarc](https://dmarc.org/) record for each domain for who we are sendi
 
     _dmarc    TXT   "v=DMARC1; p=quarantine; rua=mailto:postmaster@domain.com;"
 
-* [Control you DMARC process with dmarcian](https://dmarcian.com/)
-
 ### DNS Whitelist
 
 Add your ip to [DNSWL.org](http://www.dnswl.org) which provides a Whitelist of known legitimate
@@ -229,7 +231,7 @@ Test and execute logrotate on Postfix manually:
 Install perl DBI for `bounces-inzetrooster.pl` script (see cheatsheet perl for more info).
 
 ````
-53 1 * * * "/root/.acme.sh/acme.sh --cron --home /root/.acme.sh" > /dev/null
+53 1 * * * /root/.acme.sh/acme.sh --cron --home /root/.acme.sh > /dev/null
 58 23 * * * /usr/local/sbin/bounces-inzetrooster.pl
 59 23 * * * /usr/local/sbin/mail-report.sh | /usr/bin/mail -s "Mail report server05" postmaster@inzetrooster.nl
 ````

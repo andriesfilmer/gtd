@@ -60,8 +60,8 @@ bounce_template_file = /etc/postfix/bounce.cf
 # DKIM
 milter_default_action = accept
 milter_protocol = 6
-non_smtpd_milters = unix:/run/opendkim/opendkim.sock
-smtpd_milters = unix:/run/opendkim/opendkim.sock
+non_smtpd_milters = unix:/opendkim/opendkim.sock
+smtpd_milters = unix:/opendkim/opendkim.sock
 
 
 # Limit outgoing mail throttling
