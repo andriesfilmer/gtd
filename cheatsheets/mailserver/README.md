@@ -1,9 +1,8 @@
 # Other files
-* [INSTALL](./INSTALL.md)
-* [INSTALL-outgoing](./INSTALL-outgoing.md)
-* [INSTALL-incomming](./INSTALL-incomming.md)
+* [INSTALL](./INSTALL.md) - Fullstack mailserver
+* [INSTALL-outgoing](./INSTALL-outgoing.md) - Only outgoing mailserver
 * [DEBUG](./DEBUG.md)
-
+* [Certificates](./certificates.md)
 
 ## Postfix Log Report
 

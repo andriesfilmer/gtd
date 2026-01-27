@@ -54,7 +54,9 @@ alias_maps = hash:/etc/aliases
 # server03.igroupware.org 91.99.94.83
 # server04.igroupware.org 146.190.236.166
 # server05.igroupware.org 146.185.159.154
+# server06.igroupware.org 46.224.216.201
 # server07.igroupware.org 159.69.245.21
+# server08.igroupware.org 88.198.199.37
 # Home ip: 87.209.180.24
 mynetworks = 127.0.0.0/8,
              178.128.254.144,
@@ -62,7 +64,9 @@ mynetworks = 127.0.0.0/8,
              91.99.94.83,
              146.190.236.166,
              146.185.159.154,
+             46.224.216.201,
              159.69.245.21,
+             88.198.199.37,
              87.209.180.24
 
 disable_vrfy_command = yes

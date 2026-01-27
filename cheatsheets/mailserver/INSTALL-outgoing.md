@@ -21,17 +21,7 @@ If not installed [Postfix](http://www.postfix.org), choose Internet site.
 
 ## TLS certificate
 
-Read more on installing certificates with `acme.sh` on nginx/README.md.
-
-    mkdir -p /etc/letsencrypt/live/server05.igroupware.org
-
-    acme.sh --issue --dns dns_transip --dnssleep 100 -d server05.igroupware.org
-
-
-    acme.sh --install-cert -d server05.igroupware.org \
-      --fullchain-file /etc/letsencrypt/live/server05.igroupware.org/fullchain.pem \
-      --key-file /etc/letsencrypt/live/server05.igroupware.org/privkey.pem \
-      --cert-file /etc/letsencrypt/live/server05.igroupware.org/cert.pem
+* [Certificates](./certificates.md)
 
 ## Sender Policy Framework (SPF)
 

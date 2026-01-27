@@ -17,27 +17,7 @@
 
 ## Create a wildcard certificate - Letsencrypt
 
-Get an [ACME Shell script](https://github.com/acmesh-official/acme.sh)
-
-    wget -O -  https://get.acme.sh | sh -s email=andries@filmer.nl  # reload your shell so the alias `acme.sh` is available.
-
-Use the automatic DNS API integration, for example: [Transip](https://github.com/acmesh-official/acme.sh/wiki/dnsapi2#dns_transip)
-
-Create a key pair - [Transip](https://www.transip.nl/cp/account/api/) and **add your ipnr to the whitelist**
-
-Save the private key in `/etc/ssl/private/transip-private.key`
-
-Default variables are stored in `/root/.acme.sh/account.conf` after running acme.sh
-Add the next for transip.
-
-````
-SAVED_TRANSIP_Username='andriesf'
-SAVED_TRANSIP_Key_File='/etc/ssl/private/transip-private.key'
-SAVED_TRANSIP_Token_Global_Key=''
-````
-
-    .acme.sh/acme.sh --register-account -m my@example.com
-    .acme.sh/acme.sh --issue --dns dns_transip --dnssleep 100 -d domain.org -d *.domain.org
+First read more in [Certificates](./certificates.md).
 
 Add the next lines to you nginx `server` config
 

@@ -47,11 +47,6 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# Set terminal title when using Distrobox
-if [ "$CONTAINER_ID" ]; then
-  PS1='$CONTAINER_ID@\h:\w\$ '
-fi
-
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
@@ -61,30 +56,22 @@ xterm*|rxvt*)
     ;;
 esac
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-#if [ -f ~/.bash_aliases ]; then
-#    . ~/.bash_aliases
-#fi
-
 # enable color support of ls and also add handy aliases
-#if [ -x /usr/bin/dircolors ]; then
-#    eval "`dircolors -b`"
-#    alias ls='ls --color=auto'
-#    alias dir='dir --color=auto'
-#    alias vdir='vdir --color=auto'
-#    alias grep='grep --color=auto'
-#    alias fgrep='fgrep --color=auto'
-#    alias egrep='egrep --color=auto'
-#fi
-#
+if [ -x /usr/bin/dircolors ]; then
+    eval "`dircolors -b`"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
 ## some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -Al'
-#alias l='ls -CF'
+alias l='ls -CF'
+alias ll='ls -l --classify --color=auto'
+alias la='ls -lA --classify --color=auto'
+
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -93,7 +80,7 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-# Added by Andries Filmer
+# Customs by Andries Filmer
 ###############################################################################
 bind '"\e[A"':history-search-backward   # search history starting with searchterm + and arrow up
 bind '"\e[B"':history-search-forward    # search history starting with searchterm + arrow down
@@ -102,6 +89,16 @@ bind '"\e[1;5B"':history-substring-search-forward  # search history with substri
 
 # Show date time in front of command in history
 export HISTTIMEFORMAT="%Y-%m-%d %T "
+
+# ls QUOTING_STYLE=literal showing filenames as is. QUOTING_STYLE=shell showing quoted 'file name'
+export QUOTING_STYLE=literal
+
+export EDITOR='vim'
+
+# Set terminal title when using Distrobox
+if [ "$CONTAINER_ID" ]; then
+  PS1='$CONTAINER_ID@\h:\w\$ '
+fi
 
 backup () {
   cp "$@" "$@".backup-`date +'%Y-%m-%d_%H%M'`;
@@ -120,22 +117,6 @@ autossh() {
 getpasskey() {
   cd ~/dev/pim-cli && rails search:passkeys["$1"] && cd -
 }
-
-# Experiment with nvim configs
-vv() {
-  select config in nvim lazyvim kickstart nvchad josean
-  do NVIM_APPNAME=$config nvim $@; break; done
-}
-
-# Automatic LS after change directory
-cdl () {
-  cd "$@" && ls -altr
-}
-
-# sudo snap install lsd
-#alias ls='lsd'
-alias ll='ls -l --classify --color=auto'
-alias la='ls -lA --classify --color=auto'
 
 alias ...='cd ../../'
 alias dfx='df -h -x squashfs -x tmpfs -x devtmpfs'
@@ -161,7 +142,3 @@ alias inzetrooster='cd ~/dev/inzetrooster-app/ && gnome-terminal --title=Neovim 
 #PATH=$PATH:$ANDROID_HOME/tools; PATH=$PATH:$ANDROID_HOME/platform-tools
 #export PATH
 
-# ls QUOTING_STYLE=literal showing filenames as is. QUOTING_STYLE=shell showing quoted 'file name'
-export QUOTING_STYLE=literal
-
-export EDITOR='vim'
