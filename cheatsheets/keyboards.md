@@ -17,6 +17,36 @@
 * See which device has FILE_ERROR_ACCESS_DENIED
 * If /dev/hidraw4, then `sudo chmod 777 /dev/hidraw4`
 
+### Hard Reset (Unplug Method)
+
+* If the keyboard is unresponsive, use this method:
+* Unplug the USB cable from the keyboard.
+* Hold down the ESC key.
+* While holding ESC, plug the USB cable back in.
+* Hold for about 5 seconds until the keyboard flashes.
+
+## Use via AppImage
+
+    sudo apt install libfuse2
+
+Download the latest version <https://github.com/the-via/releases/releases/>
+
+    chmod +x via-*.AppImage
+    ./via-3.0.0-linux.AppImage --no-sandbox
+
+### Troubleshooting
+
+* Go to chrome://settings/content/all
+* Search for usevia.app
+* Delete all data for that site
+* Close and reopen the browser
+
+Enable WebHID flag (if needed) Go to:
+
+    Chrome: chrome://flags/#enable-experimental-web-platform-features
+
+Set it to Enabled, then restart the browser.
+
 ### My current layers
 
 Layer 0

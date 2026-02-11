@@ -1,6 +1,7 @@
 # Content Management Systems
 
 ## Self Storage
+* [Owncloud](https://owncloud.com) | Collaboration platform (documents, photos, calendar, etc)
 * [Immich](https://immich.app/) | Self-hosted photo and video management solution
 * [Paperless Ngx](https://docs.paperless-ngx.com/) | A open-source document management system that transforms your physical documents into a searchable online archive.
 * [Syncthing](https://docs.syncthing.net/) | Relaces Dropbox or other cloud services with something opensource.

@@ -16,9 +16,15 @@ As a general tip for debug the config if dovecot is not starting
 
     dovecot -F
 
-## mxtoolbox
+## Check your ip reputation
 
-* [BLACKLIST CHECK](https://mxtoolbox.com/blacklists.aspx)
+* Register at Smart Network Data Services (SNDS) — [See how Microsoft sees your IP reputation](https://sendersupport.olc.protection.outlook.com/snds/index)
+* MXtoolbox [BLACKLIST CHECK](https://mxtoolbox.com/blacklists.aspx)
+* [Multirbl.org](https://multirbl.valli.org/)
+
+## Blacklist delisting requests
+
+* Go to [Microsoft's Sender Support form](https://sender.office.com/)
 
 ## Mail tester
 

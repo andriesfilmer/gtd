@@ -51,7 +51,9 @@ Change password file `/etc/dovecot/passwd` to your needs.
 
 My [/etc/dovecot/dovecot.conf](./dovecot.conf) (single config) file.
 
-### Certs
+## TLS certificates
+
+First read more in [Certificates](./certificates.md).
 
 Check if mail clients can get the cerfificates
 

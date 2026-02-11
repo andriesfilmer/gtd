@@ -19,9 +19,9 @@ If not installed [Postfix](http://www.postfix.org), choose Internet site.
 * My [/etc/postfix/transport](./transport) file and postmap this file to db.
 
 
-## TLS certificate
+## TLS certificates
 
-* [Certificates](./certificates.md)
+First read more in [Certificates](./certificates.md).
 
 ## Sender Policy Framework (SPF)
 

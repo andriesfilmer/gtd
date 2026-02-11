@@ -1,5 +1,10 @@
 # First configurations for a Ubuntu server
 
+## update
+
+    apt update
+    apt upgrade
+
 ## Add vim
 
     apt install vim
@@ -84,7 +89,7 @@ Check if it is running
 
     systemctl status netfilter-persistent.service
 
-Add some custom rules before `COMMIT` in `/etc/iptables/rules.v4`
+Add some custom ip4 rules before `COMMIT` in `/etc/iptables/rules.v4`
 
 ````
 *filter
@@ -96,6 +101,17 @@ Add some custom rules before `COMMIT` in `/etc/iptables/rules.v4`
 COMMIT
 ````
 
+Add some custom ip6 rules before `COMMIT` in `/etc/iptables/rules.v6`
+Or better via sysctl, see below.
+
+````
+*filter
+-I INPUT -i eth0 -j REJECT
+-I OUTPUT -o eth0 -j REJECT
+-I FORWARD -j REJECT
+COMMIT
+````
+
 Enable new rules
 
     systemctl restart netfilter-persistent.service
@@ -103,13 +119,9 @@ Enable new rules
 Or without disconnected from current ssh login
 
     iptables-restore < /etc/iptables/rules.v4
+    ip6tables-restore < /etc/iptables/rules.v6
 
 Or enable new rules with fontend [ufw](https://help.ubuntu.com/community/UFW) for iptables and `iptables-save`
-
-## update
-
-    apt update
-    apt upgrade
 
 ## Add a new user (your self)
 
@@ -127,10 +139,6 @@ change `vi /etc/ssh/sshd_config`
     apt install postfix mailutils
 
 Configure postfix as `smarthost` for delivering mail via mailserver
-
-Reconfigure postfix?
-
-    dpkg-reconfigure postfix
 
 Redirect root mails
 
@@ -229,6 +237,12 @@ To find out all services that have been run at startup:
 ## Sysctl Tweaks
 
 You can change the setting, see examples: `cheatsheets/sysctl-example.md`
+
+````
+# Disable IPv6 at all, disable it at the system level
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+````
 
 Edit `/etc/sysctl.conf` and run following command to load changes to sysctl.
 

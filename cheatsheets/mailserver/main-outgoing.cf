@@ -64,15 +64,15 @@ non_smtpd_milters = unix:/opendkim/opendkim.sock
 smtpd_milters = unix:/opendkim/opendkim.sock
 
 
-# Limit outgoing mail throttling
-smtp_destination_concurrency_limit = 2
-smtp_destination_rate_delay = 6s
-smtp_extra_recipient_limit = 10
-
 # Limit by domain
 #----------------
 transport_maps = hash:/etc/postfix/transport
 #
+# Limit outgoing mail throttling
+default_destination_concurrency_limit = 5
+default_destination_rate_delay = 1s
+default_destination_recipient_limit = 20
+
 # Polite policy
 polite_destination_concurrency_limit = 3
 polite_destination_rate_delay = 3s
@@ -80,6 +80,6 @@ polite_destination_recipient_limit = 5
 
 # Turtle policy
 turtle_destination_concurrency_limit = 2
-turtle_destination_rate_delay = 30s
-turtle_destination_recipient_limit = 2
+turtle_destination_rate_delay = 4s
+turtle_destination_recipient_limit = 5
 

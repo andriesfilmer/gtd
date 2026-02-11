@@ -60,6 +60,26 @@ for domain in $(acme.sh --list | grep -oP '(?<=Main_Domain=)[^ ]+'); do
   acme.sh --renew -d "$domain" --server letsencrypt --force
 done
 ````
+## Chained certificates
 
+When you renewed with acme.sh, it updated the certificates:
+Tell acme.sh to deploy the renewed certificate to where Postfix expects it:
 
+````
+acme.sh --install-cert -d server07.igroupware.org \
+  --cert-file /etc/letsencrypt/live/server07.igroupware.org/cert.pem \
+  --key-file /etc/letsencrypt/live/server07.igroupware.org/privkey.pem \
+  --fullchain-file /etc/letsencrypt/live/server07.igroupware.org/fullchain.pem \
+  --reloadcmd "postmap -F hash:/etc/postfix/vmail_ssl.map && systemctl restart postfix"
+````
+
+## Debug
+
+Check the certificate dates in the location Postfix uses
+
+    openssl x509 -in /etc/letsencrypt/live/server07.igroupware.org/fullchain.pem -noout -dates
+
+Check what certificate Postfix is actually presenting
+
+    openssl s_client -connect server07.igroupware.org:587 -starttls smtp -showcerts 2>/dev/null | openssl x509 -noout -dates
 
