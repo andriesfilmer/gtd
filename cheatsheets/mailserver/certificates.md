@@ -23,13 +23,11 @@ SAVED_TRANSIP_Token_Global_Key=''
 Register account
 
     .acme.sh/acme.sh --register-account -m my@example.com
-    .acme.sh/acme.sh --issue --dns dns_transip --dnssleep 100 -d domain.org -d *.domain.org
+    .acme.sh/acme.sh --issue --dns dns_transip --dnssleep 100 -d server05.igroupware.org
 
     mkdir -p /etc/letsencrypt/live/server05.igroupware.org
 
-    acme.sh --issue --dns dns_transip --dnssleep 100 -d server05.igroupware.org
-
-    acme.sh --install-cert -d server05.igroupware.org \
+    .acme.sh/acme.sh --install-cert -d server05.igroupware.org \
       --fullchain-file /etc/letsencrypt/live/server05.igroupware.org/fullchain.pem \
       --key-file /etc/letsencrypt/live/server05.igroupware.org/privkey.pem \
       --cert-file /etc/letsencrypt/live/server05.igroupware.org/cert.pem

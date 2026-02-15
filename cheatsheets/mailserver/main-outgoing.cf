@@ -29,7 +29,8 @@ myorigin = /etc/mailname
 mydestination = $myhostname, server05.igroupware.org, localhost
 relayhost =
 
-# Trusted network
+# Trusted networks
+# ----------------
 # server01.filmer.nl 178.128.254.144
 # server02.igroupware.org 159.223.11.178
 # server03.igroupware.org 91.99.94.83
@@ -37,6 +38,9 @@ relayhost =
 # server05.igroupware.org 146.185.159.154
 # server06.igroupware.org 46.224.216.201
 # server07.igroupware.org 159.69.245.21
+# server08.igroupware.org 88.198.199.37
+# server09.filmer.nl      188.245.181.142
+# server10.igroupware.org 46.225.128.121
 # Home ip: 62.166.166.129
 mynetworks = 127.0.0.0/8,
  178.128.254.144,
@@ -46,8 +50,10 @@ mynetworks = 127.0.0.0/8,
  146.185.159.154,
  46.224.216.201,
  159.69.245.21,
+ 88.198.199.37,
+ 188.245.181.142,
+ 46.225.128.121,
  62.166.166.129
-
 
 # 20MB
 message_size_limit = 20480000

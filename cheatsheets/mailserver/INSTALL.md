@@ -111,6 +111,16 @@ policy-spf  unix  -       n       n       -       -       spawn
      user=nobody argv=/usr/bin/policyd-spf
 ````
 
+### SPF records
+
+Create a [SPF](http://www.openspf.org/) record for each servers ipnr who we are sending mail in spf.igroupware.org (TXT).
+
+    spf       TXT           "v=spf1 ip4:91.99.94.83 ip4:146.185.159.154 ip4:159.69.245.21 ip4:46.224.216.201 ip4:46.225.128.121 -all"
+
+And check if spf.igroupware.org is already there in the domains who you sending with.
+
+    @         TXT           "v=spf1 include:spf.igroupware.org -all"
+
 ## Greylisting
 
     apt install postgrey
@@ -287,8 +297,19 @@ Edit `/etc/fail2ban/jail.local` and add:
 
 ````
 [DEFAULT]
-#          localhost   home-ip        server01        server02       server04        server05        server08
-ignoreip = 127.0.0.1/8 87.209.180.24  178.128.254.144 159.223.11.178 146.190.236.166 146.185.159.154 159.65.199.31
+
+# Whitelisted IPs
+ignoreip = 127.0.0.1/8          # localhost
+            62.166.166.129      # home-ip
+            178.128.254.144     # server01
+            159.223.11.178      # server02
+            146.190.236.166     # server04
+            146.185.159.154     # server05
+            46.224.216.201      # server06
+            159.69.245.21       # server07
+            88.198.199.37       # server08
+            188.245.181.142     # server09
+            46.225.128.121      # server10
 
 banaction = iptables
 

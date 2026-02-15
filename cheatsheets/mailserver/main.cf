@@ -49,6 +49,7 @@ relayhost =
 alias_maps = hash:/etc/aliases
 
 # Trusted networks
+# ----------------
 # server01.filmer.nl 178.128.254.144
 # server02.igroupware.org 159.223.11.178
 # server03.igroupware.org 91.99.94.83
@@ -56,15 +57,22 @@ alias_maps = hash:/etc/aliases
 # server05.igroupware.org 146.185.159.154
 # server06.igroupware.org 46.224.216.201
 # server07.igroupware.org 159.69.245.21
+# server08.igroupware.org 88.198.199.37
+# server09.filmer.nl      188.245.181.142
+# server10.igroupware.org 46.225.128.121
 # Home ip: 62.166.166.129
 mynetworks = 127.0.0.0/8,
-             178.128.254.144,
-             159.223.11.178,
-             91.99.94.83,
-             146.190.236.166,
-             146.185.159.154,
-             46.224.216.201,
-             62.166.166.129
+ 178.128.254.144,
+ 159.223.11.178,
+ 91.99.94.83,
+ 146.190.236.166,
+ 146.185.159.154,
+ 46.224.216.201,
+ 159.69.245.21,
+ 88.198.199.37,
+ 188.245.181.142,
+ 46.225.128.121,
+ 62.166.166.129
 
 disable_vrfy_command = yes
 # Limit incomming mail 20MB
@@ -89,8 +97,6 @@ milter_default_action = accept
 milter_protocol = 6
 smtpd_milters = unix:/opendkim/opendkim.sock, unix:/spamass/spamass.sock, unix:/clamav/clamav-milter.ctl
 non_smtpd_milters = $smtpd_milters
-
-# Could not retrieve sendmail macro "b"!.  Please add it to confMILTER_MACROS_ENVRCPT for better spamassassin results
 milter_rcpt_macros = i j {daemon_name} {auth_authen}
 
 # Limit outgoing mail throttling
@@ -120,6 +126,10 @@ virtual_mailbox_maps = hash:/etc/postfix/vmailboxes
 
 # This file is create by signup-handler by sieve (admin@inzetrooster.nl)
 virtual_alias_maps = hash:/etc/dovecot/sieve/valiases-inzetrooster
+
+# Create a sender_canonical file for postfix
+# sender_canonical_maps = hash:/etc/postfix/sender_canonical
+# It works in conjunction with /usr/local/sbin/sender_checks.pl
 
 ####################################################
 # Only needed for incomming mail
@@ -173,8 +183,8 @@ smtpd_sender_restrictions = permit_mynetworks,
 
 # Spam control: exclude local clients and authenticated clients from DNSBL lookups.
 #
+#                               check_recipient_access hash:/etc/dovecot/sieve/recipient_bounces,
 smtpd_recipient_restrictions =
-                               check_recipient_access hash:/etc/dovecot/sieve/recipient_bounces,
                                permit_mynetworks,
                                permit_sasl_authenticated,
                                permit_dnswl_client list.dnswl.org,
@@ -192,9 +202,6 @@ smtpd_recipient_restrictions =
                                reject_non_fqdn_sender,
                                reject_non_fqdn_recipient,
                                reject_unlisted_recipient,
-                               reject_rbl_client zen.spamhaus.org,
-                               reject_rbl_client bl.spamcop.net,
-                               reject_rbl_client b.barracudacentral.org,
                                reject_rbl_client dnsbl.sorbs.net,
                                reject_rbl_client dnsbl-1.uceprotect.net,
                                reject_rbl_client psbl.surriel.com,
@@ -219,4 +226,5 @@ smtpd_client_connection_rate_limit = 50
 
 # The time unit over which client connection rates and other rates are calculated.
 anvil_rate_time_unit = 60s
+
 

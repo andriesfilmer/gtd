@@ -27,10 +27,11 @@ First read more in [Certificates](./certificates.md).
 
 ### SPF records
 
-Create a [SPF](http://www.openspf.org/) record for each domain who we are sending mail, some examples:
+Create a [SPF](http://www.openspf.org/) record for each servers ipnr who we are sending mail in spf.igroupware.org (TXT).
 
-    @         TXT           "v=spf1 ip4:91.99.94.83 ip4:159.65.199.31 ip4:146.185.159.154 -all"
-Or
+    spf       TXT           "v=spf1 ip4:91.99.94.83 ip4:146.185.159.154 ip4:159.69.245.21 ip4:46.224.216.201 ip4:46.225.128.121 -all"
+
+And check if spf.igroupware.org is already there in the domains who you sending with.
 
     @         TXT           "v=spf1 include:spf.igroupware.org -all"
 
@@ -79,9 +80,11 @@ Your changes won't be applied it you just reload your systemd-configuration file
 
 ### Key generation for each domain and setup with DNS.
 
-**Or copy keys from other mailserver if already configured in DNS**
+**Copy keys from other mailserver if already configured in DNS**
 
-    mkdir /etc/postfix/dkimkeys
+    mkdir /etc/dkimkeys
+
+Generate keys
 
     opendkim-genkey -D /etc/dkimkeys/igroupware.org -b 2048 -d igroupware.org -s default
     opendkim-genkey -D /etc/dkimkeys/inzetrooster.nl -b 2048 -d inzetrooster.nl -s default
@@ -89,37 +92,46 @@ Your changes won't be applied it you just reload your systemd-configuration file
     ...
 
 KeyTable `/etc/dkimkeys/key.table`
-
-    default._domainkey.igroupware.org igroupware.org:default:/etc/dkimkeys/keys/igroupware.org/default.private
-    default._domainkey.filmer.nl filmer.nl:default:/etc/dkimkeys/keys/filmer.nl/default.private
-    ...
+````
+default._domainkey.igroupware.org igroupware.org:default:/etc/dkimkeys/keys/igroupware.org/default.private
+default._domainkey.inzetrooster.nl inzetrooster.nl:default:/etc/dkimkeys/keys/inzetrooster.nl/default.private
+default._domainkey.filmer.nl filmer.nl:default:/etc/dkimkeys/keys/filmer.nl/default.private
+...
+````
 
 SigningTable `/etc/dkimkeys/signing.table`
-
-    igroupware.org default._domainkey.igroupware.org
-    filmer.nl  default._domainkey.filmer.nl
-    ...
+````
+igroupware.org default._domainkey.igroupware.org
+filmer.nl  default._domainkey.filmer.nl
+....
+````
 
 InternalHosts `/etc/dkimkeys/trusted.hosts`
 
-    127.0.0.1
-    ::1
-    localhost
-    # Server02
-    159.223.11.178
-    # Server03
-    91.99.94.83
-    # Server04
-    146.190.236.166
-    # Server05
-    146.185.159.154
-    # Server07
-    159.69.245.21
-    # Ip home
-    87.209.180.24
-    *.igroupware.org
-    *.inzetrooster.nl
-    *.filmer.nl
+````
+127.0.0.1
+::1
+localhost
+# Server02
+159.223.11.178
+# Server03
+91.99.94.83
+# Server04
+146.190.236.166
+# Server05
+146.185.159.154
+# Server07
+159.69.245.21
+# Server08
+88.198.199.37
+# Server10
+46.225.128.121
+# Ip home
+62.166.166.129
+*.igroupware.org
+*.inzetrooster.nl
+*.filmer.nl
+````
 
 Set permissions
 
@@ -222,8 +234,8 @@ Install perl DBI for `bounces-inzetrooster.pl` script (see cheatsheet perl for m
 
 ````
 53 1 * * * /root/.acme.sh/acme.sh --cron --home /root/.acme.sh > /dev/null
-58 23 * * * /usr/local/sbin/bounces-inzetrooster.pl
-59 23 * * * /usr/local/sbin/mail-report.sh | /usr/bin/mail -s "Mail report server05" postmaster@inzetrooster.nl
+58 23 * * * /usr/local/sbin/bounces-inzetrooster.rb
+59 23 * * * /usr/local/sbin/mail-report.rb | /usr/bin/mail -s "Mail report server05" postmaster@inzetrooster.nl
 ````
 
 ### Checking
