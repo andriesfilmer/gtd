@@ -111,11 +111,12 @@ genpasswd() {
 }
 
 autossh() {
-  cd ~/dev/pim && ~/gtd/scripts/perl/autossh.pl `rails ssh:login["$1"]` && cd -
+  # cd ~/dev/pim && ~/gtd/scripts/perl/autossh.pl `rails ssh:login["$1"]` && cd -
+  cd ~/dev/pim && ~/gtd/scripts/ruby/autossh.rb `rails ssh:login["$1"]`
 }
 
 getpasskey() {
-  cd ~/dev/pim-cli && rails search:passkeys["$1"] && cd -
+  cd ~/dev/pim && rails search:passkeys["$1"] && cd -
 }
 
 alias ...='cd ../../'
