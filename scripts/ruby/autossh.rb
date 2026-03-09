@@ -51,9 +51,11 @@ sleep(1)
 
 # Handle host key verification and password prompt
 reader.expect(/(\(yes\/no\)\?\s*$|assword:\s*$)/, 10) do |match|
+  $stdout.write(match[0])
   if match[0] =~ /yes\/no/
     writer.puts("yes")
-    reader.expect(/assword:\s*$/, 10) do
+    reader.expect(/assword:\s*$/, 10) do |m|
+      $stdout.write(m[0])
       writer.puts(userpass)
     end
   else
@@ -63,9 +65,19 @@ end
 
 sleep(1)
 
+# Display welcome message and any output before switching to root
+begin
+  while (output = reader.read_nonblock(4096))
+    $stdout.write(output)
+  end
+rescue IO::WaitReadable, Errno::EIO, EOFError
+  # No more data available
+end
+
 # Switch to root
 writer.puts("su -")
-reader.expect(/assword:\s*$/, 10) do
+reader.expect(/assword:\s*$/, 10) do |match|
+  $stdout.write(match[0])
   writer.puts(rootpass)
 end
 

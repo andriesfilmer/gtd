@@ -190,6 +190,7 @@ Configure unattended-upgrades, edit and fit your needs:
 
 * `${distro_id}:${distro_codename}-updates;`
 * `Unattended-Upgrade::Mail "mail@domain;`
+* `Unattended-Upgrade::MailReport "only-on-error";`
 * `Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";`
 * `Unattended-Upgrade::Remove-New-Unused-Dependencies "true";`
 * `Unattended-Upgrade::Automatic-Reboot "true";`
@@ -249,13 +250,31 @@ To find out all services that have been run at startup:
 
 You can change the setting, see examples: `cheatsheets/sysctl-example.md`
 
-````
-# Disable IPv6 at all, disable it at the system level
-net.ipv6.conf.all.disable_ipv6 = 1
-net.ipv6.conf.default.disable_ipv6 = 1
-````
-
+### Disable ipv6 network
 Edit `/etc/sysctl.conf` and run following command to load changes to sysctl.
 
-    sysctl -p
+````
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+````
 
+Run sysctl after netplan via a systemd service
+
+Create /etc/systemd/system/disable-ipv6.service:
+````
+ini[Unit]
+Description=Disable IPv6
+After=network.target
+After=netplan-apply.service
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/sysctl -p
+
+[Install]
+WantedBy=multi-user.target
+````
+
+    systemctl daemon-reload
+    systemctl enable disable-ipv6.service
