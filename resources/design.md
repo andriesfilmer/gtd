@@ -129,6 +129,7 @@ Upscale your photos with [Magnific AI](https://magnific.ai) - Payed account but 
 
 ### SVG
 
+* [LottieFiles](https://lottiefiles.com/) | Great designs come alive with motion!
 * [SVGcode](https://svgco.de/) Convert raster images to SVG vector graphics
 * [unDraw](https://undraw.co/illustrations) | Open-source illustrations for any idea
 

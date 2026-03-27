@@ -1,4 +1,3 @@
-
 ## Certificates
 
 Get an [ACME Shell script](https://github.com/acmesh-official/acme.sh)
@@ -73,6 +72,15 @@ acme.sh --install-cert -d server07.igroupware.org \
 
 ## Debug
 
+Check the certificate(s)
+
+    openssl s_client -connect subomain.domain.org:443 -servername subdomain.domain.org \
+      -showcerts </dev/null 2>/dev/null | openssl x509 -noout -text | grep -A1 "DNS:"
+
+If its a wildcard domain then the result must be:
+
+    DNS:domain.org, DNS:*.domain.org
+
 Check the certificate dates in the location Postfix uses
 
     openssl x509 -in /etc/letsencrypt/live/server07.igroupware.org/fullchain.pem -noout -dates
@@ -80,4 +88,5 @@ Check the certificate dates in the location Postfix uses
 Check what certificate Postfix is actually presenting
 
     openssl s_client -connect server07.igroupware.org:587 -starttls smtp -showcerts 2>/dev/null | openssl x509 -noout -dates
+
 

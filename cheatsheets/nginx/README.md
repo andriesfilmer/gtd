@@ -29,7 +29,7 @@ Install wildcard certificate
 
     mkdir -p /etc/letsencrypt/live/domain.org
 
-    acme.sh/.acme.sh --install-cert -d domain.org \
+    /root/.acme.sh/acme.sh --install-cert -d domain.org -d '*.domain.org' \
     --key-file /etc/letsencrypt/live/domain.org/privkey.pem \
     --fullchain-file /etc/letsencrypt/live/domain.org/fullchain.pem \
     --reloadcmd "service nginx force-reload"

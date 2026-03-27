@@ -36,12 +36,18 @@ Open a browser on: http://127.0.0.1:8384/#
 
     syncthing generate --gui-user=andries --gui-password=some-user-password
 
-## config
+### Forgot password
 
-You can also see and change the config file
+Open `~/.config/syncthing/config.xml` and look for the <gui> section. Inside it, you’ll see:
 
-    vi /home/syncthing/.local/state/syncthing/config.xml
+    <user>your-username</user>
+    <password>hashed-password</password>
 
+Delete the entire <password>...</password> line.
+
+When you restart Syncthing, the GUI will prompt you to set a new password.
+
+    sudo systemctl restart syncthing@$USER
 
 ## nginx
 ````

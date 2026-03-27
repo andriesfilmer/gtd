@@ -24,7 +24,7 @@ ignoreip = 127.0.0.1/8          # localhost
             178.128.254.144     # server01
             159.223.11.178      # server02
             146.190.236.166     # server04
-            146.185.159.154     # server05
+            178.104.119.231     # server05
             46.224.216.201      # server06
             159.69.245.21       # server07
             88.198.199.37       # server08
@@ -63,7 +63,7 @@ content hosts.allow
 # 159.223.11.178    server02
 # 91.99.94.83       server03
 # 146.190.236.166   server04
-# 146.185.159.154   server05
+# 178.104.119.231   server05
 # 46.224.216.201    server06
 # 159.69.245.21     server07
 # 88.198.199.37     server08
@@ -74,7 +74,7 @@ content hosts.allow
 #-------------------------------
 
 sshd: 81.204.0.0/14 62.166.128.0/17 84.241.192.0/19 87.210.0.0/16 62.166.166.129 \
-      178.128.254.144 159.223.11.178 91.99.94.83 146.190.236.166 146.185.159.154 46.224.216.201 159.69.245.21 88.198.199.37 188.245.181.142 46.225.128.121 \
+      178.128.254.144 159.223.11.178 91.99.94.83 146.190.236.166 178.104.119.231 46.224.216.201 159.69.245.21 88.198.199.37 188.245.181.142 46.225.128.121 \
       138.199.7.0/24 138.199.7.0/24 146.70.86.0/24 77.247.178.0/24
 ````
 ## hosts.deny
@@ -113,7 +113,7 @@ COMMIT
 ````
 
 Add some custom ip6 rules before `COMMIT` in `/etc/iptables/rules.v6`
-Or better via sysctl, see below.
+**Or better via sysctl, see below.**
 
 ````
 *filter
@@ -261,7 +261,7 @@ net.ipv6.conf.lo.disable_ipv6 = 1
 
 Run sysctl after netplan via a systemd service
 
-Create /etc/systemd/system/disable-ipv6.service:
+Create `/etc/systemd/system/disable-ipv6.service`:
 ````
 ini[Unit]
 Description=Disable IPv6

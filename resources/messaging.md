@@ -75,7 +75,7 @@ Leanstack helps developers find and decide on the best cloud services. Search an
 [Intercom](https://www.intercom.com/) - Communicating with customers shouldn’t be this hard - used by Snyk (npm security)
 
 ### Maillist providers voor end users
-
+* [Beehiiv](https://www.beehiiv.com/) | Powering the internet's best newsletters
 * [Spotler](https://spotler.com/) | Helping marketing teams succeed
 * [Mailchimp](http://mailchimp.com/) | Marketing platform for small businesses
 * [CleverReach](http://www.cleverreach.nl/) | Email marketing solution

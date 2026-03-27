@@ -8,7 +8,7 @@
 # It extracts 'servername, username and password from a rails app called pim.
 #
 # function autossh() {
-#   cd ~/path/to/pim && ~/path/to/autossh.rb `rails ssh:login["$1"]`
+#   cd ~/path/to/pim && ~/path/to/autossh.rb `rails ssh:login["$1"]` && cd -
 # }
 #
 # Change the `pim` to the pim rails app.

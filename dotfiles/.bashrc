@@ -112,7 +112,7 @@ genpasswd() {
 
 autossh() {
   # cd ~/dev/pim && ~/gtd/scripts/perl/autossh.pl `rails ssh:login["$1"]` && cd -
-  cd ~/dev/pim && ~/gtd/scripts/ruby/autossh.rb `rails ssh:login["$1"]`
+  cd ~/dev/pim && ~/gtd/scripts/ruby/autossh.rb `rails ssh:login["$1"]` && cd -
 }
 
 getpasskey() {

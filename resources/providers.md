@@ -3,6 +3,8 @@
 [EU-based cloud provider](https://www.eucloud.tech/)
 
 ## Cloud hosting
+* [Hetzner](https://www.hetzner.com/) | One of the largest data centers in Europe, founded in 1997.
+* [Scaleway](https://www.scaleway.com/) | European Cloud AI.
 * [Hetzner](https://hetzner.cloud) | Since 1997 - Germany
 * [TransIp](https://transip.nl) | Since 2003 - Netherlands
 
