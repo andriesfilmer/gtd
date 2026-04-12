@@ -115,7 +115,7 @@ policy-spf  unix  -       n       n       -       -       spawn
 
 Create a [SPF](http://www.openspf.org/) record for each servers ipnr who we are sending mail in spf.igroupware.org (TXT).
 
-    spf       TXT           "v=spf1 ip4:91.99.94.83 ip4:146.185.159.154 ip4:159.69.245.21 ip4:46.224.216.201 ip4:46.225.128.121 -all"
+    spf       TXT           "v=spf1 ip4:91.99.94.83 ip4:46.224.216.201 ip4:159.69.245.21 ip4:46.225.128.121 -all"
 
 And check if spf.igroupware.org is already there in the domains who you sending with.
 

@@ -102,6 +102,11 @@ Permissions to unlock luks device for regular user. `visudo` and add
     someuser ALL=(root) NOPASSWD: /bin/umount /mnt/backup
     someuser ALL=(root) NOPASSWD: /sbin/cryptsetup luksClose backup
 
+**Note:**
+
+No newlines in keyfiles! Copy code
+
+    echo -n "your-passphrase" > backup-key-file
 
 ## Shred - Erase harddisk
 

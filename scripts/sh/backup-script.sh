@@ -7,15 +7,14 @@
 # - cryptsetup must be installed on remote `SERVER`.
 # - sshd on `SERVER` must allow root loging (i.o. AllowRootLogin)
 
-SERVER='rsync@backup.filmer.net'
-HOST='server01'
-FILESTOBACKUP='/root/.backup-script/files'
-KEYFILE='/root/.backup-script/key-file'
-PARTITIONDEVICE='/dev/disk/by-uuid/c22b5cec-95e5-4fb5-bb73-113b02b73828'
-PARTITIONLABEL='backup'
+SERVER='rsync@backup.filmer.nl'
+HOST='server07'
+PARTITIONDEVICE='/dev/disk/by-uuid/cee363c4-36b1-43c0-afb8-d2e67eae201b'
+PARTITIONLABEL='backup3'
 MAILMSG='/root/.backup-script/mail'
 MAILADDRESS='andries@filmer.nl'
-TMPKEYFILE='.key-file'
+KEYFILE='/root/.backup-script/key-file'
+TMPKEYFILE='/home/rsync/.key-file'
 
 # Debug
 #ssh -o ConnectTimeout=3 84.106.235.36 2>/dev/null; (($? == 127)) && echo 'something broke.' >&2
@@ -45,14 +44,11 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Only directories
-#/usr/bin/rsync -av --include='*/' --exclude='*' \
-
-/usr/bin/rsync -aur --delete --delete-excluded --sparse \
+/usr/bin/rsync -aurv --delete --delete-excluded --sparse \
   --exclude-from=/root/.backup-script/exclude \
-  --files-from=$FILESTOBACKUP / $SERVER:/mnt/backup/$HOST/
+  --files-from=/root/.backup-script/files / $SERVER:/mnt/$PARTITIONLABEL/$HOST/
 
-ssh $SERVER "sudo /bin/umount /mnt/backup && sudo /sbin/cryptsetup luksClose backup"
+ssh $SERVER "sudo /bin/umount /mnt/$PARTITIONLABEL && sudo /sbin/cryptsetup luksClose $PARTITIONLABEL"
 if [ $? -ne 0 ]; then
     echo "umount failed."
     /usr/sbin/sendmail -f "umount-failed@$SERVER" $MAILADDRESS < $MAILMSG
@@ -65,5 +61,3 @@ if [ $? -eq 0 ]; then
     #/usr/sbin/sendmail -f "backup-success@$SERVER" $MAILADDRESS < $MAILMSG
     exit 1
 fi
-
-
