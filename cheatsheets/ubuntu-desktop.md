@@ -31,9 +31,17 @@
 
 ## Locale
 
-After installing dutch language via settings it did not work. I had to run the next command first en reboot.
+After installing dutch language via settings it did not work. I had to run `sudo locale-gen` and edit `sudo vi /etc/default/locale` and reboot.
 
-   sudo locale-gen
+## Unicode
+
+| Char | Code | Char | Code |
+|------|------|------|------|
+| é | `e9` | É | `c9` |
+| è | `e8` | È | `c8` |
+| ê | `ea` | Ê | `ca` |
+| ë | `eb` | Ë | `cb` |
+| ö | `f6` | Ö | `d6` |
 
 ## Personal gsetting
 

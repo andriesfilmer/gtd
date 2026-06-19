@@ -143,3 +143,4 @@ alias inzetrooster='cd ~/dev/inzetrooster-app/ && gnome-terminal --title=Neovim 
 #PATH=$PATH:$ANDROID_HOME/tools; PATH=$PATH:$ANDROID_HOME/platform-tools
 #export PATH
 
+export PATH="$HOME/.local/bin:$PATH"

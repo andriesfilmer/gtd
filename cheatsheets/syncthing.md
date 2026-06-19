@@ -85,6 +85,8 @@ server {
 
 ### Macbook
 
+    brew install syncthing
+
 To start syncthing now and restart at login:
 
     brew services start syncthing
