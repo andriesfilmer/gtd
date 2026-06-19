@@ -34,6 +34,17 @@ or
 
  ffmpeg -i "concat:VTS_01_1.VOB|VTS_01_2.VOB|VTS_01_3.VOB" -target pal-dvd -vcodec copy -acodec copy OUTPUT_DVD.mp4
 
+### Meta-data
+
+Read meta-data
+
+    ffprobe -v quiet -show_entries format_tags -of default=noprint_wrappers=1 video.mp4
+    ffprobe -v quiet -show_entries format_tags=creation_time:stream_tags=creation_time video.mp4
+
+Write (new) meta-data
+
+    ffmpeg -i video.mp4 -metadata creation_time="2024-06-15T14:30:00.000000Z" -c copy output.mp4
+
 
 ## OBS studio
 
@@ -124,4 +135,13 @@ Resources:
 
 Use a green screen: <https://www.youtube.com/watch?v=3A4B-kQdUt8>
 
+## Transcribe / transcription
+
+    sudo apt install pipx
+    pipx install whisper-ctranslate2
+
+    # Fisttime download large-v3 file to ~/.cache/huggingface
+    # If you have a NVIDIA-GPU add: `--device cuda` it reduce the time in transcription.
+    whisper-ctranslate2 video1978083616.mp4 --language nl --model large-v3 \
+      --compute_type int8 --output_format txt --output_dir ./transcript
 

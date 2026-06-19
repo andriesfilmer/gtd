@@ -43,3 +43,14 @@ If you want to remove Docker's network for Immich:
     docker network rm <network_name>
     docker network rm immich_default
 
+## Upgrade
+
+    cd /home/andries/immich-app/
+
+Upgrade and restart Immich
+
+    docker compose pull && docker compose up -d
+
+Clean up unused Docker images
+
+    docker image prune
