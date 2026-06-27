@@ -3,13 +3,15 @@
 ## Ruby Install
 
     apt install ruby ruby-dev
+    apt install build-essential
     apt install bundler
     apt install nodejs
     apt install mariadb-client
-    apt install build-essential
+    apt install sqlite3
     apt install libyaml-dev # Needed for gem psych
     apt install libssl-dev # Needed for gem trilogy
-
+    # Ubuntu 26.04
+    apt install ruby-railties
 
 ## Git
 

@@ -28,6 +28,16 @@ or whole dir
     pngquant *.png
     for i in *-fs8.png ; do mv $i "`echo $i | sed "s/-fs8//"`" ; done
 
+### SVG files
+
+Convert svg to png
+
+    inkscape /path/to/some.svg --export-type=png --export-filename=/path/to/some.png
+
+Alternative — ImageMagick
+
+    convert -background none -density 150 /path/to/some.svg /path/to/some.png
+
 ### JPG files
 
     apt install jpegoptim

@@ -45,7 +45,7 @@ Check versions
     apt dist-upgrade
     reboot
     apt install update-manager-core ubuntu-release-upgrader-core
-    do-release-upgrade -d # the ‘d’ denoting ‘development’
+    do-release-upgrade -d # The ‘d’ denoting ‘development’ or prerelease.
     do-release-upgrade
     reboot
     apt --purge autoremove

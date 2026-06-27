@@ -18,22 +18,32 @@
 #
 ################################################################################
 
+#!/usr/bin/env ruby
+
 require "expect"
 require "pty"
 require "io/console"
 
 username = ENV["USER"]
 
-servername, userpass, rootpass = ARGV
+# Read login information from stdin if available, otherwise fall back to ARGV.
+if !$stdin.tty?
+  line = STDIN.gets&.chomp
+  abort("No login information received.") if line.nil? || line.empty?
 
-# Check if we have all three arguments
+  servername, userpass, rootpass = line.split(/\s+/, 3)
+else
+  servername, userpass, rootpass = ARGV
+end
+
+# Prompt for any missing values.
 prompts = %w[Servername Userpassword Rootpassword]
 args = [servername, userpass, rootpass]
 
 args.each_with_index do |arg, i|
   if arg.nil? || arg.empty?
     print "#{prompts[i]}: "
-    args[i] = $stdin.gets.chomp
+    args[i] = STDIN.gets.chomp
   end
 end
 
@@ -41,19 +51,21 @@ servername, userpass, rootpass = args
 
 puts "Servername #{servername}"
 
-# Set the window title
+# Set the window title.
 print "\033]0;#{servername}\007"
 
-# Spawn the ssh process
+# Spawn the ssh process.
 reader, writer, pid = PTY.spawn("ssh #{username}@#{servername}")
 
 sleep(1)
 
-# Handle host key verification and password prompt
+# Handle host key verification and password prompt.
 reader.expect(/(\(yes\/no\)\?\s*$|assword:\s*$)/, 10) do |match|
   $stdout.write(match[0])
-  if match[0] =~ /yes\/no/
+
+  if match[0].include?("yes/no")
     writer.puts("yes")
+
     reader.expect(/assword:\s*$/, 10) do |m|
       $stdout.write(m[0])
       writer.puts(userpass)
@@ -65,17 +77,18 @@ end
 
 sleep(1)
 
-# Display welcome message and any output before switching to root
+# Display any output before switching to root.
 begin
-  while (output = reader.read_nonblock(4096))
+  loop do
+    output = reader.read_nonblock(4096)
     $stdout.write(output)
   end
 rescue IO::WaitReadable, Errno::EIO, EOFError
-  # No more data available
 end
 
-# Switch to root
+# Switch to root.
 writer.puts("su -")
+
 reader.expect(/assword:\s*$/, 10) do |match|
   $stdout.write(match[0])
   writer.puts(rootpass)
@@ -83,34 +96,29 @@ end
 
 sleep(1)
 
-# Propagate terminal size to the PTY so that vim and other programs
-# handle resizing correctly.
-set_winsize = -> {
+# Keep the PTY size synchronized with the terminal.
+set_winsize = lambda do
   rows, cols = $stdout.winsize
   reader.winsize = [rows, cols]
-}
+end
 
-# Set initial size and forward SIGWINCH on every resize
 set_winsize.call
 Signal.trap("WINCH") { set_winsize.call }
 
-# Hand over control: relay between user's terminal and the SSH session
-# Put terminal in raw mode for proper interactive use
-$stdin.raw do
+# Relay input/output.
+STDIN.raw do
   loop do
-    readable, = IO.select([$stdin, reader], nil, nil)
+    readable, = IO.select([STDIN, reader])
+
     readable.each do |io|
-      if io == $stdin
-        input = $stdin.read_nonblock(4096)
-        writer.write(input)
+      if io == STDIN
+        writer.write(STDIN.read_nonblock(4096))
       else
-        output = reader.read_nonblock(4096)
-        $stdout.write(output)
+        $stdout.write(reader.read_nonblock(4096))
       end
     end
   end
 rescue Errno::EIO, EOFError
-  # PTY process ended
 end
 
 Process.wait(pid)

@@ -26,6 +26,8 @@ Open a browser on: http://127.0.0.1:8384/#
 
     adduser syncthing
     vi /etc/systemd/system/syncthing@syncthing.service
+    vi /etc/systemd/system/syncthing.service  # Ubuntu 26.04
+
     systemctl enable syncthing@syncthing.service --now
 
 * <https://docs.syncthing.net/users/autostart.html#linux>
@@ -38,7 +40,9 @@ Open a browser on: http://127.0.0.1:8384/#
 
 ### Forgot password
 
-Open `~/.config/syncthing/config.xml` and look for the <gui> section. Inside it, you’ll see:
+Open `~/.config/syncthing/config.xml` and look for the <gui> section.
+
+Open `~/Library/Application Support/Syncthing/config.xml` on a MacBook.
 
     <user>your-username</user>
     <password>hashed-password</password>

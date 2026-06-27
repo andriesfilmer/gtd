@@ -36,6 +36,7 @@ The core Matrix team maintains bridges to Slack, IRC, XMPP and Gitter, and meanw
 ### Chat providers
 
 * [PubNub](https://www.pubnub.com/) | Fast with our realtime APIs and global messaging infrastructure
+* [Chatwood](https://github.com/chatwoot/chatwoot] | Customer support platform. An open-source alternative Zendesk, Salesforce, etc.
 
 ### Push providers
 

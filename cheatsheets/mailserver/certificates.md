@@ -23,6 +23,8 @@ Register account
 
     .acme.sh/acme.sh --register-account -m my@example.com
     .acme.sh/acme.sh --issue --dns dns_transip --dnssleep 100 -d server05.igroupware.org
+    # Wildcard cert
+    .acme.sh/acme.sh --issue --dns dns_transip --dnssleep 100 -d filmer.nl -d '*.filmer.nl'
 
     mkdir -p /etc/letsencrypt/live/server05.igroupware.org
 

@@ -38,7 +38,7 @@ To make changes permanent after reboot run iptables-save command:
 ## Restoring rules
 
     iptables-restore < /etc/iptables/rules.v4
-    ip666666tables-restore < /etc/iptables/rules.v6
+    ip6tables-restore < /etc/iptables/rules.v6
 
 # iptables example
 

@@ -17,7 +17,7 @@
 
 ## Create a wildcard certificate - Letsencrypt
 
-First read more in [Certificates](./certificates.md).
+First read more in [Certificates](../mailserver/certificates.md).
 
 Add the next lines to you nginx `server` config
 
@@ -29,7 +29,9 @@ Install wildcard certificate
 
     mkdir -p /etc/letsencrypt/live/domain.org
 
-    /root/.acme.sh/acme.sh --install-cert -d domain.org -d '*.domain.org' \
+    .acme.sh/acme.sh --issue --dns dns_transip --dnssleep 100 -d domain.org -d '*.domain.org'
+
+    .acme.sh/acme.sh --install-cert -d domain.org -d '*.domain.org' \
     --key-file /etc/letsencrypt/live/domain.org/privkey.pem \
     --fullchain-file /etc/letsencrypt/live/domain.org/fullchain.pem \
     --reloadcmd "service nginx force-reload"
