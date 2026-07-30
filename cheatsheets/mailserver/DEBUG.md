@@ -10,6 +10,23 @@ List non default configuration
 
     postconf -n
 
+## DNS
+
+    systemctl status unbound
+    ss -ulnp | grep ':53'
+    dig +short @127.0.0.1 sigok.verteiltesysteme.net A    # expect an address
+
+### Blocklists
+
+Verify the DNSBLs recursive resolver there:
+
+    dig +short @127.0.0.1 2.0.0.127.zen.spamhaus.org A       # expect 127.0.0.x
+    dig +short @127.0.0.1 2.0.0.127.b.barracudacentral.org A
+    dig +short @127.0.0.1 2.0.0.127.list.dnswl.org A
+
+    postconf -n | grep -i dnsbl
+    grep "postscreen.*DNSBL" /var/log/mail.log | tail -20
+
 ## Dovecot
 
 As a general tip for debug the config if dovecot is not starting
@@ -18,6 +35,7 @@ As a general tip for debug the config if dovecot is not starting
 
 ## Check your ip reputation
 
+* [Register at Google postmaster tools](https://postmaster.google.com/managedomains)
 * Register at Smart Network Data Services (SNDS) — [See how Microsoft sees your IP reputation](https://sendersupport.olc.protection.outlook.com/snds/index)
 * MXtoolbox [BLACKLIST CHECK](https://mxtoolbox.com/blacklists.aspx)
 * [Multirbl.org](https://multirbl.valli.org/)

@@ -144,3 +144,5 @@ alias inzetrooster='cd ~/dev/inzetrooster-app/ && gnome-terminal --title=Neovim 
 #export PATH
 
 export PATH="$HOME/.local/bin:$PATH"
+#export ANTHROPIC_API_KEY="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"
+

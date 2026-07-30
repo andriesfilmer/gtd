@@ -216,10 +216,9 @@ Make the Swap File Permanent
 
 Tunning
 
-    echo vm.swappiness = 10 | tee -a /etc/sysctl.conf
-    echo vm.vfs_cache_pressure = 50 | tee -a /etc/sysctl.conf
-
-More info: <https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-22-04>
+    echo vm.swappiness = 10 | tee -a /etc/sysctl.d/99-local.conf
+    echo vm.vfs_cache_pressure = 50 | tee -a /etc/sysctl.d/99-local.conf
+    sysctl --system
 
 ## Add cronjobs
 

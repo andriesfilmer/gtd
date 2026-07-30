@@ -164,36 +164,50 @@ COMMIT
 
 ## unbound caching nameserver DNS
 
-For blocklist resolving ipnrs we need a local caching dns server.
+For mass mailing and blocklist resolving ipnrs we need a local caching dns server.
 
     apt install unbound
 
+Disable resolvconf integration: it tries to register 127.0.0.1 on link
+lo, which systemd-resolved rejects ("Link lo is loopback device"), so the
+unit fails on every unbound restart. We manage /etc/resolv.conf manually.
+Must be masked, not just disabled — unbound.service Wants= it.
+
+    systemctl disable --now unbound-resolvconf.service
+    systemctl mask unbound-resolvconf.service
+
+
 Edit `/etc/unbound/unbound.conf`, see [example file](./unbound.conf)
+
+    unbound-checkconf
+    systemctl reset-failed unbound   # install-time start may have crash-looped
+                                     # and exhausted the start limit
+    systemctl enable --now unbound
+    systemctl is-active unbound      # must be: active
+    ss -ulnp | grep ':53'            # must show unbound on 127.0.0.1:53
+
 
 Edit `/etc/systemd/resolved.conf` and add/change:
 
     [Resolve]
     DNS=127.0.0.1
-    # Allowed dns for blocklists
-    # Quad9: 9.9.9.9 149.112.112.112
-    # Opendns 208.67.222.222
-    #FallbackDNS=9.9.9.9 149.112.112.112 208.67.222.222
-    FallbackDNS=
     DNSStubListener=no
 
-Remove current `resolv.conf` file.
+Remove symlink `resolv.conf` file.
 
      /etc/resolv.conf -> ../run/systemd/resolve/stub-resolv.conf
 
 Create a new `/etc/resolv.conf` file.
 
-    echo "nameserver 127.0.0.1" | sudo tee /etc/resolv.conf
+    echo "nameserver 127.0.0.1" > /etc/resolv.conf
+    echo "nameserver 9.9.9.9" >> /etc/resolv.conf # only on outgoing mailservers
+    systemctl restart systemd-resolved
+    systemctl restart postfix # it's copying /etc/resolv.conf /var/spool/postfix/etc/resolv.conf (chroot)
 
 Testing
 
-    dig @127.0.0.1 somedomainname.comm
-    systemctl restart systemd-resolved
     resolvectl status
+    dig @127.0.0.1 somedomainname.com MX
 
 You should see: `DNS Server: 127.0.0.1`
 
