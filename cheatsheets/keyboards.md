@@ -7,7 +7,7 @@
     make && sudo make install
     sudo systemctl enable --now keyd
 
-* [/etc/keyd/default.conf](../config/keyd-default.conf)
+* [/etc/keyd/default.conf](../configs/keyd-default.conf)
 
 ## Aula F75 Pad Mechanisch Toetsenbord, 75%
 ![keyboard-layout](../images/keyboard/Aula-F75-layout.png)
@@ -68,17 +68,17 @@ Set it to Enabled, then restart the browser.
 
 Keyboard layout 60%
 
-![keyboard-layout 60%25](../images/keyboard/Keyboard-layout_60%_61-keys.png)
+![keyboard-layout 60%25](../images/keyboard/Keyboard-layout_60%25_61-keys.png)
 
 Keyboard layout 75%
 
-![keyboard-layout 75%25](../images/keyboard/Keyboard-layout_75%.png)
+![keyboard-layout 75%25](../images/keyboard/Keyboard-layout_75%25.png)
 
 Keyboard layout 80%
 
-![keyboard-layout 80%25](../images/keyboard/Keyboard-layout_Tkl-80%.png)
+![keyboard-layout 80%25](../images/keyboard/Keyboard-layout_Tkl-80%25.png)
 
 Keyboard layout 100%
 
-![keyboard-layout 100%25](../images/keyboard/Keyboard-layout_fullsize-100%_104-keys.png)
+![keyboard-layout 100%25](../images/keyboard/Keyboard-layout_fullsize-100%25_104-keys.png)
 
