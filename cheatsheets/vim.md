@@ -3,6 +3,7 @@
     :e .                               " Browse to a file to open
     :e <tab>                           " With tab you can complete directories and filename.
     :browse oldfiles                   " Scroll to end and pick a file number (must exists in root)
+    :w !sudo tee %                     " permission problem (sudo): you can't write but you have sudo rights.
 
 ## Normal (command) mode
     dd                                 " cut and copy current line

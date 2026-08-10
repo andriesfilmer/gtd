@@ -1,15 +1,22 @@
 # Keyboards
 
-## Via
-* [Keyboard configuration](https://usevia.app/)  usevia.app
+## Keyd
 
-## Keychron K10 Max QMK Wireless Mechanical Keyboard
+    git clone https://github.com/rvaiya/keyd
+    cd keyd
+    make && sudo make install
+    sudo systemctl enable --now keyd
 
-* <https://www.keychron.com/products/keychron-k10-max-qmk-wireless-mechanical-keyboard>
-* <https://launcher.keychron.com/#/keymap>
-* <https://www.keychron.com/blogs/news/how-to-use-launcher-to-program-your-keyboard>
+* [/etc/keyd/default.conf](../config/keyd-default.conf)
+
+## Aula F75 Pad Mechanisch Toetsenbord, 75%
+![keyboard-layout](../images/keyboard/Aula-F75-layout.png)
+
+## TMKB T63 Gaming Wireless Keyboard,60%
+![keyboard-layout](../images/keyboard/TMKB-T63-layout.png)
 
 ## Skyloong GK61 PRO_48
+![keyboard-layout](../images/keyboard/Skyloong-GK61-layout.png)
 
 * https://skyloong.vip/blogs/news/skyloong-gk61-pro-user-guide
 
@@ -24,6 +31,9 @@
 * Hold down the ESC key.
 * While holding ESC, plug the USB cable back in.
 * Hold for about 5 seconds until the keyboard flashes.
+
+## Via
+* [Keyboard configuration](https://usevia.app/)  usevia.app
 
 ## Use via AppImage
 
@@ -46,22 +56,6 @@ Enable WebHID flag (if needed) Go to:
     Chrome: chrome://flags/#enable-experimental-web-platform-features
 
 Set it to Enabled, then restart the browser.
-
-### My current layers
-
-Layer 0
-
-![keyboard-layer-0](../images/keyboard/keyboard-layer-0.png)
-Layer 1
-
-![keyboard-layer-1](../images/keyboard/keyboard-layer-1.png)
-Layer 2
-
-![keyboard-layer-2](../images/keyboard/keyboard-layer-2.png)
-
-
-If you want to save the current layout (json) and using Brave as a browser you can get this
-to work by activating the `brave://flags/#file-system-access-api` experimental flag.
 
 ## QMK Firmware
 * [Basic keycodes](https://docs.qmk.fm/keycodes)

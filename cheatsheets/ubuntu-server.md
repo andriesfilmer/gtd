@@ -224,7 +224,7 @@ Tunning
 
 You can make a crontab, when the file system is >80% full we'd like to receive a mail.
 
-    0 9 * * * if [ "`df -l |grep '[8|9][0-9]\%'`" ]; then `df -h|/usr/bin/mail -s 'File system > 80\% full' root` ; fi
+    0 9 * * * df -hP / | awk 'END{if (int($5)>=80) print "Root at " $5 " (" $4 " free)"}'
 
 ## ssh banner
 
