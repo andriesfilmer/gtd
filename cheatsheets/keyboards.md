@@ -17,7 +17,7 @@
 
 ## Skyloong GK61 PRO_48
 ![keyboard-layout](../images/keyboard/Skyloong-GK61-layout.png)
-
+![keyboard-settings](../images/keyboard/Skyloong-GK61-layout.png)
 * https://skyloong.vip/blogs/news/skyloong-gk61-pro-user-guide
 
 * Open `chrome://device-log/`
